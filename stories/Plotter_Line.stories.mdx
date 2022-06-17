@@ -1,0 +1,18 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps } from '../src/Plot/Plot';
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
+
+<Meta title="Plotters/Linear Functions" component={Plot} />
+
+# Linear Functions
+
+Linear functions are functions of the form
+
+<TeX math="y = ax + b" block />
+
+where 𝑎, 𝑥, and 𝑏, are real numbers. Some examples of linear functions in Hago:
+
+<Plot data={[{ f: x => 2 * x + 1 }]} />
+<Plot data={[{ f: x => 0.5 * x }]} />
+<Plot data={[{ f: x => -3 * x }]} />

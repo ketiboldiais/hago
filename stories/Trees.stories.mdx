@@ -1,0 +1,28 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Tree, TreeProps } from '../src/Tree/Tree';
+
+<Meta title="Trees/Introduction" component={Tree} />
+
+# Tree
+
+Hago's `Tree` modules allow quick rendering of trees.
+
+<Tree
+  data={[
+    ['a', ''],
+    ['b', 'a'],
+    ['c', 'a'],
+    ['e', 'c'],
+    ['f', 'c'],
+    ['g', 'b'],
+    ['h', 'b'],
+    ['i', 'g'],
+    ['j', 'g'],
+    ['k', 'e'],
+    ['l', 'e'],
+    ['m', 'h'],
+    ['n', 'h'],
+  ]}
+  slim={10}
+  id="Tree1"
+/>

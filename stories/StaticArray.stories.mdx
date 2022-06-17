@@ -1,0 +1,42 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { StaticArray, StaticArrayProps } from '../src';
+
+<Meta title="Basic Data Structures/Static Arrays" component={StaticArray} />
+
+# Static Arrays
+
+Static arrays are a simple data structure to render. Hago renders them with the `StaticArray` component:
+
+<StaticArray data={[1, 2, 3, 4, 5, 6, 7]} />
+
+## Annotations
+
+Annotations can be appended at the top of elements.
+
+<StaticArray data={[1, 2, 3, 4, { val: 5, ant: 'p' }, 6, 7]} />
+
+## Pointers
+
+Pointers can be appended at the bottom elements.
+
+<StaticArray
+  data={[1, 2, 3, 4, 5, 6, 7]}
+  pointers={[
+    { val: 'C', i: 1 },
+    { val: 'E', i: 3 },
+    { val: 'F', i: 5 },
+  ]}
+/>
+
+## Pointers & Annotations
+
+Pointers and annotations can be appended together:
+
+<StaticArray
+  data={[1, 2, 3, 4, { val: 5, ant: 'p' }, 6, 7]}
+  pointers={[
+    { val: 'C', i: 1 },
+    { val: 'E', i: 3 },
+    { val: 'F', i: 5 },
+  ]}
+/>

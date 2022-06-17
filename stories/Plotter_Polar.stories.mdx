@@ -1,0 +1,17 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps } from '../src/Plot/Plot';
+import { Polar, PolarProps } from '../src/Polar/Polar';
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
+
+<Meta title="Plotters/Polar Plots" component={Polar} />
+
+# Polar Plots
+
+For some functions, Cartesian coordinates don't yield very interesting plots. For example, consider the function <TeX math="f(x) = \sin(2x)\cos(2x)"/>. Plotting this function with Cartesian coordinates, we get:
+
+<Plot data={[{ f: x => Math.sin(2 * x) * Math.cos(2 * x) }]} />
+
+This doesn't look all that interesting. We can change that by plotting the function with polar coordinates:
+
+<Polar />
