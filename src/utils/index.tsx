@@ -14,3 +14,7 @@ export * from './Text';
 export * from './Types';
 export * from './DataWranglers';
 export * from './Marker';
+export * from './calulateTreeSize';
+export * from './shouldHide';
+export * from './Line';
+export * from './HagoMath';

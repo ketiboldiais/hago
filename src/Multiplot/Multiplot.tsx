@@ -3,13 +3,13 @@ import { svg } from '../utils';
 import { Board } from '../Board/Board';
 import { hsl } from 'd3';
 
-export const colorFunction = d => {
+function colorFunction(d: number) {
   const c = hsl(d + 80, 0.7, 0.5).rgb();
   const red = c.r;
   const green = c.g;
   const blue = c.b;
   return `rgb(${red}, ${green}, ${blue})`;
-};
+}
 
 type FunctionElement = { f: Function; scale?: number };
 
@@ -62,7 +62,7 @@ function generatePlotPoints(
   return output;
 }
 
-const transformPoint = (point, yaw, pitch) => {
+function transformPoint(point: any[], yaw: number, pitch: number) {
   let newPoint = [];
   let cosA = Math.cos(pitch);
   let sinA = Math.sin(pitch);
@@ -84,19 +84,19 @@ const transformPoint = (point, yaw, pitch) => {
   let z =
     newPoint[6] * point[0] + newPoint[7] * point[1] + newPoint[8] * point[2];
   return [x, y, z];
-};
+}
 
-const heightFunction = d => {
+function heightFunction(d: any) {
   return [d];
-};
+}
 
-const getHeights = datum => {
+function getHeights(datum: any[]) {
   let data = datum;
   let output = [];
   let xLength = data.length;
   let yLength = data[0].length;
-  let t;
-  let value;
+  let t: any[];
+  let value: any[];
   for (let x = 0; x < xLength; x++) {
     output.push((t = []));
     for (let y = 0; y < yLength; y++) {
@@ -105,9 +105,14 @@ const getHeights = datum => {
     }
   }
   return output;
-};
+}
 
-export const getTransformedData = (datum = [], displayWidth, yaw, pitch) => {
+function getTransformedData(
+  datum = [],
+  displayWidth: number,
+  yaw: any,
+  pitch: any
+) {
   let data = datum;
   let output = [];
   let zoom = Math.SQRT2;
@@ -132,24 +137,24 @@ export const getTransformedData = (datum = [], displayWidth, yaw, pitch) => {
     }
   }
   return output;
-};
+}
 
-export const renderSurface = (
-  dataVals,
-  displayWidth,
-  displayHeight,
-  yaw,
-  pitch
-) => {
+function renderSurface(
+  dataVals: any[],
+  displayWidth: number,
+  displayHeight: number,
+  yaw: number,
+  pitch: number
+) {
   let originalData = dataVals;
   let data = getTransformedData(dataVals, displayWidth, yaw, pitch);
   let xLength = data.length;
   let yLength = data[0].length;
   let d0 = [];
-  let depth;
-  let x, y;
-  let M1, M2, L1, L2, L3, L4, L5, L6;
-  let path;
+  let depth: any;
+  let x: number, y: number;
+  let M1: any, M2: any, L1: any, L2: any, L3: any, L4: any, L5: any, L6: any;
+  let path: string;
   for (x = 0; x < xLength - 1; x++) {
     for (y = 0; y < yLength - 1; y++) {
       depth =
@@ -171,10 +176,10 @@ export const renderSurface = (
   }
   d0.sort((a, b) => b.depth - a.depth);
   return d0;
-};
+}
 
 export function Multiplot({
-  data = [{ f: (x, y) => x ** 2 - y ** 2 }],
+  data = [{ f: (x: number, y: number) => x ** 2 - y ** 2 }],
   id,
   width = 600,
   height = 600,
@@ -192,8 +197,8 @@ export function Multiplot({
   pitch = 0.5,
 }: MultiplotProps) {
   const _svg = svg(width, height, margins);
-  let _data;
-  let _surface;
+  let _data: any[];
+  let _surface: any[];
   let plotData = [];
   for (let i = 0; i < data.length; i++) {
     _data = generatePlotPoints(data[i], xDomain, yDomain);
@@ -216,7 +221,7 @@ export function Multiplot({
         {plotData.map((d, i) => {
           return (
             <g key={`${id}_multiplot_${i}`}>
-              {d.map((el, i) => {
+              {d.map((el: { path: string; data: any }, i: any) => {
                 return (
                   <path
                     d={el.path}

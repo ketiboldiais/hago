@@ -1,78 +1,67 @@
 import React from 'react';
 import { Board } from '../Board/Board';
 import * as d3 from 'd3';
-import { isObjectLiteral, svg } from '../utils';
+import {
+  svg,
+  generateTreeData,
+  calculateTreeSize,
+  BaseProps,
+  Literal,
+  TreeNode,
+  generateBinaryTreeData,
+} from '../utils';
+import {
+  RenderTreeNodes,
+  RenderTreeEdges,
+  RenderLevelMarks,
+  RenderDepthMarks,
+  RenderHeightMarks,
+  RenderHeightBalanceFactors,
+} from './builders';
 
-function calculateTreeSize(_root) {
-  const levelWidth = [1];
-  const childCount = function(level, n) {
-    if (n.children && n.children.length > 0) {
-      if (levelWidth.length <= level + 1) {
-        levelWidth.push(0);
-      }
-      levelWidth[level + 1] += n.children.length;
-      n.children.forEach(function(d) {
-        childCount(level + 1, d);
-      });
-    }
-  };
-  childCount(0, _root);
-  const newHeight = d3.max(levelWidth) * 15;
-  return newHeight;
+type BinaryTreeNode = [
+  TreeNode | Literal,
+  [TreeNode | Literal, TreeNode | Literal]
+];
+
+function isBinaryTreeNode(datum: any): boolean {
+  return Array.isArray(datum) && Array.isArray(datum[0][1]);
 }
 
-function generateTreeData(rawData: any[]) {
-  let data = [];
-  for (let i = 0; i < rawData.length; i++) {
-    if (isObjectLiteral(rawData[i])) {
-      data.push(rawData[i]);
-    } else {
-      let node = {
-        child: rawData[i][0],
-        parent: rawData[i][1],
-      };
-      data.push(node);
-    }
+function formatTreeData(data: any) {
+  let formattedData: any;
+  if (isBinaryTreeNode(data)) {
+    formattedData = generateBinaryTreeData(data);
+  } else {
+    formattedData = generateTreeData(data);
   }
-  return data;
+  return formattedData;
 }
 
-interface TreeNode {
-  child: string | number | boolean;
-  parent: string | number | boolean;
-}
-
-type Literal = string | number | boolean;
-
-export interface TreeProps {
-  data: TreeNode[] | [Literal, Literal][];
-  id: string;
-  label?: string;
+export interface TreeProps extends BaseProps {
+  data: TreeNode[] | [Literal, Literal][] | BinaryTreeNode;
+  nodes?: TreeNode[];
   nodeFontSize?: number;
-  width?: number;
-  height?: number;
-  scale?: number;
+  nodeRadius?: number;
   slim?: number;
-  cwidth?: number;
-  cheight?: number;
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  margins?: [number, number, number, number];
   edgeLength?: number;
   markHeight?: boolean;
   markDepth?: boolean;
   markLevels?: boolean;
+  markHeightBF?: boolean;
+  heightStartsAt?: number;
 }
-export const Tree = ({
+
+export function Tree({
   data = [
     [1, 2],
     [2, 3],
     [2, 4],
   ],
+  nodes,
   id,
-  nodeFontSize = 0.65,
+  nodeFontSize = 0.6,
+  nodeRadius = 7,
   width = 250,
   height = 250,
   scale = 100,
@@ -85,9 +74,16 @@ export const Tree = ({
   marginLeft = 20,
   margins = [marginTop, marginRight + slim, marginBottom, marginLeft + slim],
   edgeLength,
-}: TreeProps) => {
+  markLevels = false,
+  markDepth = false,
+  markHeight = false,
+  markHeightBF = false,
+  heightStartsAt = 0,
+}: TreeProps) {
   const _svg = svg(width, height, margins);
-  const _data = generateTreeData(data);
+  console.log(data);
+  const _data = nodes ? nodes : formatTreeData(data);
+  console.log(_data);
   const _root = d3
     .stratify()
     .id((d: any) => d.child)
@@ -111,45 +107,24 @@ export const Tree = ({
       margins={margins}
     >
       <g className="hago_tree">
-        <g className="hago_tree_edges">
-          {_links.map((d: any, i) => {
-            return (
-              <g className="hago_tree_edge" key={`${id}_tree_edge_${i}`}>
-                <line
-                  x1={d.source.x}
-                  y1={d.source.y}
-                  x2={d.target.x}
-                  y2={d.target.y}
-                  display={shouldHide(d)}
-                  stroke={'currentColor'}
-                />
-              </g>
-            );
-          })}
-        </g>
-        <g className="hago_tree_nodes">
-          {_nodes.map((d: any) => {
-            return (
-              <g transform={`translate(${d.x}, ${d.y})`}>
-                <circle stroke={'currentColor'} r={7} fill={'white'} />
-                <text
-                  textAnchor="middle"
-                  fontSize={`${nodeFontSize}rem`}
-                  dy="0.3em"
-                >
-                  {d.id}
-                </text>
-              </g>
-            );
-          })}
-        </g>
+        {RenderLevelMarks(markLevels, _nodes, _svg, nodeFontSize)}
+        {RenderDepthMarks(markDepth, _nodes, id, nodeRadius, nodeFontSize)}
+        {RenderTreeEdges(_links, id)}
+        {RenderTreeNodes(_nodes, nodeFontSize, nodeRadius)}
+        {RenderHeightMarks(
+          markHeight,
+          _nodes,
+          heightStartsAt,
+          nodeRadius,
+          nodeFontSize
+        )}
+        {RenderHeightBalanceFactors(
+          markHeightBF,
+          _nodes,
+          nodeFontSize,
+          nodeRadius
+        )}
       </g>
     </Board>
   );
-};
-
-function shouldHide(d: any) {
-  if (d.source.data.hide || d.target.data.hide) {
-    return 'none';
-  } else return 'block';
 }

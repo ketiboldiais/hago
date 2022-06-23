@@ -42,8 +42,8 @@ export function Text({
         textAnchor={anchor}
         x={pos.x}
         y={pos.y}
-        dx={`${dx}rem`}
-        dy={`${dy}rem`}
+        dx={dx}
+        dy={dy}
         fontSize={`${fontSize}rem`}
         fill={color}
       >

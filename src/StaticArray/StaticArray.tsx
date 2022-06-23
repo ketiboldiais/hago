@@ -110,7 +110,7 @@ export function StaticArray({
           <g
             className="hago_StaticArray_pointer"
             transform={Translate(
-              _scale.bandwidth() / 8 * d.i,
+              (_scale.bandwidth() / 8) * d.i,
               _svg.height * 2.6
             )}
           >
