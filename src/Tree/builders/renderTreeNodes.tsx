@@ -1,5 +1,5 @@
 import React from 'react';
-import { shouldHide } from '@utils/index';
+import { shouldHide } from '../../utils';
 
 export function RenderTreeNodes(
   _nodes: d3.HierarchyNode<unknown>[],

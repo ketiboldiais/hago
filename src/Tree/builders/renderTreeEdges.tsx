@@ -1,5 +1,5 @@
 import React from 'react';
-import { shouldHide } from '@utils/index';
+import { shouldHide } from '../../utils';
 
 export function RenderTreeEdges(
   _links: d3.HierarchyLink<unknown>[],

@@ -10,7 +10,7 @@ import {
   generateElements,
   SetClassName,
   Translate,
-} from '@utils/index';
+} from '../utils';
 
 export interface LinkedListProps extends BaseProps {
   data: ElementArray;

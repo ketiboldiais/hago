@@ -12,7 +12,7 @@ import {
   Translate,
   Line,
   Marker,
-} from '@utils/index';
+} from '../utils';
 
 export interface QueueProps extends BaseProps {
   data: ArrayData;

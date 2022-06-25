@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '@utils/index';
+import { Text } from '../../utils';
 
 function calculateBalanceFactor(d: any): number {
   let left_child_height: any;

@@ -25,7 +25,7 @@ export default [
         file: packageJson.module,
         format: 'esm',
         sourcemap: false,
-        name: "hago",
+        name: 'hago',
       },
     ],
     plugins: [

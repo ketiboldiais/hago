@@ -6,7 +6,7 @@ import {
   HagoError,
   ReturnLarger,
   ReturnSmaller,
-} from '@utils/index';
+} from '../utils';
 
 /**
  * @return `data` - an object containing three parts:

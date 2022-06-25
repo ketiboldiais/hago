@@ -1,7 +1,7 @@
 import React from 'react';
 import { line } from 'd3';
-import { MakeCoordinates } from './makeCoordinates';
-import { FunctionElement } from '@utils/index';
+import { MakeCoordinates } from './MakeCoordinates';
+import { FunctionElement } from '../utils';
 
 export const FunctionPlot = (
   datum: FunctionElement,

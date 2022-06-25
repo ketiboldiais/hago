@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '@utils/index';
+import { Text } from '../utils';
 
 export function DataField(
   _nodeWidth: number,

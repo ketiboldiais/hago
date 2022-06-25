@@ -11,7 +11,7 @@ import {
   AxisHorizontal,
   svg,
   FunctionElement,
-} from '@utils/index';
+} from '../utils';
 
 export interface PlotProps {
   data?: FunctionElement[];

@@ -9,7 +9,7 @@ import {
   TreeNode,
   generateBinaryTreeData,
   Board,
-} from '@utils/index';
+} from '../utils';
 import {
   RenderTreeNodes,
   RenderTreeEdges,

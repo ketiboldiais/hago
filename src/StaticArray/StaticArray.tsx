@@ -11,7 +11,7 @@ import {
   Translate,
   Text,
   ElementPointerArray,
-} from '@utils/index';
+} from '../utils';
 
 export interface StaticArrayProps extends BaseProps {
   data: ArrayData;

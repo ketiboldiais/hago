@@ -1,5 +1,5 @@
 import React from 'react';
-import { Marker } from '@utils/index';
+import { Marker } from '../utils';
 
 export function LinkMarkers(id: string) {
   return (

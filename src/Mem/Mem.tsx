@@ -12,7 +12,7 @@ import {
   ToHex,
   Text,
   Translate,
-} from '@utils/index';
+} from '../utils';
 const y = 'hello world';
 type MemoryElement = {
   val: Literal;

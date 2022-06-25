@@ -10,7 +10,7 @@ import {
   Text,
   StackData,
   formatStackData,
-} from '@utils/index';
+} from '../utils';
 
 export interface StackProps extends BaseProps {
   data: StackData;

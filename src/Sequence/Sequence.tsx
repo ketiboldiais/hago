@@ -10,7 +10,7 @@ import {
   SequenceData,
   svg,
   Translate,
-} from '@utils/index';
+} from '../utils';
 import { MakeSequenceData } from './MakeSequenceData';
 
 export interface SequenceProps extends BaseProps {

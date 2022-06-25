@@ -16,7 +16,7 @@ import {
   Translate,
   AntObject,
   Board,
-} from '@utils/index';
+} from '../utils';
 
 export type NodeObject = {
   id: string | number;
