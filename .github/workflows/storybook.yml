@@ -1,7 +1,8 @@
 name: Build and Deploy
 on: 
   push:
-    paths: ["stories/**", "src/**"]
+    branches:
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -12,13 +13,12 @@ jobs:
           persist-credentials: false
       - name: Install and Build
         run: |
-          npm ci
-          npm run build-storybook
+          npm install
+          npm run build-storybook -- --ci
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: docs
+          FOLDER: storybook-static
           CLEAN: true
-          TARGET_FOLDER: docs
