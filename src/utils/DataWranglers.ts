@@ -1,6 +1,6 @@
 import { isObjectLiteral } from './isObjectLiteral';
-import { ArrayData, ElementArray, StackData } from './Types';
-import { IsNull } from './TypeChecks';
+import { ArrayData, ElementArray, StackData } from './Types/TypeDefinitions';
+import { IsNull } from './Types/TypeChecks';
 
 export function formatStackData(userInputDataArray: StackData) {
   let formattedData = [];

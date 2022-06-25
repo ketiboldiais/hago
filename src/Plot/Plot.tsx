@@ -5,8 +5,13 @@ import { ArrowYUp } from './ArrowYUp';
 import { ArrowXRight } from './ArrowXRight';
 import { ArrowXLeft } from './ArrowXLeft';
 import { FunctionPlot } from './FunctionPlot';
-import { AxisVertical, AxisHorizontal, svg, FunctionElement } from '../utils';
-import { Board } from '../Board/Board';
+import {
+  Board,
+  AxisVertical,
+  AxisHorizontal,
+  svg,
+  FunctionElement,
+} from '@utils/index';
 
 export interface PlotProps {
   data?: FunctionElement[];

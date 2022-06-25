@@ -1,4 +1,4 @@
-import { IsDefined, IsNonNull } from './TypeChecks';
+import { IsDefined, IsNonNull } from './Types/TypeChecks';
 
 export function SetConditionalValue(
   property: any,

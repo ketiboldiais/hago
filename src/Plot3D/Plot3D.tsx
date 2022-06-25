@@ -2,9 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { AxesHelper } from 'three';
+import { AxesHelper, GridHelper } from 'three';
 import * as THREE from 'three';
-import { GridHelper } from 'three';
 
 function Plot({ paramFunction, scale, segments }) {
   const ref = useRef();
@@ -54,7 +53,7 @@ export function Plot3D({
   size = [500, 500],
 }) {
   const canvasSize = { width: size[0], height: size[1] };
-  var paramFunction = function(x, y, target) {
+  var paramFunction = function (x, y, target) {
     x = xRange * x + xMin;
     y = yRange * y + yMin;
     var zVal = z(x, y);

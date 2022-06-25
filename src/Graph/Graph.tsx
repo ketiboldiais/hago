@@ -8,9 +8,15 @@ import {
   forceX,
   forceY,
 } from 'd3';
-import { AntObject } from '../../types/utils';
-import { Board } from '../Board/Board';
-import { BaseProps, svg, makeId, Text, Translate } from '../utils';
+import {
+  BaseProps,
+  svg,
+  makeId,
+  Text,
+  Translate,
+  AntObject,
+  Board,
+} from '@utils/index';
 
 export type NodeObject = {
   id: string | number;
@@ -49,21 +55,19 @@ export type Edge = (string | number)[] | LinkObject | EdgeObject;
 export type EdgeArray = ((string | number)[] | LinkObject | EdgeObject)[];
 
 export function makeEdges(data: EdgeArray): EdgeObject[] {
-  /* 
+  /*
    *  type Edge = [GraphNode, GraphNode] | LinkObject | EdgeObject;
    *  so, must check each of these types as we loop
    *  the output should be an array of edge objects:
-   * 
+   *
    *    { source: GraphNode; target: GraphNode, ...props };
-   * 
+   *
    */
 
   let edges = [];
   let edge: EdgeObject;
   for (let i = 0; i < data.length; i++) {
-
     if (IsALinkObject(data[i])) {
-
       /* handle edge object
        *
        * link object has the format:
@@ -75,13 +79,11 @@ export function makeEdges(data: EdgeArray): EdgeObject[] {
        * };
        *
        */
-      
-      let links = (data[i] as LinkObject).link;
-      edge = { source: links[i][0], target: links[i][1], ...links};
-      edges.push(edge);
 
+      let links = (data[i] as LinkObject).link;
+      edge = { source: links[i][0], target: links[i][1], ...links };
+      edges.push(edge);
     } else if (IsAnEdgeObject(data[0])) {
-      
       /* handle edge object
        *
        * An EdgeObject has the format:
@@ -97,9 +99,7 @@ export function makeEdges(data: EdgeArray): EdgeObject[] {
        */
 
       edges.push(edge);
-
     } else {
-
       // handle  graphnode[]
       const datum: (string | number)[] = data[i] as unknown as (
         | string

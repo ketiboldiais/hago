@@ -1,5 +1,4 @@
 import React from 'react';
-import { Board } from '../Board/Board';
 import * as d3 from 'd3';
 import {
   svg,
@@ -9,7 +8,8 @@ import {
   Literal,
   TreeNode,
   generateBinaryTreeData,
-} from '../utils';
+  Board,
+} from '@utils/index';
 import {
   RenderTreeNodes,
   RenderTreeEdges,

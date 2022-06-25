@@ -1,21 +1,17 @@
 import React from 'react';
 import { line } from 'd3';
-import { makeCoordinates } from './makeCoordinates';
-
-interface FunctionDatum {
-  f: Function;
-  class?: string;
-}
+import { MakeCoordinates } from './makeCoordinates';
+import { FunctionElement } from '@utils/index';
 
 export const FunctionPlot = (
-  datum: FunctionDatum,
+  datum: FunctionElement,
   xScale: any,
   yScale: any,
   samples: number = 1000,
   domain: [number, number] = [-10, 10],
   range: [number, number] = [-10, 10]
 ) => {
-  const data: any = makeCoordinates(datum.f, samples, domain, range);
+  const data: any = MakeCoordinates(datum.f, samples, domain, range);
   const lineGenerator: any = line()
     .y((d: any) => yScale(d.y))
     .defined((d: any) => {

@@ -1,7 +1,7 @@
 import { scaleLinear } from 'd3';
 import React from 'react';
-import { Board } from '../Board/Board';
 import {
+  Board,
   BaseProps,
   IsDefined,
   isElement,
@@ -12,7 +12,7 @@ import {
   ToHex,
   Text,
   Translate,
-} from '../utils';
+} from '@utils/index';
 const y = 'hello world';
 type MemoryElement = {
   val: Literal;

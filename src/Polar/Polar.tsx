@@ -1,10 +1,7 @@
 import React from 'react';
 import { scaleLinear, range } from 'd3';
-import { svg } from '../utils';
+import { Board, svg, FunctionElement } from '@utils/index';
 import * as d3 from 'd3';
-import { Board } from '../Board/Board';
-
-type FunctionElement = { f: Function; scale?: number; color?: string };
 
 export interface PolarProps {
   data: FunctionElement[];
@@ -26,7 +23,7 @@ export interface PolarProps {
 function generateData(_domain: number[], _f: FunctionElement) {
   const f = _f.f;
   let points = [];
-  range(_domain[0], _domain[1], 0.01).map(t => {
+  range(_domain[0], _domain[1], 0.01).map((t) => {
     let p = [t, f(t)];
     points.push(p);
   });
@@ -34,7 +31,7 @@ function generateData(_domain: number[], _f: FunctionElement) {
 }
 
 export const Polar = ({
-  data = [{ f: t => Math.sin(2 * t) * Math.cos(2 * t) }],
+  data = [{ f: (t) => Math.sin(2 * t) * Math.cos(2 * t) }],
   domain = [0, 2 * Math.PI],
   className = 'Hago_Polar',
   width = 500,
@@ -51,15 +48,13 @@ export const Polar = ({
 }) => {
   const funcData = generateData(domain, data[0]);
   const _svg = svg(width, height, margins);
-  const r = scaleLinear()
-    .domain([0, 0.5])
-    .range([0, radius]);
+  const r = scaleLinear().domain([0, 0.5]).range([0, radius]);
   const gr = r.ticks(5).slice(1);
   const ga = d3.range(0, 360, 30);
   const line = d3
     .lineRadial()
-    .radius(d => r(d[1]))
-    .angle(d => -d[0] + Math.PI / 2)(funcData);
+    .radius((d) => r(d[1]))
+    .angle((d) => -d[0] + Math.PI / 2)(funcData);
 
   return (
     <Board
@@ -95,7 +90,7 @@ export const Polar = ({
           })}
         </g>
         <g className="hago_polar_plot_a_axis">
-          {ga.map(d => {
+          {ga.map((d) => {
             return (
               <g transform={`rotate(${-d})`}>
                 <line x2={radius} stroke="lightgrey" strokeDasharray={4} />

@@ -1,7 +1,7 @@
 import { scaleBand } from 'd3';
 import React from 'react';
-import { Board } from '../Board/Board';
 import {
+  Board,
   BaseProps,
   ArrayData,
   ElementPointerArray,
@@ -12,7 +12,7 @@ import {
   Translate,
   Line,
   Marker,
-} from '../utils';
+} from '@utils/index';
 
 export interface QueueProps extends BaseProps {
   data: ArrayData;

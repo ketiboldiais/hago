@@ -1,5 +1,5 @@
 import React from 'react';
-import { Translate } from '../../utils';
+import { Translate } from '@utils/index';
 
 export function NextField(_scale, _nodeWidth: number, _nodeHeight: number) {
   return (

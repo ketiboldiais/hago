@@ -1,7 +1,6 @@
 {
   "version": "0.1.1",
   "license": "MIT",
-  "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "typings": "dist/index.d.ts",
@@ -13,8 +12,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "rollup -c",
     "clean": "rm -rf ./dist/",
+    "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -31,6 +30,7 @@
   "author": "Ketib Oldiais",
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",

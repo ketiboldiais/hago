@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextField, DataField, LinkMarkers, Links } from './Builders';
 import { scaleBand } from 'd3';
-import { Board } from '../Board/Board';
 import {
+  Board,
   BaseProps,
   ElementArray,
   makeId,
@@ -10,7 +10,7 @@ import {
   generateElements,
   SetClassName,
   Translate,
-} from '../utils';
+} from '@utils/index';
 
 export interface LinkedListProps extends BaseProps {
   data: ElementArray;

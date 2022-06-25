@@ -1,7 +1,7 @@
 import { scaleLinear } from 'd3';
 import React from 'react';
-import { Board } from '../Board/Board';
 import {
+  Board,
   AxisHorizontal,
   AxisVertical,
   BaseProps,
@@ -10,7 +10,7 @@ import {
   SequenceData,
   svg,
   Translate,
-} from '../utils';
+} from '@utils/index';
 import { MakeSequenceData } from './MakeSequenceData';
 
 export interface SequenceProps extends BaseProps {

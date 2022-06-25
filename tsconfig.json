@@ -1,9 +1,14 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
   "compilerOptions": {
     "module": "ESNext",
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "ESNext"],
+    "baseUrl": "src",
+    "paths": {
+      "@utils/*": ["utils/*"],
+      "@HagoMath/*": ["utils/HagoMath/*"],
+      "@Types/*": ["utils/TypeDefs/*"]
+    },
     "outDir": "dist",
     "importHelpers": true,
     "declaration": true,
@@ -15,6 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "moduleResolution": "node",
+    "allowJs": false,
     "jsx": "react",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -22,5 +28,6 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true
   },
+  "include": ["src/**/*", "types"],
   "exclude": ["dist", "node_modules"]
 }

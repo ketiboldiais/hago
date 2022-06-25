@@ -1,6 +1,5 @@
 import React from 'react';
-import { svg } from '../utils';
-import { Board } from '../Board/Board';
+import { Board, svg } from '@utils/index';
 import { hsl } from 'd3';
 
 function colorFunction(d: number) {

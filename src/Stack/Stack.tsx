@@ -1,7 +1,7 @@
 import { scaleBand } from 'd3';
 import React from 'react';
-import { Board } from '../Board/Board';
 import {
+  Board,
   svg,
   BaseProps,
   makeId,
@@ -10,7 +10,7 @@ import {
   Text,
   StackData,
   formatStackData,
-} from '../utils';
+} from '@utils/index';
 
 export interface StackProps extends BaseProps {
   data: StackData;

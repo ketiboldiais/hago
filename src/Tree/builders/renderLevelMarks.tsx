@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../../utils';
+import { Text } from '@utils/index';
 
 function generateLevels(nodeList) {
   const arr = [];
@@ -23,7 +23,7 @@ export function RenderLevelMarks(
   if (_markLevels) {
     return (
       <g className="hago_tree_levels">
-        {generateLevels(_nodes).map(d => {
+        {generateLevels(_nodes).map((d) => {
           return (
             <g>
               <Text

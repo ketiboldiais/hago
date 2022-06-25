@@ -1,7 +1,7 @@
 import { scaleBand } from 'd3';
 import React from 'react';
-import { Board } from '../Board/Board';
 import {
+  Board,
   BaseProps,
   svg,
   ArrayData,
@@ -11,7 +11,7 @@ import {
   Translate,
   Text,
   ElementPointerArray,
-} from '../utils';
+} from '@utils/index';
 
 export interface StaticArrayProps extends BaseProps {
   data: ArrayData;
@@ -104,7 +104,7 @@ export function StaticArray({
           </g>
         );
       })}
-      {pointers.map(d => {
+      {pointers.map((d) => {
         return (
           <g
             className="hago_StaticArray_pointer"

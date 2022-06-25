@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../../utils';
+import { Text } from '@utils/index';
 
 export function RenderHeightMarks(
   markHeight: boolean,

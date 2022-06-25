@@ -1,9 +1,10 @@
+import { ScaleBand } from 'd3';
 import React from 'react';
 
 export function Links(
   _nodeWidth: number,
   _nodeHeight: number,
-  _scale,
+  _scale: ScaleBand<string>,
   id: string
 ) {
   return (

@@ -110,22 +110,19 @@ export type Frame = {
 
 export type StackData = (Frame | string | number)[];
 
-// Graph Types
-
-// node types
-
-export interface FunctionElement {
+export type FunctionElement = {
   f: Function;
   scale?: number;
   color?: string;
-}
+};
 export function IsAFunctionElement(datum: any): boolean {
   return IsDefined((datum as FunctionElement).f);
 }
 
-export interface SequenceFunction extends FunctionElement {
+export type SequenceFunction = {
+  f: Function;
   start?: number;
   end?: number;
-}
+};
 
 export type SequenceData = number[][] | SequenceFunction[] | Function;

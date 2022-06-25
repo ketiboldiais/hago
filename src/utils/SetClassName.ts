@@ -1,4 +1,4 @@
-import { IsUndefined } from "./TypeChecks";
+import { IsUndefined } from "./Types/TypeChecks";
 
 export function SetClassName(
   userInputClass: string | undefined,

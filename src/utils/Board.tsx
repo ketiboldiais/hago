@@ -1,6 +1,6 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-export interface BoardProps {
+interface BoardProps {
   className: string;
   width: number;
   height: number;
@@ -18,7 +18,7 @@ export const Board = ({
   cheight = height / width,
   margins = [10, 10, 10, 10],
   children,
-}: BoardProps): ReactElement => {
+}: BoardProps) => {
   const containerClassName = className ? `hago ${className}` : `hago`;
   const marginTop = margins[0];
   const marginRight = margins[1];

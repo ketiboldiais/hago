@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowHead } from '../utils';
+import { ArrowHead } from '@utils/index';
 
 export function ArrowXRight() {
   return (

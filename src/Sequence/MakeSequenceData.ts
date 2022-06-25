@@ -4,8 +4,9 @@ import {
   IsAFunctionElement,
   SequenceFunction,
   HagoError,
-} from '../utils';
-import { ReturnLarger, ReturnSmaller } from '../utils/HagoMath/Comparators';
+  ReturnLarger,
+  ReturnSmaller,
+} from '@utils/index';
 
 /**
  * @return `data` - an object containing three parts:

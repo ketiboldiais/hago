@@ -1,4 +1,4 @@
-export function makeCoordinates(
+export function MakeCoordinates(
   f: Function | number,
   number_of_samples: number = 1000,
   domain: [number, number] = [-10, 10],

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Point } from './Types';
+import { Point } from './Types/TypeDefinitions';
 
 export interface LineProps {
   start: Point;
