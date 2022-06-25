@@ -5,10 +5,8 @@ import { ArrowYUp } from './ArrowYUp';
 import { ArrowXRight } from './ArrowXRight';
 import { ArrowXLeft } from './ArrowXLeft';
 import { FunctionPlot } from './FunctionPlot';
-import { AxisVertical, AxisHorizontal, svg } from '../utils';
+import { AxisVertical, AxisHorizontal, svg, FunctionElement } from '../utils';
 import { Board } from '../Board/Board';
-
-type FunctionElement = { f: Function; scale?: number; color: string };
 
 export interface PlotProps {
   data?: FunctionElement[];
@@ -53,12 +51,8 @@ export const Plot = ({
   let _svg = svg(width, height, margins);
   const xTickcount = xTicks * 10;
   const yTickCount = yTicks * 10;
-  const xScale = scaleLinear()
-    .domain(domain)
-    .range([0, _svg.width]);
-  const yScale = scaleLinear()
-    .domain(range)
-    .range([_svg.height, 0]);
+  const xScale = scaleLinear().domain(domain).range([0, _svg.width]);
+  const yScale = scaleLinear().domain(range).range([_svg.height, 0]);
   for (let i = 0; i < data.length; i++) {
     let datum = data[i];
     if (datum.f) {

@@ -8,4 +8,6 @@ export * from './Stack/Stack';
 export * from './StaticArray/StaticArray';
 export * from './LinkedList/LinkedlList';
 export * from './Queue/Queue';
-export * from "./Mem/Mem";
+export * from './Mem/Mem';
+export * from './Graph/Graph';
+export * from "./Sequence/Sequence";

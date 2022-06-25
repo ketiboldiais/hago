@@ -96,7 +96,6 @@ export function StaticArray({
                 <Text
                   val={d.ant || d.ant.val}
                   pos={{ x: _scale.bandwidth() / 2, y: -4 }}
-                  type={d.type}
                 />
               </g>
             ) : (

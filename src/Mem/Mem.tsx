@@ -49,9 +49,7 @@ function formatMemoryData(
   const vdots = /vdots[0-9]+/;
   let addr = startAddressAt;
   for (let i = 0; i < data.length; i++) {
-    console.log(`addr:${addr} ... i:${i}`);
     if (typeof data[i] === 'string' && vdots.test(data[i] as string)) {
-      console.log('hit');
       let n = parseInt(/[0-9]+/.exec(data[i] as string)[0]);
       let placeholder = { a: '⋮', val: '⋮', display: 'none' };
       addr = addr + n - 1;
@@ -82,7 +80,6 @@ function formatMemoryData(
       addr += literalElement.s;
     }
   }
-  console.log('end');
   return formattedData;
 }
 

@@ -1,0 +1,23 @@
+
+Todo:
+  ☐ Finish <Graph/> component
+  ☐ Finish <Bipartite/> component
+  ☐ Finish <AST/> component (abstract syntax tree)
+  ☐ Finish <CQueue/> component (circular queue)
+  ☐ Finish <Deque/> component (double-ended queue)
+  ☐ Renamed <LinkedList> to <SList/> (singly-linked list)
+  ☐ Finish <DList/> component 
+  ☐ Finish <CSList/> component
+  ☐ Finish <CDList/> component
+
+  ☐ Finish <TruthTable/> component
+
+  ☐ Publish Storybook to Github Pages
+  ☐ Update resume website
+
+  ☐ Finish <BarPlot/> component
+  ☐ Finish <LinePlot/> component
+  ☐ Finish <DotPlot/> component
+  ☐ Finish <HeatMap/> component
+
+

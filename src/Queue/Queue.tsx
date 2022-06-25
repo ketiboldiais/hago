@@ -85,7 +85,6 @@ export function Queue({
         <g className="hago_queue_front_label">
           <Text
             val={'out'}
-            type="latex"
             fontSize={fontSize - 0.15}
             pos={{ x: -_queuerWidth - _queuerWidth / 4, y: 0 }}
           />
@@ -134,7 +133,6 @@ export function Queue({
         >
           <Text
             val={'in'}
-            type="latex"
             fontSize={fontSize - 0.15}
             pos={{
               x: -_queuerWidth + _queuerHeight / 2,

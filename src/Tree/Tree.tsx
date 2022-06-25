@@ -81,9 +81,7 @@ export function Tree({
   heightStartsAt = 0,
 }: TreeProps) {
   const _svg = svg(width, height, margins);
-  console.log(data);
   const _data = nodes ? nodes : formatTreeData(data);
-  console.log(_data);
   const _root = d3
     .stratify()
     .id((d: any) => d.child)
