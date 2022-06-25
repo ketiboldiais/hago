@@ -13,12 +13,13 @@ jobs:
           persist-credentials: false
       - name: Install and Build
         run: |
-          npm ci
+          npm install
           npm run build-storybook
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: storybook-static
+          FOLDER: docs-built
           CLEAN: true
+          TARGET_FOLDER: docs
