@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/theming',
   ],
-  staticDirs: ['../public'],
+  staticDirs: ['../stories/assets'],
   typescript: {
     check: true, // type-check stories during Storybook build
   },
