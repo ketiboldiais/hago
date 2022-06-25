@@ -1,12 +1,12 @@
-import resolve from '@rollup/plugin-node-resolve';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-
 const packageJson = require('./package.json');
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default [
   {
@@ -30,12 +30,13 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      nodeResolve(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       babel({
         exclude: 'node_modules/**',
         presets: ['@babel/preset-react'],
+        extensions
       }),
       terser(),
     ],
