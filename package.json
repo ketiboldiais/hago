@@ -15,7 +15,7 @@
     "clean": "rm -rf ./dist/",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build"
+    "build-storybook": "build-storybook -o docs"
   },
   "peerDependencies": {
     "react": ">=16"
