@@ -1,15 +1,6 @@
 import React from 'react';
-import * as d3 from 'd3';
-import {
-  svg,
-  generateTreeData,
-  calculateTreeSize,
-  BaseProps,
-  Literal,
-  TreeNode,
-  generateBinaryTreeData,
-  Board,
-} from '../utils';
+import { tree, stratify } from 'd3-hierarchy';
+import { svg, calculateTreeSize, TreeProps, Board } from '../utils';
 import {
   RenderTreeNodes,
   RenderTreeEdges,
@@ -17,40 +8,8 @@ import {
   RenderDepthMarks,
   RenderHeightMarks,
   RenderHeightBalanceFactors,
-} from './builders';
-
-type BinaryTreeNode = [
-  TreeNode | Literal,
-  [TreeNode | Literal, TreeNode | Literal]
-];
-
-function isBinaryTreeNode(datum: any): boolean {
-  return Array.isArray(datum) && Array.isArray(datum[0][1]);
-}
-
-function formatTreeData(data: any) {
-  let formattedData: any;
-  if (isBinaryTreeNode(data)) {
-    formattedData = generateBinaryTreeData(data);
-  } else {
-    formattedData = generateTreeData(data);
-  }
-  return formattedData;
-}
-
-export interface TreeProps extends BaseProps {
-  data: TreeNode[] | [Literal, Literal][] | BinaryTreeNode;
-  nodes?: TreeNode[];
-  nodeFontSize?: number;
-  nodeRadius?: number;
-  slim?: number;
-  edgeLength?: number;
-  markHeight?: boolean;
-  markDepth?: boolean;
-  markLevels?: boolean;
-  markHeightBF?: boolean;
-  heightStartsAt?: number;
-}
+  BuildTreeData,
+} from './helpers';
 
 export function Tree({
   data = [
@@ -81,14 +40,12 @@ export function Tree({
   heightStartsAt = 0,
 }: TreeProps) {
   const _svg = svg(width, height, margins);
-  const _data = nodes ? nodes : formatTreeData(data);
-  const _root = d3
-    .stratify()
+  const _data = nodes ? nodes : BuildTreeData(data);
+  const _root = stratify()
     .id((d: any) => d.child)
     .parentId((d: any) => d.parent)(_data);
   const _edgeLength = edgeLength ? edgeLength : calculateTreeSize(_root);
-  const _treeStructure = d3
-    .tree()
+  const _treeStructure = tree()
     .size([_svg.width, _edgeLength])
     .separation((a, b) => (a.parent === b.parent ? 1 : 1.1));
   _treeStructure(_root);

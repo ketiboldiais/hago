@@ -1,5 +1,5 @@
 import React from 'react';
-import { Point } from './Types/TypeDefinitions';
+import { Point } from './Types';
 
 export interface LineProps {
   start: Point;
@@ -17,8 +17,8 @@ export function Line({
   color = 'black',
   strokeWidth = 1,
   dash = 0,
-  markerEnd = '',
-  markerStart = '',
+  markerEnd,
+  markerStart,
 }: LineProps) {
   return (
     <line
@@ -29,8 +29,8 @@ export function Line({
       stroke={color}
       strokeWidth={strokeWidth}
       strokeDasharray={dash}
-      markerEnd={`url(#${markerEnd})`}
-      markerStart={`url(#${markerStart})`}
+      markerEnd={markerEnd ? `url(#${markerEnd})` : ''}
+      markerStart={markerStart ? `url(#${markerStart})` : ''}
     />
   );
 }

@@ -15,11 +15,11 @@ export const ArrowHead = ({
   id,
   className,
   arrowColor,
-  refX,
-  refY,
-  width,
-  height,
-  orient,
+  refX = -5,
+  refY = 0,
+  width = 6,
+  height = 6,
+  orient = 'auto',
 }: Props): ReactElement => {
   return (
     <marker

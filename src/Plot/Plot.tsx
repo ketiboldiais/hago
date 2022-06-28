@@ -5,35 +5,7 @@ import { ArrowYUp } from './ArrowYUp';
 import { ArrowXRight } from './ArrowXRight';
 import { ArrowXLeft } from './ArrowXLeft';
 import { FunctionPlot } from './FunctionPlot';
-import {
-  Board,
-  AxisVertical,
-  AxisHorizontal,
-  svg,
-  FunctionElement,
-} from '../utils';
-
-export interface PlotProps {
-  data?: FunctionElement[];
-  domain?: [number, number];
-  range?: [number, number];
-  ticks?: number;
-  xTicks?: number;
-  yTicks?: number;
-  samples?: number;
-  className?: string;
-  width?: number;
-  height?: number;
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  margins?: number[];
-  scale?: number;
-  cwidth?: number;
-  cheight?: number;
-  id?: string;
-}
+import { Board, AxisVertical, AxisHorizontal, svg, PlotProps } from '../utils';
 
 export const Plot = ({
   data = [],

@@ -1,27 +1,28 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
+    "target": "ES2018",
     "module": "ESNext",
-    "lib": ["dom", "ESNext"],
+    "lib": ["DOM", "ES2018"],
     "outDir": "dist",
     "importHelpers": true,
     "declaration": true,
     "declarationDir": "types",
     "sourceMap": false,
-    "rootDir": "./src",
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "rootDir": "src",
+    // "noImplicitReturns": true,
+    // "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "allowJs": false,
     "jsx": "react",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true
   },
-  "include": ["src/**/*", "types"],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "src/Bipartite/*"]
 }

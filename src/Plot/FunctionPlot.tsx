@@ -1,5 +1,5 @@
 import React from 'react';
-import { line } from 'd3';
+import { line } from 'd3-shape';
 import { MakeCoordinates } from './MakeCoordinates';
 import { FunctionElement } from '../utils';
 

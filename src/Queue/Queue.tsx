@@ -1,10 +1,7 @@
-import { scaleBand } from 'd3';
+import { scaleBand } from 'd3-scale';
 import React from 'react';
 import {
   Board,
-  BaseProps,
-  ArrayData,
-  ElementPointerArray,
   generateElements,
   makeId,
   svg,
@@ -12,15 +9,8 @@ import {
   Translate,
   Line,
   Marker,
+  QueueProps,
 } from '../utils';
-
-export interface QueueProps extends BaseProps {
-  data: ArrayData;
-  pointers: ElementPointerArray;
-  reverseIndex?: boolean;
-  fontSize?: number;
-  startIndex?: number;
-}
 
 export function Queue({
   data = [1, 2, 3, 4, 5, 6, 7, 8, 9],

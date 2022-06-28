@@ -1,21 +1,15 @@
 import React from 'react';
-import { NextField, DataField, LinkMarkers, Links } from './Builders';
-import { scaleBand } from 'd3';
+import { NextField, DataField, LinkMarkers, Links } from './Helpers';
+import { scaleBand } from 'd3-scale';
 import {
   Board,
-  BaseProps,
-  ElementArray,
   makeId,
   svg,
   generateElements,
   SetClassName,
   Translate,
+  LinkedListProps,
 } from '../utils';
-
-export interface LinkedListProps extends BaseProps {
-  data: ElementArray;
-  isIndexed?: boolean;
-}
 
 export function LinkedList({
   data = [1, 2, 3, 4, 5],

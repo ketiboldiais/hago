@@ -1,12 +1,10 @@
 import {
   SequenceData,
-  Point,
-  IsAFunctionElement,
   SequenceFunction,
-  HagoError,
   ReturnLarger,
   ReturnSmaller,
-} from '../utils';
+  Point,
+} from '../../utils';
 
 /**
  * @return `data` - an object containing three parts:
@@ -52,8 +50,11 @@ export function MakeSequenceData(
   let xMax = end;
 
   // Cases 1 and 2
-  if (input.constructor === Array) {
+  if (input.constructor === Array && input[0].constructor === Array) {
+    // [ level 1 ]
+
     for (let i = 0; i < input.length; i++) {
+      // [ [ level 2] ]
       // Check if the constructor for the input element is an array
       // if it is, just create a new point object.
       if (
@@ -72,34 +73,31 @@ export function MakeSequenceData(
         datum = { x, y };
         data.push(datum);
       }
+    }
+  }
 
-      // If it is not, check if it's a SequenceFunction
-      else if (IsAFunctionElement(input[i])) {
-        const _start = (input[i] as SequenceFunction).start
-          ? (input[i] as SequenceFunction).start
-          : start;
-        const _end = (input[i] as SequenceFunction).end
-          ? (input[i] as SequenceFunction).end
-          : end;
+  // If it is not, check if it's a SequenceFunction
+  else if (input.constructor === Array) {
+    for (let i = 0; i < input.length; i++) {
+      const className = (input[i] as SequenceFunction).className
+        ? (input[i] as SequenceFunction).className
+        : 'hago_plot_point';
+      const _start = (input[i] as SequenceFunction).start
+        ? (input[i] as SequenceFunction).start
+        : start;
+      const _end = (input[i] as SequenceFunction).end
+        ? (input[i] as SequenceFunction).end
+        : end;
+      for (let j = _start; j < _end; j++) {
+        const x = j;
+        const y = (input[i] as SequenceFunction).f(j);
+        yMin = ReturnSmaller(yMin, y);
+        yMax = ReturnLarger(yMax, y);
+        xMin = ReturnSmaller(xMin, x);
+        xMax = ReturnLarger(xMax, x);
 
-        for (let i = _start; i < _end; i++) {
-          const x = i;
-          const y = (input[i] as SequenceFunction).f(i);
-
-          // update bounds
-          yMin = ReturnSmaller(yMin, y);
-          yMax = ReturnLarger(yMax, y);
-          xMin = ReturnSmaller(xMin, x);
-          xMax = ReturnLarger(xMax, x);
-
-          datum = { x, y };
-          data.push(datum);
-        }
-      }
-
-      // If it's not, then the array input is incorrect
-      else {
-        throw new HagoError('Invalid array argument.');
+        datum = { x, y, className };
+        data.push(datum);
       }
     }
   }
@@ -116,11 +114,10 @@ export function MakeSequenceData(
       xMax = ReturnLarger(xMax, x);
 
       datum = { x, y };
-      console.log(datum);
       data.push(datum);
     }
   } else {
-    throw new HagoError('No valid arguments passed.');
+    throw new Error('Invalid argument passed.');
   }
 
   return { data, xMin, xMax, yMin, yMax };

@@ -1,14 +1,5 @@
-import React, { ReactNode } from 'react';
-
-interface BoardProps {
-  className: string;
-  width: number;
-  height: number;
-  cwidth: number;
-  cheight: number;
-  margins: number[];
-  children?: ReactNode;
-}
+import React from 'react';
+import { BoardProps } from './Types';
 
 export const Board = ({
   className = '',

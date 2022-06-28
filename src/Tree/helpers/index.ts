@@ -3,4 +3,5 @@ export * from './renderTreeEdges';
 export * from './renderLevelMarks';
 export * from './renderDepthMarks';
 export * from './renderHeightMarks';
-export * from "./renderHeightBalanceFactors";
+export * from './renderHeightBalanceFactors';
+export * from './BuildTreeData';

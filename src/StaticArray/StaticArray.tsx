@@ -1,24 +1,15 @@
-import { scaleBand } from 'd3';
+import { scaleBand } from 'd3-scale';
 import React from 'react';
 import {
+  StaticArrayProps,
   Board,
-  BaseProps,
   svg,
-  ArrayData,
   generateElements,
   makeId,
   SetClassName,
   Translate,
   Text,
-  ElementPointerArray,
 } from '../utils';
-
-export interface StaticArrayProps extends BaseProps {
-  data: ArrayData;
-  pointers: ElementPointerArray;
-  reverseIndex?: boolean;
-  startIndex?: number;
-}
 
 export function StaticArray({
   data = [1, 2, 3, 4],

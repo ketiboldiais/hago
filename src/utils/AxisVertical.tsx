@@ -31,7 +31,7 @@ export const AxisVertical = ({
   }, [domain.join('-'), range.join('-')]);
 
   return (
-    <g>
+    <g className="hago_y_axis">
       <path
         d={['M', range[1], -1, 'H', 0, 'v', range[0], 'H', 0].join(' ')}
         fill="none"

@@ -1,34 +1,9 @@
 import React from 'react';
-import { scaleLinear, range } from 'd3';
-import { Board, svg, FunctionElement } from '../utils';
-import * as d3 from 'd3';
-
-export interface PolarProps {
-  data: FunctionElement[];
-  radius?: number;
-  domain?: number[];
-  range?: number[];
-  className: string;
-  width?: number;
-  height?: number;
-  cwidth?: number;
-  cheight?: number;
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  margins?: number[];
-}
-
-function generateData(_domain: number[], _f: FunctionElement) {
-  const f = _f.f;
-  let points = [];
-  range(_domain[0], _domain[1], 0.01).map((t) => {
-    let p = [t, f(t)];
-    points.push(p);
-  });
-  return points;
-}
+import { scaleLinear } from 'd3-scale';
+import { range } from 'd3-array';
+import { lineRadial } from 'd3-shape';
+import { Board, svg, PolarProps } from '../utils';
+import { BuildPolarData } from './Helpers/BuildPolarData';
 
 export const Polar = ({
   data = [{ f: (t) => Math.sin(2 * t) * Math.cos(2 * t) }],
@@ -45,14 +20,13 @@ export const Polar = ({
   marginBottom = 20,
   marginLeft = 20,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
-}) => {
-  const funcData = generateData(domain, data[0]);
+}: PolarProps) => {
+  const funcData = BuildPolarData(domain, data[0]);
   const _svg = svg(width, height, margins);
   const r = scaleLinear().domain([0, 0.5]).range([0, radius]);
   const gr = r.ticks(5).slice(1);
-  const ga = d3.range(0, 360, 30);
-  const line = d3
-    .lineRadial()
+  const ga = range(0, 360, 30);
+  const line = lineRadial()
     .radius((d) => r(d[1]))
     .angle((d) => -d[0] + Math.PI / 2)(funcData);
 
