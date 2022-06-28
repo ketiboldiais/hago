@@ -9,6 +9,9 @@ interface Props {
   markerStart?: string;
   markerEnd?: string;
   removeEndTicks?: boolean;
+  offSetXTick?: number;
+  offSetYTick?: number;
+  textAnchor?: 'start' | 'middle' | 'end';
 }
 
 export const AxisHorizontal = ({
@@ -18,6 +21,8 @@ export const AxisHorizontal = ({
   markerStart,
   markerEnd,
   removeEndTicks = true,
+  offSetXTick = 0,
+  textAnchor = 'middle',
 }: Props): ReactElement => {
   const ticks = useMemo(() => {
     const xScale = scaleLinear().domain(domain).range(range);
@@ -26,12 +31,12 @@ export const AxisHorizontal = ({
     const numberOfTicksTarget = Math.max(1, Math.floor(width / pixelsPerTick));
     return xScale.ticks(numberOfTicksTarget).map((value) => ({
       value,
-      xOffset: xScale(value),
+      xOffset: xScale(value) + offSetXTick,
     }));
   }, [domain.join('-'), range.join('-')]);
 
   return (
-    <g className='hago_x_axis'>
+    <g className="hago_x_axis">
       <path
         d={['M', range[0], 1, 'v', -1, 'H', range[1], 'v', 1].join(' ')}
         fill="none"
@@ -46,7 +51,7 @@ export const AxisHorizontal = ({
           ) : (
             <line y1={-3} y2={3} stroke="currentColor" />
           )}
-          <Text val={value} dy={20} fontSize={0.65} />
+          <Text val={value} dy={20} fontSize={0.65} anchor={textAnchor} />
         </g>
       ))}
     </g>

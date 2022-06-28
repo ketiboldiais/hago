@@ -8,7 +8,11 @@ interface Props {
   tickSep: number;
   markerStart?: string;
   markerEnd?: string;
+  textOffsetX?: number;
+  textOffsetY?: number;
+  offsetTick?: number;
   removeEndTicks?: boolean;
+  textAnchor?: 'start' | 'middle' | 'end';
 }
 
 export const AxisVertical = ({
@@ -18,6 +22,10 @@ export const AxisVertical = ({
   markerStart,
   markerEnd,
   removeEndTicks = true,
+  textOffsetX = 12,
+  textOffsetY = 4,
+  textAnchor = 'middle',
+  offsetTick = 0,
 }: Props): ReactElement => {
   const ticks = useMemo(() => {
     const yScale = scaleLinear().domain(domain).range(range);
@@ -26,7 +34,7 @@ export const AxisVertical = ({
     const numberOfTicksTarget = Math.max(1, Math.floor(width / pixelsPerTick));
     return yScale.ticks(numberOfTicksTarget).map((value) => ({
       value,
-      yOffset: yScale(value),
+      yOffset: yScale(value) + offsetTick,
     }));
   }, [domain.join('-'), range.join('-')]);
 
@@ -46,7 +54,13 @@ export const AxisVertical = ({
           ) : (
             <line x1={-3} x2={3} stroke="currentColor" />
           )}
-          <Text val={value} dx={12} fontSize={0.65} dy={4} />
+          <Text
+            val={value}
+            dx={textOffsetX}
+            fontSize={0.65}
+            dy={textOffsetY}
+            anchor={textAnchor}
+          />
         </g>
       ))}
     </g>

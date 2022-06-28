@@ -15,6 +15,7 @@ export function Mem({
   data = [1, 2, 3, 4, 5],
   className = 'hago_mem',
   id = makeId(className),
+  endian = 'little',
   addressLength = 2,
   cellWidth = addressLength * 20,
   cellHeight = addressLength * 20,
@@ -33,11 +34,12 @@ export function Mem({
 }: MemProps) {
   const _svg = svg(width, height, margins);
   const _data = BuildMemoryData(data, startAddressAt, addressLength, dataSize);
-  console.log(_data);
   const _number_of_frames = BuildMemoryData(data).length;
-  const _yScale = scaleLinear()
+  const _rangeBounds =
+    endian === 'little' ? [_svg.height, 0] : [0, _svg.height];
+  const _scale = scaleLinear()
     .domain([0, _number_of_frames])
-    .range([0, _svg.height]);
+    .range(_rangeBounds);
   return (
     <Board
       className={className}
@@ -52,7 +54,7 @@ export function Mem({
           <g
             className={d.className}
             key={`${id}_cell_${i}`}
-            transform={Translate(0, _yScale(i))}
+            transform={Translate(0, _scale(i))}
           >
             <g className="memory_cell_address">
               <rect

@@ -32,12 +32,12 @@ export const ArrowHead: ({ id, className, arrowColor, refX, refY, width, height,
 // Warning: (ae-forgotten-export) The symbol "Props$1" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
-export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, }: Props$1) => ReactElement;
+export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, }: Props$1) => ReactElement;
 
 // Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
-export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, }: Props) => ReactElement;
+export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, textOffsetX, textOffsetY, textAnchor, offsetTick, }: Props) => ReactElement;
 
 // @public (undocumented)
 export interface BaseProps {
@@ -190,36 +190,23 @@ export function generateElements(userInputDataArray: StackData | ArrayData | Ele
 // @public (undocumented)
 export function generateTreeData(rawData: any[]): any[];
 
-// @public (undocumented)
+// @public
 export function Graph({ data, className, id, straightEdge, width, height, scale, cwidth, cheight, radius, fontSize, textOffsetX, textOffsetY, blast, edgeLength, repulsion, marginTop, marginBottom, marginRight, marginLeft, margins, }: GraphProps): JSX.Element;
 
-// @public (undocumented)
+// @public
 export interface GraphProps extends BaseProps {
-    // (undocumented)
     blast?: number;
-    // (undocumented)
     className?: string;
-    // (undocumented)
     data: EdgeArray;
-    // (undocumented)
     edgeLength?: number;
-    // (undocumented)
     fontSize?: number;
-    // (undocumented)
     id?: string;
-    // (undocumented)
     isDirected?: boolean;
-    // (undocumented)
     link?: 'line' | 'path';
-    // (undocumented)
     radius?: number;
-    // (undocumented)
     repulsion?: number;
-    // (undocumented)
     straightEdge?: boolean;
-    // (undocumented)
     textOffsetX?: number;
-    // (undocumented)
     textOffsetY?: number;
 }
 
@@ -228,6 +215,9 @@ export function IsAFunctionElement(datum: any): boolean;
 
 // @public (undocumented)
 export function IsALinkObject(datum: any): boolean;
+
+// @public (undocumented)
+export function IsANamedPoint(datum: any): boolean;
 
 // @public (undocumented)
 export function IsAnEdgeObject(datum: any): boolean;
@@ -313,7 +303,7 @@ export function makeId(HagoClassName?: string): string;
 export const Marker: ({ id, type, className, arrowColor, radius, refX, refY, width, height, cx, cy, circleFillColor, circleStrokeColor, orient, viewbox, }: MarkerProps) => ReactElement;
 
 // @public (undocumented)
-export function Mem({ data, className, id, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MemProps): JSX.Element;
+export function Mem({ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MemProps): JSX.Element;
 
 // @public (undocumented)
 export type MemoryElement = {
@@ -337,6 +327,8 @@ export interface MemProps extends BaseProps {
     data: RegisterArray;
     // (undocumented)
     dataSize?: number;
+    // (undocumented)
+    endian?: 'big' | 'little';
     // (undocumented)
     startAddressAt?: number;
 }
@@ -395,6 +387,13 @@ export interface MultiplotProps {
     // (undocumented)
     zTickCount?: number;
 }
+
+// @public (undocumented)
+export type NamedPoint = {
+    x?: number;
+    y: number;
+    id?: string;
+};
 
 // @public (undocumented)
 export type NodeObject = {
@@ -552,6 +551,20 @@ export const Stack: ({ data, className, id, fheight, fwidth, width, height, scal
 
 // @public (undocumented)
 export type StackData = (Frame | string | number)[];
+
+// @public (undocumented)
+export const StackPlot: ({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: StackPlotProps) => JSX.Element;
+
+// @public (undocumented)
+export type StackPlotData = string[][] | number[] | NamedPoint[];
+
+// @public (undocumented)
+export interface StackPlotProps extends BaseProps {
+    // (undocumented)
+    className: string;
+    // (undocumented)
+    data: StackPlotData;
+}
 
 // @public (undocumented)
 export interface StackProps extends BaseProps {

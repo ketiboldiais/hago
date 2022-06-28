@@ -12,3 +12,4 @@ export * from './Queue/Queue';
 export * from './Mem/Mem';
 export * from './Graph/Graph';
 export * from './Sequence/Sequence';
+export * from './StackPlot/StackPlot';

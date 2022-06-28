@@ -6,6 +6,7 @@ export interface MemProps extends BaseProps {
   cellWidth?: number;
   cellHeight?: number;
   dataSize?: number;
+  endian?: 'big' | 'little';
   startAddressAt?: number;
   addressLength?: number;
 }

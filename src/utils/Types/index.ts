@@ -35,3 +35,6 @@ export * from './StaticArrayProps';
 export * from './BinaryTreeNode';
 export * from './TreeProps';
 export * from './FrameProps';
+export * from './NamedPoint';
+export * from './StackPlotData';
+export * from './StackPlotProps';

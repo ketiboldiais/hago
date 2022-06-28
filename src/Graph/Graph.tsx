@@ -11,6 +11,10 @@ import {
 import { svg, makeId, Text, Translate, Board, GraphProps } from '../utils';
 import { BuildEdgeData, BuildNodeData, BuildPath } from './Helpers';
 
+/**
+ * @public Graph
+ * Creates a new graph diagram.
+ */
 export function Graph({
   data = [
     [1, 2],

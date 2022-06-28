@@ -308,7 +308,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, }: "
+              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, }: "
             },
             {
               "kind": "Reference",
@@ -344,7 +344,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, }: "
+              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, textOffsetX, textOffsetY, textAnchor, offsetTick, }: "
             },
             {
               "kind": "Reference",
@@ -1755,7 +1755,7 @@
         {
           "kind": "Function",
           "canonicalReference": "hago!Graph:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Graph Creates a new graph diagram.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1801,7 +1801,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "hago!GraphProps:interface",
-          "docComment": "",
+          "docComment": "/**\n * GraphProps The props used in the `Graph` component. `GraphProps` inherits all the properties in `BaseProps`.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1824,7 +1824,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#blast:member",
-              "docComment": "",
+              "docComment": "/**\n * blast Sets the radial boundaries for each of the graph nodes.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1851,7 +1851,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#className:member",
-              "docComment": "",
+              "docComment": "/**\n * className Supply a class name for the entire diagram. The default name is `hago_graph`.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1878,7 +1878,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#data:member",
-              "docComment": "",
+              "docComment": "/**\n * data Takes an array of edges. Either an array of strings or numbers:\n *\n * [\"a\", \"b\", \"c\"]\n *\n * or an array of edge objects:\n *\n * [ {source: \"a\", target: \"b\"}, {source: \"b\", target: \"c\"}, ]\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1906,7 +1906,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#edgeLength:member",
-              "docComment": "",
+              "docComment": "/**\n * edgeLength Sets the length of the edges.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1933,7 +1933,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#fontSize:member",
-              "docComment": "",
+              "docComment": "/**\n * fontSize Sets the font size for the node text.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1960,7 +1960,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#id:member",
-              "docComment": "",
+              "docComment": "/**\n * id A unique id for the diagram. For faster rendering, supply an id. Otherwise, hago will generate a unique id using date.now().\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1987,7 +1987,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#isDirected:member",
-              "docComment": "",
+              "docComment": "/**\n * isDirected Sets whether to render arrow heads on the edges. If true, arrow heads are rendered, otherwise, no arrow heads are rendered. This translates to whether the graph is directed or undirected.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2014,7 +2014,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#link:member",
-              "docComment": "",
+              "docComment": "/**\n * link Takes either `'line'` or `'path'`. Sets whether the edges between the nodes are rendered as SVG line elements or SVG path elements.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2041,7 +2041,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#radius:member",
-              "docComment": "",
+              "docComment": "/**\n * radius Sets the radius for each node in the graph.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2068,7 +2068,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#repulsion:member",
-              "docComment": "",
+              "docComment": "/**\n * repulsion Sets how much the graph's nodes \"push\" each other away.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2095,7 +2095,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#straightEdge:member",
-              "docComment": "",
+              "docComment": "/**\n * straightEdge Determines whether the edges should be rendered as straight lines.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2122,7 +2122,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#textOffsetX:member",
-              "docComment": "",
+              "docComment": "/**\n * textOffsetX Sets how much the node text should be offset along the x-axis.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2149,7 +2149,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!GraphProps#textOffsetY:member",
-              "docComment": "",
+              "docComment": "/**\n * textOffsetY Sets how much the node text should be offset along the y-axis.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2268,6 +2268,50 @@
             }
           ],
           "name": "IsALinkObject"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!IsANamedPoint:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function IsANamedPoint(datum: "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "datum",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "IsANamedPoint"
         },
         {
           "kind": "Function",
@@ -3254,7 +3298,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Mem({ data, className, id, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+              "text": "declare function Mem({ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
             },
             {
               "kind": "Reference",
@@ -3283,7 +3327,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ data, className, id, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterName": "{ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -3481,6 +3525,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "dataSize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!MemProps#endian:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "endian?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'big' | 'little'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "endian",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -4236,6 +4307,31 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!NamedPoint:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type NamedPoint = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    x?: number;\n    y: number;\n    id?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "NamedPoint",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
         },
         {
           "kind": "TypeAlias",
@@ -5926,6 +6022,162 @@
             "startIndex": 1,
             "endIndex": 4
           }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "hago!StackPlot:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "StackPlot: "
+            },
+            {
+              "kind": "Content",
+              "text": "({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "StackPlotProps",
+              "canonicalReference": "hago!~StackPlotProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "StackPlot",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!StackPlotData:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type StackPlotData = "
+            },
+            {
+              "kind": "Content",
+              "text": "string[][] | number[] | "
+            },
+            {
+              "kind": "Reference",
+              "text": "NamedPoint",
+              "canonicalReference": "hago!~NamedPoint:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "StackPlotData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!StackPlotProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface StackPlotProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "StackPlotProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!StackPlotProps#className:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "className: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "className",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!StackPlotProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "StackPlotData",
+                  "canonicalReference": "hago!~StackPlotData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
         },
         {
           "kind": "Interface",
