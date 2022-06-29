@@ -12,6 +12,7 @@ import {
   Translate,
   Text,
 } from '../utils';
+import { range } from 'd3';
 
 export type MatrixData = Element[][] | Literal[][];
 
@@ -21,9 +22,9 @@ export interface MatrixProps extends BaseProps {
 
 export function Matrix({
   data = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
   ],
   className = 'hago_jagged_array',
   id = makeId(className),
@@ -39,6 +40,7 @@ export function Matrix({
   margins = [marginTop, marginRight, marginBottom, marginLeft],
 }) {
   const _svg = svg(width, height, margins);
+  const _columnIndices = range(data[0].length);
   const _data = MakeMatrixData(data);
   console.log(_data);
   const _scaleX = scaleBand()
@@ -63,26 +65,30 @@ export function Matrix({
           return (
             <>
               <g
-                className={d.class}
+                className={'hago_matrix_row_index'}
                 key={`jaggedIndex_${id}_${i}`}
                 transform={Translate(-10, _scaleY(`${d.val}`))}
               >
                 <Text val={d.val} fontSize={0.6} dy={_rectHeight / 2 + 3} />
               </g>
-              <g
-                className={d.class}
-                key={`jaggedIndex_${id}_${i}`}
-                transform={Translate(_scaleX(`${d.val}`), 0)}
-              >
-                <Text val={d.val} fontSize={0.6} dx={_rectWidth / 2} dy={-6} />
-              </g>
             </>
+          );
+        })}
+        {_columnIndices.map((d, i) => {
+          return (
+            <g
+              className={'hago_matrix_column_index'}
+              key={`jaggedIndex_${id}_${i}`}
+              transform={Translate(_scaleX(`${i}`), 0)}
+            >
+              <Text val={d} fontSize={0.6} dx={_rectWidth / 2} dy={-6} />
+            </g>
           );
         })}
         {_data.jaggedElementsArray.map((d, i) => {
           return (
             <g
-              key={`jaggedElement_${id}_${i}`}
+              key={`hago_matrix_element_${id}_${i}`}
               className={d.class}
               transform={Translate(_scaleX(`${d.group}`), _scaleY(`${d.id}`))}
             >

@@ -113,6 +113,7 @@ export type EdgeObject = {
 type Element_2 = {
     val: string | number;
     id?: string | number;
+    group?: string | number;
     ant?: Annotation;
     class?: string;
 };
@@ -241,6 +242,32 @@ export function IsRegisterObject(datum: any): boolean;
 export function IsUndefined(testSubject: any): boolean;
 
 // @public (undocumented)
+export function JaggedArray({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: {
+    data?: number[][];
+    className?: string;
+    id?: string;
+    width?: number;
+    height?: number;
+    scale?: number;
+    cwidth?: any;
+    cheight: any;
+    marginTop?: number;
+    marginRight?: number;
+    marginBottom?: number;
+    marginLeft?: number;
+    margins?: any[];
+}): JSX.Element;
+
+// @public (undocumented)
+export type JaggedArrayData = Element_2[][] | Literal[][];
+
+// @public (undocumented)
+export interface JaggedArrayProps extends BaseProps {
+    // (undocumented)
+    data: JaggedArrayData;
+}
+
+// @public (undocumented)
 export function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, }: LineProps): JSX.Element;
 
 // @public (undocumented)
@@ -285,10 +312,48 @@ export type Literal = string | number | boolean;
 // @public (undocumented)
 export function makeId(HagoClassName?: string): string;
 
+// @public (undocumented)
+export function MakeJaggedArrayData(data: JaggedArrayData): {
+    jaggedIndicesArray: Element_2[];
+    jaggedElementsArray: Element_2[];
+};
+
+// @public (undocumented)
+export function MakeMatrixData(data: MatrixData): {
+    jaggedIndicesArray: Element_2[];
+    jaggedElementsArray: Element_2[];
+};
+
 // Warning: (ae-forgotten-export) The symbol "MarkerProps" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
 export const Marker: ({ id, type, className, arrowColor, radius, refX, refY, width, height, cx, cy, circleFillColor, circleStrokeColor, orient, viewbox, }: MarkerProps) => ReactElement;
+
+// @public (undocumented)
+export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: {
+    data?: number[][];
+    className?: string;
+    id?: string;
+    width?: number;
+    height?: number;
+    scale?: number;
+    cwidth?: any;
+    cheight: any;
+    marginTop?: number;
+    marginRight?: number;
+    marginBottom?: number;
+    marginLeft?: number;
+    margins?: any[];
+}): JSX.Element;
+
+// @public (undocumented)
+export type MatrixData = Element_2[][] | Literal[][];
+
+// @public (undocumented)
+export interface MatrixProps extends BaseProps {
+    // (undocumented)
+    data: MatrixData;
+}
 
 // @public (undocumented)
 export function Mem({ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MemProps): JSX.Element;

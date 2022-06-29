@@ -1219,7 +1219,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    val: string | number;\n    id?: string | number;\n    ant?: "
+              "text": "{\n    val: string | number;\n    id?: string | number;\n    group?: string | number;\n    ant?: "
             },
             {
               "kind": "Reference",
@@ -2777,6 +2777,149 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!JaggedArray:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function JaggedArray({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    data?: number[][];\n    className?: string;\n    id?: string;\n    width?: number;\n    height?: number;\n    scale?: number;\n    cwidth?: any;\n    cheight: any;\n    marginTop?: number;\n    marginRight?: number;\n    marginBottom?: number;\n    marginLeft?: number;\n    margins?: any[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "JaggedArray"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!JaggedArrayData:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type JaggedArrayData = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[][] | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Literal",
+              "canonicalReference": "hago!~Literal:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[][]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "JaggedArrayData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!JaggedArrayProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface JaggedArrayProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "JaggedArrayProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!JaggedArrayProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JaggedArrayData",
+                  "canonicalReference": "hago!~JaggedArrayData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!Line:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -3256,6 +3399,132 @@
           "name": "makeId"
         },
         {
+          "kind": "Function",
+          "canonicalReference": "hago!MakeJaggedArrayData:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MakeJaggedArrayData(data: "
+            },
+            {
+              "kind": "Reference",
+              "text": "JaggedArrayData",
+              "canonicalReference": "hago!~JaggedArrayData:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    jaggedIndicesArray: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n    jaggedElementsArray: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MakeJaggedArrayData"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MakeMatrixData:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MakeMatrixData(data: "
+            },
+            {
+              "kind": "Reference",
+              "text": "MatrixData",
+              "canonicalReference": "hago!~MatrixData:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    jaggedIndicesArray: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n    jaggedElementsArray: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MakeMatrixData"
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "hago!Marker:var",
           "docComment": "",
@@ -3290,6 +3559,149 @@
             "startIndex": 1,
             "endIndex": 5
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Matrix:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    data?: number[][];\n    className?: string;\n    id?: string;\n    width?: number;\n    height?: number;\n    scale?: number;\n    cwidth?: any;\n    cheight: any;\n    marginTop?: number;\n    marginRight?: number;\n    marginBottom?: number;\n    marginLeft?: number;\n    margins?: any[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Matrix"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!MatrixData:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type MatrixData = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[][] | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Literal",
+              "canonicalReference": "hago!~Literal:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[][]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "MatrixData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!MatrixProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface MatrixProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "MatrixProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!MatrixProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MatrixData",
+                  "canonicalReference": "hago!~MatrixData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
         },
         {
           "kind": "Function",

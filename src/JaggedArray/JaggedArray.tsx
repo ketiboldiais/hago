@@ -42,7 +42,6 @@ export function JaggedArray({
 }) {
   const _svg = svg(width, height, margins);
   const _data = MakeJaggedArrayData(data);
-  console.log(_data);
   const _scaleX = scaleBand()
     .range([0, _svg.width])
     .domain(_data.jaggedElementsArray.map((d) => `${d.group}`));
@@ -80,11 +79,13 @@ export function JaggedArray({
               className={d.class}
               transform={Translate(_scaleX(`${d.group}`), _scaleY(`${d.id}`))}
             >
-              <Text
-                val={d.group}
-                pos={{ x: _rectWidth / 2, y: _rectHeight + _rectHeight / 3 }}
-                fontSize={0.6}
-              />
+              <g className={'hago_JaggedArray_row_index'}>
+                <Text
+                  val={d.group}
+                  pos={{ x: _rectWidth / 2, y: _rectHeight + _rectHeight / 3 }}
+                  fontSize={0.6}
+                />
+              </g>
               <rect
                 stroke={'black'}
                 fill={'none'}
@@ -109,7 +110,7 @@ export function MakeJaggedArrayData(data: JaggedArrayData) {
   let jaggedIndex: Element;
   let jaggedElement: Element;
   for (let i = 0; i < data.length; i++) {
-    jaggedIndex = { val: i, class: `jagged_array_index` };
+    jaggedIndex = { val: i, class: `hago_jagged_array_index` };
     jaggedIndicesArray.push(jaggedIndex);
     for (let j = 0; j < data[i].length; j++) {
       if (isElement(data[i][j])) {
@@ -121,7 +122,7 @@ export function MakeJaggedArrayData(data: JaggedArrayData) {
           val: data[i][j] as string,
           id: i,
           group: j,
-          class: `jagged_array_element`,
+          class: `hago_jagged_array_element`,
         };
         jaggedElementsArray.push(jaggedElement);
       } else {
