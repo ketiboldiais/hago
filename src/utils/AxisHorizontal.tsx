@@ -12,6 +12,7 @@ interface Props {
   offSetXTick?: number;
   offSetYTick?: number;
   textAnchor?: 'start' | 'middle' | 'end';
+  axisLabelArray?: (string | number)[];
 }
 
 export const AxisHorizontal = ({
@@ -23,6 +24,7 @@ export const AxisHorizontal = ({
   removeEndTicks = true,
   offSetXTick = 0,
   textAnchor = 'middle',
+  axisLabelArray,
 }: Props): ReactElement => {
   const ticks = useMemo(() => {
     const xScale = scaleLinear().domain(domain).range(range);
@@ -51,7 +53,12 @@ export const AxisHorizontal = ({
           ) : (
             <line y1={-3} y2={3} stroke="currentColor" />
           )}
-          <Text val={value} dy={20} fontSize={0.65} anchor={textAnchor} />
+          <Text
+            val={axisLabelArray[i] ? axisLabelArray[i] : value}
+            dy={20}
+            fontSize={0.65}
+            anchor={textAnchor}
+          />
         </g>
       ))}
     </g>

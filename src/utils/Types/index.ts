@@ -1,6 +1,7 @@
 export * from './Literal';
 export * from './Point';
 export * from './BoardProps';
+export * from './Coordinate';
 export * from './TreeNode';
 export * from './AntObject';
 export * from './Annotation';

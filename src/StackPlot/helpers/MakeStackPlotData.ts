@@ -6,7 +6,10 @@ import {
   IsANamedPoint,
 } from '../../utils';
 
-export function MakeStackPlotData(data: StackPlotData) {
+export function MakeStackPlotData(
+  data: StackPlotData,
+  axisGroups?: (string | number)[]
+) {
   let points: NamedPoint[] = [];
   let xMax = 0;
   let xMin = 0;
@@ -18,6 +21,7 @@ export function MakeStackPlotData(data: StackPlotData) {
      * Handle the case where the data passed is a point
      * {x: number, y: number, className: string}
      */
+    let group = axisGroups[i] ? axisGroups[i] : i;
     if (IsANamedPoint(data[i])) {
       points.push(data[i] as NamedPoint);
     } else if (data.constructor === Array && typeof data[i][0] === 'string') {
@@ -28,7 +32,7 @@ export function MakeStackPlotData(data: StackPlotData) {
       for (let j = 0; j < (data[i] as Array<string>).length; j++) {
         yMin = ReturnSmaller(yMin, j);
         yMax = ReturnLarger(yMax, j);
-        let frame: NamedPoint = { x: i, y: j, id: data[i][j] };
+        let frame: NamedPoint = { x: i, y: j, id: data[i][j], group };
         points.push(frame);
       }
     } else if (data.constructor === Array && typeof data[0] === 'number') {
@@ -39,7 +43,7 @@ export function MakeStackPlotData(data: StackPlotData) {
       for (let j = 0; j < data[i]; j++) {
         yMin = ReturnSmaller(yMin, j);
         yMax = ReturnLarger(yMax, j);
-        let frame: NamedPoint = { x: i, y: j, id: '' };
+        let frame: NamedPoint = { x: i, y: j, id: '', group };
         points.push(frame);
       }
     } else {

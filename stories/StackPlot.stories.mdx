@@ -8,3 +8,11 @@ import { StackPlot, StackPlotProps } from '../src';
 The `StackPlot` component is helpful for diagramming how stack memory grows, particularly with recursive calls:
 
 <StackPlot />
+
+<ArgsTable of={StackPlot} />
+
+## Axis Labels
+
+X-axis labels can be added by passing an array value to the `AxisGroups` prop:
+
+<StackPlot data={[1,2,3]} axisGroups={["f()", "g()", "h()"]}/>

@@ -308,7 +308,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, }: "
+              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, axisLabelArray, }: "
             },
             {
               "kind": "Reference",
@@ -372,7 +372,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "hago!BaseProps:interface",
-          "docComment": "",
+          "docComment": "/**\n * BaseProps The underlying interface for all Hago components.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -386,7 +386,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#cheight:member",
-              "docComment": "",
+              "docComment": "/**\n * Scales the DIV container's height in (%) units.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -413,7 +413,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#className:member",
-              "docComment": "",
+              "docComment": "/**\n * An optional string value to set the the diagram container (a DIV element)'s class attribute.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -440,7 +440,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#cwidth:member",
-              "docComment": "",
+              "docComment": "/**\n * Scales the DIV container's width in (%) units.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -467,7 +467,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#height:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the height of the SVG element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -494,7 +494,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#id:member",
-              "docComment": "",
+              "docComment": "/**\n * A unique identifier for the diagram.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -521,7 +521,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#marginBottom:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the SVG's bottom-margin from the DIV container.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -548,7 +548,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#marginLeft:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the SVG's left-margin from the DIV container.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -575,7 +575,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#marginRight:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the SVG's right-margin from the DIV container.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -602,7 +602,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#margins:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets marginTop, marginRight, marginBottom, and marginLeft all at once.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -629,7 +629,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#marginTop:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the SVG's top-margin from the DIV container.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -656,7 +656,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#scale:member",
-              "docComment": "",
+              "docComment": "/**\n * Scales the diagram in percentage (%) units.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -683,7 +683,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#width:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the width of the SVG element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4319,7 +4319,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    x?: number;\n    y: number;\n    id?: string;\n}"
+              "text": "{\n    x?: number;\n    y: number;\n    id?: string;\n    group?: string | number;\n}"
             },
             {
               "kind": "Content",
@@ -6024,17 +6024,13 @@
           }
         },
         {
-          "kind": "Variable",
-          "canonicalReference": "hago!StackPlot:var",
+          "kind": "Function",
+          "canonicalReference": "hago!StackPlot:function(1)",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "StackPlot: "
-            },
-            {
-              "kind": "Content",
-              "text": "({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+              "text": "declare function StackPlot({ data, axisGroups, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
             },
             {
               "kind": "Reference",
@@ -6043,21 +6039,35 @@
             },
             {
               "kind": "Content",
-              "text": ") => "
+              "text": "): "
             },
             {
               "kind": "Reference",
               "text": "JSX.Element",
               "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
             }
           ],
-          "isReadonly": true,
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
           "releaseTag": "Public",
-          "name": "StackPlot",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 5
-          }
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, axisGroups, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "StackPlot"
         },
         {
           "kind": "TypeAlias",
@@ -6096,7 +6106,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "hago!StackPlotProps:interface",
-          "docComment": "",
+          "docComment": "/**\n * StackPlotProps The `<StackPlot/>` component's interface.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -6118,12 +6128,39 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!StackPlotProps#className:member",
-              "docComment": "",
+              "canonicalReference": "hago!StackPlotProps#axisGroups:member",
+              "docComment": "/**\n * An array of axis labels.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "className: "
+                  "text": "axisGroups?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(string | number)[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "axisGroups",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!StackPlotProps#className:member",
+              "docComment": "/**\n * An optional class name to target the diagram.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "className?: "
                 },
                 {
                   "kind": "Content",
@@ -6135,7 +6172,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "className",
               "propertyTypeTokenRange": {
@@ -6146,7 +6183,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!StackPlotProps#data:member",
-              "docComment": "",
+              "docComment": "/**\n * An array of stack frames.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

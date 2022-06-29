@@ -32,38 +32,26 @@ export const ArrowHead: ({ id, className, arrowColor, refX, refY, width, height,
 // Warning: (ae-forgotten-export) The symbol "Props$1" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
-export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, }: Props$1) => ReactElement;
+export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, axisLabelArray, }: Props$1) => ReactElement;
 
 // Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
 export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, textOffsetX, textOffsetY, textAnchor, offsetTick, }: Props) => ReactElement;
 
-// @public (undocumented)
+// @public
 export interface BaseProps {
-    // (undocumented)
     cheight?: number;
-    // (undocumented)
     className?: string;
-    // (undocumented)
     cwidth?: number;
-    // (undocumented)
     height?: number;
-    // (undocumented)
     id?: string;
-    // (undocumented)
     marginBottom?: number;
-    // (undocumented)
     marginLeft?: number;
-    // (undocumented)
     marginRight?: number;
-    // (undocumented)
     margins?: [number, number, number, number];
-    // (undocumented)
     marginTop?: number;
-    // (undocumented)
     scale?: number;
-    // (undocumented)
     width?: number;
 }
 
@@ -393,6 +381,7 @@ export type NamedPoint = {
     x?: number;
     y: number;
     id?: string;
+    group?: string | number;
 };
 
 // @public (undocumented)
@@ -553,16 +542,15 @@ export const Stack: ({ data, className, id, fheight, fwidth, width, height, scal
 export type StackData = (Frame | string | number)[];
 
 // @public (undocumented)
-export const StackPlot: ({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: StackPlotProps) => JSX.Element;
+export function StackPlot({ data, axisGroups, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: StackPlotProps): JSX.Element;
 
 // @public (undocumented)
 export type StackPlotData = string[][] | number[] | NamedPoint[];
 
-// @public (undocumented)
+// @public
 export interface StackPlotProps extends BaseProps {
-    // (undocumented)
-    className: string;
-    // (undocumented)
+    axisGroups?: (string | number)[];
+    className?: string;
     data: StackPlotData;
 }
 

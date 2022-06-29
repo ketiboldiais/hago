@@ -12,7 +12,7 @@ import {
 } from '../utils';
 import { MakeStackPlotData } from './helpers';
 
-export const StackPlot = ({
+export function StackPlot({
   data = [
     ['f'],
     ['f', 'g'],
@@ -24,6 +24,7 @@ export const StackPlot = ({
     ['f', 'g'],
     ['f'],
   ],
+  axisGroups = [],
   className = 'hago_stack',
   id = makeId(className),
   width = 500,
@@ -36,9 +37,9 @@ export const StackPlot = ({
   marginBottom = 30,
   marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
-}: StackPlotProps) => {
+}: StackPlotProps) {
   const _svg = svg(width, height, margins);
-  const _data = MakeStackPlotData(data);
+  const _data = MakeStackPlotData(data, axisGroups);
   const _xMax = _data.xMax;
   const _xMin = _data.xMin;
   const _yMax = _data.yMax;
@@ -79,6 +80,7 @@ export const StackPlot = ({
             tickSep={_rectWidth}
             offSetXTick={_rectWidth / 2}
             removeEndTicks={false}
+            axisLabelArray={axisGroups}
           />
         </g>
         {_data.points.map((d, i) => {
@@ -108,4 +110,4 @@ export const StackPlot = ({
       </g>
     </Board>
   );
-};
+}
