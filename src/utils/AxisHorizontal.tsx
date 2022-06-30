@@ -54,7 +54,7 @@ export const AxisHorizontal = ({
             <line y1={-3} y2={3} stroke="currentColor" />
           )}
           <Text
-            val={axisLabelArray[i] ? axisLabelArray[i] : value}
+            val={axisLabelArray ? axisLabelArray[i] : value}
             dy={20}
             fontSize={0.65}
             anchor={textAnchor}

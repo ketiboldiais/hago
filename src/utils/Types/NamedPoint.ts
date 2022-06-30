@@ -1,7 +1,7 @@
 import { IsDefined } from '../TypeChecks';
 
 export type NamedPoint = {
-  x?: number;
+  x: number;
   y: number;
   id?: string;
   group?: string | number;

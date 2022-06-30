@@ -18,3 +18,5 @@ export * from './Line';
 export * from './HagoMath/HagoMath';
 export * from './Types';
 export * from './TypeChecks';
+export * from './IsAnArray';
+export * from './IsAFunction';

@@ -15,3 +15,4 @@ export * from './Sequence/Sequence';
 export * from './StackPlot/StackPlot';
 export * from './JaggedArray/JaggedArray';
 export * from './Matrix/Matrix';
+export * from './Sum/Sum';

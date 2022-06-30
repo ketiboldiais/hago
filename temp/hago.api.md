@@ -200,6 +200,9 @@ export interface GraphProps extends BaseProps {
 }
 
 // @public (undocumented)
+export function IsAFunction(datum: any): boolean;
+
+// @public (undocumented)
 export function IsAFunctionElement(datum: any): boolean;
 
 // @public (undocumented)
@@ -207,6 +210,9 @@ export function IsALinkObject(datum: any): boolean;
 
 // @public (undocumented)
 export function IsANamedPoint(datum: any): boolean;
+
+// @public (undocumented)
+export function IsAnArray(datum: any): boolean;
 
 // @public (undocumented)
 export function IsAnEdgeObject(datum: any): boolean;
@@ -443,7 +449,7 @@ export interface MultiplotProps {
 
 // @public (undocumented)
 export type NamedPoint = {
-    x?: number;
+    x: number;
     y: number;
     id?: string;
     group?: string | number;
@@ -644,6 +650,27 @@ export interface StaticArrayProps extends BaseProps {
     reverseIndex?: boolean;
     // (undocumented)
     startIndex?: number;
+}
+
+// @public (undocumented)
+export function Sum({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: SumProps): JSX.Element;
+
+// @public (undocumented)
+export interface SumProps extends BaseProps {
+    // (undocumented)
+    data: Function | FunctionElement[] | NamedPoint[];
+    // (undocumented)
+    end?: number;
+    // (undocumented)
+    removeEndTicks?: boolean;
+    // (undocumented)
+    removeEndTickX?: boolean;
+    // (undocumented)
+    removeEndTickY?: boolean;
+    // (undocumented)
+    start?: number;
+    // (undocumented)
+    tickSep?: number;
 }
 
 // @public (undocumented)

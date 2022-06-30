@@ -1,0 +1,14 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Sum, SumProps } from '../src';
+
+<Meta title="Plotters/Summation" component={Sum} />
+
+# Summmation
+
+Summations can be visualized with the `<Sum/>` component. For example, the sum of the first 10 Fibonacci numbers is 88:
+
+<Sum data={(n) => (1.618 ** n - (-0.618) ** n) / 2.236} end={10} start={1} />
+
+This sum grows very quickly. The sum of the first 26 is over 300,000 (317,810 to be exact):
+
+<Sum data={(n) => (1.618 ** n - (-0.618) ** n) / 2.236} end={27} start={1} />
