@@ -1,0 +1,75 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Scatter, ScatterProps } from '../src';
+
+<Meta title="Plotters/Scatter Plot" component={Scatter} />
+
+# Scatter Plots
+
+Hago's `Scatter` module provides a way to visualize scatter plots.
+
+<Scatter
+  data={[
+    [0, 0],
+    [10, 2],
+    [500, 21],
+    [1000, 45],
+    [1500, 83],
+    [2000, 157],
+    [2500, 215],
+    [3000, 309],
+    [3500, 389],
+    [4000, 504],
+    [4500, 603],
+    [5000, 825],
+    [5500, 922],
+    [6000, 1140],
+    [6500, 1297],
+    [7000, 1469],
+    [7500, 1715],
+    [8000, 1844],
+    [8500, 2101],
+    [9000, 2347],
+    [9500, 2686],
+    [10000, 2984],
+    [10500, 3150],
+    [11000, 3614],
+    [11500, 3803],
+    [12000, 4204],
+  ]}
+/>
+
+## Regression Analysis
+
+Hago can perform some simple regression analysis on the data passed. For example, a basic linear regression can be determined by passing the string value `'basicLinear'` to the `regression` property:
+
+<Scatter
+  data={[
+    [0, 0],
+    [10, 2],
+    [500, 21],
+    [1000, 45],
+    [1500, 83],
+    [2000, 157],
+    [2500, 215],
+    [3000, 309],
+    [3500, 389],
+    [4000, 504],
+    [4500, 603],
+    [5000, 825],
+    [5500, 922],
+    [6000, 1140],
+    [6500, 1297],
+    [7000, 1469],
+    [7500, 1715],
+    [8000, 1844],
+    [8500, 2101],
+    [9000, 2347],
+    [9500, 2686],
+    [10000, 2984],
+    [10500, 3150],
+    [11000, 3614],
+    [11500, 3803],
+    [12000, 4204],
+  ]}
+  regression={'basicLinear'}
+/>

@@ -19,4 +19,7 @@ export * from './HagoMath/HagoMath';
 export * from './Types';
 export * from './TypeChecks';
 export * from './IsAnArray';
+export * from './IsaString';
+export * from './IsaNumber';
 export * from './IsAFunction';
+export * from './HagoMath/Normalize';

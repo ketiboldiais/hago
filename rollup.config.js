@@ -59,7 +59,7 @@ export default [
     },
     output: [
       { file: pkg.main, format: 'es', sourcemap: false },
-      { file: pkg.module, format: 'cjs', sourcemap: false },
+      // { file: pkg.module, format: 'cjs', sourcemap: false },
     ],
     external: [
       /@babel\/runtime/,
@@ -67,7 +67,6 @@ export default [
       ...Object.keys(pkg.peerDependencies || {}),
     ],
     plugins: [
-
       PeerDepsExternalPlugin(),
       nodeResolve(),
       typescript({

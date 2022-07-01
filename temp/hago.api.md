@@ -217,8 +217,20 @@ export function IsAnArray(datum: any): boolean;
 // @public (undocumented)
 export function IsAnEdgeObject(datum: any): boolean;
 
+// @public (undocumented)
+export function IsaNumber(datum: any): boolean;
+
 // @public
 export function IsAPoint(datum: any): boolean;
+
+// @public (undocumented)
+export function IsaScatterDatumObject(datum: any): boolean;
+
+// @public (undocumented)
+export function IsaString(datum: any): boolean;
+
+// @public (undocumented)
+export function IsATupleXY(datum: any): boolean;
 
 // @public (undocumented)
 export function IsBinaryTreeNode(datum: any): boolean;
@@ -277,6 +289,14 @@ export interface JaggedArrayProps extends BaseProps {
 export function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, }: LineProps): JSX.Element;
 
 // @public (undocumented)
+export function LinearRegression(dataset: ScatterData): {
+    f: (x: number) => number;
+    label: string;
+    rsquared: number;
+    rsquaredLabel: string;
+};
+
+// @public (undocumented)
 export interface LineProps {
     // (undocumented)
     color?: string;
@@ -328,6 +348,15 @@ export function MakeJaggedArrayData(data: JaggedArrayData): {
 export function MakeMatrixData(data: MatrixData): {
     jaggedIndicesArray: Element_2[];
     jaggedElementsArray: Element_2[];
+};
+
+// @public (undocumented)
+export function MakeScatterData(data: ScatterData, start: number, end: number): {
+    xMin: number;
+    xMax: number;
+    yMin: number;
+    yMax: number;
+    dataPoints: ScatterDatumObject[];
 };
 
 // Warning: (ae-forgotten-export) The symbol "MarkerProps" needs to be exported by the entry point hago.d.ts
@@ -464,6 +493,9 @@ export type NodeObject = {
 };
 
 // @public (undocumented)
+export function Normalize(enteredValue: number, minEntry?: number, maxEntry?: number, normalizedMin?: number, normalizedMax?: number): number;
+
+// @public (undocumented)
 export const Plot: ({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, margins, }: PlotProps) => JSX.Element;
 
 // @public (undocumented)
@@ -564,10 +596,49 @@ export type RegisterObject = {
 };
 
 // @public (undocumented)
+export type Regression = 'basicLinear';
+
+// @public (undocumented)
 export function ReturnLarger(x: number, y: number): number;
 
 // @public (undocumented)
 export function ReturnSmaller(x: number, y: number): number;
+
+// @public (undocumented)
+export function Scatter({ data, regression, r, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: ScatterProps): JSX.Element;
+
+// @public (undocumented)
+export type ScatterData = ScatterDatumObject[] | TupleXY[] | TupleXY[][];
+
+// @public (undocumented)
+export type ScatterDatumObject = {
+    x: number;
+    y: number;
+    g: string | number;
+    className?: string;
+};
+
+// @public (undocumented)
+export interface ScatterProps extends BaseProps {
+    // (undocumented)
+    data: ScatterData;
+    // (undocumented)
+    end?: number;
+    // (undocumented)
+    r?: number;
+    // (undocumented)
+    regression?: Regression;
+    // (undocumented)
+    removeEndTicks?: boolean;
+    // (undocumented)
+    removeEndTickX?: boolean;
+    // (undocumented)
+    removeEndTickY?: boolean;
+    // (undocumented)
+    start?: number;
+    // (undocumented)
+    tickSep?: number;
+}
 
 // @public (undocumented)
 export function Sequence({ data, r, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, renderLolly, }: SequenceProps): JSX.Element;
@@ -732,6 +803,9 @@ export interface TreeProps extends BaseProps {
     // (undocumented)
     slim?: number;
 }
+
+// @public (undocumented)
+export type TupleXY = [number, number];
 
 // (No @packageDocumentation comment for this package)
 

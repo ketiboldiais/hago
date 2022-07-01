@@ -3,7 +3,6 @@
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
   "types": "dist/hago.d.ts",
   "files": [
     "dist"

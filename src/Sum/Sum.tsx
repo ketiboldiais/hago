@@ -115,17 +115,13 @@ export function Sum({
   const _xMax = _data.xMax;
   const _yMin = _data.yMin;
   const _yMax = _data.yMax;
-  console.log(_data);
-
   const _xScale = scaleLinear().domain([_xMin, _xMax]).range([0, _svg.width]);
   const _scaleX = scaleBand()
     .range([0, _svg.width])
     .domain(_dataPoints.map((d) => `${d.x}`))
     .padding(0.06);
   const _rectWidth = _scaleX.bandwidth();
-  const _yScale = scaleLinear()
-    .domain([_yMin, _yMax])
-    .range([_svg.height, 0]);
+  const _yScale = scaleLinear().domain([_yMin, _yMax]).range([_svg.height, 0]);
 
   return (
     <Board
