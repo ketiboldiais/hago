@@ -1,15 +1,5 @@
 import React, { ReactElement } from 'react';
-
-interface Props {
-  id: string;
-  className?: string;
-  arrowColor?: string;
-  refX?: number;
-  refY?: number;
-  width?: number;
-  height?: number;
-  orient?: string | number;
-}
+import { ArrowHeadProps } from './Types';
 
 export const ArrowHead = ({
   id,
@@ -20,7 +10,7 @@ export const ArrowHead = ({
   width = 6,
   height = 6,
   orient = 'auto',
-}: Props): ReactElement => {
+}: ArrowHeadProps): ReactElement => {
   return (
     <marker
       id={id}

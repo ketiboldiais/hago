@@ -26,7 +26,6 @@ export function RenderFramePointer(
       <Text
         val={d.ptr}
         fontSize={0.7}
-        anchor={'end'}
         pos={{ x: -fwidth / 2.5, y: fheight / 8 }}
       />
     </g>

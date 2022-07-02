@@ -21,23 +21,69 @@ export type AntObject = {
     className?: string;
 };
 
-// @public (undocumented)
-export type ArrayData = (Element | number | string)[] | string;
-
-// Warning: (ae-forgotten-export) The symbol "Props$2" needs to be exported by the entry point hago.d.ts
+// Warning: (ae-internal-missing-underscore) The name "ArrayData" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @public (undocumented)
-export const ArrowHead: ({ id, className, arrowColor, refX, refY, width, height, orient, }: Props$2) => ReactElement;
+// @internal
+export type ArrayData = (Datum | number | string)[] | string;
 
-// Warning: (ae-forgotten-export) The symbol "Props$1" needs to be exported by the entry point hago.d.ts
-//
 // @public (undocumented)
-export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, offSetXTick, textAnchor, axisLabelArray, }: Props$1) => ReactElement;
+export const ArrowHead: ({ id, className, arrowColor, refX, refY, width, height, orient, }: ArrowHeadProps) => ReactElement;
 
-// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point hago.d.ts
-//
 // @public (undocumented)
-export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, textOffsetX, textOffsetY, textAnchor, offsetTick, }: Props) => ReactElement;
+export interface ArrowHeadProps {
+    // (undocumented)
+    arrowColor?: string;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    orient?: string | number;
+    // (undocumented)
+    refX?: number;
+    // (undocumented)
+    refY?: number;
+    // (undocumented)
+    width?: number;
+}
+
+// @public (undocumented)
+export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, tx, axisLabelArray, }: AxisProps) => ReactElement;
+
+// @public (undocumented)
+export interface AxisProps {
+    // (undocumented)
+    axisLabelArray?: (string | number)[];
+    // (undocumented)
+    domain: number[];
+    // (undocumented)
+    dx?: number;
+    // (undocumented)
+    dy?: number;
+    // (undocumented)
+    markerEnd?: string;
+    // (undocumented)
+    markerStart?: string;
+    // (undocumented)
+    offsetTick?: number;
+    // (undocumented)
+    range: number[];
+    // (undocumented)
+    removeEndTicks?: boolean;
+    // (undocumented)
+    textAnchor?: 'start' | 'middle' | 'end';
+    // (undocumented)
+    tickSep: number;
+    // (undocumented)
+    tx?: number;
+    // (undocumented)
+    ty?: number;
+}
+
+// @public (undocumented)
+export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, }: AxisProps) => ReactElement;
 
 // @public
 export interface BaseProps {
@@ -94,13 +140,34 @@ export type Coordinate = {
     y: number;
 };
 
+// @public
+export type Datum = {
+    val: string | number;
+    id?: string | number;
+    group?: string | number;
+    ant?: Annotation;
+    class?: string;
+};
+
+// @public
+export type DatumArray = (Datum | number | string)[];
+
+// @public
+export type DatumPointer = {
+    val: string;
+    i: number;
+};
+
+// @public
+export type DatumPointerArray = DatumPointer[];
+
 // @public (undocumented)
 export type Edge = (string | number)[] | LinkObject | EdgeObject;
 
-// @public (undocumented)
+// @public
 export type EdgeArray = ((string | number)[] | LinkObject | EdgeObject)[];
 
-// @public (undocumented)
+// @public
 export type EdgeObject = {
     source: string | number;
     target: string | number;
@@ -108,28 +175,6 @@ export type EdgeObject = {
     weight?: number;
     className?: string;
 };
-
-// @public (undocumented)
-type Element_2 = {
-    val: string | number;
-    id?: string | number;
-    group?: string | number;
-    ant?: Annotation;
-    class?: string;
-};
-export { Element_2 as Element }
-
-// @public (undocumented)
-export type ElementArray = (Element | number | string)[];
-
-// @public (undocumented)
-export type ElementPointer = {
-    val: string;
-    i: number;
-};
-
-// @public (undocumented)
-export type ElementPointerArray = ElementPointer[];
 
 // @public (undocumented)
 export function formatStackData(userInputDataArray: StackData): any[];
@@ -164,7 +209,7 @@ export interface FrameProps {
 }
 
 // @public (undocumented)
-export type FunctionElement = {
+export type FunctionDatum = {
     f: Function;
     scale?: number;
     color?: string;
@@ -173,8 +218,10 @@ export type FunctionElement = {
 // @public (undocumented)
 export const generateBinaryTreeData: (rawData: any) => any[];
 
+// Warning: (ae-incompatible-release-tags) The symbol "generateElements" is marked as @public, but its signature references "ArrayData" which is marked as @internal
+//
 // @public (undocumented)
-export function generateElements(userInputDataArray: StackData | ArrayData | ElementArray): any[];
+export function generateElements(userInputDataArray: StackData | ArrayData | DatumArray): any[];
 
 // @public (undocumented)
 export function generateTreeData(rawData: any[]): any[];
@@ -182,7 +229,7 @@ export function generateTreeData(rawData: any[]): any[];
 // @public
 export function Graph({ data, className, id, straightEdge, width, height, scale, cwidth, cheight, radius, fontSize, textOffsetX, textOffsetY, blast, edgeLength, repulsion, marginTop, marginBottom, marginRight, marginLeft, margins, }: GraphProps): JSX.Element;
 
-// @public
+// @public (undocumented)
 export interface GraphProps extends BaseProps {
     blast?: number;
     className?: string;
@@ -200,7 +247,7 @@ export interface GraphProps extends BaseProps {
 }
 
 // @public (undocumented)
-export type HashData = HashDatum[] | Element_2[];
+export type HashData = HashDatum[] | Datum[];
 
 // @public (undocumented)
 export type HashDatum = (number | string)[];
@@ -214,11 +261,16 @@ export interface HashTableProps extends BaseProps {
     data: HashData;
 }
 
+// Warning: (ae-internal-missing-underscore) The name "IsaDatum" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export function IsaDatum(datum: any): boolean;
+
 // @public (undocumented)
 export function IsAFunction(datum: any): boolean;
 
 // @public (undocumented)
-export function IsAFunctionElement(datum: any): boolean;
+export function IsaFunctionDatum(datum: any): boolean;
 
 // @public (undocumented)
 export function IsALinkObject(datum: any): boolean;
@@ -229,7 +281,9 @@ export function IsANamedPoint(datum: any): boolean;
 // @public (undocumented)
 export function IsAnArray(datum: any): boolean;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "IsAnEdgeObject" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function IsAnEdgeObject(datum: any): boolean;
 
 // @public (undocumented)
@@ -253,9 +307,6 @@ export function IsBinaryTreeNode(datum: any): boolean;
 // @public (undocumented)
 export function IsDefined(testSubject: any): boolean;
 
-// @public (undocumented)
-export function isElement(datum: any): boolean;
-
 // @public
 export function IsLiteral(datum: any): boolean;
 
@@ -275,29 +326,40 @@ export function IsRegisterObject(datum: any): boolean;
 export function IsUndefined(testSubject: any): boolean;
 
 // @public (undocumented)
-export function JaggedArray({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: {
-    data?: number[][];
-    className?: string;
-    id?: string;
-    width?: number;
-    height?: number;
-    scale?: number;
-    cwidth?: any;
-    cheight: any;
-    marginTop?: number;
-    marginRight?: number;
-    marginBottom?: number;
-    marginLeft?: number;
-    margins?: any[];
-}): JSX.Element;
+export function JaggedArray({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: JaggedArrayProps): JSX.Element;
 
 // @public (undocumented)
-export type JaggedArrayData = Element_2[][] | Literal[][];
+export type JaggedArrayData = Datum[][] | Literal[][];
 
 // @public (undocumented)
 export interface JaggedArrayProps extends BaseProps {
     // (undocumented)
     data: JaggedArrayData;
+}
+
+// @public (undocumented)
+export interface LatexProps {
+    // (undocumented)
+    color: string;
+    // (undocumented)
+    dx: number;
+    // (undocumented)
+    dy: number;
+    // (undocumented)
+    fitContent: boolean;
+    // (undocumented)
+    fontsize: number;
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    offset: {
+        x: number;
+        y: number;
+    };
+    // (undocumented)
+    text: string;
+    // (undocumented)
+    width: number;
 }
 
 // @public (undocumented)
@@ -335,7 +397,7 @@ export function LinkedList({ data, className, id, width, height, scale, cwidth, 
 // @public (undocumented)
 export interface LinkedListProps extends BaseProps {
     // (undocumented)
-    data: ElementArray;
+    data: DatumArray;
     // (undocumented)
     isIndexed?: boolean;
 }
@@ -355,14 +417,14 @@ export function makeId(HagoClassName?: string): string;
 
 // @public (undocumented)
 export function MakeJaggedArrayData(data: JaggedArrayData): {
-    jaggedIndicesArray: Element_2[];
-    jaggedElementsArray: Element_2[];
+    jaggedIndicesArray: Datum[];
+    jaggedElementsArray: Datum[];
 };
 
 // @public (undocumented)
 export function MakeMatrixData(data: MatrixData): {
-    jaggedIndicesArray: Element_2[];
-    jaggedElementsArray: Element_2[];
+    jaggedIndicesArray: Datum[];
+    jaggedElementsArray: Datum[];
 };
 
 // @public (undocumented)
@@ -374,10 +436,42 @@ export function MakeScatterData(data: ScatterData, start: number, end: number): 
     dataPoints: ScatterDatumObject[];
 };
 
-// Warning: (ae-forgotten-export) The symbol "MarkerProps" needs to be exported by the entry point hago.d.ts
-//
 // @public (undocumented)
 export const Marker: ({ id, type, className, arrowColor, radius, refX, refY, width, height, cx, cy, circleFillColor, circleStrokeColor, orient, viewbox, }: MarkerProps) => ReactElement;
+
+// @public (undocumented)
+export interface MarkerProps {
+    // (undocumented)
+    arrowColor?: string;
+    // (undocumented)
+    circleFillColor?: string;
+    // (undocumented)
+    circleStrokeColor?: string;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    cx?: number;
+    // (undocumented)
+    cy?: number;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    orient?: string | number;
+    // (undocumented)
+    radius?: number;
+    // (undocumented)
+    refX?: number;
+    // (undocumented)
+    refY?: number;
+    // (undocumented)
+    type?: 'circle' | 'arrow' | 'square';
+    // (undocumented)
+    viewbox?: string;
+    // (undocumented)
+    width?: number;
+}
 
 // @public (undocumented)
 export function Maths({ val }: {
@@ -385,24 +479,10 @@ export function Maths({ val }: {
 }): JSX.Element;
 
 // @public (undocumented)
-export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: {
-    data?: number[][];
-    className?: string;
-    id?: string;
-    width?: number;
-    height?: number;
-    scale?: number;
-    cwidth?: any;
-    cheight: any;
-    marginTop?: number;
-    marginRight?: number;
-    marginBottom?: number;
-    marginLeft?: number;
-    margins?: any[];
-}): JSX.Element;
+export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MatrixProps): JSX.Element;
 
 // @public (undocumented)
-export type MatrixData = Element_2[][] | Literal[][];
+export type MatrixData = Datum[][] | Literal[][];
 
 // @public (undocumented)
 export interface MatrixProps extends BaseProps {
@@ -414,7 +494,7 @@ export interface MatrixProps extends BaseProps {
 export function Mem({ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MemProps): JSX.Element;
 
 // @public (undocumented)
-export type MemoryElement = {
+export type MemoryDatum = {
     val: Literal;
     a?: string;
     id?: string;
@@ -451,7 +531,7 @@ export interface MultiplotProps {
     // (undocumented)
     cwidth?: number;
     // (undocumented)
-    data: FunctionElement[];
+    data: FunctionDatum[];
     // (undocumented)
     height?: number;
     // (undocumented)
@@ -544,7 +624,7 @@ export interface PlotProps extends BaseProps {
     // (undocumented)
     className?: string;
     // (undocumented)
-    data?: FunctionElement[];
+    data?: FunctionDatum[];
     // (undocumented)
     domain?: [number, number];
     // (undocumented)
@@ -576,7 +656,7 @@ export interface PolarProps extends BaseProps {
     // (undocumented)
     className: string;
     // (undocumented)
-    data: FunctionElement[];
+    data: FunctionDatum[];
     // (undocumented)
     domain?: number[];
     // (undocumented)
@@ -590,12 +670,14 @@ export function Queue({ data, className, id, fontSize, width, height, scale, cwi
 
 // @public (undocumented)
 export interface QueueProps extends BaseProps {
+    // Warning: (ae-incompatible-release-tags) The symbol "data" is marked as @public, but its signature references "ArrayData" which is marked as @internal
+    //
     // (undocumented)
     data: ArrayData;
     // (undocumented)
     fontSize?: number;
     // (undocumented)
-    pointers: ElementPointerArray;
+    pointers: DatumPointerArray;
     // (undocumented)
     reverseIndex?: boolean;
     // (undocumented)
@@ -603,11 +685,11 @@ export interface QueueProps extends BaseProps {
 }
 
 // @public (undocumented)
-export type RegisterArray = (RegisterObject | MemoryElement | Literal)[] | string;
+export type RegisterArray = (RegisterObject | MemoryDatum | Literal)[] | string;
 
 // @public (undocumented)
 export type RegisterObject = {
-    val: MemoryElement | string | number | boolean;
+    val: MemoryDatum | string | number | boolean;
     a?: string | number;
     id?: string;
     s?: number;
@@ -733,10 +815,12 @@ export function StaticArray({ data, pointers, reverseIndex, startIndex, classNam
 
 // @public (undocumented)
 export interface StaticArrayProps extends BaseProps {
+    // Warning: (ae-incompatible-release-tags) The symbol "data" is marked as @public, but its signature references "ArrayData" which is marked as @internal
+    //
     // (undocumented)
     data: ArrayData;
     // (undocumented)
-    pointers: ElementPointerArray;
+    pointers: DatumPointerArray;
     // (undocumented)
     reverseIndex?: boolean;
     // (undocumented)
@@ -749,7 +833,7 @@ export function Sum({ data, className, id, width, height, scale, cwidth, cheight
 // @public (undocumented)
 export interface SumProps extends BaseProps {
     // (undocumented)
-    data: Function | FunctionElement[] | NamedPoint[];
+    data: Function | FunctionDatum[] | NamedPoint[];
     // (undocumented)
     end?: number;
     // (undocumented)
@@ -770,11 +854,24 @@ export const svg: (_width: number, _height: number, _margins: number[]) => {
     height: number;
 };
 
-// Warning: (ae-forgotten-export) The symbol "TextProps" needs to be exported by the entry point hago.d.ts
-//
 // @public (undocumented)
-function Text_2({ val, fontSize, color, pos, dx, dy, width, height, anchor, }: TextProps): JSX.Element;
+function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, }: TextProps): JSX.Element;
 export { Text_2 as Text }
+
+// @public
+export interface TextProps {
+    color?: string;
+    dx?: number;
+    dy?: number;
+    // (undocumented)
+    fitContent?: boolean;
+    fontSize?: number;
+    // (undocumented)
+    height?: number;
+    pos?: Coordinate;
+    val: number | string | boolean;
+    width?: number;
+}
 
 // @public (undocumented)
 export function ToBinary(val: number, bits?: number): string;
@@ -788,7 +885,7 @@ export function Translate(x: number, y: number): string;
 // @public (undocumented)
 export function Tree({ data, nodes, id, nodeFontSize, nodeRadius, width, height, scale, slim, cwidth, cheight, marginTop, marginBottom, marginRight, marginLeft, margins, edgeLength, markLevels, markDepth, markHeight, markHeightBF, heightStartsAt, }: TreeProps): JSX.Element;
 
-// @public
+// @public (undocumented)
 export interface TreeNode {
     // (undocumented)
     child: string | number | boolean;

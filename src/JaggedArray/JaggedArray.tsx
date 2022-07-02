@@ -2,22 +2,16 @@ import React from 'react';
 import { scaleBand } from 'd3-scale';
 import {
   Board,
-  BaseProps,
   svg,
   makeId,
-  Literal,
-  Element,
-  isElement,
+  Datum,
+  IsaDatum,
   IsLiteral,
   Translate,
   Text,
+  JaggedArrayData,
+  JaggedArrayProps,
 } from '../utils';
-
-export type JaggedArrayData = Element[][] | Literal[][];
-
-export interface JaggedArrayProps extends BaseProps {
-  data: JaggedArrayData;
-}
 
 export function JaggedArray({
   data = [
@@ -39,7 +33,7 @@ export function JaggedArray({
   marginBottom = 30,
   marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
-}) {
+}: JaggedArrayProps) {
   const _svg = svg(width, height, margins);
   const _data = MakeJaggedArrayData(data);
   const _scaleX = scaleBand()
@@ -115,17 +109,17 @@ export function JaggedArray({
 }
 
 export function MakeJaggedArrayData(data: JaggedArrayData) {
-  let jaggedIndicesArray: Element[] = [];
-  let jaggedElementsArray: Element[] = [];
-  let jaggedIndex: Element;
-  let jaggedElement: Element;
+  let jaggedIndicesArray: Datum[] = [];
+  let jaggedElementsArray: Datum[] = [];
+  let jaggedIndex: Datum;
+  let jaggedElement: Datum;
   for (let i = 0; i < data.length; i++) {
     jaggedIndex = { val: i, class: `hago_jagged_array_index` };
     jaggedIndicesArray.push(jaggedIndex);
     for (let j = 0; j < data[i].length; j++) {
-      if (isElement(data[i][j])) {
+      if (IsaDatum(data[i][j])) {
         // handle element object
-        jaggedElementsArray.push(data[i][j] as Element);
+        jaggedElementsArray.push(data[i][j] as Datum);
       } else if (IsLiteral(data[i][j])) {
         // handle literal
         jaggedElement = {

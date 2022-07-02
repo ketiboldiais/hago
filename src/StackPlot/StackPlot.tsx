@@ -68,7 +68,8 @@ export function StackPlot({
             domain={[_yMin, _yMax + 1]}
             range={[_svg.height, 0]}
             tickSep={_rectHeight}
-            textOffsetX={-20}
+            dx={-marginLeft / 2}
+            dy={-_rectHeight / 1.5}
             textAnchor={'start'}
             removeEndTicks={false}
           />
@@ -76,9 +77,11 @@ export function StackPlot({
         <g className="stack_plot_x_axis" transform={Translate(0, _svg.height)}>
           <AxisHorizontal
             domain={[_xMin, _xMax]}
-            range={[0, _svg.width - _rectWidth]}
+            range={[0, _svg.width - _rectWidth / 1.8]}
             tickSep={_rectWidth}
-            offSetXTick={_rectWidth / 2}
+            tx={_rectWidth / 2}
+            dx={-_rectWidth / 2}
+            fitContent={false}
             removeEndTicks={false}
             axisLabelArray={axisGroups}
           />
@@ -95,15 +98,7 @@ export function StackPlot({
                 stroke={'black'}
                 fill={'none'}
               />
-              {d.id ? (
-                <Text
-                  val={d.id}
-                  pos={{ x: _rectWidth / 2, y: _rectHeight / 2 }}
-                  dy={5}
-                />
-              ) : (
-                <></>
-              )}
+              {d.id && <Text val={d.id} pos={{ x: -2, y: -_rectHeight / 2 }} />}
             </g>
           );
         })}

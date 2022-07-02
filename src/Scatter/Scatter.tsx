@@ -8,53 +8,17 @@ import {
   makeId,
   svg,
   Translate,
-  BaseProps,
   IsAnArray,
-  IsaNumber,
-  IsDefined,
   ReturnSmaller,
   ReturnLarger,
   Text,
+  IsaScatterDatumObject,
+  IsATupleXY,
+  ScatterData,
+  ScatterDatumObject,
+  ScatterProps,
+  TupleXY,
 } from '../utils';
-
-export type ScatterDatumObject = {
-  x: number;
-  y: number;
-  g: string | number;
-  className?: string;
-};
-
-export function IsaScatterDatumObject(datum: any) {
-  return (
-    IsDefined((datum as ScatterDatumObject).x) &&
-    IsDefined((datum as ScatterDatumObject).y) &&
-    IsDefined((datum as ScatterDatumObject).g)
-  );
-}
-
-export type TupleXY = [number, number];
-export function IsATupleXY(datum: any) {
-  return (
-    IsAnArray(datum) &&
-    datum.length === 2 &&
-    IsaNumber(datum[0]) &&
-    IsaNumber(datum[1])
-  );
-}
-
-export type ScatterData = ScatterDatumObject[] | TupleXY[] | TupleXY[][];
-
-export interface ScatterProps extends BaseProps {
-  data: ScatterData;
-  regression?: Regression;
-  r?: number;
-  start?: number;
-  end?: number;
-  tickSep?: number;
-  removeEndTicks?: boolean;
-  removeEndTickX?: boolean;
-  removeEndTickY?: boolean;
-}
 
 export function MakeScatterData(data: ScatterData, start: number, end: number) {
   let xMin = start;
@@ -103,8 +67,6 @@ export function MakeScatterData(data: ScatterData, start: number, end: number) {
 
   return { xMin, xMax, yMin, yMax, dataPoints };
 }
-
-export type Regression = 'basicLinear';
 
 export function LinearRegression(dataset: ScatterData) {
   const count = dataset.length;
@@ -218,7 +180,7 @@ export function Scatter({
         tickSep={tickSep}
         removeEndTicks={removeEndTickY}
         textAnchor={'end'}
-        textOffsetX={-marginLeft / 4}
+        dx={-marginLeft / 4}
       />
       <g className="hago_sequence_plot_points">
         {_dataPoints.map((d, i) => {
@@ -249,12 +211,8 @@ export function Scatter({
               [_yMin, _yMax]
             )}
             <g transform={Translate(_svg.width / 2, 0)}>
-              <Text val={_regressionData.label} anchor={'middle'} />
-              <Text
-                val={_regressionData.rsquaredLabel}
-                anchor={'middle'}
-                dy={_svg.height / 15}
-              />
+              <Text val={_regressionData.label} />
+              <Text val={_regressionData.rsquaredLabel} dy={_svg.height / 15} />
             </g>
           </>
         ) : (

@@ -1,10 +1,10 @@
 import React from 'react';
 import { line } from 'd3-shape';
 import { MakeCoordinates } from './MakeCoordinates';
-import { FunctionElement } from '../utils';
+import { FunctionDatum } from '../utils';
 
 export const FunctionPlot = (
-  datum: FunctionElement,
+  datum: FunctionDatum,
   xScale: any,
   yScale: any,
   samples: number = 1000,

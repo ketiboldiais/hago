@@ -1,5 +1,5 @@
-import { isObjectLiteral } from './isObjectLiteral';
-import { ArrayData, ElementArray, StackData } from './Types';
+import { isObjectLiteral } from './TypeChecks';
+import { ArrayData, DatumArray, StackData } from './Types';
 import { IsNull } from './TypeChecks';
 
 export function formatStackData(userInputDataArray: StackData) {
@@ -17,7 +17,7 @@ export function formatStackData(userInputDataArray: StackData) {
 }
 
 export function generateElements(
-  userInputDataArray: StackData | ArrayData | ElementArray
+  userInputDataArray: StackData | ArrayData | DatumArray
 ) {
   let formattedData = [];
   for (let i = 0; i < userInputDataArray.length; i++) {

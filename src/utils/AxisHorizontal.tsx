@@ -1,19 +1,7 @@
 import React, { ReactElement, useMemo } from 'react';
 import { scaleLinear } from 'd3';
 import { Text } from './Text';
-
-interface Props {
-  domain: number[];
-  range: number[];
-  tickSep: number;
-  markerStart?: string;
-  markerEnd?: string;
-  removeEndTicks?: boolean;
-  offSetXTick?: number;
-  offSetYTick?: number;
-  textAnchor?: 'start' | 'middle' | 'end';
-  axisLabelArray?: (string | number)[];
-}
+import { AxisProps } from './Types';
 
 export const AxisHorizontal = ({
   domain,
@@ -22,10 +10,12 @@ export const AxisHorizontal = ({
   markerStart,
   markerEnd,
   removeEndTicks = true,
-  offSetXTick = 0,
-  textAnchor = 'middle',
+  dx = 0,
+  dy = 0,
+  tx = 0,
   axisLabelArray,
-}: Props): ReactElement => {
+  fitContent = true,
+}: AxisProps): ReactElement => {
   const ticks = useMemo(() => {
     const xScale = scaleLinear().domain(domain).range(range);
     const width = range[1] - range[0];
@@ -33,7 +23,7 @@ export const AxisHorizontal = ({
     const numberOfTicksTarget = Math.max(1, Math.floor(width / pixelsPerTick));
     return xScale.ticks(numberOfTicksTarget).map((value) => ({
       value,
-      xOffset: xScale(value) + offSetXTick,
+      xOffset: xScale(value) + tx,
     }));
   }, [domain.join('-'), range.join('-')]);
 
@@ -54,10 +44,12 @@ export const AxisHorizontal = ({
             <line y1={-3} y2={3} stroke="currentColor" />
           )}
           <Text
-            val={axisLabelArray ? axisLabelArray[i] : value}
-            dy={20}
-            fontSize={0.65}
-            anchor={textAnchor}
+            val={
+              axisLabelArray && axisLabelArray[i] ? axisLabelArray[i] : value
+            }
+            pos={{ x: dx, y: dy }}
+            fitContent={fitContent}
+            fontSize={0.6}
           />
         </g>
       ))}

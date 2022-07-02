@@ -66,11 +66,7 @@ export const Stack = ({
                 fill={'none'}
               />
               <Text val={d.val} pos={{ x: fwidth / 2, y: fheight / 2 - 1 }} />
-              <Text
-                val={d.ant}
-                pos={{ x: fwidth + 5, y: fheight / 2 - 1 }}
-                anchor={'start'}
-              />
+              <Text val={d.ant} pos={{ x: fwidth + 5, y: fheight / 2 - 1 }} />
               {d.ptr ? RenderFramePointer(fheight, fwidth, d) : <></>}
             </g>
           );

@@ -26,7 +26,7 @@ export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
        *
        * type LinkObject = {
        *   link: [GraphNode, GraphNode];
-       *   name: Element | Literal;
+       *   name: Datum | Literal;
        *   className: string;
        * };
        *

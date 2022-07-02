@@ -72,6 +72,8 @@ export const Plot = ({
           <AxisVertical
             domain={range}
             range={[_svg.height, 0]}
+            dx={-17}
+            dy={-17}
             tickSep={yTickCount}
             markerStart={'yArrowUp'}
             markerEnd={'yArrowDown'}

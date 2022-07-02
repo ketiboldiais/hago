@@ -1,16 +1,6 @@
 import React from 'react';
 import { Maths } from './Maths';
-
-interface LatexProps {
-  text: string;
-  offset: { x: number; y: number };
-  dx: number;
-  dy: number;
-  width: number;
-  height: number;
-  fontsize: number;
-  color: string;
-}
+import { LatexProps } from './Types';
 
 export const Latex = ({
   text,
@@ -21,6 +11,7 @@ export const Latex = ({
   height = 50,
   fontsize = 0.7,
   color = 'black',
+  fitContent = false,
 }: LatexProps) => {
   return (
     <g transform={`translate(${offset.x}, ${offset.y})`} dx={dx} dy={dy}>
@@ -29,7 +20,8 @@ export const Latex = ({
           style={{
             fontSize: `${fontsize}rem`,
             textAlign: 'center',
-            // width: 'fit-content',
+            height: fitContent ? 'fit-content' : '',
+            width: fitContent ? 'fit-content' : '',
             color: color,
           }}
         >

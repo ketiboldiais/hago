@@ -1,10 +1,9 @@
 import { scaleLinear, scaleBand } from 'd3';
 import React from 'react';
 import {
-  BaseProps,
   Board,
   svg,
-  Element,
+  Datum,
   makeId,
   ReturnLarger,
   Translate,
@@ -13,19 +12,13 @@ import {
   ArrowHead,
   Marker,
 } from '../utils';
-
-export type HashDatum = (number | string)[];
-export type HashData = HashDatum[] | Element[];
-
-export interface HashTableProps extends BaseProps {
-  data: HashData;
-}
+import { HashTableProps, HashData, HashDatum } from '../utils';
 
 function BuildHashData(data: HashData) {
-  let datum: Element;
+  let datum: Datum;
   let groups: { x: number; y: number }[] = [];
   let xMax = 0;
-  let outputData: Element[] = [];
+  let outputData: Datum[] = [];
   for (let i = 0; i < data.length; i++) {
     let current = data[i] as HashDatum;
     xMax = ReturnLarger(xMax, current.length);
@@ -159,7 +152,6 @@ export function HashTable({
                 pos={{ x: _scale(`${d.id}`), y: 0 }}
                 width={rectWidth}
                 height={rectWidth}
-                anchor={'middle'}
                 fontSize={0.7}
               />
             </g>

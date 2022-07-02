@@ -2,11 +2,7 @@ import React from 'react';
 import {
   BaseProps,
   Board,
-  IsAnArray,
-  IsDefined,
   makeId,
-  ReturnLarger,
-  ReturnSmaller,
   svg,
 } from '../utils';
 

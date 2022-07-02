@@ -90,11 +90,7 @@ export function Mem({
               transform={Translate(cellWidth * 2, 0)}
             >
               {d.id ? (
-                <Text
-                  val={`${d.id}`}
-                  pos={{ x: 5, y: cellHeight / 3 }}
-                  anchor="start"
-                />
+                <Text val={`${d.id}`} pos={{ x: 5, y: cellHeight / 3 }} />
               ) : (
                 <></>
               )}

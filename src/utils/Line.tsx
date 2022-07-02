@@ -1,15 +1,5 @@
 import React from 'react';
-import { Point } from './Types';
-
-export interface LineProps {
-  start: Point;
-  end: Point;
-  color?: string;
-  strokeWidth?: number;
-  dash?: number;
-  markerEnd?: string;
-  markerStart?: string;
-}
+import { LineProps } from './Types';
 
 export function Line({
   start,

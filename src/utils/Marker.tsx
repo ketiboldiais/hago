@@ -1,22 +1,5 @@
 import React, { ReactElement } from 'react';
-
-interface MarkerProps {
-  id: string;
-  type?: 'circle' | 'arrow' | 'square';
-  className?: string;
-  arrowColor?: string;
-  refX?: number;
-  refY?: number;
-  width?: number;
-  height?: number;
-  radius?: number;
-  viewbox?: string;
-  cx?: number;
-  cy?: number;
-  circleFillColor?: string;
-  circleStrokeColor?: string;
-  orient?: string | number;
-}
+import { MarkerProps } from './Types';
 
 function CirclePath({ cx, cy, r, fill, stroke }) {
   return <circle cx={cx} cy={cy} r={r} fill={fill} stroke={stroke} />;

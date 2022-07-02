@@ -1,13 +1,13 @@
 import {
   RegisterArray,
-  MemoryElement,
   RegisterObject,
   IsRegisterObject,
-  isElement,
+  IsaDatum,
   ToHex,
   Literal,
   IsLiteral,
 } from '../../utils';
+import { MemoryDatum } from '../../utils';
 
 export function BuildMemoryData(
   data: RegisterArray,
@@ -38,7 +38,7 @@ function BuildRegisterObject(
   i: number,
   vdots: RegExp,
   addr: number,
-  formattedData: (RegisterObject | MemoryElement | Literal)[],
+  formattedData: (RegisterObject | MemoryDatum | Literal)[],
   addressLength: number,
   dataSize: number
 ) {
@@ -46,22 +46,22 @@ function BuildRegisterObject(
     let n = parseInt(/[0-9]+/.exec(data[i] as string)[0]);
     let placeholder = { a: '⋮', val: '⋮', display: 'none' };
     addr = addr + n - 1;
-    formattedData.push(placeholder as MemoryElement);
+    formattedData.push(placeholder as MemoryDatum);
   } else if (IsRegisterObject(data[i])) {
     formattedData.push(data[i]);
     addr += (data[i] as RegisterObject).s;
-  } else if (isElement(data[i])) {
+  } else if (IsaDatum(data[i])) {
     let dataElement = {
       a: ToHex(addr, addressLength),
-      val: (data[i] as MemoryElement).val,
-      id: (data[i] as MemoryElement).id ? (data[i] as MemoryElement).id : '',
-      className: (data[i] as MemoryElement).className
-        ? (data[i] as MemoryElement).className
+      val: (data[i] as MemoryDatum).val,
+      id: (data[i] as MemoryDatum).id ? (data[i] as MemoryDatum).id : '',
+      className: (data[i] as MemoryDatum).className
+        ? (data[i] as MemoryDatum).className
         : 'memory_cell',
-      s: (data[i] as MemoryElement).s ? (data[i] as MemoryElement).s : dataSize,
+      s: (data[i] as MemoryDatum).s ? (data[i] as MemoryDatum).s : dataSize,
       display: 'block',
     };
-    formattedData.push(dataElement as MemoryElement);
+    formattedData.push(dataElement as MemoryDatum);
     addr += dataElement.s;
   } else if (IsLiteral(data[i])) {
     let literalElement = {
@@ -70,7 +70,7 @@ function BuildRegisterObject(
       s: dataSize,
       display: 'block',
     };
-    formattedData.push(literalElement as MemoryElement);
+    formattedData.push(literalElement as MemoryDatum);
     addr += literalElement.s;
   } else {
     throw new Error('Invalid data input.');

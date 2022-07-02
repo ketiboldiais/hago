@@ -1,12 +1,12 @@
-import { FunctionElement } from '../../utils';
+import { FunctionDatum } from "../../utils";
 
 export function BuildPlotPoints(
-  functionElement: FunctionElement,
+  FunctionDatum: FunctionDatum,
   xDomain: [number, number],
   yDomain: [number, number]
 ) {
-  const f = functionElement.f;
-  const scale = functionElement.scale ? functionElement.scale : 1;
+  const f = FunctionDatum.f;
+  const scale = FunctionDatum.scale ? FunctionDatum.scale : 1;
   let xDomainLowerBound = xDomain[0];
   let xDomainUpperBound = xDomain[1];
   let yDomainLowerBound = yDomain[0];

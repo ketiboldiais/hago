@@ -8,29 +8,19 @@ import {
   makeId,
   svg,
   Translate,
-  BaseProps,
-  FunctionElement,
+  FunctionDatum,
   NamedPoint,
   IsAnArray,
   IsAFunction,
-  IsAFunctionElement,
+  IsaFunctionDatum,
   IsANamedPoint,
   ReturnSmaller,
   ReturnLarger,
+  SumProps,
 } from '../utils';
 
-export interface SumProps extends BaseProps {
-  data: Function | FunctionElement[] | NamedPoint[];
-  start?: number;
-  end?: number;
-  tickSep?: number;
-  removeEndTicks?: boolean;
-  removeEndTickX?: boolean;
-  removeEndTickY?: boolean;
-}
-
 function BuildSumData(
-  data: Function | FunctionElement[] | NamedPoint[],
+  data: Function | FunctionDatum[] | NamedPoint[],
   start: number,
   end: number
 ) {
@@ -43,8 +33,8 @@ function BuildSumData(
   if (IsAnArray(data)) {
     // handle array data
     for (let i = 0; i < data.length; i++) {
-      if (IsAFunctionElement(data[i])) {
-        let f = (data[i] as FunctionElement).f;
+      if (IsaFunctionDatum(data[i])) {
+        let f = (data[i] as FunctionDatum).f;
         for (let j = start; j < end; j++) {
           let sequencePoint = f(j);
           sum += sequencePoint;
@@ -146,7 +136,7 @@ export function Sum({
         tickSep={tickSep}
         removeEndTicks={removeEndTickY}
         textAnchor={'end'}
-        textOffsetX={-marginLeft / 4}
+        dx={-marginLeft / 4}
       />
       <g className="hago_sum_plot_points">
         {_dataPoints.map((d, i) => {

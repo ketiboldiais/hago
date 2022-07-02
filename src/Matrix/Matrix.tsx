@@ -2,23 +2,17 @@ import React from 'react';
 import { scaleBand } from 'd3-scale';
 import {
   Board,
-  BaseProps,
   svg,
   makeId,
-  Literal,
-  Element,
-  isElement,
+  Datum,
+  IsaDatum,
   IsLiteral,
   Translate,
   Text,
+  MatrixData,
+  MatrixProps,
 } from '../utils';
 import { range } from 'd3';
-
-export type MatrixData = Element[][] | Literal[][];
-
-export interface MatrixProps extends BaseProps {
-  data: MatrixData;
-}
 
 export function Matrix({
   data = [
@@ -38,7 +32,7 @@ export function Matrix({
   marginBottom = 30,
   marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
-}) {
+}: MatrixProps) {
   const _svg = svg(width, height, margins);
   const _columnIndices = range(data[0].length);
   const _data = MakeMatrixData(data);
@@ -111,17 +105,17 @@ export function Matrix({
 }
 
 export function MakeMatrixData(data: MatrixData) {
-  let jaggedIndicesArray: Element[] = [];
-  let jaggedElementsArray: Element[] = [];
-  let jaggedIndex: Element;
-  let jaggedElement: Element;
+  let jaggedIndicesArray: Datum[] = [];
+  let jaggedElementsArray: Datum[] = [];
+  let jaggedIndex: Datum;
+  let jaggedElement: Datum;
   for (let i = 0; i < data.length; i++) {
     jaggedIndex = { val: i, class: `jagged_array_index` };
     jaggedIndicesArray.push(jaggedIndex);
     for (let j = 0; j < data[i].length; j++) {
-      if (isElement(data[i][j])) {
+      if (IsaDatum(data[i][j])) {
         // handle element object
-        jaggedElementsArray.push(data[i][j] as Element);
+        jaggedElementsArray.push(data[i][j] as Datum);
       } else if (IsLiteral(data[i][j])) {
         // handle literal
         jaggedElement = {
