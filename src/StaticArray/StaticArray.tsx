@@ -9,36 +9,34 @@ import {
   SetClassName,
   Translate,
   Text,
+  Marker,
+  Line,
 } from '../utils';
 
 export function StaticArray({
   data = [1, 2, 3, 4],
-  pointers = [],
   reverseIndex = false,
   startIndex = 0,
   className = 'hago_StaticArray',
   id = makeId(className),
-  width = 0.574045 * data.length ** 2 + 22.878 * data.length + 45.8824,
-  height = 80,
+  width = 300,
+  height = 300,
   scale = 100,
   cwidth = scale,
-  cheight,
-  marginTop = 20,
-  marginRight = 20,
-  marginBottom = 20,
-  marginLeft = 20,
+  cheight = 0.5,
+  marginTop = 50,
+  marginRight = 50,
+  marginBottom = 50,
+  marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
 }: StaticArrayProps) {
-  if (pointers) {
-    height = 100;
-    margins = [marginTop, marginLeft, marginBottom * 2.5, marginLeft];
-  }
   const _svg = svg(width, height, margins);
   const _data = generateElements(data);
   const _scale = scaleBand()
     .domain(_data)
     .range([0, _svg.width])
     .paddingInner(0.1);
+  const _sideLength = _scale.bandwidth();
 
   return (
     <Board
@@ -49,6 +47,16 @@ export function StaticArray({
       cheight={cheight}
       margins={margins}
     >
+      <defs>
+        <Marker
+          id={`Hago_StaticArray_Pointer`}
+          refX={0}
+          refY={0}
+          width={5}
+          height={5}
+          orient={'auto'}
+        />
+      </defs>
       {_data.map((d, i) => {
         return (
           <g
@@ -59,13 +67,17 @@ export function StaticArray({
             <rect
               fill={'white'}
               stroke={'black'}
-              width={_scale.bandwidth()}
-              height={_scale.bandwidth()}
+              width={_sideLength}
+              height={_sideLength}
             />
             <g className="hago_StaticArray_element_text">
               <Text
                 val={d.val}
-                pos={{ x: _scale.bandwidth() / 2, y: _scale.bandwidth() / 1.5 }}
+                pos={{
+                  x: _sideLength / 2.8,
+                  y: -_sideLength / 3,
+                }}
+                fitContent={true}
               />
             </g>
             <g className="hago_StaticArray_index_text">
@@ -76,48 +88,57 @@ export function StaticArray({
                     : i + startIndex
                 }
                 pos={{
-                  x: _scale.bandwidth() / 2,
-                  y: _scale.bandwidth() + _scale.bandwidth() / 2,
+                  x: -_sideLength / 2.2,
+                  y: _sideLength / 1.5,
                 }}
+                fontSize={0.6}
               />
             </g>
 
-            {d.ant ? (
+            {d.ant && (
               <g className="hago_StaticArray_annotation">
                 <Text
                   val={d.ant || d.ant.val}
-                  pos={{ x: _scale.bandwidth() / 2, y: -4 }}
+                  pos={{
+                    x: -_sideLength / 1.5,
+                    y: -_sideLength - marginTop / 6,
+                  }}
+                  fitContent={true}
                 />
               </g>
-            ) : (
-              <></>
             )}
-          </g>
-        );
-      })}
-      {pointers.map((d) => {
-        return (
-          <g
-            className="hago_StaticArray_pointer"
-            transform={Translate(
-              (_scale.bandwidth() / 8) * d.i,
-              _svg.height * 2.6
+
+            {d.ptr && (
+              <g
+                className="hago_StaticArray_pointer"
+                transform={Translate(
+                  -_sideLength / 1.65,
+                  _sideLength + marginBottom + 2
+                )}
+              >
+                <Text
+                  val={d.ptr}
+                  pos={{
+                    x: -5,
+                    y: -margins[2] / 3 - 1,
+                  }}
+                  fontSize={0.6}
+                  fitContent={true}
+                />
+                <Line
+                  start={{
+                    x: 0,
+                    y: -10,
+                  }}
+                  end={{
+                    x: 0,
+                    y: -margins[2] / 1.5,
+                  }}
+                  color={'black'}
+                  markerEnd={`Hago_StaticArray_Pointer`}
+                />
+              </g>
             )}
-          >
-            <Text
-              val={d.val}
-              pos={{
-                x: _scale.bandwidth() * d.i + _scale.bandwidth() / 2,
-                y: 0,
-              }}
-            />
-            <line
-              x1={d.i * _scale.bandwidth() + _scale.bandwidth() / 2}
-              y1={-margins[2] / 4}
-              x2={d.i * _scale.bandwidth() + _scale.bandwidth() / 2}
-              y2={-margins[2] / 1.5}
-              stroke={'black'}
-            />
           </g>
         );
       })}

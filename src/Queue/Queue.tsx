@@ -23,9 +23,9 @@ export function Queue({
   cwidth = scale,
   cheight,
   marginTop = 20,
-  marginRight = 20,
+  marginRight = 50,
   marginBottom = 20,
-  marginLeft = 20,
+  marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
 }: QueueProps) {
   const _data = generateElements(data);
@@ -76,7 +76,8 @@ export function Queue({
           <Text
             val={'out'}
             fontSize={fontSize - 0.15}
-            pos={{ x: -_queuerWidth - _queuerWidth / 4, y: 0 }}
+            pos={{ x: -marginLeft / 3, y: -_queuerHeight + 1 }}
+            fitContent={true}
           />
           <Line
             start={{ x: _svg.width, y: 0 }}
@@ -91,12 +92,6 @@ export function Queue({
               key={`${id}_${i}`}
               transform={Translate(_xScale(d), _queuerHeight)}
             >
-              <Text
-                val={i}
-                fontSize={fontSize - 0.2}
-                dx={_queuerWidth / 2}
-                dy={-3}
-              />
               <rect
                 width={_queuerWidth}
                 height={_queuerHeight}
@@ -105,28 +100,35 @@ export function Queue({
               />
               <Text
                 val={d.val}
-                pos={{ x: _queuerWidth / 2, y: _queuerHeight / 1.5 }}
+                pos={{ x: _queuerWidth / 2.5, y: -_queuerHeight / 2 - 1 }}
                 fontSize={fontSize}
+                fitContent={true}
               />
-              <Text
-                val={_queuerCount - 1 - i}
-                fontSize={fontSize - 0.2}
-                dx={_queuerWidth / 2}
-                dy={_queuerHeight * 1.5}
-              />
+              <g className="hago_Queue_enqueue_index">
+                <Text
+                  val={_queuerCount - 1 - i}
+                  fontSize={fontSize - 0.2}
+                  pos={{
+                    x: _queuerWidth / 2.5,
+                    y: _queuerHeight - _queuerHeight / 4,
+                  }}
+                  fitContent={true}
+                  color={'red'}
+                />
+              </g>
             </g>
           );
         })}
         <g
-          className="hago_queue_rear_labl"
+          className="hago_queue_rear_label"
           transform={Translate(_svg.width, 0)}
         >
           <Text
             val={'in'}
             fontSize={fontSize - 0.15}
             pos={{
-              x: -_queuerWidth + _queuerHeight / 2,
-              y: _queuerHeight * 2.2,
+              x: -marginRight / 3,
+              y: _queuerHeight * 2 + 1,
             }}
           />
         </g>

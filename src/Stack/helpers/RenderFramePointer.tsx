@@ -24,9 +24,11 @@ export function RenderFramePointer(
         markerEnd={'stackFramePointerArrow'}
       />
       <Text
-        val={d.ptr}
-        fontSize={0.7}
-        pos={{ x: -fwidth / 2.5, y: fheight / 8 }}
+        val={`\\texttt{${d.ptr}}`}
+        fontSize={0.6}
+        pos={{ x: -fwidth / 1.4, y: -fheight / 1.8 }}
+        fitContent={true}
+        textAlign="right"
       />
     </g>
   );

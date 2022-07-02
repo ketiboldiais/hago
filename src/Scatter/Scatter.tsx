@@ -126,7 +126,7 @@ export function Scatter({
   cheight,
   marginTop = 30,
   marginRight = 30,
-  marginBottom = 30,
+  marginBottom = 100,
   marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
   start = 0,
@@ -179,8 +179,8 @@ export function Scatter({
         range={[_svg.height, 0]}
         tickSep={tickSep}
         removeEndTicks={removeEndTickY}
-        textAnchor={'end'}
-        dx={-marginLeft / 4}
+        dy={-15}
+        dx={-marginLeft / 1.5}
       />
       <g className="hago_sequence_plot_points">
         {_dataPoints.map((d, i) => {
@@ -210,9 +210,13 @@ export function Scatter({
               [_xMin, _xMax],
               [_yMin, _yMax]
             )}
-            <g transform={Translate(_svg.width / 2, 0)}>
-              <Text val={_regressionData.label} />
-              <Text val={_regressionData.rsquaredLabel} dy={_svg.height / 15} />
+            <g transform={Translate(0, _svg.height + marginBottom / 4)}>
+              <Text val={_regressionData.label} fitContent={true} width={200} />
+              <Text
+                val={_regressionData.rsquaredLabel}
+                pos={{ x: 0, y: _svg.height / 15 }}
+                width={200}
+              />
             </g>
           </>
         ) : (

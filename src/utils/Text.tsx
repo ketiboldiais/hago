@@ -12,6 +12,7 @@ export function Text({
   width = 50,
   height = 50,
   fitContent = false,
+  textAlign = 'center',
 }: TextProps) {
   return (
     // <text
@@ -38,6 +39,7 @@ export function Text({
       width={width}
       height={height}
       fontsize={fontSize}
+      textAlign={textAlign}
     />
   );
 }

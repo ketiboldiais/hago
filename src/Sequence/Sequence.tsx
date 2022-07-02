@@ -25,7 +25,7 @@ export function Sequence({
   marginTop = 30,
   marginRight = 30,
   marginBottom = 30,
-  marginLeft = 30,
+  marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
   start = 0,
   end = 20,
@@ -61,12 +61,17 @@ export function Sequence({
           range={[0, _svg.width]}
           tickSep={tickSep}
           removeEndTicks={removeEndTickX}
+          dx={-3}
+          fitContent={true}
         />
       </g>
       <AxisVertical
         domain={[_yMin, _yMax]}
         range={[_svg.height, 0]}
         tickSep={tickSep}
+        fitContent={true}
+        dx={-marginLeft / 2}
+        dy={-tickSep / 3}
         removeEndTicks={removeEndTickY}
       />
       <g className="hago_sequence_plot_points">

@@ -22,8 +22,8 @@ export function Matrix({
   ],
   className = 'hago_jagged_array',
   id = makeId(className),
-  width = 300,
-  height = 300,
+  width = 200,
+  height = width - 35,
   scale = 100,
   cwidth = scale,
   cheight,
@@ -63,7 +63,12 @@ export function Matrix({
                 key={`jaggedIndex_${id}_${i}`}
                 transform={Translate(-10, _scaleY(`${d.val}`))}
               >
-                <Text val={d.val} fontSize={0.6} dy={_rectHeight / 2 + 3} />
+                <Text
+                  val={d.val}
+                  fontSize={0.6}
+                  fitContent={true}
+                  pos={{ x: -_rectWidth / 3, y: 0 }}
+                />
               </g>
             </>
           );
@@ -75,7 +80,12 @@ export function Matrix({
               key={`jaggedIndex_${id}_${i}`}
               transform={Translate(_scaleX(`${i}`), 0)}
             >
-              <Text val={d} fontSize={0.6} dx={_rectWidth / 2} dy={-6} />
+              <Text
+                val={d}
+                fontSize={0.6}
+                pos={{ x: _rectWidth / 2.5, y: -_rectHeight }}
+                fitContent={true}
+              />
             </g>
           );
         })}
@@ -83,7 +93,7 @@ export function Matrix({
           return (
             <g
               key={`hago_matrix_element_${id}_${i}`}
-              className={d.class}
+              className={`hago_matrix_data ${d.class}`}
               transform={Translate(_scaleX(`${d.group}`), _scaleY(`${d.id}`))}
             >
               <rect
@@ -94,7 +104,8 @@ export function Matrix({
               />
               <Text
                 val={d.val}
-                pos={{ x: _rectWidth / 2, y: _rectHeight / 2 + 5 }}
+                pos={{ x: _rectWidth / 2.5, y: -_rectHeight / 6 }}
+                fitContent={true}
               />
             </g>
           );

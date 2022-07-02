@@ -713,6 +713,7 @@ export interface LatexProps {
   fontsize: number;
   color: string;
   fitContent: boolean;
+  textAlign: 'center' | 'justify' | 'left' | 'right';
 }
 
 export interface LineProps {
@@ -794,6 +795,7 @@ export interface TextProps {
   width?: number;
   height?: number;
   fitContent?: boolean;
+  textAlign?: 'center' | 'justify' | 'left' | 'right';
 }
 
 /* Refactor Candidates ---- */
@@ -811,6 +813,7 @@ export type Datum = {
   id?: string | number;
   group?: string | number;
   ant?: Annotation;
+  ptr?: string;
   class?: string;
 };
 /**

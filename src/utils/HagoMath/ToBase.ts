@@ -37,7 +37,7 @@ export function ToHex(val: number, bits?: number) {
     remainders.push(stringRemainder);
   }
   const remaindersCount = remainders.length;
-  let result = '0x';
+  let result = '0×';
   if (bits && bits > remaindersCount) {
     let spaces = bits - remaindersCount;
     result = fillSpace(spaces, result);

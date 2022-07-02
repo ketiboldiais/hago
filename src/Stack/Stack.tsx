@@ -65,8 +65,20 @@ export const Stack = ({
                 stroke={'black'}
                 fill={'none'}
               />
-              <Text val={d.val} pos={{ x: fwidth / 2, y: fheight / 2 - 1 }} />
-              <Text val={d.ant} pos={{ x: fwidth + 5, y: fheight / 2 - 1 }} />
+              <Text
+                val={d.val}
+                pos={{ x: fwidth / 2 - 2, y: -fheight / 6 }}
+                fitContent={true}
+                fontSize={0.6}
+              />
+              {d.ant && (
+                <Text
+                  val={d.ant}
+                  pos={{ x: fwidth + marginRight / 4, y: -fheight / 6 }}
+                  fitContent={true}
+                  fontSize={0.6}
+                />
+              )}
               {d.ptr ? RenderFramePointer(fheight, fwidth, d) : <></>}
             </g>
           );

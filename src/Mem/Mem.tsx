@@ -66,7 +66,10 @@ export function Mem({
               />
               <Text
                 val={`${d.a}`}
-                pos={{ x: cellWidth >> 1, y: cellHeight / 3 }}
+                pos={{ x: 0, y: -cellHeight / 6 }}
+                width={cellWidth}
+                height={cellHeight}
+                fontSize={0.65}
               />
             </g>
             <g
@@ -82,7 +85,10 @@ export function Mem({
               />
               <Text
                 val={`${d.val}`}
-                pos={{ x: cellWidth >> 1, y: cellHeight / 3 }}
+                pos={{ x: 0, y: -cellHeight / 6 }}
+                width={cellWidth}
+                height={cellHeight}
+                fontSize={0.65}
               />
             </g>
             <g
