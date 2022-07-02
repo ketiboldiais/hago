@@ -23,3 +23,4 @@ export * from './IsaString';
 export * from './IsaNumber';
 export * from './IsAFunction';
 export * from './HagoMath/Normalize';
+export * from './Maths';

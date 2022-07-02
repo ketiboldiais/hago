@@ -200,6 +200,21 @@ export interface GraphProps extends BaseProps {
 }
 
 // @public (undocumented)
+export type HashData = HashDatum[] | Element_2[];
+
+// @public (undocumented)
+export type HashDatum = (number | string)[];
+
+// @public (undocumented)
+export function HashTable({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: HashTableProps): JSX.Element;
+
+// @public (undocumented)
+export interface HashTableProps extends BaseProps {
+    // (undocumented)
+    data: HashData;
+}
+
+// @public (undocumented)
 export function IsAFunction(datum: any): boolean;
 
 // @public (undocumented)
@@ -363,6 +378,11 @@ export function MakeScatterData(data: ScatterData, start: number, end: number): 
 //
 // @public (undocumented)
 export const Marker: ({ id, type, className, arrowColor, radius, refX, refY, width, height, cx, cy, circleFillColor, circleStrokeColor, orient, viewbox, }: MarkerProps) => ReactElement;
+
+// @public (undocumented)
+export function Maths({ val }: {
+    val: any;
+}): JSX.Element;
 
 // @public (undocumented)
 export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: {
@@ -753,7 +773,7 @@ export const svg: (_width: number, _height: number, _margins: number[]) => {
 // Warning: (ae-forgotten-export) The symbol "TextProps" needs to be exported by the entry point hago.d.ts
 //
 // @public (undocumented)
-function Text_2({ val, fontSize, color, pos, dx, dy, anchor, }: TextProps): JSX.Element;
+function Text_2({ val, fontSize, color, pos, dx, dy, width, height, anchor, }: TextProps): JSX.Element;
 export { Text_2 as Text }
 
 // @public (undocumented)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Coordinate } from '../utils';
+import { Latex } from './Latex';
 
 /**
  * @public
@@ -68,6 +69,8 @@ interface TextProps {
    * is determined.
    */
   align?: TextAlignment;
+  width?: number;
+  height?: number;
 }
 
 export function Text({
@@ -77,19 +80,34 @@ export function Text({
   pos = { x: 0, y: 0 },
   dx = 0,
   dy = 0,
+  width=50,
+  height=50,
   anchor = 'middle',
 }: TextProps) {
   return (
-    <text
-      textAnchor={anchor}
-      x={pos.x}
-      y={pos.y}
+    // <text
+    //   textAnchor={anchor}
+    //   x={pos.x}
+    //   y={pos.y}
+    //   dx={dx}
+    //   dy={dy}
+    //   fontSize={`${fontSize}rem`}
+    //   fill={color}
+    // >
+    //   {val}
+    // </text>
+    <Latex
+      text={`${val}`}
+      offset={{
+        x: pos.x,
+        y: pos.y,
+      }}
+      color={color}
       dx={dx}
       dy={dy}
-      fontSize={`${fontSize}rem`}
-      fill={color}
-    >
-      {val}
-    </text>
+      width={width}
+      height={height}
+      fontsize={fontSize}
+    />
   );
 }

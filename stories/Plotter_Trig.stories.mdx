@@ -1,13 +1,12 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 import { Plot, PlotProps } from '../src/Plot/Plot';
 import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
 
 <Meta title="Plotters/Trigonometric Functions" component={Plot} />
 
 # Trigonometric Functions
 
-The three most common trigonometric functions are <TeX math="y = \sin(x)"/>, <TeX math="y = \cos(x)"/>, and <TeX math="y = \tan(x)"/>. Below are Hago's graphs of these functions.
+The three most common trigonometric functions are TupleXY, TupleXY, and TupleXY. Below are Hago's graphs of these functions.
 
 ### Sine Function
 
@@ -29,7 +28,7 @@ The tangent function:
 
 ### Arcsine Function
 
-The function <TeX math="y = \arcsin(x)"/> (the arcsine function) is the inverse of the sine function. It may also be written as <TeX math="y = \sin^{-1}(x)"/>. Hago's plot:
+The function TupleXY (the arcsine function) is the inverse of the sine function. It may also be written as TupleXY. Hago's plot:
 
 <Plot
   data={[{ f: x => Math.asin(x) }]}
@@ -39,7 +38,7 @@ The function <TeX math="y = \arcsin(x)"/> (the arcsine function) is the inverse 
   xTicks={4}
 />
 
-Because <TeX math="y = \arcsin(x)"/> is only defined for the domain <TeX math="\{ x \in \R : -1 \leq 0 \leq 1 \}"/>, the graph above is rendered with a set domain and range:
+Because TupleXY is only defined for the domain TupleXY, the graph above is rendered with a set domain and range:
 
 ```jsx
 <Plot data={[{ f: x => Math.asin(x) }]} domain={[-1, 1]} range={[-1.5, 1.5]} />

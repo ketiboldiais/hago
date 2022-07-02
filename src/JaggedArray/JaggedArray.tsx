@@ -66,9 +66,15 @@ export function JaggedArray({
             <g
               className={d.class}
               key={`jaggedIndex_${id}_${i}`}
-              transform={Translate(-10, _scaleY(`${d.val}`))}
+              transform={Translate(-_rectWidth / 1.5, _scaleY(`${d.val}`))}
             >
-              <Text val={d.val} fontSize={0.6} dy={_rectHeight / 2 + 3} />
+              <Text
+                val={d.val}
+                fontSize={0.6}
+                // dy={_rectHeight / 2 + 3}
+                height={_rectHeight}
+                width={_rectWidth}
+              />
             </g>
           );
         })}
@@ -82,7 +88,9 @@ export function JaggedArray({
               <g className={'hago_JaggedArray_row_index'}>
                 <Text
                   val={d.group}
-                  pos={{ x: _rectWidth / 2, y: _rectHeight + _rectHeight / 3 }}
+                  pos={{ x: 0, y: _rectHeight / 1.35 }}
+                  width={_rectWidth}
+                  height={_rectHeight}
                   fontSize={0.6}
                 />
               </g>
@@ -94,7 +102,9 @@ export function JaggedArray({
               />
               <Text
                 val={d.val}
-                pos={{ x: _rectWidth / 2, y: _rectHeight / 2 + 5 }}
+                pos={{ x: 0, y: -_rectHeight / 7 }}
+                width={_rectWidth}
+                height={_rectHeight}
               />
             </g>
           );

@@ -17,3 +17,5 @@ export * from './JaggedArray/JaggedArray';
 export * from './Matrix/Matrix';
 export * from './Sum/Sum';
 export * from './Scatter/Scatter';
+export * from './HashTable/HashTable';
+

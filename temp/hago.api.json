@@ -2182,6 +2182,175 @@
           ]
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!HashData:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type HashData = "
+            },
+            {
+              "kind": "Reference",
+              "text": "HashDatum",
+              "canonicalReference": "hago!~HashDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[] | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Element$1",
+              "canonicalReference": "hago!~Element$1:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HashData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!HashDatum:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type HashDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "(number | string)[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HashDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!HashTable:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function HashTable({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HashTableProps",
+              "canonicalReference": "hago!~HashTableProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "HashTable"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!HashTableProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface HashTableProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HashTableProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HashTableProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HashData",
+                  "canonicalReference": "hago!~HashData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
           "kind": "Function",
           "canonicalReference": "hago!IsAFunction:function(1)",
           "docComment": "",
@@ -3954,6 +4123,51 @@
             "startIndex": 1,
             "endIndex": 5
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Maths:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Maths({ val }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    val: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ val }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Maths"
         },
         {
           "kind": "Function",
@@ -8196,7 +8410,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, anchor, }: "
+              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, width, height, anchor, }: "
             },
             {
               "kind": "Reference",
@@ -8225,7 +8439,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ val, fontSize, color, pos, dx, dy, anchor, }",
+              "parameterName": "{ val, fontSize, color, pos, dx, dy, width, height, anchor, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2

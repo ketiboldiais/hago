@@ -1,18 +1,13 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Multiplot, MultiplotProps } from '../src/Multiplot/Multiplot';
-import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
+import { Multiplot, MultiplotProps, Maths } from '../src';
 
 <Meta title="Plotters/Multivariable Functions" component={Multiplot} />
 
 # Multivariable Functions
 
-Although most individuals are familiar with single-variable functions — the famous <TeX math="f(x)"/> — functions can take any number of variables. They're just a special kind of relation after all. For example, consider the function:
+Although most individuals are familiar with single-variable functions — the famous — functions can take any number of variables. They're just a special kind of relation after all. For example, consider the function:
 
-<TeX
-  math="f(x,y) = \sin\left(\dfrac{\sqrt{x^2 + y^2}}{5}\right) \cdot \pi"
-  block
-/>
+<Maths val={"f(x) = x^2"}/>
 
 To plot equations like the one above, we can use the `Multiplot` module. For example, the code:
 

@@ -27,8 +27,8 @@ function DataFieldText(d: any, _nodeWidth: number, _nodeHeight: number) {
     <g className="hago_LinkedList_text_data">
       <Text
         val={d.val}
-        pos={{ x: _nodeWidth / 2, y: _nodeHeight / 1.2 }}
-        fontSize={0.55}
+        pos={{ x: -_nodeWidth / 1.2, y: -_nodeHeight / 1.2 }}
+        fontSize={0.5}
       />
     </g>
   );
@@ -41,11 +41,7 @@ function indexText(
 ): React.ReactNode {
   return (
     <g className={'hago_LinkedList_text_index'}>
-      <Text
-        val={i}
-        fontSize={0.45}
-        pos={{ x: _nodeWidth / 1.5, y: _nodeHeight + 10 }}
-      />
+      <Text val={i} fontSize={0.45} pos={{ x: -_nodeWidth / 1.5, y: 5 }} />
     </g>
   );
 }

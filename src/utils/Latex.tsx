@@ -1,33 +1,39 @@
 import React from 'react';
-import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
+import { Maths } from './Maths';
 
 interface LatexProps {
   text: string;
-  offset?: { x: number; y: number };
-  width?: number;
-  height?: number;
-  fontsize?: number;
+  offset: { x: number; y: number };
+  dx: number;
+  dy: number;
+  width: number;
+  height: number;
+  fontsize: number;
+  color: string;
 }
 
 export const Latex = ({
   text,
   width = 50,
   offset = { x: 0, y: 0 },
+  dx = 0,
+  dy = 0,
   height = 50,
   fontsize = 0.7,
+  color = 'black',
 }: LatexProps) => {
   return (
-    <g transform={`translate(${offset.x}, ${offset.y})`}>
+    <g transform={`translate(${offset.x}, ${offset.y})`} dx={dx} dy={dy}>
       <foreignObject width={width} height={height}>
         <div
           style={{
             fontSize: `${fontsize}rem`,
             textAlign: 'center',
-            width: 'fit-content',
+            // width: 'fit-content',
+            color: color,
           }}
         >
-          <TeX math={text} />
+          <Maths val={text} />
         </div>
       </foreignObject>
     </g>
