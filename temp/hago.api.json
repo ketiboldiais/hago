@@ -174,6 +174,31 @@
       "members": [
         {
           "kind": "TypeAlias",
+          "canonicalReference": "hago!AnalysisType:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type AnalysisType = "
+            },
+            {
+              "kind": "Content",
+              "text": "'raw' | 'min' | 'max' | 'median' | 'sum' | 'mean' | 'frequency' | 'relative frequency' | 'cumulative relative frequency'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "AnalysisType",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
           "canonicalReference": "hago!Annotation:type",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
@@ -507,7 +532,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, tx, axisLabelArray, }: "
+              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: "
             },
             {
               "kind": "Reference",
@@ -649,6 +674,87 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "dy",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!AxisProps#fitContent:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fitContent?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fitContent",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!AxisProps#fontsize:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fontsize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fontsize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!AxisProps#latex:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "latex?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "latex",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -911,7 +1017,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, }: "
+              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: "
             },
             {
               "kind": "Reference",
@@ -1026,6 +1132,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "cwidth",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!BaseProps#fontSize:member",
+              "docComment": "/**\n * Sets the font size\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fontSize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fontSize",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -1601,6 +1734,60 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!BuildPriorityQueueData:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function BuildPriorityQueueData(data: "
+            },
+            {
+              "kind": "Reference",
+              "text": "PriorityQueueData",
+              "canonicalReference": "hago!~PriorityQueueData:type"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    output: "
+            },
+            {
+              "kind": "Reference",
+              "text": "PriorityQueueDatum",
+              "canonicalReference": "hago!~PriorityQueueDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n    priorities: string[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "BuildPriorityQueueData"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!calculateTreeSize:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -1644,6 +1831,418 @@
           "name": "calculateTreeSize"
         },
         {
+          "kind": "Function",
+          "canonicalReference": "hago!Cell:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Cell({ w, h, pos, fill, stroke, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CellProps",
+              "canonicalReference": "hago!~CellProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ w, h, pos, fill, stroke, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Cell"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!CellProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface CellProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "CellProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CellProps#fill:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fill?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fill",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CellProps#h:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "h: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "h",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CellProps#pos:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pos?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Point",
+                  "canonicalReference": "hago!~Point:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "pos",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CellProps#stroke:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "stroke?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "stroke",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CellProps#w:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "w: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "w",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!CircularQueue:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function CircularQueue({ data, className, id, width, height, iradius, oradius, scale, cwidth, cheight, padding, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CircularQueueProps",
+              "canonicalReference": "hago!~CircularQueueProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, iradius, oradius, scale, cwidth, cheight, padding, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "CircularQueue"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!CircularQueueProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface CircularQueueProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "CircularQueueProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CircularQueueProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ArrayData",
+                  "canonicalReference": "hago!~ArrayData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CircularQueueProps#fontSize:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fontSize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fontSize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CircularQueueProps#iradius:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "iradius?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "iradius",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CircularQueueProps#oradius:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "oradius?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "oradius",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!CircularQueueProps#padding:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "padding?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "padding",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
           "kind": "TypeAlias",
           "canonicalReference": "hago!Coordinate:type",
           "docComment": "/**\n * @public\n */\n",
@@ -1670,6 +2269,294 @@
         },
         {
           "kind": "TypeAlias",
+          "canonicalReference": "hago!CubicBezier:type",
+          "docComment": "/**\n * Creates a cubic Bezier curve\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type CubicBezier = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    startPull: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    endPull: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    end: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "CubicBezier",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!DataTable:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function DataTable({ data, className, id, latex, output, include, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "DataTableProps",
+              "canonicalReference": "hago!~DataTableProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, latex, output, include, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "DataTable"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!DataTableProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface DataTableProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "DataTableProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#className:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "className?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "className",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Tabular",
+                  "canonicalReference": "hago!~Tabular:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#id:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "id",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#include:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "include?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AnalysisType",
+                  "canonicalReference": "hago!~AnalysisType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "include",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#latex:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "latex?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "latex",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DataTableProps#output:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "output?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "OutputType",
+                  "canonicalReference": "hago!~OutputType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "output",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
           "canonicalReference": "hago!Datum:type",
           "docComment": "/**\n * simplest aggregate type in Hago\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -1688,7 +2575,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    class?: string;\n}"
+              "text": ";\n    ptr?: string;\n    data?: number;\n    class?: string;\n}"
             },
             {
               "kind": "Content",
@@ -1790,6 +2677,166 @@
             "startIndex": 1,
             "endIndex": 3
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Deque:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Deque({ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "DequeProps",
+              "canonicalReference": "hago!~DequeProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Deque"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!DequeProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface DequeProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "DequeProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!DequeProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DatumArray",
+                  "canonicalReference": "hago!~DatumArray:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ArrayData",
+                  "canonicalReference": "hago!~ArrayData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!DoublyLinkedList:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function DoublyLinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, isIndexed, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "LinkedListProps",
+              "canonicalReference": "hago!~LinkedListProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, isIndexed, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "DoublyLinkedList"
         },
         {
           "kind": "TypeAlias",
@@ -1896,6 +2943,40 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!EllipticalArc:type",
+          "docComment": "/**\n * Creates an elliptical arc\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type EllipticalArc = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    rx: number;\n    ry: number;\n    xRotation: number;\n    end: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EllipticalArc",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
           }
         },
         {
@@ -2318,6 +3399,814 @@
             }
           ],
           "name": "generateTreeData"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getConvenientEndPoint:function(1)",
+          "docComment": "/**\n * Returns a convenient end point to use for intervals, given an array of numbers.\n *\n * For example, given the array: const x = [3.12, 3.19, 3.2, 4.25, 5.1, 8.9, 9.002, 1.221]; Calling: getConvenientStartingPoint(x); Returns: 9.002500000000001\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getConvenientEndPoint(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getConvenientEndPoint"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getConvenientStartingPoint:function(1)",
+          "docComment": "/**\n * Returns a convenient starting point to use for intervals, given an array of numbers.\n *\n * For example, given the array: const x = [3.12, 3.19, 3.2, 4.25, 5.1, 8.9, 9.002, 1.221]; Calling: getConvenientStartingPoint(x); Returns: 1.2205000000000001\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getConvenientStartingPoint(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getConvenientStartingPoint"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getCumulativeRelativeFrequencies:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getCumulativeRelativeFrequencies(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getCumulativeRelativeFrequencies"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getFrequencies:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getFrequencies(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getFrequencies"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getIntervalWidth:function(1)",
+          "docComment": "/**\n * Computes the ideal interval width for a given data set.\n *\n * @param number_of_data_values - The length number of data points (for arrays, the array length) Example: Given 150 data points, the ideal interval is: getIntervalWidth(150) => 12\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getIntervalWidth(number_of_data_values: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "number_of_data_values",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getIntervalWidth"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMax:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMax(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    max: number;\n    atIndex: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMax"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMaxPrecision:function(1)",
+          "docComment": "/**\n * @description Returns the maximum number of decimal places given each element in the array.\n *\n * For example, given the array: const x = [1.12, 1.14, 1.21, 1.2, 2.3, 2.12, 2.14]\n *\n * calling: getMaxPrecision(x)\n *\n * returns: 2\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMaxPrecision(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMaxPrecision"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMean:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMean(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMean"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMedian:function(1)",
+          "docComment": "/**\n * Gets the median within an array of numbers.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMedian(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    median: number;\n    orderedList: number[];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMedian"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMin:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMin(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    min: number;\n    atIndex: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMin"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMinPrecision:function(1)",
+          "docComment": "/**\n * @description Returns the minimum number of decimal places given each element in the array\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMinPrecision(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMinPrecision"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMostPrecise:function(1)",
+          "docComment": "/**\n * Returns the element in the list with the most decimal places. If there is more than one such element, the last element checked is returned.\n *\n * Example: Given the array: const x = [3.12, 3.19, 3.2, 4.25, 5.1, 8.9, 9.002, 1.221]; Calling: getMostPrecise(x); Returns: 1.221;\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMostPrecise(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMostPrecise"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMostPreciseMax:function(1)",
+          "docComment": "/**\n * Returns the smallest most precise number within the array argument.\n *\n * For example, given the array: const x = [1.23, 1.21, 1.1, 3.2, 5.31, 2.1, 6.31]; calling: getMostPreciseMax(x); returns: {max: 6.31, atIndex: 1};\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMostPreciseMax(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    max: number;\n    atIndex: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMostPreciseMax"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getMostPreciseMin:function(1)",
+          "docComment": "/**\n * Returns the smallest most precise number within the array argument.\n *\n * For example, given the array: const x = [1.23, 1.21, 1.1, 3.2, 5.31, 2.1, 6.31]; calling: getMostPreciseMin(x); returns: {min: 1.21, atIndex: 1};\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getMostPreciseMin(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    min: number;\n    atIndex: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getMostPreciseMin"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getPrecision:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getPrecision(val: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "val",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getPrecision"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getPrecisionBoundedList:function(1)",
+          "docComment": "/**\n * @description Returns an array of elements within the precision bound. If no elements are within the precision bound, an empty array is returned.\n *\n * Example: Given the array: const x = [1.12, 1.14, 1.21, 1.2, 2.3, 2.12, 2.14]\n *\n * Calling: getPrecisionBoundedList(x, 2);\n *\n * Returns: [ 1.12, 1.14, 1.21, 2.12, 2.14 ]\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getPrecisionBoundedList(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", precisionBound: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "precisionBound",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getPrecisionBoundedList"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getRelativeFrequencies:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getRelativeFrequencies(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getRelativeFrequencies"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getSum:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getSum(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getSum"
         },
         {
           "kind": "Function",
@@ -2919,6 +4808,315 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!Histogram:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Histogram({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HistogramProps",
+              "canonicalReference": "hago!~HistogramProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Histogram"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!HistogramProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface HistogramProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HistogramProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "[number, number][] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Point",
+                  "canonicalReference": "hago!~Point:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#end:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "end: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "end",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#removeEndTicks:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeEndTicks: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "removeEndTicks",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#removeEndTickX:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeEndTickX: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "removeEndTickX",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#removeEndTickY:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeEndTickY: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "removeEndTickY",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#start:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "start: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "start",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!HistogramProps#tickSep:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "tickSep: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "tickSep",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!HorizontalLineTo:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type HorizontalLineTo = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    H: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HorizontalLineTo",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!IsAFunction:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -3447,6 +5645,94 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!IsEven:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function IsEven(val: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "val",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "IsEven"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!IsInteger:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function IsInteger(val: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "val",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "IsInteger"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!IsLiteral:function(1)",
           "docComment": "/**\n * Checks whether `datum` is a literal value\n *\n * @returns boolean\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -3594,6 +5880,72 @@
           "isReadonly": true,
           "releaseTag": "Public",
           "name": "isObjectLiteral",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!IsOdd:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function IsOdd(val: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "val",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "IsOdd"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "hago!IsPriorityQueueDatum:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "IsPriorityQueueDatum: "
+            },
+            {
+              "kind": "Content",
+              "text": "(x: any) => boolean"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "IsPriorityQueueDatum",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
@@ -3847,6 +6199,33 @@
           "members": [
             {
               "kind": "PropertySignature",
+              "canonicalReference": "hago!LatexProps#block:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "block?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "block",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "hago!LatexProps#color:member",
               "docComment": "",
               "excerptTokens": [
@@ -4063,6 +6442,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "hago!LatexProps#textAlign:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "textAlign: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'center' | 'justify' | 'left' | 'right'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "textAlign",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "hago!LatexProps#width:member",
               "docComment": "",
               "excerptTokens": [
@@ -4098,7 +6504,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, }: "
+              "text": "declare function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, shapeRendering, }: "
             },
             {
               "kind": "Reference",
@@ -4127,7 +6533,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ start, end, color, strokeWidth, dash, markerEnd, markerStart, }",
+              "parameterName": "{ start, end, color, strokeWidth, dash, markerEnd, markerStart, shapeRendering, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -4334,6 +6740,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "hago!LineProps#shapeRendering:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "shapeRendering?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'auto' | 'optimizeSpeed' | 'crispEdges' | 'geometricPrecision'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "shapeRendering",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "hago!LineProps#start:member",
               "docComment": "",
               "excerptTokens": [
@@ -4389,6 +6822,40 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!LineTo:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type LineTo = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    L: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LineTo",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
         },
         {
           "kind": "Function",
@@ -5293,11 +7760,11 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Maths({ val }: "
+              "text": "declare function Maths({ val, block }: "
             },
             {
               "kind": "Content",
-              "text": "{\n    val: any;\n}"
+              "text": "{\n    val: any;\n    block?: boolean;\n}"
             },
             {
               "kind": "Content",
@@ -5321,7 +7788,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ val }",
+              "parameterName": "{ val, block }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -6660,6 +9127,328 @@
           "name": "Normalize"
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!OutputType:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type OutputType = "
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "AnalysisType",
+              "canonicalReference": "hago!~AnalysisType:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | ["
+            },
+            {
+              "kind": "Reference",
+              "text": "AnalysisType",
+              "canonicalReference": "hago!~AnalysisType:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", string])[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "OutputType",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Path:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Path({ start, d, fill, color, strokeWidth, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "PathProps",
+              "canonicalReference": "hago!~PathProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ start, d, fill, color, strokeWidth, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Path"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!PathData:type",
+          "docComment": "/**\n * Sets the data for path attribute. The start point must have already been provided. The `d` attribute string is build in order - from index 0 to the last.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type PathData = "
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "LineTo",
+              "canonicalReference": "hago!~LineTo:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "HorizontalLineTo",
+              "canonicalReference": "hago!~HorizontalLineTo:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "VerticalLineTo",
+              "canonicalReference": "hago!~VerticalLineTo:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "CubicBezier",
+              "canonicalReference": "hago!~CubicBezier:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "QuadraticBezier",
+              "canonicalReference": "hago!~QuadraticBezier:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "EllipticalArc",
+              "canonicalReference": "hago!~EllipticalArc:type"
+            },
+            {
+              "kind": "Content",
+              "text": ")[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PathData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 14
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!PathProps:interface",
+          "docComment": "/**\n * Initializes the `d` attribute and others\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface PathProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PathProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PathProps#color:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "color?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "color",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PathProps#d:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "d: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PathData",
+                  "canonicalReference": "hago!~PathData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "d",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PathProps#fill:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "fill?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "fill",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PathProps#start:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "start: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "StartPoint",
+                  "canonicalReference": "hago!~StartPoint:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "start",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PathProps#strokeWidth:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "strokeWidth?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "strokeWidth",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "hago!Plot:var",
           "docComment": "",
@@ -6670,7 +9459,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, margins, }: "
+              "text": "({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
             },
             {
               "kind": "Reference",
@@ -7021,6 +9810,31 @@
         },
         {
           "kind": "TypeAlias",
+          "canonicalReference": "hago!PlotType:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type PlotType = "
+            },
+            {
+              "kind": "Content",
+              "text": "'table' | 'scatter' | 'histogram'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PlotType",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
           "canonicalReference": "hago!Point:type",
           "docComment": "/**\n * @type an object {x: n, y: n}, where n is a number type value\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -7253,6 +10067,188 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!PriorityQueue:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function PriorityQueue({ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "PriorityQueueProps",
+              "canonicalReference": "hago!~PriorityQueueProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "PriorityQueue"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!PriorityQueueData:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type PriorityQueueData = "
+            },
+            {
+              "kind": "Content",
+              "text": "(string[] | number[])[] | "
+            },
+            {
+              "kind": "Reference",
+              "text": "PriorityQueueDatum",
+              "canonicalReference": "hago!~PriorityQueueDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PriorityQueueData",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!PriorityQueueProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface PriorityQueueProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PriorityQueueProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PriorityQueueProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PriorityQueueData",
+                  "canonicalReference": "hago!~PriorityQueueData:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!QuadraticBezier:type",
+          "docComment": "/**\n * Creates a quadratic Bezier curve\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type QuadraticBezier = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    pull: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    end: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "QuadraticBezier",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!Queue:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -7464,6 +10460,50 @@
               "endIndex": 2
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Quicksort:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Quicksort(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Quicksort"
         },
         {
           "kind": "TypeAlias",
@@ -9069,13 +12109,47 @@
           ]
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!StartPoint:type",
+          "docComment": "/**\n * StartPoint The starting point of the path\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type StartPoint = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    M: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "StartPoint",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
           "kind": "Function",
           "canonicalReference": "hago!StaticArray:function(1)",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function StaticArray({ data, pointers, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+              "text": "declare function StaticArray({ data, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
             },
             {
               "kind": "Reference",
@@ -9104,7 +12178,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ data, pointers, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterName": "{ data, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9254,6 +12328,67 @@
               "endIndex": 2
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!StructGuard:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function StructGuard(callback: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", properties: "
+            },
+            {
+              "kind": "Content",
+              "text": "string[]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "(x: any) => boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "callback",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "properties",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "StructGuard"
         },
         {
           "kind": "Function",
@@ -9567,13 +12702,38 @@
           }
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!Tabular:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type Tabular = "
+            },
+            {
+              "kind": "Content",
+              "text": "(string | number)[][] | (string | number)[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Tabular",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Function",
           "canonicalReference": "hago!Text_2:function(1)",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, width, height, fitContent, }: "
+              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }: "
             },
             {
               "kind": "Reference",
@@ -9602,7 +12762,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ val, fontSize, color, pos, dx, dy, width, height, fitContent, }",
+              "parameterName": "{ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9626,6 +12786,33 @@
           "name": "TextProps",
           "preserveMemberOrder": false,
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TextProps#anchor:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "anchor?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'start' | 'middle' | 'end'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "anchor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!TextProps#color:member",
@@ -9790,6 +12977,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "hago!TextProps#latex:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "latex?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "latex",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "hago!TextProps#pos:member",
               "docComment": "/**\n * Sets the position of the the `<Text/>` element. Takes the form `{x: <number>, y: <number>}`. The `x` property sets the `SVGText` elemnent's `x` attribute, and the `y` property sets the `SVGText` element's `y` attribute.\n */\n",
               "excerptTokens": [
@@ -9811,6 +13025,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "pos",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TextProps#textAlign:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "textAlign?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'center' | 'justify' | 'left' | 'right'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "textAlign",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -10608,6 +13849,40 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!VerticalLineTo:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type VerticalLineTo = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    V: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Point",
+              "canonicalReference": "hago!~Point:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VerticalLineTo",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
           }
         }
       ]

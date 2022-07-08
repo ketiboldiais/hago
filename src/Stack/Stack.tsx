@@ -35,7 +35,6 @@ export const Stack = ({
 }: StackProps) => {
   const _svg = svg(width, height, margins);
   const _data = formatStackData(data);
-  console.log(_data);
   const _number_of_frames = _data.length;
   const _scale = scaleLinear()
     .domain([0, _number_of_frames])

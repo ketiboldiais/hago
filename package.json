@@ -1,9 +1,13 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.8",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/hago.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ketiboldiais/hago"
+  },
   "files": [
     "dist"
   ],
@@ -69,7 +73,6 @@
     "@babel/runtime": "^7.18.3",
     "@matejmazur/react-katex": "^3.1.3",
     "@react-three/fiber": "^8.0.24",
-    "d3": "^7.4.4",
-    "katex": "^0.16.0"
+    "d3": "^7.4.4"
   }
 }

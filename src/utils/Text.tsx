@@ -13,33 +13,40 @@ export function Text({
   height = 50,
   fitContent = false,
   textAlign = 'center',
+  latex = true,
+  anchor = 'middle',
 }: TextProps) {
-  return (
-    // <text
-    //   textAnchor={anchor}
-    //   x={pos.x}
-    //   y={pos.y}
-    //   dx={dx}
-    //   dy={dy}
-    //   fontSize={`${fontSize}rem`}
-    //   fill={color}
-    // >
-    //   {val}
-    // </text>
-    <Latex
-      text={`${val}`}
-      offset={{
-        x: pos.x,
-        y: pos.y,
-      }}
-      fitContent={fitContent}
-      color={color}
-      dx={dx}
-      dy={dy}
-      width={width}
-      height={height}
-      fontsize={fontSize}
-      textAlign={textAlign}
-    />
-  );
+  if (latex) {
+    return (
+      <Latex
+        text={`${val}`}
+        offset={{
+          x: pos.x,
+          y: pos.y,
+        }}
+        fitContent={fitContent}
+        color={color}
+        dx={dx}
+        dy={dy}
+        width={width}
+        height={height}
+        fontsize={fontSize}
+        textAlign={textAlign}
+      />
+    );
+  } else {
+    return (
+      <text
+        textAnchor={anchor}
+        x={pos.x}
+        y={pos.y}
+        dx={dx}
+        dy={dy}
+        fontSize={`${fontSize}rem`}
+        fill={color}
+      >
+        {val}
+      </text>
+    );
+  }
 }

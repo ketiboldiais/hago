@@ -69,7 +69,6 @@ export function HashTable({
   const _values = _data.values;
   const _yMax = data.length;
   const _xMax = _data.xMax;
-  console.log(_data);
 
   const _scaleY = scaleLinear().domain([0, _yMax]).range([0, _svg.height]);
   const _scaleX = scaleLinear().domain([0, _xMax]).range([0, _svg.width]);

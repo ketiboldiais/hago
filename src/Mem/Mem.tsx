@@ -4,7 +4,6 @@ import {
   Board,
   makeId,
   svg,
-  Text,
   Translate,
   RegisterObject,
   MemProps,
@@ -49,61 +48,66 @@ export function Mem({
       cheight={cheight}
       margins={margins}
     >
-      {_data.map((d: RegisterObject, i: number) => {
-        return (
-          <g
-            className={d.className}
-            key={`${id}_cell_${i}`}
-            transform={Translate(0, _scale(i))}
-          >
-            <g className="memory_cell_address">
-              <rect
-                width={cellWidth}
-                height={cellHeight / 2}
-                stroke={'black'}
-                fill="none"
-                display={d.display}
-              />
-              <Text
-                val={`${d.a}`}
-                pos={{ x: 0, y: -cellHeight / 6 }}
-                width={cellWidth}
-                height={cellHeight}
-                fontSize={0.65}
-              />
-            </g>
+      <g transform={Translate(_svg.width / 2, 0)}>
+        {_data.map((d: RegisterObject, i: number) => {
+          return (
             <g
-              className="memory_cell_value"
-              transform={Translate(cellWidth, 0)}
+              className={d.className}
+              key={`${id}_cell_${i}`}
+              transform={Translate(0, _scale(i))}
             >
-              <rect
-                width={cellWidth}
-                height={cellHeight / 2}
-                stroke={'black'}
-                fill="none"
-                display={d.display}
-              />
-              <Text
-                val={`${d.val}`}
-                pos={{ x: 0, y: -cellHeight / 6 }}
-                width={cellWidth}
-                height={cellHeight}
-                fontSize={0.65}
-              />
+              <g className="memory_cell_address">
+                <rect
+                  width={cellWidth}
+                  height={cellHeight / 2}
+                  stroke={'black'}
+                  fill="none"
+                  display={d.display}
+                />
+                <text
+                  dx={cellWidth >> 1}
+                  dy={cellHeight / 3}
+                  fontSize={`0.7rem`}
+                  textAnchor="middle"
+                >{`${d.a}`}</text>
+              </g>
+              <g
+                className="memory_cell_value"
+                transform={Translate(cellWidth, 0)}
+              >
+                <rect
+                  width={cellWidth}
+                  height={cellHeight / 2}
+                  stroke={'black'}
+                  fill="none"
+                  display={d.display}
+                />
+                <text
+                  fontSize={'0.7rem'}
+                  textAnchor="middle"
+                  dx={cellWidth >> 1}
+                  dy={cellHeight / 3}
+                >{`${d.val}`}</text>
+              </g>
+              <g
+                className="memory_cell_value"
+                transform={Translate(cellWidth * 2, 0)}
+              >
+                {d.id && (
+                  <text
+                    dx={5}
+                    dy={cellHeight / 3}
+                    fontSize="0.7rem"
+                    textAnchor="start"
+                  >
+                    {d.id}
+                  </text>
+                )}
+              </g>
             </g>
-            <g
-              className="memory_cell_value"
-              transform={Translate(cellWidth * 2, 0)}
-            >
-              {d.id ? (
-                <Text val={`${d.id}`} pos={{ x: 5, y: cellHeight / 3 }} />
-              ) : (
-                <></>
-              )}
-            </g>
-          </g>
-        );
-      })}
+          );
+        })}
+      </g>
     </Board>
   );
 }

@@ -9,6 +9,7 @@ export function Line({
   dash = 0,
   markerEnd,
   markerStart,
+  shapeRendering = 'auto',
 }: LineProps) {
   return (
     <line
@@ -21,6 +22,7 @@ export function Line({
       strokeDasharray={dash}
       markerEnd={markerEnd ? `url(#${markerEnd})` : ''}
       markerStart={markerStart ? `url(#${markerStart})` : ''}
+      shapeRendering={shapeRendering}
     />
   );
 }

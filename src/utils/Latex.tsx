@@ -13,6 +13,7 @@ export const Latex = ({
   color = 'black',
   fitContent = false,
   textAlign = 'center',
+  block = true,
 }: LatexProps) => {
   return (
     <g transform={`translate(${offset.x}, ${offset.y})`} dx={dx} dy={dy}>
@@ -23,10 +24,12 @@ export const Latex = ({
             textAlign: `${textAlign}`,
             height: fitContent ? 'fit-content' : '',
             width: fitContent ? 'fit-content' : '',
+            padding: 0,
+            margin: 0,
             color: color,
           }}
         >
-          <Maths val={`\\text{${text}}`} />
+          <Maths val={`\\text{${text}}`} block={block} />
         </div>
       </foreignObject>
     </g>

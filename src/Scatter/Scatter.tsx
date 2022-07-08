@@ -83,7 +83,6 @@ export function LinearRegression(dataset: ScatterData) {
     sumY += y;
     sumX2 += Math.pow(x, 2);
     sumXY += x * y;
-    console.log({ sumX, sumY, sumX2, sumXY });
   }
   let xMean = sumX / count;
   let yMean = sumY / count;
@@ -139,7 +138,6 @@ export function Scatter({
   const _svg = svg(width, height, margins);
   const _data = MakeScatterData(data, start, end);
   const _dataPoints = _data.dataPoints;
-  console.log(_dataPoints);
   const _xMin = _data.xMin;
   const _xMax = _data.xMax;
   const _yMin = _data.yMin;
@@ -211,11 +209,12 @@ export function Scatter({
               [_yMin, _yMax]
             )}
             <g transform={Translate(0, _svg.height + marginBottom / 4)}>
-              <Text val={_regressionData.label} fitContent={true} width={200} />
+              <Text val={_regressionData.label} fitContent={true} width={500} />
               <Text
                 val={_regressionData.rsquaredLabel}
                 pos={{ x: 0, y: _svg.height / 15 }}
-                width={200}
+                width={300}
+                textAlign="center"
               />
             </g>
           </>

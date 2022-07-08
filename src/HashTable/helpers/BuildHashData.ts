@@ -29,17 +29,3 @@ function BuildHashData(data: HashData) {
     values: outputData,
   };
 }
-
-const data = [
-  ['val1'],
-  [],
-  [],
-  ['val2', 'val3'],
-  ['val4', 'val5', 'val6'],
-  ['val7', 'val8', 'val9'],
-  [],
-  ['val10'],
-];
-
-const result = BuildHashData(data);
-console.log(result);

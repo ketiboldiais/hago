@@ -14,6 +14,9 @@ export const AxisVertical = ({
   dy = 0,
   offsetTick = 0,
   fitContent = true,
+  latex = true,
+  textAnchor = 'end',
+  fontsize = 0.6,
 }: AxisProps): ReactElement => {
   const ticks = useMemo(() => {
     const yScale = scaleLinear().domain(domain).range(range);
@@ -42,12 +45,23 @@ export const AxisVertical = ({
           ) : (
             <line x1={-3} x2={3} stroke="currentColor" />
           )}
-          <Text
-            val={value}
-            pos={{ x: dx, y: dy }}
-            fontSize={0.6}
-            fitContent={fitContent}
-          />
+          {latex ? (
+            <Text
+              val={value}
+              pos={{ x: dx, y: dy }}
+              fontSize={0.6}
+              fitContent={fitContent}
+            />
+          ) : (
+            <text
+              dx={dx}
+              y={dy}
+              textAnchor={textAnchor}
+              fontSize={`${fontsize}rem`}
+            >
+              {value}
+            </text>
+          )}
         </g>
       ))}
     </g>

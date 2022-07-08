@@ -7,9 +7,26 @@ import { Mem, MemProps } from '../src';
 
 Memory diagrams are rendered with the `Mem` component:
 
-<Mem data={[
-	{val: 1, className: "vald"},
-	{val: 2, className: "vald2"},
-	{val: 3, className: "vald2"},
-	{val: 4, className: "vald2"},
-]}/>
+<Mem
+  data={[
+    { val: 6, id: 'a' },
+    { val: 3 },
+    { val: 1 },
+    { val: 2 },
+    { val: 5 },
+    { val: 8, id: 'b' },
+    { val: 7 },
+    { val: 3 },
+    { val: 2 },
+    { val: 9 },
+    { val: 9, id: 'c' },
+    { val: 2 },
+    { val: 1 },
+    { val: 0 },
+    { val: 7 },
+  ]}
+  dataSize={4}
+  scale={70}
+  height={500}
+  width={350}
+/>

@@ -17,12 +17,22 @@
     "moduleResolution": "node",
     "allowJs": false,
     "jsx": "react",
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true
   },
   "include": ["src"],
-  "exclude": ["dist", "node_modules", "src/Bipartite/*", "src/BarChart/*"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/Bipartite/*",
+    "src/BarChart/*",
+    "src/PolyTree/*"
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }

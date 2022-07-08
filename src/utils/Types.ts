@@ -68,6 +68,10 @@ export interface BaseProps {
    * all at once.
    */
   margins?: [number, number, number, number];
+  /**
+   * Sets the font size
+   */
+  fontSize?: number;
 }
 
 /**
@@ -97,6 +101,8 @@ export interface AxisProps {
   textAnchor?: 'start' | 'middle' | 'end';
   axisLabelArray?: (string | number)[];
   fitContent?: boolean;
+  latex?: boolean;
+  fontsize?: number;
 }
 
 /**
@@ -714,6 +720,7 @@ export interface LatexProps {
   color: string;
   fitContent: boolean;
   textAlign: 'center' | 'justify' | 'left' | 'right';
+  block?: boolean;
 }
 
 export interface LineProps {
@@ -724,6 +731,11 @@ export interface LineProps {
   dash?: number;
   markerEnd?: string;
   markerStart?: string;
+  shapeRendering?:
+    | 'auto'
+    | 'optimizeSpeed'
+    | 'crispEdges'
+    | 'geometricPrecision';
 }
 
 export interface MarkerProps {
@@ -796,6 +808,8 @@ export interface TextProps {
   height?: number;
   fitContent?: boolean;
   textAlign?: 'center' | 'justify' | 'left' | 'right';
+  anchor?: 'start' | 'middle' | 'end';
+  latex?: boolean;
 }
 
 /* Refactor Candidates ---- */
@@ -814,6 +828,7 @@ export type Datum = {
   group?: string | number;
   ant?: Annotation;
   ptr?: string;
+  data?: number;
   class?: string;
 };
 /**

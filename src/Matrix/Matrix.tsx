@@ -36,7 +36,6 @@ export function Matrix({
   const _svg = svg(width, height, margins);
   const _columnIndices = range(data[0].length);
   const _data = MakeMatrixData(data);
-  console.log(_data);
   const _scaleX = scaleBand()
     .range([0, _svg.width])
     .domain(_data.jaggedElementsArray.map((d) => `${d.group}`));

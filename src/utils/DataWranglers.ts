@@ -1,5 +1,5 @@
 import { isObjectLiteral } from './TypeChecks';
-import { ArrayData, DatumArray, StackData } from './Types';
+import { ArrayData, Datum, DatumArray, StackData } from './Types';
 import { IsNull } from './TypeChecks';
 
 export function formatStackData(userInputDataArray: StackData) {
@@ -23,9 +23,13 @@ export function generateElements(
   for (let i = 0; i < userInputDataArray.length; i++) {
     let currentElement = userInputDataArray[i];
     if (isObjectLiteral(currentElement)) {
+      if (!(currentElement as Datum).data) (currentElement as Datum).data = 1;
       formattedData.push(currentElement);
     } else {
-      let newFrame = { val: currentElement };
+      let newFrame: Datum = {
+        val: currentElement as string | number,
+        data: 1,
+      };
       formattedData.push(newFrame);
     }
   }

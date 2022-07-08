@@ -18,3 +18,6 @@ export * from './Types';
 export * from './TypeChecks';
 export * from './HagoMath/Normalize';
 export * from './Maths';
+export * from './StructGuard';
+export * from './Path';
+export * from './Cell';

@@ -15,6 +15,9 @@ export const AxisHorizontal = ({
   tx = 0,
   axisLabelArray,
   fitContent = true,
+  latex = true,
+  textAnchor = 'middle',
+  fontsize = 0.6,
 }: AxisProps): ReactElement => {
   const ticks = useMemo(() => {
     const xScale = scaleLinear().domain(domain).range(range);
@@ -43,14 +46,25 @@ export const AxisHorizontal = ({
           ) : (
             <line y1={-3} y2={3} stroke="currentColor" />
           )}
-          <Text
-            val={
-              axisLabelArray && axisLabelArray[i] ? axisLabelArray[i] : value
-            }
-            pos={{ x: dx, y: dy }}
-            fitContent={fitContent}
-            fontSize={0.6}
-          />
+          {latex ? (
+            <Text
+              val={
+                axisLabelArray && axisLabelArray[i] ? axisLabelArray[i] : value
+              }
+              pos={{ x: dx, y: dy }}
+              fitContent={fitContent}
+              fontSize={0.6}
+            />
+          ) : (
+            <text
+              dx={dx}
+              y={dy}
+              textAnchor={textAnchor}
+              fontSize={`${fontsize}rem`}
+            >
+              {value}
+            </text>
+          )}
         </g>
       ))}
     </g>

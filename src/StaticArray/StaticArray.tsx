@@ -19,15 +19,15 @@ export function StaticArray({
   startIndex = 0,
   className = 'hago_StaticArray',
   id = makeId(className),
-  width = 300,
-  height = 300,
+  width = 0.574045 * data.length ** 2 + 22.878 * data.length + 45.8824,
+  height = 80,
   scale = 100,
   cwidth = scale,
   cheight = 0.5,
-  marginTop = 50,
-  marginRight = 50,
-  marginBottom = 50,
-  marginLeft = 50,
+  marginTop = 30,
+  marginRight = 30,
+  marginBottom = 30,
+  marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
 }: StaticArrayProps) {
   const _svg = svg(width, height, margins);
@@ -74,10 +74,12 @@ export function StaticArray({
               <Text
                 val={d.val}
                 pos={{
-                  x: _sideLength / 2.8,
-                  y: -_sideLength / 3,
+                  x: 0,
+                  y: -_sideLength / 4,
                 }}
-                fitContent={true}
+                width={_sideLength}
+                height={_sideLength}
+                fontSize={0.6}
               />
             </g>
             <g className="hago_StaticArray_index_text">
@@ -88,10 +90,12 @@ export function StaticArray({
                     : i + startIndex
                 }
                 pos={{
-                  x: -_sideLength / 2.2,
+                  x: 0,
                   y: _sideLength / 1.5,
                 }}
-                fontSize={0.6}
+                width={_sideLength}
+                height={_sideLength}
+                fontSize={0.5}
               />
             </g>
 
@@ -100,10 +104,12 @@ export function StaticArray({
                 <Text
                   val={d.ant || d.ant.val}
                   pos={{
-                    x: -_sideLength / 1.5,
-                    y: -_sideLength - marginTop / 6,
+                    x: 0,
+                    y: -_sideLength,
                   }}
-                  fitContent={true}
+                  width={_sideLength}
+                  height={_sideLength}
+                  fontSize={0.5}
                 />
               </g>
             )}
@@ -112,27 +118,28 @@ export function StaticArray({
               <g
                 className="hago_StaticArray_pointer"
                 transform={Translate(
-                  -_sideLength / 1.65,
-                  _sideLength + marginBottom + 2
+                  -_sideLength/1.65,
+                  _sideLength * 2.3 
                 )}
               >
                 <Text
                   val={d.ptr}
                   pos={{
-                    x: -5,
-                    y: -margins[2] / 3 - 1,
+                    x: -_sideLength/4,
+                    y: -margins[2]/2,
                   }}
-                  fontSize={0.6}
-                  fitContent={true}
+                  width={_sideLength}
+                  height={_sideLength}
+                  fontSize={0.35}
                 />
                 <Line
                   start={{
                     x: 0,
-                    y: -10,
+                    y: 0,
                   }}
                   end={{
                     x: 0,
-                    y: -margins[2] / 1.5,
+                    y: -margins[2]/2.5,
                   }}
                   color={'black'}
                   markerEnd={`Hago_StaticArray_Pointer`}

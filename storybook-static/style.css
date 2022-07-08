@@ -45,3 +45,33 @@ li {
 .hago text {
   font-family: 'system-ui';
 }
+
+.hago_table {
+  display: flex;
+  justify-content: center;
+  font-family: 'system-ui';
+  font-size: 0.75rem;
+}
+.hago_table table {
+  border-collapse: collapse;
+}
+.hago_table td,
+.hago_table th {
+  text-align: center;
+  padding: 3px 1rem;
+}
+.hago_table th {
+  border-bottom: solid thin black;
+}
+.hago_row_Mean,
+.hago_row_Max,
+.hago_row_Min,
+.hago_row_Median {
+  border-top: solid thin black;
+}
+.hago_row_Mean td:first-child,
+.hago_row_Min td:first-child,
+.hago_row_Max td:first-child,
+.hago_row_Median td:first-child {
+  font-weight: bold;
+}

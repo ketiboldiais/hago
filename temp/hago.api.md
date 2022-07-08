@@ -10,6 +10,9 @@ import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 
 // @public (undocumented)
+export type AnalysisType = 'raw' | 'min' | 'max' | 'median' | 'sum' | 'mean' | 'frequency' | 'relative frequency' | 'cumulative relative frequency';
+
+// @public (undocumented)
 export type Annotation = string | AntObject;
 
 // @public
@@ -50,7 +53,7 @@ export interface ArrowHeadProps {
 }
 
 // @public (undocumented)
-export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, tx, axisLabelArray, }: AxisProps) => ReactElement;
+export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
 
 // @public (undocumented)
 export interface AxisProps {
@@ -62,6 +65,12 @@ export interface AxisProps {
     dx?: number;
     // (undocumented)
     dy?: number;
+    // (undocumented)
+    fitContent?: boolean;
+    // (undocumented)
+    fontsize?: number;
+    // (undocumented)
+    latex?: boolean;
     // (undocumented)
     markerEnd?: string;
     // (undocumented)
@@ -83,13 +92,14 @@ export interface AxisProps {
 }
 
 // @public (undocumented)
-export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, }: AxisProps) => ReactElement;
+export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
 
 // @public
 export interface BaseProps {
     cheight?: number;
     className?: string;
     cwidth?: number;
+    fontSize?: number;
     height?: number;
     id?: string;
     marginBottom?: number;
@@ -132,7 +142,49 @@ export interface BoardProps {
 }
 
 // @public (undocumented)
+export function BuildPriorityQueueData(data: PriorityQueueData): {
+    output: PriorityQueueDatum[];
+    priorities: string[];
+};
+
+// @public (undocumented)
 export function calculateTreeSize(_root: any): number;
+
+// @public (undocumented)
+export function Cell({ w, h, pos, fill, stroke, }: CellProps): JSX.Element;
+
+// @public (undocumented)
+export interface CellProps {
+    // (undocumented)
+    fill?: string;
+    // (undocumented)
+    h: number;
+    // (undocumented)
+    pos?: Point;
+    // (undocumented)
+    stroke?: string;
+    // (undocumented)
+    w: number;
+}
+
+// @public (undocumented)
+export function CircularQueue({ data, className, id, width, height, iradius, oradius, scale, cwidth, cheight, padding, marginTop, marginRight, marginBottom, marginLeft, margins, }: CircularQueueProps): JSX.Element;
+
+// @public (undocumented)
+export interface CircularQueueProps extends BaseProps {
+    // Warning: (ae-incompatible-release-tags) The symbol "data" is marked as @public, but its signature references "ArrayData" which is marked as @internal
+    //
+    // (undocumented)
+    data: ArrayData;
+    // (undocumented)
+    fontSize?: number;
+    // (undocumented)
+    iradius?: number;
+    // (undocumented)
+    oradius?: number;
+    // (undocumented)
+    padding?: number;
+}
 
 // @public (undocumented)
 export type Coordinate = {
@@ -141,11 +193,39 @@ export type Coordinate = {
 };
 
 // @public
+export type CubicBezier = {
+    startPull: Point;
+    endPull: Point;
+    end: Point;
+};
+
+// @public (undocumented)
+export function DataTable({ data, className, id, latex, output, include, }: DataTableProps): JSX.Element[];
+
+// @public (undocumented)
+export interface DataTableProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    data: Tabular;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    include?: AnalysisType[];
+    // (undocumented)
+    latex?: boolean;
+    // (undocumented)
+    output?: OutputType;
+}
+
+// @public
 export type Datum = {
     val: string | number;
     id?: string | number;
     group?: string | number;
     ant?: Annotation;
+    ptr?: string;
+    data?: number;
     class?: string;
 };
 
@@ -162,6 +242,20 @@ export type DatumPointer = {
 export type DatumPointerArray = DatumPointer[];
 
 // @public (undocumented)
+export function Deque({ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: DequeProps): JSX.Element;
+
+// @public (undocumented)
+export interface DequeProps extends BaseProps {
+    // Warning: (ae-incompatible-release-tags) The symbol "data" is marked as @public, but its signature references "ArrayData" which is marked as @internal
+    //
+    // (undocumented)
+    data: DatumArray | ArrayData;
+}
+
+// @public (undocumented)
+export function DoublyLinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, isIndexed, }: LinkedListProps): JSX.Element;
+
+// @public (undocumented)
 export type Edge = (string | number)[] | LinkObject | EdgeObject;
 
 // @public
@@ -174,6 +268,14 @@ export type EdgeObject = {
     name?: string;
     weight?: number;
     className?: string;
+};
+
+// @public
+export type EllipticalArc = {
+    rx: number;
+    ry: number;
+    xRotation: number;
+    end: Point;
 };
 
 // @public (undocumented)
@@ -227,6 +329,75 @@ export function generateElements(userInputDataArray: StackData | ArrayData | Dat
 export function generateTreeData(rawData: any[]): any[];
 
 // @public
+export function getConvenientEndPoint(list: number[]): number;
+
+// @public
+export function getConvenientStartingPoint(list: number[]): number;
+
+// @public (undocumented)
+export function getCumulativeRelativeFrequencies(list: number[]): {};
+
+// @public (undocumented)
+export function getFrequencies(list: number[]): {};
+
+// @public
+export function getIntervalWidth(number_of_data_values: number): number;
+
+// @public (undocumented)
+export function getMax(list: number[]): {
+    max: number;
+    atIndex: number;
+};
+
+// @public
+export function getMaxPrecision(list: number[]): number;
+
+// @public (undocumented)
+export function getMean(list: number[]): number;
+
+// @public
+export function getMedian(list: number[]): {
+    median: number;
+    orderedList: number[];
+};
+
+// @public (undocumented)
+export function getMin(list: number[]): {
+    min: number;
+    atIndex: number;
+};
+
+// @public
+export function getMinPrecision(list: number[]): number;
+
+// @public
+export function getMostPrecise(list: number[]): any;
+
+// @public
+export function getMostPreciseMax(list: number[]): {
+    max: number;
+    atIndex: number;
+};
+
+// @public
+export function getMostPreciseMin(list: number[]): {
+    min: number;
+    atIndex: number;
+};
+
+// @public (undocumented)
+export function getPrecision(val: number): number;
+
+// @public
+export function getPrecisionBoundedList(list: number[], precisionBound: number): number[];
+
+// @public (undocumented)
+export function getRelativeFrequencies(list: number[]): {};
+
+// @public (undocumented)
+export function getSum(list: number[]): number;
+
+// @public
 export function Graph({ data, className, id, straightEdge, width, height, scale, cwidth, cheight, radius, fontSize, textOffsetX, textOffsetY, blast, edgeLength, repulsion, marginTop, marginBottom, marginRight, marginLeft, margins, }: GraphProps): JSX.Element;
 
 // @public (undocumented)
@@ -260,6 +431,32 @@ export interface HashTableProps extends BaseProps {
     // (undocumented)
     data: HashData;
 }
+
+// @public (undocumented)
+export function Histogram({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: HistogramProps): JSX.Element;
+
+// @public (undocumented)
+export interface HistogramProps extends BaseProps {
+    // (undocumented)
+    data: [number, number][] | Point[];
+    // (undocumented)
+    end: number;
+    // (undocumented)
+    removeEndTicks: boolean;
+    // (undocumented)
+    removeEndTickX: boolean;
+    // (undocumented)
+    removeEndTickY: boolean;
+    // (undocumented)
+    start: number;
+    // (undocumented)
+    tickSep: number;
+}
+
+// @public (undocumented)
+export type HorizontalLineTo = {
+    H: Point;
+};
 
 // Warning: (ae-internal-missing-underscore) The name "IsaDatum" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -307,6 +504,12 @@ export function IsBinaryTreeNode(datum: any): boolean;
 // @public (undocumented)
 export function IsDefined(testSubject: any): boolean;
 
+// @public (undocumented)
+export function IsEven(val: number): boolean;
+
+// @public (undocumented)
+export function IsInteger(val: number): boolean;
+
 // @public
 export function IsLiteral(datum: any): boolean;
 
@@ -318,6 +521,12 @@ export function IsNull(testSubject: any): boolean;
 
 // @public (undocumented)
 export const isObjectLiteral: (expression: any) => boolean;
+
+// @public (undocumented)
+export function IsOdd(val: number): boolean;
+
+// @public (undocumented)
+export const IsPriorityQueueDatum: (x: any) => boolean;
 
 // @public (undocumented)
 export function IsRegisterObject(datum: any): boolean;
@@ -340,6 +549,8 @@ export interface JaggedArrayProps extends BaseProps {
 // @public (undocumented)
 export interface LatexProps {
     // (undocumented)
+    block?: boolean;
+    // (undocumented)
     color: string;
     // (undocumented)
     dx: number;
@@ -359,11 +570,13 @@ export interface LatexProps {
     // (undocumented)
     text: string;
     // (undocumented)
+    textAlign: 'center' | 'justify' | 'left' | 'right';
+    // (undocumented)
     width: number;
 }
 
 // @public (undocumented)
-export function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, }: LineProps): JSX.Element;
+export function Line({ start, end, color, strokeWidth, dash, markerEnd, markerStart, shapeRendering, }: LineProps): JSX.Element;
 
 // @public (undocumented)
 export function LinearRegression(dataset: ScatterData): {
@@ -386,10 +599,17 @@ export interface LineProps {
     // (undocumented)
     markerStart?: string;
     // (undocumented)
+    shapeRendering?: 'auto' | 'optimizeSpeed' | 'crispEdges' | 'geometricPrecision';
+    // (undocumented)
     start: Point;
     // (undocumented)
     strokeWidth?: number;
 }
+
+// @public (undocumented)
+export type LineTo = {
+    L: Point;
+};
 
 // @public (undocumented)
 export function LinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, isIndexed, }: LinkedListProps): JSX.Element;
@@ -474,8 +694,9 @@ export interface MarkerProps {
 }
 
 // @public (undocumented)
-export function Maths({ val }: {
+export function Maths({ val, block }: {
     val: any;
+    block?: boolean;
 }): JSX.Element;
 
 // @public (undocumented)
@@ -596,7 +817,30 @@ export type NodeObject = {
 export function Normalize(enteredValue: number, minEntry?: number, maxEntry?: number, normalizedMin?: number, normalizedMax?: number): number;
 
 // @public (undocumented)
-export const Plot: ({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, margins, }: PlotProps) => JSX.Element;
+export type OutputType = (AnalysisType | [AnalysisType, string])[];
+
+// @public (undocumented)
+export function Path({ start, d, fill, color, strokeWidth, }: PathProps): JSX.Element;
+
+// @public
+export type PathData = (LineTo | HorizontalLineTo | VerticalLineTo | CubicBezier | QuadraticBezier | EllipticalArc)[];
+
+// @public
+export interface PathProps {
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    d: PathData;
+    // (undocumented)
+    fill?: string;
+    // (undocumented)
+    start: StartPoint;
+    // (undocumented)
+    strokeWidth?: number;
+}
+
+// @public (undocumented)
+export const Plot: ({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PlotProps) => JSX.Element;
 
 // @public (undocumented)
 export function Plot3D({ cameraParams, z, segments, xMin, gridColor, xMax, xRange, yMin, yMax, yRange, scale, size, }: {
@@ -641,6 +885,9 @@ export interface PlotProps extends BaseProps {
     yTicks?: number;
 }
 
+// @public (undocumented)
+export type PlotType = 'table' | 'scatter' | 'histogram';
+
 // @public
 export type Point = {
     x: number;
@@ -666,6 +913,24 @@ export interface PolarProps extends BaseProps {
 }
 
 // @public (undocumented)
+export function PriorityQueue({ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PriorityQueueProps): JSX.Element;
+
+// @public (undocumented)
+export type PriorityQueueData = (string[] | number[])[] | PriorityQueueDatum[];
+
+// @public (undocumented)
+export interface PriorityQueueProps extends BaseProps {
+    // (undocumented)
+    data: PriorityQueueData;
+}
+
+// @public
+export type QuadraticBezier = {
+    pull: Point;
+    end: Point;
+};
+
+// @public (undocumented)
 export function Queue({ data, className, id, fontSize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: QueueProps): JSX.Element;
 
 // @public (undocumented)
@@ -683,6 +948,9 @@ export interface QueueProps extends BaseProps {
     // (undocumented)
     startIndex?: number;
 }
+
+// @public (undocumented)
+export function Quicksort(list: number[]): number[];
 
 // @public (undocumented)
 export type RegisterArray = (RegisterObject | MemoryDatum | Literal)[] | string;
@@ -810,8 +1078,13 @@ export interface StackProps extends BaseProps {
     scale?: number;
 }
 
+// @public
+export type StartPoint = {
+    M: Point;
+};
+
 // @public (undocumented)
-export function StaticArray({ data, pointers, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: StaticArrayProps): JSX.Element;
+export function StaticArray({ data, reverseIndex, startIndex, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: StaticArrayProps): JSX.Element;
 
 // @public (undocumented)
 export interface StaticArrayProps extends BaseProps {
@@ -826,6 +1099,9 @@ export interface StaticArrayProps extends BaseProps {
     // (undocumented)
     startIndex?: number;
 }
+
+// @public (undocumented)
+export function StructGuard(callback: Function, properties: string[]): (x: any) => boolean;
 
 // @public (undocumented)
 export function Sum({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: SumProps): JSX.Element;
@@ -855,11 +1131,16 @@ export const svg: (_width: number, _height: number, _margins: number[]) => {
 };
 
 // @public (undocumented)
-function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, }: TextProps): JSX.Element;
+export type Tabular = (string | number)[][] | (string | number)[];
+
+// @public (undocumented)
+function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }: TextProps): JSX.Element;
 export { Text_2 as Text }
 
 // @public
 export interface TextProps {
+    // (undocumented)
+    anchor?: 'start' | 'middle' | 'end';
     color?: string;
     dx?: number;
     dy?: number;
@@ -868,7 +1149,11 @@ export interface TextProps {
     fontSize?: number;
     // (undocumented)
     height?: number;
+    // (undocumented)
+    latex?: boolean;
     pos?: Coordinate;
+    // (undocumented)
+    textAlign?: 'center' | 'justify' | 'left' | 'right';
     val: number | string | boolean;
     width?: number;
 }
@@ -923,6 +1208,15 @@ export interface TreeProps extends BaseProps {
 
 // @public (undocumented)
 export type TupleXY = [number, number];
+
+// @public (undocumented)
+export type VerticalLineTo = {
+    V: Point;
+};
+
+// Warnings were encountered during analysis:
+//
+// dist/hago.d.ts:1312:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

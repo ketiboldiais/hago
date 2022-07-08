@@ -18,4 +18,9 @@ export * from './Matrix/Matrix';
 export * from './Sum/Sum';
 export * from './Scatter/Scatter';
 export * from './HashTable/HashTable';
-
+export * from './Deque/Deque';
+export * from './CircularQueue/CircularQueue';
+export * from './DataTable/DataTable';
+export * from './Histogram/Histogram';
+export * from './DoublyLinkedList/DoublyLinkedList';
+export * from './PriorityQueue/PriorityQueue';

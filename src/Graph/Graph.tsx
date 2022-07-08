@@ -21,19 +21,24 @@ export function Graph({
     [2, 4],
     [5, 6],
     [7, 6],
+    [6, 8],
+    [8, 9],
+    [11, 2],
+    [0, 9],
+    [12, 2],
   ],
   className = 'hago_graph',
   id = makeId(className),
-  straightEdge = false,
+  straightEdge = true,
   width = 500,
   height = 500,
   scale = 100,
   cwidth = scale,
   cheight,
-  radius = 5,
+  radius = 10,
   fontSize = 0.8,
-  textOffsetX = radius,
-  textOffsetY = -radius,
+  textOffsetX = 0,
+  textOffsetY = radius / 2,
   blast = 10,
   edgeLength = 50,
   repulsion = 0.01,
@@ -95,11 +100,14 @@ export function Graph({
             transform={Translate(d.x, d.y)}
           >
             <circle stroke={'black'} r={radius} fill={'white'} />
-            <Text
-              val={d.id}
-              pos={{ x: textOffsetX, y: textOffsetY }}
-              fontSize={fontSize}
-            />
+            <text
+              fontSize={`${fontSize}rem`}
+              dx={textOffsetX}
+              dy={textOffsetY}
+              textAnchor="middle"
+            >
+              {d.id}
+            </text>
           </g>
         );
       })}
