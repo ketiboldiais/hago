@@ -38,6 +38,10 @@ li {
   font-size: 1.1rem !important;
 }
 
+.katex {
+  font-size: 0.95rem;
+}
+
 .hago_stack_frame text {
   font-family: 'system-ui';
 }

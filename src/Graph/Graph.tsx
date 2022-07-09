@@ -8,7 +8,7 @@ import {
   forceLink,
   forceSimulation,
 } from 'd3-force';
-import { svg, makeId, Text, Translate, Board, GraphProps } from '../utils';
+import { svg, makeId, Translate, Board, GraphProps } from '../utils';
 import { BuildEdgeData, BuildNodeData, BuildPath } from './Helpers';
 
 /**

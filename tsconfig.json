@@ -29,7 +29,8 @@
     "node_modules",
     "src/Bipartite/*",
     "src/BarChart/*",
-    "src/PolyTree/*"
+    "src/PolyTree/*",
+    "src/TruthTable/*"
   ],
   "ts-node": {
     "esm": true,

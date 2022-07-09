@@ -8,7 +8,6 @@ import {
   IsaDatum,
   IsLiteral,
   Translate,
-  Text,
   MatrixData,
   MatrixProps,
 } from '../utils';
@@ -16,14 +15,15 @@ import { range } from 'd3';
 
 export function Matrix({
   data = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16],
   ],
   className = 'hago_jagged_array',
   id = makeId(className),
   width = 200,
-  height = width - 35,
+  height = 200,
   scale = 100,
   cwidth = scale,
   cheight,
@@ -32,16 +32,19 @@ export function Matrix({
   marginBottom = 30,
   marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
+  order = 'row',
 }: MatrixProps) {
   const _svg = svg(width, height, margins);
   const _columnIndices = range(data[0].length);
-  const _data = MakeMatrixData(data);
+  const _data = MakeMatrixData(data, order);
   const _scaleX = scaleBand()
     .range([0, _svg.width])
-    .domain(_data.jaggedElementsArray.map((d) => `${d.group}`));
+    .domain(_data.jaggedElementsArray.map((d) => `${d.group}`))
+    .padding(0.05);
   const _scaleY = scaleBand()
     .range([0, _svg.height])
-    .domain(_data.jaggedElementsArray.map((d) => `${d.id}`));
+    .domain(_data.jaggedElementsArray.map((d) => `${d.id}`))
+    .padding(0.05);
   const _rectWidth = _scaleX.bandwidth();
   const _rectHeight = _scaleY.bandwidth();
   return (
@@ -62,12 +65,19 @@ export function Matrix({
                 key={`jaggedIndex_${id}_${i}`}
                 transform={Translate(-10, _scaleY(`${d.val}`))}
               >
-                <Text
+                <text
+                  fontSize={`0.6rem`}
+                  dy={_rectWidth / 2}
+                  textAnchor={'end'}
+                >
+                  {d.val}
+                </text>
+                {/* <Text
                   val={d.val}
                   fontSize={0.6}
                   fitContent={true}
                   pos={{ x: -_rectWidth / 3, y: 0 }}
-                />
+                /> */}
               </g>
             </>
           );
@@ -79,12 +89,20 @@ export function Matrix({
               key={`jaggedIndex_${id}_${i}`}
               transform={Translate(_scaleX(`${i}`), 0)}
             >
-              <Text
+              <text
+                fontSize={`0.6rem`}
+                dx={_rectWidth / 2}
+                dy={-_rectWidth / 4}
+                textAnchor={'middle'}
+              >
+                {d}
+              </text>
+              {/* <Text
                 val={d}
                 fontSize={0.6}
                 pos={{ x: _rectWidth / 2.5, y: -_rectHeight }}
                 fitContent={true}
-              />
+              /> */}
             </g>
           );
         })}
@@ -101,11 +119,14 @@ export function Matrix({
                 width={_rectWidth}
                 height={_rectHeight}
               />
-              <Text
-                val={d.val}
-                pos={{ x: _rectWidth / 2.5, y: -_rectHeight / 6 }}
-                fitContent={true}
-              />
+              <text
+                fontSize={`0.8rem`}
+                dx={_rectWidth / 2}
+                dy={_rectHeight / 1.5}
+                textAnchor={'middle'}
+              >
+                {d.val}
+              </text>
             </g>
           );
         })}
@@ -114,7 +135,7 @@ export function Matrix({
   );
 }
 
-export function MakeMatrixData(data: MatrixData) {
+export function MakeMatrixData(data: MatrixData, order: 'row' | 'col') {
   let jaggedIndicesArray: Datum[] = [];
   let jaggedElementsArray: Datum[] = [];
   let jaggedIndex: Datum;
@@ -128,8 +149,9 @@ export function MakeMatrixData(data: MatrixData) {
         jaggedElementsArray.push(data[i][j] as Datum);
       } else if (IsLiteral(data[i][j])) {
         // handle literal
+        let val = order === 'row' ? data[i][j] : data[j][i];
         jaggedElement = {
-          val: data[i][j] as string,
+          val: val as string,
           id: i,
           group: j,
           class: `jagged_array_element`,

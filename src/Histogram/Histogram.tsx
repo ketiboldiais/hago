@@ -14,7 +14,6 @@ import {
   makeId,
   Point,
   svg,
-  Text,
   Translate,
 } from '../utils';
 
@@ -113,8 +112,10 @@ export function Histogram({
           range={[0, _svg.width]}
           tickSep={_intervalWidth * 30}
           tx={-_rectWidth / 2}
+          dy={marginBottom / 2}
           axisLabelArray={_axisLabels}
           removeEndTicks={removeEndTickX}
+          latex={false}
         />
       </g>
       <g>
@@ -123,8 +124,9 @@ export function Histogram({
           range={[_svg.height, 0]}
           tickSep={tickSep}
           removeEndTicks={removeEndTickY}
-          dy={-15}
-          dx={-marginLeft / 1.5}
+          dy={tickSep / 10 / 2}
+          dx={-marginLeft / 4}
+          latex={false}
         />
       </g>
       {_dataPoints.map((d, i) => {
@@ -139,12 +141,9 @@ export function Histogram({
               stroke="black"
               fill="none"
             />
-            <Text
-              val={d.y}
-              fitContent={true}
-              pos={{ x: _rectWidth / 3, y: -30 }}
-              textAlign="center"
-            />
+            <text textAnchor="middle" dx={_rectWidth / 2} dy={-2}>
+              {d.y}
+            </text>
           </g>
         );
       })}

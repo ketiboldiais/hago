@@ -7,7 +7,6 @@ import {
   Translate,
   AxisHorizontal,
   AxisVertical,
-  Text,
   StackPlotProps,
 } from '../utils';
 import { MakeStackPlotData } from './helpers';
@@ -68,10 +67,11 @@ export function StackPlot({
             domain={[_yMin, _yMax + 1]}
             range={[_svg.height, 0]}
             tickSep={_rectHeight}
-            dx={-marginLeft / 2}
-            dy={-_rectHeight / 1.5}
-            textAnchor={'start'}
+            dx={-marginLeft / 4}
+            dy={_rectHeight / 8}
+            textAnchor={'end'}
             removeEndTicks={false}
+            latex={false}
           />
         </g>
         <g className="stack_plot_x_axis" transform={Translate(0, _svg.height)}>
@@ -79,11 +79,12 @@ export function StackPlot({
             domain={[_xMin, _xMax]}
             range={[0, _svg.width - _rectWidth / 1.8]}
             tickSep={_rectWidth}
-            tx={_rectWidth / 2}
-            dx={-_rectWidth / 2}
+            dx={0}
+            dy={marginBottom / 2}
             fitContent={false}
             removeEndTicks={false}
             axisLabelArray={axisGroups}
+            latex={false}
           />
         </g>
         {_data.points.map((d, i) => {
@@ -98,7 +99,16 @@ export function StackPlot({
                 stroke={'black'}
                 fill={'none'}
               />
-              {d.id && <Text val={d.id} pos={{ x: -2, y: -_rectHeight / 2 }} />}
+              {d.id && (
+                <text
+                  textAnchor="middle"
+                  dy={_rectHeight / 1.5}
+                  dx={_rectWidth / 2}
+                >
+                  {d.id}
+                </text>
+              )}
+              {/* {d.id && <Text val={d.id} pos={{ x: -2, y: -_rectHeight / 2 }} />} */}
             </g>
           );
         })}

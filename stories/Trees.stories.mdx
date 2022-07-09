@@ -1,11 +1,11 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 import { Tree, TreeProps } from '../src/Tree/Tree';
 
-<Meta title="Trees/Introduction" component={Tree} />
+<Meta title="Trees/Basic Trees" component={Tree} />
 
 # Tree
 
-Hago's `Tree` module allows quick rendering of trees.
+The `<Tree/>` component will render a generic tree:
 
 <Tree
   data={[
@@ -27,11 +27,28 @@ Hago's `Tree` module allows quick rendering of trees.
   id="Tree1"
 />
 
-<Tree data={[
-    ['a', [2, 3]],
+## Binary Trees
+
+If a tuple is passed to the nested array of nodes, a binary tree is assumed and rendered. For example, the code:
+
+```javascript
+<Tree
+  data={[
+    [0, [2, 3]],
     [2, [17, 19]],
     [3, [36, 7]],
     [17, [25, null]],
-  ]
- }/>
+  ]}
+/>
+```
 
+renders the tree:
+
+<Tree
+  data={[
+    [0, [2, 3]],
+    [2, [17, 19]],
+    [3, [36, 7]],
+    [17, [25, null]],
+  ]}
+/>

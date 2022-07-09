@@ -164,22 +164,28 @@ export function Scatter({
       cheight={cheight}
       margins={margins}
     >
-      <g transform={Translate(_xScale(_xMin), _yScale(_xMin))}>
+      <g transform={Translate(0, _yScale(0))}>
         <AxisHorizontal
           domain={[_xMin, _xMax]}
           range={[0, _svg.width]}
           tickSep={tickSep}
+          dy={marginBottom / 4}
           removeEndTicks={removeEndTickX}
+          latex={false}
         />
       </g>
-      <AxisVertical
-        domain={[_yMin, _yMax]}
-        range={[_svg.height, 0]}
-        tickSep={tickSep}
-        removeEndTicks={removeEndTickY}
-        dy={-15}
-        dx={-marginLeft / 1.5}
-      />
+      <g transform={Translate(_xScale(0), 0)}>
+        <AxisVertical
+          domain={[_yMin, _yMax]}
+          range={[_svg.height, 0]}
+          tickSep={tickSep}
+          removeEndTicks={removeEndTickY}
+          dy={tickSep / 10 / 2}
+          dx={-marginLeft / 4}
+          latex={false}
+          textAnchor={'end'}
+        />
+      </g>
       <g className="hago_sequence_plot_points">
         {_dataPoints.map((d, i) => {
           return (
@@ -209,11 +215,15 @@ export function Scatter({
               [_yMin, _yMax]
             )}
             <g transform={Translate(0, _svg.height + marginBottom / 4)}>
-              <Text val={_regressionData.label} fitContent={true} width={500} />
+              <Text
+                val={_regressionData.label}
+                width={_svg.width}
+                textAlign={'center'}
+              />
               <Text
                 val={_regressionData.rsquaredLabel}
                 pos={{ x: 0, y: _svg.height / 15 }}
-                width={300}
+                width={_svg.width}
                 textAlign="center"
               />
             </g>

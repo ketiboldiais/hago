@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from '../../utils';
 
 export function DataField(
   _nodeWidth: number,
@@ -25,11 +24,9 @@ export function DataField(
 function DataFieldText(d: any, _nodeWidth: number, _nodeHeight: number) {
   return (
     <g className="hago_LinkedList_text_data">
-      <Text
-        val={d.val}
-        pos={{ x: -_nodeWidth / 1.2, y: -_nodeHeight / 1.4 }}
-        fontSize={0.45}
-      />
+      <text fontSize={`0.55rem`} dx={_nodeWidth / 2.5} dy={_nodeHeight / 1.25}>
+        {d.val}
+      </text>
     </g>
   );
 }
@@ -41,7 +38,9 @@ function indexText(
 ): React.ReactNode {
   return (
     <g className={'hago_LinkedList_text_index'}>
-      <Text val={i} fontSize={0.4} pos={{ x: -_nodeWidth / 1.5, y: 5 }} />
+      <text fontSize={`0.55rem`} dx={_nodeWidth / 2.5} dy={_nodeHeight * 2}>
+        {i}
+      </text>
     </g>
   );
 }

@@ -6,7 +6,7 @@ import { Board, svg, PolarProps } from '../utils';
 import { BuildPolarData } from './Helpers/BuildPolarData';
 
 export const Polar = ({
-  data = [{ f: (t) => Math.sin(2 * t) * Math.cos(2 * t) }],
+  data = [],
   domain = [0, 2 * Math.PI],
   className = 'Hago_Polar',
   width = 500,

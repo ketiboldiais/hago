@@ -7,7 +7,6 @@ import {
   makeId,
   Translate,
   SetClassName,
-  Text,
   formatStackData,
 } from '../utils';
 import {
@@ -64,21 +63,26 @@ export const Stack = ({
                 stroke={'black'}
                 fill={'none'}
               />
-              <Text
-                val={d.val}
-                pos={{ x: fwidth / 2 - 2, y: -fheight / 6 }}
-                fitContent={true}
-                fontSize={0.6}
-              />
+              <text
+                dx={fwidth / 2}
+                textAnchor="middle"
+                dy={fheight / 2}
+                fontSize={`0.8rem`}
+              >
+                {d.val}
+              </text>
+
               {d.ant && (
-                <Text
-                  val={d.ant}
-                  pos={{ x: fwidth + marginRight / 4, y: -fheight / 6 }}
-                  fitContent={true}
-                  fontSize={0.6}
-                />
+                <text
+                  dx={fwidth + 5}
+                  textAnchor="start"
+                  dy={fheight / 2}
+                  fontSize={`0.8rem`}
+                >
+                  {d.val}
+                </text>
               )}
-              {d.ptr ? RenderFramePointer(fheight, fwidth, d) : <></>}
+              {d.ptr && RenderFramePointer(fheight, fwidth, d)}
             </g>
           );
         })}

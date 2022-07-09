@@ -128,6 +128,8 @@ export function Sum({
           range={[0, _svg.width]}
           tickSep={tickSep}
           removeEndTicks={removeEndTickX}
+          latex={false}
+          dy={marginBottom / 2}
         />
       </g>
       <AxisVertical
@@ -137,6 +139,8 @@ export function Sum({
         removeEndTicks={removeEndTickY}
         textAnchor={'end'}
         dx={-marginLeft / 4}
+        dy={2}
+        latex={false}
       />
       <g className="hago_sum_plot_points">
         {_dataPoints.map((d, i) => {

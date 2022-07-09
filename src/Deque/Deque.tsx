@@ -9,7 +9,6 @@ import {
   Line,
   makeId,
   svg,
-  Text,
   Translate,
 } from '../utils';
 
@@ -59,34 +58,35 @@ export function Deque({
         return (
           <g key={`${id}_${i}`} transform={Translate(_xScale(d), _height)}>
             <rect width={_width} height={_height} fill="white" stroke="black" />
-            <Text
-              val={d.val}
-              pos={{ x: _width / 2.5, y: -_height / 2 - 1 }}
-              fontSize={fontSize}
-              fitContent={true}
-            />
+            <text
+              textAnchor="middle"
+              dx={_width / 2}
+              dy={_height / 1.5}
+              fontSize={`${fontSize}rem`}
+            >
+              {_queuerCount - 1 - i}
+            </text>
+
             <g className="hago_Deque_indices">
               <g className="hago_Dequeue_front_index">
-                <Text
-                  val={_queuerCount - 1 - i}
-                  fontSize={fontSize - 0.2}
-                  pos={{
-                    x: _width / 2.5,
-                    y: -_height - _height / 4,
-                  }}
-                  fitContent={true}
-                />
+                <text
+                  textAnchor="middle"
+                  dx={_width / 2}
+                  dy={-_height / 2}
+                  fontSize={`${fontSize - 0.1}rem`}
+                >
+                  {_queuerCount - 1 - i}
+                </text>
               </g>
               <g className="hago_Dequeue_rear_index">
-                <Text
-                  val={i}
-                  fontSize={fontSize - 0.2}
-                  pos={{
-                    x: _width / 2.5,
-                    y: _height - _height / 4,
-                  }}
-                  fitContent={true}
-                />
+                <text
+                  textAnchor="middle"
+                  dx={_width / 2}
+                  dy={_height * 2}
+                  fontSize={`${fontSize - 0.1}rem`}
+                >
+                  {_queuerCount - 1 - i}
+                </text>
               </g>
             </g>
           </g>

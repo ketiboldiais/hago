@@ -8,3 +8,15 @@ import { Matrix, MatrixProps } from '../src';
 Matrices can be rendered with the `<Matrix/>` component:
 
 <Matrix />
+
+## Column- vs. Row-major Ordering
+
+The `<Matrix/>` component provides a property called `order`, which takes one of two values: `row` or `col`. By default, this value is set to `row`, and the matrix will be rendered in row-major order:
+
+<Matrix />
+
+Alternatively, the property can be set to `col`, in which case the matrix will be rendered in column-major order:
+
+<Matrix order={'col'} />
+
+Note: Hago inherently uses typed arrays in row-major ordering for efficiency. As such, using the `col` option will more than likely cause cache misses. For small matrices like the examples above, the misses are negligible, but they can be substantial for larger renderings. A faster approach would be to pre-write the column-major ordered matrix in row-major order representation before passing the data.

@@ -6,6 +6,6 @@ export function Maths({ val, block = true }) {
   if (block) {
     return <TeX block>{`${val}`}</TeX>;
   } else {
-    return <TeX>{`\\text{${val}}`}</TeX>;
+    return <TeX>{`${val}`}</TeX>;
   }
 }

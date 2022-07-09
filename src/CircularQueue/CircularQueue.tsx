@@ -8,7 +8,6 @@ import {
   ArrayData,
   BaseProps,
   Translate,
-  Text,
 } from '../utils';
 
 export interface CircularQueueProps extends BaseProps {
@@ -17,13 +16,16 @@ export interface CircularQueueProps extends BaseProps {
   iradius?: number;
   oradius?: number;
   padding?: number;
+  index?: boolean;
 }
 
 export function CircularQueue({
   data = [{ val: 1, ant: 'p' }, 2, 3, 4, { val: 71, ant: 'c' }, 6, 7, 8, 9],
+  index = false,
   className = 'hago_queue',
   id = makeId(className),
   width = 500,
+  fontSize = 0.8,
   height = 250,
   iradius,
   oradius,
@@ -44,9 +46,14 @@ export function CircularQueue({
   iradius = 70;
   oradius = 90;
   const _arc = arc().innerRadius(iradius).outerRadius(oradius);
-  const _indexArc = arc()
+
+  const _pointerArc = arc()
     .innerRadius(iradius)
     .outerRadius(oradius * 1.5);
+
+  const _indexArc = arc()
+    .innerRadius(iradius / 1.5)
+    .outerRadius(iradius);
 
   return (
     <Board
@@ -65,23 +72,37 @@ export function CircularQueue({
           >
             <path d={_arc(d)} fill={'none'} stroke={'black'} />
             <g transform={`translate(${_arc.centroid(d)})`}>
-              <Text
-                val={d.data.val}
-                fitContent={true}
-                pos={{ x: -iradius / 18, y: -iradius / 3.5 }}
-                fontSize={0.7}
-                textAlign={'center'}
-              />
+              <text
+                textAnchor="middle"
+                fontSize={`${fontSize}rem`}
+                dx={0}
+                dy={3 + fontSize}
+              >
+                {d.data.val}
+              </text>
             </g>
             {d.data.ant && (
+              <g transform={`translate(${_pointerArc.centroid(d)})`}>
+                <text
+                  textAnchor="middle"
+                  fontSize={`${fontSize - 0.1}rem`}
+                  dx={0}
+                  dy={2 + fontSize}
+                >
+                  {d.data.ant}
+                </text>
+              </g>
+            )}
+            {index && (
               <g transform={`translate(${_indexArc.centroid(d)})`}>
-                <Text
-                  val={d.data.ant}
-                  fitContent={true}
-                  pos={{ x: -iradius / 18, y: -iradius / 3.5 }}
-                  fontSize={0.7}
-                  textAlign={'center'}
-                />
+                <text
+                  textAnchor="middle"
+                  fontSize={`${fontSize - 0.1}rem`}
+                  dx={0}
+                  dy={2 + fontSize}
+                >
+                  {i}
+                </text>
               </g>
             )}
           </g>

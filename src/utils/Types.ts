@@ -639,15 +639,19 @@ export type HashDatum = (number | string)[];
 export type HashData = HashDatum[] | Datum[];
 export interface HashTableProps extends BaseProps {
   data: HashData;
+  fontsize?: number;
+  padding?: number;
 }
 export type JaggedArrayData = Datum[][] | Literal[][];
 
 export interface JaggedArrayProps extends BaseProps {
   data: JaggedArrayData;
+  padding?: number;
 }
 export type MatrixData = Datum[][] | Literal[][];
 export interface MatrixProps extends BaseProps {
   data: MatrixData;
+  order?: 'row' | 'col';
 }
 export type ScatterData = ScatterDatumObject[] | TupleXY[] | TupleXY[][];
 
@@ -890,7 +894,12 @@ export type FunctionDatum = {
   f: Function;
   scale?: number;
   color?: string;
+  integrate?: [number, number, Integral];
+  id?: string;
 };
+
+export type Integral = 'x' | 'y' | Function;
+
 /**
  * @public
  */

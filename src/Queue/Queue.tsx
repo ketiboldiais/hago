@@ -5,7 +5,6 @@ import {
   generateElements,
   makeId,
   svg,
-  Text,
   Translate,
   Line,
   Marker,
@@ -40,6 +39,7 @@ export function Queue({
     .range([_svg.height / 2, 0]);
   const _queuerWidth = _xScale.bandwidth();
   const _queuerHeight = _yScale.bandwidth();
+  
   return (
     <Board
       className={className}
@@ -73,12 +73,9 @@ export function Queue({
           />
         </defs>
         <g className="hago_queue_front_label">
-          <Text
-            val={'out'}
-            fontSize={fontSize - 0.15}
-            pos={{ x: -marginLeft / 3, y: -_queuerHeight + 1 }}
-            fitContent={true}
-          />
+          <text fontSize={`${fontSize - 0.15}rem`} dx={-_queuerWidth}>
+            {'out'}
+          </text>
           <Line
             start={{ x: _svg.width, y: 0 }}
             end={{ x: 0, y: 0 }}
@@ -98,23 +95,24 @@ export function Queue({
                 fill="white"
                 stroke="black"
               />
-              <Text
-                val={d.val}
-                pos={{ x: _queuerWidth / 2.5, y: -_queuerHeight / 2 - 1 }}
-                fontSize={fontSize}
-                fitContent={true}
-              />
+              <text
+                fontSize={`${fontSize}rem`}
+                textAnchor="middle"
+                dx={_queuerWidth / 2}
+                dy={_queuerHeight / 1.5}
+              >
+                {d.val}
+              </text>
+
               <g className="hago_Queue_enqueue_index">
-                <Text
-                  val={_queuerCount - 1 - i}
-                  fontSize={fontSize - 0.2}
-                  pos={{
-                    x: _queuerWidth / 2.5,
-                    y: _queuerHeight - _queuerHeight / 4,
-                  }}
-                  fitContent={true}
-                  color={'red'}
-                />
+                <text
+                  fontSize={`${fontSize - 0.2}rem`}
+                  textAnchor="middle"
+                  dx={_queuerWidth / 2}
+                  dy={_queuerHeight * 1.6}
+                >
+                  {_queuerCount - 1 - i}
+                </text>
               </g>
             </g>
           );
@@ -123,14 +121,13 @@ export function Queue({
           className="hago_queue_rear_label"
           transform={Translate(_svg.width, 0)}
         >
-          <Text
-            val={'in'}
-            fontSize={fontSize - 0.15}
-            pos={{
-              x: -marginRight / 3,
-              y: _queuerHeight * 2 + 1,
-            }}
-          />
+          <text
+            fontSize={`${fontSize - 0.15}rem`}
+            dx={_queuerWidth / 2}
+            dy={_queuerHeight * 3}
+          >
+            {'in'}
+          </text>
         </g>
         <Line
           start={{ x: 0, y: _queuerHeight * 3 }}

@@ -1,0 +1,38 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { AVLTree, AVLTreeProps } from '../src';
+
+<Meta title="Trees/AVL Trees" component={AVLTree} />
+
+# AVL Trees
+
+Hago's `<AVLTree/>` module will render an AVL tree. The numbers above each node corresponds to the balance factor, and the number below the node corresponds to the height:
+
+<AVLTree
+  data={[
+    { c: 'A', p: '' },
+    { c: 'B', p: 'A' },
+    { c: 'C', p: 'A' },
+    { c: 'E', p: 'B' },
+    { c: 'N', p: 'B' },
+    { c: 'F', p: 'C' },
+    { c: 'J', p: 'C' },
+    { c: 'N', p: 'J' },
+  ]}
+/>
+
+The rendering code:
+
+```javascript
+<AVLTree
+  data={[
+    { c: 'A', p: '' },
+    { c: 'B', p: 'A' },
+    { c: 'C', p: 'A' },
+    { c: 'E', p: 'B' },
+    { c: 'N', p: 'B' },
+    { c: 'F', p: 'C' },
+    { c: 'J', p: 'C' },
+    { c: 'N', p: 'J' },
+  ]}
+/>
+```

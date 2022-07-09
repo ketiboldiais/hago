@@ -1,0 +1,36 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { MTree, MTreeProps } from '../src';
+
+<Meta title="Trees/M-way Trees" component={MTree} />
+
+# M-way Trees
+
+Hago's `<MTree/>` module provides a way to render M-way trees:
+
+<MTree
+  data={[
+    { c: 'A', p: '', v: [5, 6] },
+    { c: 'B', p: 'A', v: [2, 7] },
+    { c: 'C', p: 'A', v: [4, 1] },
+    { c: 'E', p: 'B', v: [9, 5] },
+    { c: 'N', p: 'B', v: [9, 5] },
+    { c: 'F', p: 'C', v: [7, 1] },
+    { c: 'J', p: 'C', v: [2, 8] },
+  ]}
+/>
+
+the code:
+
+```javascript
+<MTree
+  data={[
+    { c: 'A', p: '' , v: [5, 6] },
+    { c: 'B', p: 'A', v: [2, 7] },
+    { c: 'C', p: 'A', v: [4, 1] },
+    { c: 'E', p: 'B', v: [9, 5] },
+    { c: 'N', p: 'B', v: [9, 5] },
+    { c: 'F', p: 'C', v: [7, 1] },
+    { c: 'J', p: 'C', v: [2, 8] },
+  ]}
+/>
+```

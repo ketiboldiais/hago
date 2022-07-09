@@ -7,7 +7,6 @@ import {
   makeId,
   ReturnLarger,
   Translate,
-  Text,
   Line,
   ArrowHead,
   Marker,
@@ -52,16 +51,18 @@ export function HashTable({
   ],
   className = 'hago_HashTable',
   id = makeId(className),
-  width = 400,
-  height = 400,
-  scale = 100,
+  fontsize = 0.7,
+  width = 350,
+  height = width,
+  scale = 70,
   cwidth = scale,
   cheight,
-  marginTop = 30,
-  marginRight = 30,
-  marginBottom = 30,
-  marginLeft = 30,
+  marginTop = 50,
+  marginRight = 50,
+  marginBottom = 50,
+  marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
+  padding = 0.12,
 }: HashTableProps) {
   const _svg = svg(width, height, margins);
   const _data = BuildHashData(data);
@@ -74,9 +75,11 @@ export function HashTable({
   const _scaleX = scaleLinear().domain([0, _xMax]).range([0, _svg.width]);
   const _scale = scaleBand()
     .domain(_values.map((d) => `${d.id}`))
-    .range([0, _svg.width - 100])
-    .padding(0.05);
+    .range([0, _svg.width - 50])
+    .padding(padding);
   const rectWidth = _scale.bandwidth();
+
+  console.log(_scaleX(padding));
 
   return (
     <Board
@@ -88,7 +91,7 @@ export function HashTable({
       margins={margins}
     >
       <defs>
-        <ArrowHead id={'hash_table_pointer'} refX={10} />
+        <ArrowHead id={'hash_table_pointer'} refX={9} />
         <Marker
           id={`hash_table_pointer_start`}
           type="circle"
@@ -109,13 +112,14 @@ export function HashTable({
             key={`hk_${id}_${i}`}
             transform={Translate(_scaleX(0), _scaleY(d.y))}
           >
-            <Text
-              val={d.y}
-              pos={{ x: -rectWidth / 1.2, y: rectWidth / 8 }}
-              fontSize={0.6}
-              width={rectWidth}
-              height={rectWidth}
-            />
+            <text
+              dx={-rectWidth / 4}
+              dy={rectWidth / 1.5}
+              textAnchor="end"
+              fontSize={`${fontsize - 0.1}rem`}
+            >
+              {d.y}
+            </text>
             <rect
               width={rectWidth}
               height={rectWidth}
@@ -124,7 +128,10 @@ export function HashTable({
             />
             <Line
               start={{ x: rectWidth / 2, y: rectWidth / 2 }}
-              end={{ x: rectWidth * 2.25, y: rectWidth / 2 }}
+              end={{
+                x: rectWidth * 2 + _scaleX(padding) * 3,
+                y: rectWidth / 2,
+              }}
               markerEnd={'hash_table_pointer'}
               markerStart={'hash_table_pointer_start'}
             />
@@ -136,7 +143,10 @@ export function HashTable({
           d.id && (
             <g
               key={`hv_${id}_${i}`}
-              transform={Translate(_scaleX(0.05), _scaleY(d.group as number))}
+              transform={Translate(
+                _scaleX(padding),
+                _scaleY(d.group as number)
+              )}
             >
               <rect
                 width={rectWidth}
@@ -146,13 +156,14 @@ export function HashTable({
                 stroke={'black'}
                 fill={'none'}
               />
-              <Text
-                val={d.val}
-                pos={{ x: _scale(`${d.id}`), y: 0 }}
-                width={rectWidth}
-                height={rectWidth}
-                fontSize={0.7}
-              />
+              <text
+                dx={_scale(`${d.id}`) + rectWidth / 2}
+                dy={rectWidth / 1.5}
+                textAnchor={'middle'}
+                fontSize={`0.7rem`}
+              >
+                {d.val}
+              </text>
             </g>
           )
         );

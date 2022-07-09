@@ -55,25 +55,30 @@ export function Sequence({
       cheight={cheight}
       margins={margins}
     >
-      <g transform={Translate(_xScale(_xMin), _yScale(_xMin))}>
+      <g transform={Translate(0, _yScale(0))}>
         <AxisHorizontal
           domain={[_xMin, _xMax]}
           range={[0, _svg.width]}
           tickSep={tickSep}
           removeEndTicks={removeEndTickX}
-          dx={-3}
+          dy={marginBottom / 2}
           fitContent={true}
+          latex={false}
         />
       </g>
-      <AxisVertical
-        domain={[_yMin, _yMax]}
-        range={[_svg.height, 0]}
-        tickSep={tickSep}
-        fitContent={true}
-        dx={-marginLeft / 2}
-        dy={-tickSep / 3}
-        removeEndTicks={removeEndTickY}
-      />
+      <g transform={Translate(_xScale(0), 0)}>
+        <AxisVertical
+          domain={[_yMin, _yMax]}
+          range={[_svg.height, 0]}
+          tickSep={tickSep}
+          fitContent={true}
+          dx={-marginLeft / 4}
+          dy={tickSep / 10 / 2}
+          removeEndTicks={removeEndTickY}
+          textAnchor="end"
+          latex={false}
+        />
+      </g>
       <g className="hago_sequence_plot_points">
         {_dataPoints.map((d, i) => {
           return (

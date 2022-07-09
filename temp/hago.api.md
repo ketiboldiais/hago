@@ -53,6 +53,51 @@ export interface ArrowHeadProps {
 }
 
 // @public (undocumented)
+export function AVLTree({ data, className, id, r, fontSize, width, height, tw, th, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, narrow, margins, layout, cluster, sibsep, nsibsep, render, }: AVLTreeProps): JSX.Element;
+
+// @public (undocumented)
+export type AVLTreeNode = {
+    c: string | number;
+    p: string | number;
+    h?: boolean;
+    hbf?: number;
+    id?: string;
+    i?: number;
+    className?: string;
+};
+
+// @public (undocumented)
+export type AVLTreeNodeData = AVLTreeNode[] | [string | number, string | number];
+
+// @public (undocumented)
+export interface AVLTreeProps extends BaseProps {
+    // (undocumented)
+    cluster?: boolean;
+    // (undocumented)
+    data: AVLTreeNodeData;
+    // (undocumented)
+    edgeLength?: number;
+    // (undocumented)
+    kw?: number;
+    // (undocumented)
+    layout?: 'horizontal' | 'vertical';
+    // (undocumented)
+    narrow?: number;
+    // (undocumented)
+    nsibsep?: number;
+    // (undocumented)
+    r?: number;
+    // (undocumented)
+    render?: renderOptions[];
+    // (undocumented)
+    sibsep?: number;
+    // (undocumented)
+    th?: number;
+    // (undocumented)
+    tw?: number;
+}
+
+// @public (undocumented)
 export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
 
 // @public (undocumented)
@@ -142,13 +187,19 @@ export interface BoardProps {
 }
 
 // @public (undocumented)
+export function BuildAVLTreeNodes(data: AVLTreeNodeData, uid: string): any[];
+
+// @public (undocumented)
+export function BuildMTreeNodes(data: MTreeNodeData): any[];
+
+// @public (undocumented)
 export function BuildPriorityQueueData(data: PriorityQueueData): {
     output: PriorityQueueDatum[];
     priorities: string[];
 };
 
 // @public (undocumented)
-export function calculateTreeSize(_root: any): number;
+export function calculateTreeSize(_root: any, px?: number): number;
 
 // @public (undocumented)
 export function Cell({ w, h, pos, fill, stroke, }: CellProps): JSX.Element;
@@ -168,7 +219,7 @@ export interface CellProps {
 }
 
 // @public (undocumented)
-export function CircularQueue({ data, className, id, width, height, iradius, oradius, scale, cwidth, cheight, padding, marginTop, marginRight, marginBottom, marginLeft, margins, }: CircularQueueProps): JSX.Element;
+export function CircularQueue({ data, index, className, id, width, fontSize, height, iradius, oradius, scale, cwidth, cheight, padding, marginTop, marginRight, marginBottom, marginLeft, margins, }: CircularQueueProps): JSX.Element;
 
 // @public (undocumented)
 export interface CircularQueueProps extends BaseProps {
@@ -178,6 +229,8 @@ export interface CircularQueueProps extends BaseProps {
     data: ArrayData;
     // (undocumented)
     fontSize?: number;
+    // (undocumented)
+    index?: boolean;
     // (undocumented)
     iradius?: number;
     // (undocumented)
@@ -253,7 +306,7 @@ export interface DequeProps extends BaseProps {
 }
 
 // @public (undocumented)
-export function DoublyLinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, isIndexed, }: LinkedListProps): JSX.Element;
+export function DoublyLinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: LinkedListProps): JSX.Element;
 
 // @public (undocumented)
 export type Edge = (string | number)[] | LinkObject | EdgeObject;
@@ -315,6 +368,8 @@ export type FunctionDatum = {
     f: Function;
     scale?: number;
     color?: string;
+    integrate?: [number, number, Integral];
+    id?: string;
 };
 
 // @public (undocumented)
@@ -424,12 +479,16 @@ export type HashData = HashDatum[] | Datum[];
 export type HashDatum = (number | string)[];
 
 // @public (undocumented)
-export function HashTable({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: HashTableProps): JSX.Element;
+export function HashTable({ data, className, id, fontsize, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, padding, }: HashTableProps): JSX.Element;
 
 // @public (undocumented)
 export interface HashTableProps extends BaseProps {
     // (undocumented)
     data: HashData;
+    // (undocumented)
+    fontsize?: number;
+    // (undocumented)
+    padding?: number;
 }
 
 // @public (undocumented)
@@ -457,6 +516,9 @@ export interface HistogramProps extends BaseProps {
 export type HorizontalLineTo = {
     H: Point;
 };
+
+// @public (undocumented)
+export type Integral = 'x' | 'y' | Function;
 
 // Warning: (ae-internal-missing-underscore) The name "IsaDatum" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -535,7 +597,7 @@ export function IsRegisterObject(datum: any): boolean;
 export function IsUndefined(testSubject: any): boolean;
 
 // @public (undocumented)
-export function JaggedArray({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: JaggedArrayProps): JSX.Element;
+export function JaggedArray({ data, className, id, width, height, fontSize, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, padding, }: JaggedArrayProps): JSX.Element;
 
 // @public (undocumented)
 export type JaggedArrayData = Datum[][] | Literal[][];
@@ -544,6 +606,8 @@ export type JaggedArrayData = Datum[][] | Literal[][];
 export interface JaggedArrayProps extends BaseProps {
     // (undocumented)
     data: JaggedArrayData;
+    // (undocumented)
+    padding?: number;
 }
 
 // @public (undocumented)
@@ -642,7 +706,7 @@ export function MakeJaggedArrayData(data: JaggedArrayData): {
 };
 
 // @public (undocumented)
-export function MakeMatrixData(data: MatrixData): {
+export function MakeMatrixData(data: MatrixData, order: 'row' | 'col'): {
     jaggedIndicesArray: Datum[];
     jaggedElementsArray: Datum[];
 };
@@ -700,7 +764,7 @@ export function Maths({ val, block }: {
 }): JSX.Element;
 
 // @public (undocumented)
-export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MatrixProps): JSX.Element;
+export function Matrix({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, order, }: MatrixProps): JSX.Element;
 
 // @public (undocumented)
 export type MatrixData = Datum[][] | Literal[][];
@@ -709,6 +773,8 @@ export type MatrixData = Datum[][] | Literal[][];
 export interface MatrixProps extends BaseProps {
     // (undocumented)
     data: MatrixData;
+    // (undocumented)
+    order?: 'row' | 'col';
 }
 
 // @public (undocumented)
@@ -740,6 +806,33 @@ export interface MemProps extends BaseProps {
     endian?: 'big' | 'little';
     // (undocumented)
     startAddressAt?: number;
+}
+
+// @public (undocumented)
+export function MTree({ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MTreeProps): JSX.Element;
+
+// @public (undocumented)
+export type MTreeNode = {
+    c: string | number;
+    p: string | number;
+    v: string[] | number[];
+    h?: boolean;
+    id?: string;
+    i?: number;
+    className?: string;
+};
+
+// @public (undocumented)
+export type MTreeNodeData = MTreeNode[];
+
+// @public (undocumented)
+export interface MTreeProps extends BaseProps {
+    // (undocumented)
+    data: MTreeNodeData;
+    // (undocumented)
+    edgeLength?: number;
+    // (undocumented)
+    kw?: number;
 }
 
 // @public (undocumented)
@@ -840,7 +933,7 @@ export interface PathProps {
 }
 
 // @public (undocumented)
-export const Plot: ({ data, id, domain, range, ticks, xTicks, yTicks, samples, className, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PlotProps) => JSX.Element;
+export const Plot: ({ data, className, id, domain, range, ticks, xTicks, yTicks, samples, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PlotProps) => JSX.Element;
 
 // @public (undocumented)
 export function Plot3D({ cameraParams, z, segments, xMin, gridColor, xMax, xRange, yMin, yMax, yRange, scale, size, }: {
@@ -967,6 +1060,9 @@ export type RegisterObject = {
 
 // @public (undocumented)
 export type Regression = 'basicLinear';
+
+// @public (undocumented)
+export type renderOptions = 'bf' | 'h';
 
 // @public (undocumented)
 export function ReturnLarger(x: number, y: number): number;
@@ -1216,7 +1312,7 @@ export type VerticalLineTo = {
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1312:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1320:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

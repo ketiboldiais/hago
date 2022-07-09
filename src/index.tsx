@@ -24,3 +24,5 @@ export * from './DataTable/DataTable';
 export * from './Histogram/Histogram';
 export * from './DoublyLinkedList/DoublyLinkedList';
 export * from './PriorityQueue/PriorityQueue';
+export * from './MTree/MTree';
+export * from "./AVLTree/AVLTree";

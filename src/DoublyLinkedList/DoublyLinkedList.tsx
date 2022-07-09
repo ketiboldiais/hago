@@ -5,14 +5,12 @@ import {
   makeId,
   svg,
   generateElements,
-  SetClassName,
   Translate,
   LinkedListProps,
   Cell,
   Line,
   Marker,
 } from '../utils';
-import { range } from 'd3';
 
 export function DoublyLinkedList({
   data = [1, 2, 3, 4, 5],
@@ -28,7 +26,6 @@ export function DoublyLinkedList({
   marginBottom = 10,
   marginLeft = 20,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
-  isIndexed = true,
 }: LinkedListProps) {
   const _svg = svg(width, height, margins);
   const _data = generateElements(data);

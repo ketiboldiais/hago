@@ -8,7 +8,6 @@ import {
   IsaDatum,
   IsLiteral,
   Translate,
-  Text,
   JaggedArrayData,
   JaggedArrayProps,
 } from '../utils';
@@ -23,9 +22,10 @@ export function JaggedArray({
   ],
   className = 'hago_jagged_array',
   id = makeId(className),
-  width = 250,
-  height = 320,
-  scale = 100,
+  width = 300,
+  height = width+100,
+  fontSize = 0.8,
+  scale = 50,
   cwidth = scale,
   cheight,
   marginTop = 30,
@@ -33,6 +33,7 @@ export function JaggedArray({
   marginBottom = 30,
   marginLeft = 30,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
+  padding = 0.3,
 }: JaggedArrayProps) {
   const _svg = svg(width, height, margins);
   const _data = MakeJaggedArrayData(data);
@@ -42,7 +43,7 @@ export function JaggedArray({
   const _scaleY = scaleBand()
     .range([0, _svg.height])
     .domain(_data.jaggedElementsArray.map((d) => `${d.id}`))
-    .padding(0.3);
+    .padding(padding);
   const _rectWidth = _scaleX.bandwidth();
   const _rectHeight = _scaleY.bandwidth();
   return (
@@ -62,13 +63,21 @@ export function JaggedArray({
               key={`jaggedIndex_${id}_${i}`}
               transform={Translate(-_rectWidth / 1.5, _scaleY(`${d.val}`))}
             >
-              <Text
+              <text
+                dy={_rectHeight / (0.9 + fontSize)}
+                dx={_rectWidth / 2}
+                textAnchor="middle"
+                fontSize={`${fontSize-0.1}rem`}
+              >
+                {d.val}
+              </text>
+              {/* <Text
                 val={d.val}
                 fontSize={0.6}
                 // dy={_rectHeight / 2 + 3}
                 height={_rectHeight}
                 width={_rectWidth}
-              />
+              /> */}
             </g>
           );
         })}
@@ -80,13 +89,14 @@ export function JaggedArray({
               transform={Translate(_scaleX(`${d.group}`), _scaleY(`${d.id}`))}
             >
               <g className={'hago_JaggedArray_row_index'}>
-                <Text
-                  val={d.group}
-                  pos={{ x: 0, y: _rectHeight / 1.35 }}
-                  width={_rectWidth}
-                  height={_rectHeight}
-                  fontSize={0.6}
-                />
+                <text
+                  dy={_rectHeight * (1 + padding)}
+                  dx={_rectWidth / 2}
+                  fontSize={`${fontSize - 0.1}rem`}
+                  textAnchor="middle"
+                >
+                  {d.group}
+                </text>
               </g>
               <rect
                 stroke={'black'}
@@ -94,12 +104,20 @@ export function JaggedArray({
                 width={_rectWidth}
                 height={_rectHeight}
               />
-              <Text
+              <text
+                dx={_rectWidth / 2}
+                dy={_rectHeight / (0.9 + fontSize)}
+                textAnchor="middle"
+                fontSize={`${fontSize}rem`}
+              >
+                {d.val}
+              </text>
+              {/* <Text
                 val={d.val}
                 pos={{ x: 0, y: -_rectHeight / 7 }}
                 width={_rectWidth}
                 height={_rectHeight}
-              />
+              /> */}
             </g>
           );
         })}

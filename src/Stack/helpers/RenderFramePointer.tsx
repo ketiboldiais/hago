@@ -1,5 +1,5 @@
 import React from 'react';
-import { Translate, Line, Text } from '../../utils';
+import { Translate, Line } from '../../utils';
 
 export function RenderFramePointer(
   fheight: number,
@@ -23,13 +23,9 @@ export function RenderFramePointer(
         color={'black'}
         markerEnd={'stackFramePointerArrow'}
       />
-      <Text
-        val={`\\texttt{${d.ptr}}`}
-        fontSize={0.6}
-        pos={{ x: -fwidth / 1.4, y: -fheight / 1.8 }}
-        fitContent={true}
-        textAlign="right"
-      />
+      <text fontSize={`0.6rem`} dx={-fwidth / 2.8} dy={2.5} textAnchor="end">
+        {d.ptr}
+      </text>
     </g>
   );
 }

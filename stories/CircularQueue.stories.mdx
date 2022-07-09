@@ -7,4 +7,35 @@ import { CircularQueue, CircularQueueProps } from '../src';
 
 Circular queues are rendered as follows:
 
-<CircularQueue />
+<CircularQueue data={['b', 'a', 'd', 'e', 'f', 'n']} />
+
+the rendering code:
+
+```javascript
+<CircularQueue data={['b', 'a', 'd', 'e', 'f', 'n']} />
+```
+
+## Indices
+
+While indices aren't commonly used with circular queues, they can be rendered if needed by setting the `index` property to true:
+
+<CircularQueue
+  data={[
+    'b',
+    'a',
+    'd',
+    'e',
+    'f',
+    'n',
+    'z',
+    'm',
+    'p',
+    'r',
+    's',
+    't',
+    'x',
+    'q',
+    'y',
+  ]}
+  index={true}
+/>

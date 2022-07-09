@@ -1,16 +1,30 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Plot, PlotProps } from '../src/Plot/Plot';
-import { Polar, PolarProps } from '../src/Polar/Polar';
-import 'katex/dist/katex.min.css';
+import { Polar, PolarProps, Maths, Plot } from '../src';
 
 <Meta title="Plotters/Polar Plots" component={Polar} />
 
 # Polar Plots
 
-For some functions, Cartesian coordinates don't yield very interesting plots. For example, consider the function TupleXY. Plotting this function with Cartesian coordinates, we get:
+For some functions, Cartesian coordinates don't yield very interesting plots. For example, consider the function:
 
-<Plot data={[{ f: x => Math.sin(2 * x) * Math.cos(2 * x) }]} />
+<Maths val={`f(t) = \\sin(2t)\\cos(2t)`} />
 
-This doesn't look all that interesting. We can change that by plotting the function with polar coordinates:
+Plotting this function with just the `<Plot/>` module, we write:
 
-<Polar />
+```javascript
+<Plot data={[{ f: (x) => Math.sin(2 * x) * Math.cos(2 * x) }]} />
+```
+
+giving us the plot:
+
+<Plot data={[{ f: (x) => Math.sin(2 * x) * Math.cos(2 * x) }]} />
+
+This doesn't look all that interesting. We can change that by plotting the function using the `<Polar/>` component instead. Writing:
+
+```javascript
+<Polar data={[{ f: (t) => Math.sin(2 * t) * Math.cos(2 * t) }]} />
+```
+
+we get:
+
+<Polar data={[{ f: (t) => Math.sin(2 * t) * Math.cos(2 * t) }]} />
