@@ -409,7 +409,7 @@ export type NodeObject = {
  * @public
  */
 export interface PlotProps extends BaseProps {
-  data?: FunctionDatum[];
+  data?: (FunctionDatum | ParametricFunctionDatum)[];
   domain?: [number, number];
   range?: [number, number];
   ticks?: number;
@@ -890,8 +890,18 @@ export type Frame = {
 /**
  * @public
  */
+
 export type FunctionDatum = {
   f: Function;
+  scale?: number;
+  color?: string;
+  integrate?: [number, number, Integral];
+  id?: string;
+};
+
+export type ParametricFunctionDatum = {
+  x: Function;
+  y: Function;
   scale?: number;
   color?: string;
   integrate?: [number, number, Integral];

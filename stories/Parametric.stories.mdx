@@ -1,0 +1,49 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../src';
+
+<Meta title="Plotters/Parametric Functions" component={Plot} />
+
+# Parametric Functions
+
+The `<Plot/>` module can also render parametric curves. For example, the set of parametric equations:
+
+<Maths
+  val={`x(t) = \\sin t \\left(  e^{\\cos t} - 2 \\cos 4t - \\sin^5 \\left(  \\dfrac{t}{12} \\right) \\right)`}
+  block={true}
+/>
+<Maths
+  val={`y(t) = \\cos t \\left(  e^{\\cos t} - 2 \\cos 4t - \\sin^5 \\left(  \\dfrac{t}{12} \\right) \\right)`}
+  block={true}
+/>
+
+can be rendered by writing:
+
+```jsx
+<Plot
+  data={[
+    {
+      x: (t) =>
+        Math.sin(t) *
+        (Math.E ** Math.cos(t) - 2 * Math.cos(4 * t) - Math.sin(t / 12) ** 5),
+      y: (t) =>
+        Math.cos(t) *
+        (Math.E ** Math.cos(t) - 2 * Math.cos(4 * t) - Math.sin(t / 12) ** 5),
+    },
+  ]}
+/>
+```
+
+to output the curve:
+
+<Plot
+  data={[
+    {
+      x: (t) =>
+        Math.sin(t) *
+        (Math.E ** Math.cos(t) - 2 * Math.cos(4 * t) - Math.sin(t / 12) ** 5),
+      y: (t) =>
+        Math.cos(t) *
+        (Math.E ** Math.cos(t) - 2 * Math.cos(4 * t) - Math.sin(t / 12) ** 5),
+    },
+  ]}
+/>

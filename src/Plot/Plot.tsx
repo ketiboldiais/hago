@@ -4,7 +4,7 @@ import { ArrowYDown } from './ArrowYDown';
 import { ArrowYUp } from './ArrowYUp';
 import { ArrowXRight } from './ArrowXRight';
 import { ArrowXLeft } from './ArrowXLeft';
-import { AreaPlot, FunctionPlot } from './FunctionPlot';
+import { AreaPlot, FunctionPlot, ParametricFunctionPlot } from './FunctionPlot';
 import {
   Board,
   AxisVertical,
@@ -13,6 +13,8 @@ import {
   PlotProps,
   Translate,
   makeId,
+  FunctionDatum,
+  ParametricFunctionDatum,
 } from '../utils';
 
 export const Plot = ({
@@ -24,7 +26,7 @@ export const Plot = ({
   ticks = 4,
   xTicks = ticks,
   yTicks = ticks,
-  samples = 1000,
+  samples,
   width = 500,
   height = 500,
   scale = 100,
@@ -51,13 +53,41 @@ export const Plot = ({
 
   for (let i = 0; i < data.length; i++) {
     let datum = data[i];
-    if (datum.f) {
-      let el = FunctionPlot(datum, xScale, yScale, samples, domain, range);
+    if ((datum as FunctionDatum).f) {
+      let el = FunctionPlot(
+        datum as FunctionDatum,
+        xScale,
+        yScale,
+        samples,
+        domain,
+        range
+      );
       elements.push(el);
     }
     if (datum.integrate) {
-      let el = AreaPlot(datum, xScale, yScale, samples, domain, range);
+      let el = AreaPlot(
+        datum as FunctionDatum,
+        xScale,
+        yScale,
+        samples,
+        domain,
+        range
+      );
       areas.push(el);
+    }
+    if (
+      (datum as ParametricFunctionDatum).x &&
+      (datum as ParametricFunctionDatum).y
+    ) {
+      let el = ParametricFunctionPlot(
+        datum as ParametricFunctionDatum,
+        xScale,
+        yScale,
+        samples,
+        domain,
+        range
+      );
+      elements.push(el);
     }
   }
 

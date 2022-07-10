@@ -1,7 +1,11 @@
 import React from 'react';
 import { line } from 'd3-shape';
-import { MakeCoordinates, MakePathCoordinates } from './MakeCoordinates';
-import { FunctionDatum } from '../utils';
+import {
+  MakeCoordinates,
+  MakeParametricCoordinates,
+  MakePathCoordinates,
+} from './MakeCoordinates';
+import { FunctionDatum, ParametricFunctionDatum } from '../utils';
 import { area } from 'd3';
 
 export const FunctionPlot = (
@@ -19,6 +23,40 @@ export const FunctionPlot = (
       return d.y !== null;
     })
     .x((d: any) => xScale(d.x))(data);
+  return (
+    <path
+      d={lineGenerator}
+      stroke={'red'}
+      fill={'none'}
+      shapeRendering="geometricPrecision"
+    />
+  );
+};
+
+export const ParametricFunctionPlot = (
+  datum: ParametricFunctionDatum,
+  xScale: any,
+  yScale: any,
+  samples: number = 2000,
+  domain: [number, number] = [-10, 10],
+  range: [number, number] = [-10, 10]
+) => {
+  const data: any = MakeParametricCoordinates(
+    datum.x,
+    datum.y,
+    samples,
+    domain,
+    range
+  );
+  const lineGenerator: any = line()
+    .y((d: any) => yScale(d.y))
+    .defined((d: any) => {
+      return d.y !== null;
+    })
+    .x((d: any) => xScale(d.x))
+    .defined((d: any) => {
+      return d.x !== null;
+    })(data);
   return (
     <path
       d={lineGenerator}
