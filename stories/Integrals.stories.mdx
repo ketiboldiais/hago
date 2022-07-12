@@ -26,3 +26,17 @@ which renders:
   domain={[-10, 10]}
   range={[-10, 10]}
 />
+
+A few more examples:
+
+<Plot
+  data={[{ f: (x) => Math.sqrt(x), integrate: [1, 5, 'x'] }]}
+  domain={[0, 10]}
+  range={[0, 10]}
+/>
+
+<Plot
+  data={[{ f: (x) => Math.cos(x), integrate: [-5, 5, 'x'] }]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>

@@ -29,7 +29,7 @@ export const Latex = ({
             color: color,
           }}
         >
-          <Maths val={`\\text{${text}}`} block={block} />
+          <Maths val={`${text}`} block={block} />
         </div>
       </foreignObject>
     </g>

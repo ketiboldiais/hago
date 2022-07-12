@@ -1,0 +1,109 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../src';
+
+<Meta title="Plotters/Riemann Sums" component={Plot} />
+
+# Riemann Sums
+
+Alongside integrals, Riemann sums can be rendered with the `<Plot/>` module. For example, writing:
+
+```jsx
+<Plot
+  data={[
+    {
+      f: (x) => Math.cos(x),
+      riemann: { m: 'left', dx: 0.4, i: [-5, 5], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+```
+
+we get:
+
+<Plot
+  data={[
+    {
+      f: (x) => Math.cos(x),
+      riemann: { m: 'left', dx: 0.4, i: [-5, 5], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+
+To render a Riemann sum, we initialize the `FunctionDatum` object with a `RiemannDatum` object. The object has the following fields:
+
+- `m` - Sets the Riemann sum method. Valid values are `left` (corresponding to the lower Riemann sum) or `right` (the upper Riemann sum).
+- `dx` - Sets the width of the rectangles, or, in calculus terms, Δ𝑥.
+- `i` - Sets the interval of summation. Or, in calculus terms, the lower and upper bounds of the integrand.
+- `f` - The summation's domain. By default, this is set to `x`. If a function is passed, the domain is set to that function's codomain.
+- `color` - The rectangle's color, by default set to `#54BAB9`.
+
+Illustrating with a a few more examples, here is a Riemann sum where `dx` is set to 0.5, using the upper Riemann sum:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2,
+      riemann: { m: 'right', dx: 0.5, i: [-2, 2], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+
+the code:
+
+```javascript
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2,
+      riemann: { m: 'right', dx: 0.5, i: [-2, 2], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+```
+
+Bringing it down to Δx = 0.2:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2,
+      riemann: { m: 'right', dx: 0.2, i: [-2, 2], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+
+At Δ𝑥 = 0.1:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2,
+      riemann: { m: 'right', dx: 0.1, i: [-2, 2], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>
+
+Lowering Δ𝑥 below 0.1 (here, 0.04), we ought to consider just using the integral:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2,
+      riemann: { m: 'right', dx: 0.04, i: [-2, 2], f: 'x' },
+    },
+  ]}
+  domain={[-5, 5]}
+  range={[-5, 5]}
+/>

@@ -1,10 +1,7 @@
 import React from 'react';
 import { line } from 'd3-shape';
-import {
-  MakeCoordinates,
-  MakeParametricCoordinates,
-  MakePathCoordinates,
-} from './MakeCoordinates';
+import { MakeCoordinates, MakeParametricCoordinates } from './MakeCoordinates';
+import { MakePathCoordinates } from './MakePathCoordinates';
 import { FunctionDatum, ParametricFunctionDatum } from '../utils';
 import { area } from 'd3';
 
@@ -12,9 +9,9 @@ export const FunctionPlot = (
   datum: FunctionDatum,
   xScale: any,
   yScale: any,
-  samples: number = 1000,
+  samples: number,
   domain: [number, number] = [-10, 10],
-  range: [number, number] = [-10, 10]
+  range?: [number, number]
 ) => {
   const data: any = MakeCoordinates(datum.f, samples, domain, range);
   const lineGenerator: any = line()
@@ -26,8 +23,9 @@ export const FunctionPlot = (
   return (
     <path
       d={lineGenerator}
-      stroke={'red'}
+      stroke={datum.color || 'red'}
       fill={'none'}
+      strokeDasharray={datum.dash}
       shapeRendering="geometricPrecision"
     />
   );
@@ -38,15 +36,13 @@ export const ParametricFunctionPlot = (
   xScale: any,
   yScale: any,
   samples: number = 2000,
-  domain: [number, number] = [-10, 10],
-  range: [number, number] = [-10, 10]
+  domain: [number, number] = [-10, 10]
 ) => {
   const data: any = MakeParametricCoordinates(
     datum.x,
     datum.y,
     samples,
-    domain,
-    range
+    domain
   );
   const lineGenerator: any = line()
     .y((d: any) => yScale(d.y))
@@ -72,8 +68,7 @@ export const AreaPlot = (
   xScale: any,
   yScale: any,
   samples: number = 1000,
-  domain: [number, number] = [-10, 10],
-  range: [number, number] = [-10, 10]
+  domain: [number, number] = [-10, 10]
 ) => {
   let lowerBound =
     datum.integrate[0] === -Infinity ? domain[0] : datum.integrate[0];
@@ -96,8 +91,7 @@ export const AreaPlot = (
     upperBound,
     lowerBound,
     samples,
-    domain,
-    range
+    domain
   );
 
   const areaGenerator = area()
@@ -110,6 +104,12 @@ export const AreaPlot = (
     .y1((d: any) => yScale(d.y1))(data);
 
   return (
-    <path d={areaGenerator} fill="pink" opacity={0.4} stroke={'firebrick'} />
+    <path
+      d={areaGenerator}
+      fill={datum.integrationColor || 'pink'}
+      opacity={0.4}
+      stroke={'firebrick'}
+    />
   );
 };
+

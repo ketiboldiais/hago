@@ -79,7 +79,7 @@ export const Stack = ({
                   dy={fheight / 2}
                   fontSize={`0.8rem`}
                 >
-                  {d.val}
+                  {d.ant}
                 </text>
               )}
               {d.ptr && RenderFramePointer(fheight, fwidth, d)}

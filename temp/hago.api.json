@@ -3851,7 +3851,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "hago!FunctionDatum:type",
-          "docComment": "/**\n * @public\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3868,7 +3868,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    scale?: number;\n    color?: string;\n    integrate?: [number, number, "
+              "text": ";\n    scale?: number;\n    color?: string;\n    dash?: number;\n    integrate?: [number, number, "
             },
             {
               "kind": "Reference",
@@ -3877,7 +3877,16 @@
             },
             {
               "kind": "Content",
-              "text": "];\n    id?: string;\n}"
+              "text": "];\n    riemann?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "RiemannDatum",
+              "canonicalReference": "hago!~RiemannDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    integrationColor?: string;\n    id?: string;\n}"
             },
             {
               "kind": "Content",
@@ -3888,7 +3897,7 @@
           "name": "FunctionDatum",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 6
+            "endIndex": 8
           }
         },
         {
@@ -10158,6 +10167,58 @@
           }
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!ParametricFunctionDatum:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type ParametricFunctionDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    x: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    y: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    scale?: number;\n    color?: string;\n    integrate?: [number, number, "
+            },
+            {
+              "kind": "Reference",
+              "text": "Integral",
+              "canonicalReference": "hago!~Integral:type"
+            },
+            {
+              "kind": "Content",
+              "text": "];\n    integrationColor?: string;\n    id?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ParametricFunctionDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
           "kind": "Function",
           "canonicalReference": "hago!Path:function(1)",
           "docComment": "",
@@ -10577,13 +10638,44 @@
                   "text": "data?: "
                 },
                 {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
                   "kind": "Reference",
                   "text": "FunctionDatum",
                   "canonicalReference": "hago!~FunctionDatum:type"
                 },
                 {
                   "kind": "Content",
-                  "text": "[]"
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ParametricFunctionDatum",
+                  "canonicalReference": "hago!~ParametricFunctionDatum:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VectorFunctionDatum",
+                  "canonicalReference": "hago!~VectorFunctionDatum:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TextDatum",
+                  "canonicalReference": "hago!~TextDatum:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")[]"
                 },
                 {
                   "kind": "Content",
@@ -10596,7 +10688,7 @@
               "name": "data",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 3
+                "endIndex": 10
               }
             },
             {
@@ -11748,6 +11840,40 @@
             }
           ],
           "name": "ReturnSmaller"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!RiemannDatum:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type RiemannDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    m: 'left' | 'right';\n    dx: number;\n    i: [number, number];\n    f: 'x' | 'y' | number | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    color?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "RiemannDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
         },
         {
           "kind": "Function",
@@ -13746,7 +13872,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }: "
+              "text": "declare function Text({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, block, }: "
             },
             {
               "kind": "Reference",
@@ -13775,7 +13901,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }",
+              "parameterName": "{ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, block, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -13784,6 +13910,31 @@
             }
           ],
           "name": "Text_2"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!TextDatum:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type TextDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    t: string;\n    color?: string;\n    x?: number;\n    y?: number;\n    w?: number;\n    h?: number;\n    fontsize?: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "TextDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
         },
         {
           "kind": "Interface",
@@ -13821,6 +13972,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "anchor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TextProps#block:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "block?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "block",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -14862,6 +15040,67 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!VectorFunctionDatum:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type VectorFunctionDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    vx: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    vy: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    m?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    s?: number;\n    maxMagnitude?: number;\n    scale?: number;\n    color?: string;\n    integrate?: [number, number, "
+            },
+            {
+              "kind": "Reference",
+              "text": "Integral",
+              "canonicalReference": "hago!~Integral:type"
+            },
+            {
+              "kind": "Content",
+              "text": "];\n    integrationColor?: string;\n    id?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VectorFunctionDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
           }
         },
         {

@@ -409,7 +409,12 @@ export type NodeObject = {
  * @public
  */
 export interface PlotProps extends BaseProps {
-  data?: (FunctionDatum | ParametricFunctionDatum)[];
+  data?: (
+    | FunctionDatum
+    | ParametricFunctionDatum
+    | VectorFunctionDatum
+    | TextDatum
+  )[];
   domain?: [number, number];
   range?: [number, number];
   ticks?: number;
@@ -814,6 +819,7 @@ export interface TextProps {
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   anchor?: 'start' | 'middle' | 'end';
   latex?: boolean;
+  block?: boolean;
 }
 
 /* Refactor Candidates ---- */
@@ -891,11 +897,45 @@ export type Frame = {
  * @public
  */
 
+export type RiemannDatum = {
+  m: 'left' | 'right';
+  dx: number;
+  i: [number, number];
+  f: 'x' | 'y' | number | Function;
+  color?: string;
+};
+
 export type FunctionDatum = {
   f: Function;
   scale?: number;
   color?: string;
+  dash?: number;
   integrate?: [number, number, Integral];
+  riemann?: RiemannDatum;
+  integrationColor?: string;
+  id?: string;
+};
+
+export type TextDatum = {
+  t: string;
+  color?: string;
+  x?: number;
+  y?: number;
+  w?: number;
+  h?: number;
+  fontsize?: number;
+};
+
+export type VectorFunctionDatum = {
+  vx: Function;
+  vy: Function;
+  m?: Function;
+  s?: number;
+  maxMagnitude?: number;
+  scale?: number;
+  color?: string;
+  integrate?: [number, number, Integral];
+  integrationColor?: string;
   id?: string;
 };
 
@@ -905,6 +945,7 @@ export type ParametricFunctionDatum = {
   scale?: number;
   color?: string;
   integrate?: [number, number, Integral];
+  integrationColor?: string;
   id?: string;
 };
 

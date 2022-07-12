@@ -368,7 +368,10 @@ export type FunctionDatum = {
     f: Function;
     scale?: number;
     color?: string;
+    dash?: number;
     integrate?: [number, number, Integral];
+    riemann?: RiemannDatum;
+    integrationColor?: string;
     id?: string;
 };
 
@@ -913,6 +916,17 @@ export function Normalize(enteredValue: number, minEntry?: number, maxEntry?: nu
 export type OutputType = (AnalysisType | [AnalysisType, string])[];
 
 // @public (undocumented)
+export type ParametricFunctionDatum = {
+    x: Function;
+    y: Function;
+    scale?: number;
+    color?: string;
+    integrate?: [number, number, Integral];
+    integrationColor?: string;
+    id?: string;
+};
+
+// @public (undocumented)
 export function Path({ start, d, fill, color, strokeWidth, }: PathProps): JSX.Element;
 
 // @public
@@ -961,7 +975,7 @@ export interface PlotProps extends BaseProps {
     // (undocumented)
     className?: string;
     // (undocumented)
-    data?: FunctionDatum[];
+    data?: (FunctionDatum | ParametricFunctionDatum | VectorFunctionDatum | TextDatum)[];
     // (undocumented)
     domain?: [number, number];
     // (undocumented)
@@ -1069,6 +1083,15 @@ export function ReturnLarger(x: number, y: number): number;
 
 // @public (undocumented)
 export function ReturnSmaller(x: number, y: number): number;
+
+// @public (undocumented)
+export type RiemannDatum = {
+    m: 'left' | 'right';
+    dx: number;
+    i: [number, number];
+    f: 'x' | 'y' | number | Function;
+    color?: string;
+};
 
 // @public (undocumented)
 export function Scatter({ data, regression, r, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, }: ScatterProps): JSX.Element;
@@ -1230,13 +1253,26 @@ export const svg: (_width: number, _height: number, _margins: number[]) => {
 export type Tabular = (string | number)[][] | (string | number)[];
 
 // @public (undocumented)
-function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, }: TextProps): JSX.Element;
+function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, block, }: TextProps): JSX.Element;
 export { Text_2 as Text }
+
+// @public (undocumented)
+export type TextDatum = {
+    t: string;
+    color?: string;
+    x?: number;
+    y?: number;
+    w?: number;
+    h?: number;
+    fontsize?: number;
+};
 
 // @public
 export interface TextProps {
     // (undocumented)
     anchor?: 'start' | 'middle' | 'end';
+    // (undocumented)
+    block?: boolean;
     color?: string;
     dx?: number;
     dy?: number;
@@ -1306,13 +1342,27 @@ export interface TreeProps extends BaseProps {
 export type TupleXY = [number, number];
 
 // @public (undocumented)
+export type VectorFunctionDatum = {
+    vx: Function;
+    vy: Function;
+    m?: Function;
+    s?: number;
+    maxMagnitude?: number;
+    scale?: number;
+    color?: string;
+    integrate?: [number, number, Integral];
+    integrationColor?: string;
+    id?: string;
+};
+
+// @public (undocumented)
 export type VerticalLineTo = {
     V: Point;
 };
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1320:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1361:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

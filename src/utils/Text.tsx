@@ -15,6 +15,7 @@ export function Text({
   textAlign = 'center',
   latex = true,
   anchor = 'middle',
+  block=true,
 }: TextProps) {
   if (latex) {
     return (
@@ -32,6 +33,7 @@ export function Text({
         height={height}
         fontsize={fontSize}
         textAlign={textAlign}
+        block={block}
       />
     );
   } else {

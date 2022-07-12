@@ -5,7 +5,7 @@ import { Plot, PlotProps, Maths } from '../src';
 
 # Linear Functions
 
-Linear functions are functions of the form <Maths val={"f(x)=a+bx"} block={false}/>, where <Maths val={"a,b,x \\in \\R"} block={false}/>. 
+Linear functions are functions of the form <Maths val={"f(x)=a+bx"} block={false}/>, where <Maths val={"a,b,x \\in \\R"} block={false}/>.
 
 writing the following:
 
@@ -18,6 +18,5 @@ writing the following:
 we get the result:
 
 <Plot data={[{ f: (x) => x + 1 }]} domain={[-5, 10]} range={[-5, 10]} />
-<Plot data={[{ f: (x) => 0.5 * x }]} domain={[0,10]} range={[0,10]}/>
-<Plot data={[{ f: (x) => -3 * x }]}/>
-
+<Plot data={[{ f: (x) => 0.5 * x }]} domain={[0, 10]} range={[0, 10]} />
+<Plot data={[{ f: (x) => -3 * x, id: 'f(x) = -3x' }]} />

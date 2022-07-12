@@ -142,7 +142,7 @@ export function Scatter({
   const _xMax = _data.xMax;
   const _yMin = _data.yMin;
   const _yMax = _data.yMax;
-
+  console.log([_yMin, _yMax]);
   const _xScale = scaleLinear().domain([_xMin, _xMax]).range([0, _svg.width]);
   const _yScale = scaleLinear().domain([_yMin, _yMax]).range([_svg.height, 0]);
   // const _regressionData =  LinearRegression(_dataPoints, _xScale, _yScale);
@@ -164,6 +164,9 @@ export function Scatter({
       cheight={cheight}
       margins={margins}
     >
+      <clipPath id={`${id}_scatter_clipPath`}>
+        <rect width={_svg.width} height={_svg.height} />
+      </clipPath>
       <g transform={Translate(0, _yScale(0))}>
         <AxisHorizontal
           domain={[_xMin, _xMax]}
@@ -206,14 +209,16 @@ export function Scatter({
         })}
         {_regressionData ? (
           <>
-            {FunctionPlot(
-              { f: _regressionData.f },
-              _xScale,
-              _yScale,
-              1000,
-              [_xMin, _xMax],
-              [_yMin, _yMax]
-            )}
+            <g clipPath={`url(#${id}_scatter_clipPath)`}>
+              {FunctionPlot(
+                { f: _regressionData.f },
+                _xScale,
+                _yScale,
+                1000,
+                [_xMin, _xMax],
+                [_yMin, _yMax]
+              )}
+            </g>
             <g transform={Translate(0, _svg.height + marginBottom / 4)}>
               <Text
                 val={_regressionData.label}

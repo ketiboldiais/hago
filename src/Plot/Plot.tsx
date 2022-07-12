@@ -5,6 +5,7 @@ import { ArrowYUp } from './ArrowYUp';
 import { ArrowXRight } from './ArrowXRight';
 import { ArrowXLeft } from './ArrowXLeft';
 import { AreaPlot, FunctionPlot, ParametricFunctionPlot } from './FunctionPlot';
+import { RiemannPlot } from './RiemannPlot';
 import {
   Board,
   AxisVertical,
@@ -15,7 +16,10 @@ import {
   makeId,
   FunctionDatum,
   ParametricFunctionDatum,
+  TextDatum,
+  IsUndefined,
 } from '../utils';
+import { Latex } from '../utils/Latex';
 
 export const Plot = ({
   data = [],
@@ -40,6 +44,17 @@ export const Plot = ({
 }: PlotProps) => {
   let elements = [];
   let areas = [];
+  let vectorData = [];
+  let annotations = [];
+  let riemanns: {
+    x0: number;
+    y0: number;
+    x1: number;
+    y1: number;
+    r: number;
+    tx: number;
+    color: string;
+  }[];
   const { width: _svg_width, height: _svg_height } = svg(
     width,
     height,
@@ -53,39 +68,49 @@ export const Plot = ({
 
   for (let i = 0; i < data.length; i++) {
     let datum = data[i];
+    if ((datum as TextDatum).t) {
+      datum = datum as TextDatum;
+      datum.w = datum.w ? datum.w : 100;
+      datum.h = datum.h ? datum.h : 100;
+      datum.x = datum.x ? datum.x : 0;
+      datum.y = datum.y ? datum.y : 0;
+      annotations.push(datum);
+    }
     if ((datum as FunctionDatum).f) {
       let el = FunctionPlot(
         datum as FunctionDatum,
         xScale,
         yScale,
         samples,
-        domain,
-        range
+        domain
       );
       elements.push(el);
     }
-    if (datum.integrate) {
+    if ((datum as FunctionDatum).riemann) {
+      let el = RiemannPlot(datum as FunctionDatum, xScale, yScale);
+      riemanns = el;
+    }
+    if ((datum as FunctionDatum | ParametricFunctionDatum).integrate) {
       let el = AreaPlot(
         datum as FunctionDatum,
         xScale,
         yScale,
         samples,
-        domain,
-        range
+        domain
       );
       areas.push(el);
     }
     if (
       (datum as ParametricFunctionDatum).x &&
-      (datum as ParametricFunctionDatum).y
+      (datum as ParametricFunctionDatum).y &&
+      IsUndefined((datum as any).t)
     ) {
       let el = ParametricFunctionPlot(
         datum as ParametricFunctionDatum,
         xScale,
         yScale,
         samples,
-        domain,
-        range
+        domain
       );
       elements.push(el);
     }
@@ -135,16 +160,77 @@ export const Plot = ({
             latex={false}
           />
         </g>
-        {elements.map((d, i) => (
-          <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
-            {d}
-          </g>
-        ))}
-        {areas.map((d, i) => (
-          <g key={`ar${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
-            {d}
-          </g>
-        ))}
+        {elements &&
+          elements.map((d, i) => (
+            <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
+              {d}
+            </g>
+          ))}
+        {areas &&
+          areas.map((d, i) => (
+            <g
+              key={`ar${id}_${i}`}
+              clipPath={`url(#${id}_Plot_clipPath)`}
+              className="integration_area"
+            >
+              {d}
+            </g>
+          ))}
+        {vectorData &&
+          vectorData.map((d, i) => (
+            <g key={`ve${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
+              {d}
+            </g>
+          ))}
+        {annotations &&
+          annotations.map((d, i) => (
+            <g key={`ap${id}_${i}`}>
+              <Latex
+                text={d.t}
+                offset={{
+                  x: xScale(d.x),
+                  y: yScale(d.y),
+                }}
+                fontsize={d.fontsize || 0.8}
+                dx={0}
+                dy={0}
+                width={d.w}
+                height={d.h}
+                color={d.color || 'black'}
+                fitContent={true}
+                textAlign={'center'}
+                block={false}
+              />
+            </g>
+          ))}
+        {riemanns &&
+          riemanns.map((d, i) => (
+            <g
+              key={`rm${id}${i}`}
+              className="riemann_sums"
+              transform={Translate(d.tx, 0)}
+              clipPath={`url(#${id}_Plot_clipPath)`}
+            >
+              <line
+                x1={d.x0}
+                y1={d.y0}
+                x2={d.x1}
+                y2={d.y1}
+                stroke={d.color}
+                strokeOpacity={0.1}
+                strokeWidth={d.r}
+              />
+              <line
+                x1={d.x0}
+                y1={d.y0}
+                x2={d.x1}
+                y2={d.y1}
+                stroke={d.color}
+                strokeOpacity={0.6}
+                strokeWidth={d.r - 1}
+              />
+            </g>
+          ))}
       </g>
     </Board>
   );
