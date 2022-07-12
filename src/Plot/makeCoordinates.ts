@@ -8,12 +8,6 @@ export function MakeCoordinates(
   let x: number;
   let y: any;
   const xMax = domain[1];
-  let condition;
-  if (range) {
-    condition = (n: number) => isNaN(n) && (n < range[0] || n > range[1]);
-  } else {
-    condition = (n: number) => isNaN(n);
-  }
   for (let i = -number_of_samples; i < number_of_samples; i++) {
     if (typeof f === 'number') {
       x = f;
@@ -24,7 +18,7 @@ export function MakeCoordinates(
     } else {
       throw new Error('Data must be a function or a number.');
     }
-    if (condition(y)) {
+    if (isNaN(y) || y <= range[0] * 2 || y >= range[1] * 2) {
       y = null;
     }
     dataSet.push({ x, y });

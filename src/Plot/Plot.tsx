@@ -82,7 +82,8 @@ export const Plot = ({
         xScale,
         yScale,
         samples,
-        domain
+        domain,
+        range,
       );
       elements.push(el);
     }
