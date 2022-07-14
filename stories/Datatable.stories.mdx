@@ -214,3 +214,31 @@ which results in the table:
   output={[['frequency', 'y']]}
   include={['mean', 'max', 'min', 'median']}
 />
+
+### Function Tables
+
+Function tables can be rendered by passing a `FunctionTest` object to the data field. For example, writing:
+
+```javascript
+<DataTable
+  data={{
+    f: [(x) => x ** 2, (x) => x ** 3],
+    fLabels: ['f(x) = x^2', 'f(x) = x^3'],
+    domain: [-2, 2],
+    step: 0.25,
+  }}
+  latex={true}
+/>
+```
+
+renders the table:
+
+<DataTable
+  data={{
+    f: [(x) => x ** 2, (x) => x ** 3],
+    fLabels: ['f(x) = x^2', 'f(x) = x^3'],
+    domain: [-2, 2],
+    step: 0.25,
+  }}
+  latex={true}
+/>

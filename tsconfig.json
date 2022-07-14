@@ -30,7 +30,10 @@
     "src/Bipartite/*",
     "src/BarChart/*",
     "src/PolyTree/*",
-    "src/TruthTable/*"
+    "src/TruthTable/*",
+    "src/Testing/*",
+    "src/Timeline/*",
+    "src/LinMap/*",
   ],
   "ts-node": {
     "esm": true,

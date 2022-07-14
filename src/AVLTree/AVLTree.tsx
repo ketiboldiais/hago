@@ -181,8 +181,6 @@ export function AVLTree({
     d.h = d.source.data.h || d.target.data.h;
   }
 
-  console.log(_nodes);
-
   const linkGen = linkHorizontal()
     .x((d: any) => (layout === 'horizontal' ? d.y : d.x))
     .y((d: any) => (layout === 'horizontal' ? d.x : d.y));

@@ -84,7 +84,6 @@ export function PriorityQueue({
   const _formattedData = BuildPriorityQueueData(data);
   const _data = _formattedData.output;
   const _priorities = _formattedData.priorities;
-  console.log(_formattedData);
   const _xScale = scaleBand()
     .domain(_data.map((d) => `${d.order}`))
     .range([0, _svg.width])

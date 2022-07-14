@@ -260,7 +260,7 @@ export interface DataTableProps {
     // (undocumented)
     className?: string;
     // (undocumented)
-    data: Tabular;
+    data: Tabular | FunctionTest;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -373,6 +373,15 @@ export type FunctionDatum = {
     riemann?: RiemannDatum;
     integrationColor?: string;
     id?: string;
+};
+
+// @public (undocumented)
+export type FunctionTest = {
+    f: Function[];
+    step?: number;
+    fLabels?: string[];
+    inputLabel?: string[];
+    domain?: [number, number];
 };
 
 // @public (undocumented)
@@ -760,6 +769,11 @@ export interface MarkerProps {
     width?: number;
 }
 
+// Warning: (ae-forgotten-export) The symbol "MathFigProps" needs to be exported by the entry point hago.d.ts
+//
+// @public (undocumented)
+export function MathFig({ eq, m, align, mtype, linespace, }: MathFigProps): JSX.Element;
+
 // @public (undocumented)
 export function Maths({ val, block }: {
     val: any;
@@ -839,7 +853,7 @@ export interface MTreeProps extends BaseProps {
 }
 
 // @public (undocumented)
-export function Multiplot({ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yaw, pitch, }: MultiplotProps): JSX.Element;
+export function Multiplot({ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yRotate, zRotate, }: MultiplotProps): JSX.Element;
 
 // @public (undocumented)
 export interface MultiplotProps {
@@ -866,8 +880,6 @@ export interface MultiplotProps {
     // (undocumented)
     marginTop?: number;
     // (undocumented)
-    pitch?: number;
-    // (undocumented)
     renderXAxis?: boolean;
     // (undocumented)
     renderYAxis?: boolean;
@@ -882,13 +894,15 @@ export interface MultiplotProps {
     // (undocumented)
     xTickCount?: number;
     // (undocumented)
-    yaw?: number;
-    // (undocumented)
     yDomain?: [number, number];
+    // (undocumented)
+    yRotate?: number;
     // (undocumented)
     yTickCount?: number;
     // (undocumented)
     zRange?: [number, number];
+    // (undocumented)
+    zRotate?: number;
     // (undocumented)
     zTickCount?: number;
 }
@@ -1086,7 +1100,7 @@ export function ReturnSmaller(x: number, y: number): number;
 
 // @public (undocumented)
 export type RiemannDatum = {
-    m: 'left' | 'right';
+    m: 'left' | 'right' | 'midpoint';
     dx: number;
     i: [number, number];
     f: 'x' | 'y' | number | Function;
@@ -1309,7 +1323,13 @@ export interface TreeNode {
     className?: string;
     hide?: boolean;
     // (undocumented)
+    id?: string;
+    // (undocumented)
     parent: string | number | boolean;
+    // (undocumented)
+    pid?: string;
+    // (undocumented)
+    type?: string;
 }
 
 // @public (undocumented)
@@ -1362,7 +1382,7 @@ export type VerticalLineTo = {
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1361:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1371:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

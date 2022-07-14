@@ -1,4 +1,4 @@
-export function TransformPoint(point: any[], yaw: number, pitch: number) {
+export function TransformPoint(point: number[], yaw: number, pitch: number) {
   let newPoint = [];
   let cosA = Math.cos(pitch);
   let sinA = Math.sin(pitch);

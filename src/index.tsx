@@ -25,4 +25,6 @@ export * from './Histogram/Histogram';
 export * from './DoublyLinkedList/DoublyLinkedList';
 export * from './PriorityQueue/PriorityQueue';
 export * from './MTree/MTree';
-export * from "./AVLTree/AVLTree";
+export * from './AVLTree/AVLTree';
+export * from './MathFig/MathFig';
+

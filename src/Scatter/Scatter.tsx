@@ -34,6 +34,11 @@ export function MakeScatterData(data: ScatterData, start: number, end: number) {
        */
 
       if (IsaScatterDatumObject(data[i])) {
+        let current = data[i] as ScatterDatumObject;
+        xMin = ReturnSmaller(xMin, current.x);
+        xMax = ReturnLarger(xMax, current.x);
+        yMin = ReturnSmaller(yMin, current.y);
+        yMax = ReturnLarger(yMax, current.y);
         dataPoints.push(data[i] as ScatterDatumObject);
       } else if (IsATupleXY(data[i])) {
         let x = (data[i] as TupleXY)[0];
@@ -115,7 +120,7 @@ export function Scatter({
     [0, 8],
   ],
   regression,
-  r = 3,
+  r = 2,
   className = 'hago_sequence',
   id = makeId(className),
   width = 500,
@@ -142,11 +147,10 @@ export function Scatter({
   const _xMax = _data.xMax;
   const _yMin = _data.yMin;
   const _yMax = _data.yMax;
-  console.log([_yMin, _yMax]);
   const _xScale = scaleLinear().domain([_xMin, _xMax]).range([0, _svg.width]);
   const _yScale = scaleLinear().domain([_yMin, _yMax]).range([_svg.height, 0]);
   // const _regressionData =  LinearRegression(_dataPoints, _xScale, _yScale);
-  let _regressionData;
+  let _regressionData: any;
   switch (regression) {
     case 'basicLinear':
       _regressionData = LinearRegression(_dataPoints);

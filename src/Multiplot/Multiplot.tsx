@@ -17,8 +17,8 @@ export function Multiplot({
   margins = [marginTop, marginRight, marginBottom, marginLeft],
   xDomain = [-20, 20],
   yDomain = [-20, 20],
-  yaw = 0.5,
-  pitch = 0.5,
+  yRotate = 0.2,
+  zRotate = 0.4,
 }: MultiplotProps) {
   const _svg = svg(width, height, margins);
   let _data: any[];
@@ -26,7 +26,7 @@ export function Multiplot({
   let plotData = [];
   for (let i = 0; i < data.length; i++) {
     _data = BuildPlotPoints(data[i], xDomain, yDomain);
-    _surface = BuildSurface(_data, _svg.width, _svg.height, yaw, pitch);
+    _surface = BuildSurface(_data, _svg.width, _svg.height, yRotate, zRotate);
     plotData.push(_surface);
   }
   return (

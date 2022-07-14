@@ -7,7 +7,7 @@ import { Multiplot, MultiplotProps, Maths } from '../src';
 
 Although most individuals are familiar with single-variable functions — the famous — functions can take any number of variables. They're just a special kind of relation after all. For example, consider the function:
 
-<Maths val={"f(x) = \\sin\\left(\\dfrac{\\sqrt{x^2+y^2}}{5}\\right)\\pi"}/>
+<Maths val={'f(x) = \\sin\\left(\\dfrac{\\sqrt{x^2+y^2}}{5}\\right)\\pi'} />
 
 To plot these functions, we can use the `Multiplot` module. For example, the code:
 
@@ -33,4 +33,6 @@ renders the plot:
       scale: 70,
     },
   ]}
+  width={500}
+  height={500}
 />

@@ -59,27 +59,15 @@ export function Matrix({
       <>
         {_data.jaggedIndicesArray.map((d, i) => {
           return (
-            <>
-              <g
-                className={'hago_matrix_row_index'}
-                key={`jaggedIndex_${id}_${i}`}
-                transform={Translate(-10, _scaleY(`${d.val}`))}
-              >
-                <text
-                  fontSize={`0.6rem`}
-                  dy={_rectWidth / 2}
-                  textAnchor={'end'}
-                >
-                  {d.val}
-                </text>
-                {/* <Text
-                  val={d.val}
-                  fontSize={0.6}
-                  fitContent={true}
-                  pos={{ x: -_rectWidth / 3, y: 0 }}
-                /> */}
-              </g>
-            </>
+            <g
+              className={'hago_matrix_row_index'}
+              key={`jaggedIndex_${id}_${i}`}
+              transform={Translate(-10, _scaleY(`${d.val}`))}
+            >
+              <text fontSize={`0.6rem`} dy={_rectWidth / 2} textAnchor={'end'}>
+                {d.val}
+              </text>
+            </g>
           );
         })}
         {_columnIndices.map((d, i) => {
@@ -97,12 +85,6 @@ export function Matrix({
               >
                 {d}
               </text>
-              {/* <Text
-                val={d}
-                fontSize={0.6}
-                pos={{ x: _rectWidth / 2.5, y: -_rectHeight }}
-                fitContent={true}
-              /> */}
             </g>
           );
         })}

@@ -88,7 +88,7 @@ export const Plot = ({
       elements.push(el);
     }
     if ((datum as FunctionDatum).riemann) {
-      let el = RiemannPlot(datum as FunctionDatum, xScale, yScale);
+      let el = RiemannPlot(datum as FunctionDatum, xScale, yScale, domain);
       riemanns = el;
     }
     if ((datum as FunctionDatum | ParametricFunctionDatum).integrate) {

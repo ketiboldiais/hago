@@ -1,9 +1,10 @@
 import { FunctionDatum } from "../../utils";
 
+
 export function BuildPlotPoints(
   FunctionDatum: FunctionDatum,
   xDomain: [number, number],
-  yDomain: [number, number]
+  yDomain: [number, number],
 ) {
   const f = FunctionDatum.f;
   const scale = FunctionDatum.scale ? FunctionDatum.scale : 1;

@@ -79,8 +79,6 @@ export function HashTable({
     .padding(padding);
   const rectWidth = _scale.bandwidth();
 
-  console.log(_scaleX(padding));
-
   return (
     <Board
       className={className}

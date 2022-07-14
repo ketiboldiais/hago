@@ -3037,6 +3037,15 @@
                 },
                 {
                   "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "FunctionTest",
+                  "canonicalReference": "hago!~FunctionTest:type"
+                },
+                {
+                  "kind": "Content",
                   "text": ";"
                 }
               ],
@@ -3046,7 +3055,7 @@
               "name": "data",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 4
               }
             },
             {
@@ -3898,6 +3907,40 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 8
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!FunctionTest:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type FunctionTest = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    f: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Function",
+              "canonicalReference": "!Function:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n    step?: number;\n    fLabels?: string[];\n    inputLabel?: string[];\n    domain?: [number, number];\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "FunctionTest",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
           }
         },
         {
@@ -7897,8 +7940,8 @@
             },
             {
               "kind": "Reference",
-              "text": "MatrixData",
-              "canonicalReference": "hago!~MatrixData:type"
+              "text": "MatrixData$1",
+              "canonicalReference": "hago!~MatrixData$1:type"
             },
             {
               "kind": "Content",
@@ -8511,6 +8554,52 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!MathFig:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MathFig({ eq, m, align, mtype, linespace, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "MathFigProps",
+              "canonicalReference": "hago!~MathFigProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ eq, m, align, mtype, linespace, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MathFig"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!Maths:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -8607,7 +8696,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare type MatrixData = "
+              "text": "declare type MatrixData$1 = "
             },
             {
               "kind": "Reference",
@@ -8673,8 +8762,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "MatrixData",
-                  "canonicalReference": "hago!~MatrixData:type"
+                  "text": "MatrixData$1",
+                  "canonicalReference": "hago!~MatrixData$1:type"
                 },
                 {
                   "kind": "Content",
@@ -9247,7 +9336,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function Multiplot({ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yaw, pitch, }: "
+              "text": "declare function Multiplot({ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yRotate, zRotate, }: "
             },
             {
               "kind": "Reference",
@@ -9276,7 +9365,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yaw, pitch, }",
+              "parameterName": "{ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yRotate, zRotate, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9604,33 +9693,6 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#pitch:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "pitch?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "pitch",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#renderXAxis:member",
               "docComment": "",
               "excerptTokens": [
@@ -9820,33 +9882,6 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#yaw:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "yaw?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "yaw",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#yDomain:member",
               "docComment": "",
               "excerptTokens": [
@@ -9867,6 +9902,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "yDomain",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!MultiplotProps#yRotate:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "yRotate?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "yRotate",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9921,6 +9983,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "zRange",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!MultiplotProps#zRotate:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "zRotate?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "zRotate",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -11852,7 +11941,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    m: 'left' | 'right';\n    dx: number;\n    i: [number, number];\n    f: 'x' | 'y' | number | "
+              "text": "{\n    m: 'left' | 'right' | 'midpoint';\n    dx: number;\n    i: [number, number];\n    f: 'x' | 'y' | number | "
             },
             {
               "kind": "Reference",
@@ -14628,6 +14717,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "hago!TreeNode#id:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "id?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "id",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "hago!TreeNode#parent:member",
               "docComment": "",
               "excerptTokens": [
@@ -14648,6 +14764,60 @@
               "isOptional": false,
               "releaseTag": "Public",
               "name": "parent",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TreeNode#pid:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pid?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "pid",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TreeNode#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "type",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2

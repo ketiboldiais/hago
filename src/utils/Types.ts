@@ -364,8 +364,8 @@ export interface MultiplotProps {
   marginBottom?: number;
   marginLeft?: number;
   margins?: [number, number, number, number];
-  yaw?: number;
-  pitch?: number;
+  yRotate?: number;
+  zRotate?: number;
   helpers?: boolean;
   xDomain?: [number, number];
   yDomain?: [number, number];
@@ -621,6 +621,9 @@ export interface TreeNode {
    * for the <g/> created for the TreeNode.
    */
   className?: string;
+  id?: string;
+  pid?: string;
+  type?: string;
 }
 
 /**
@@ -898,7 +901,7 @@ export type Frame = {
  */
 
 export type RiemannDatum = {
-  m: 'left' | 'right';
+  m: 'left' | 'right' | 'midpoint';
   dx: number;
   i: [number, number];
   f: 'x' | 'y' | number | Function;

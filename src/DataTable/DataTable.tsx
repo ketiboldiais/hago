@@ -1,5 +1,14 @@
 import React from 'react';
-import { getMax, getMean, getMedian, getMin, makeId, Maths } from '../utils';
+import {
+  getMax,
+  getMean,
+  getMedian,
+  getMin,
+  IsAnArray,
+  makeId,
+  Maths,
+  StructGuard,
+} from '../utils';
 import {
   formatTabularData,
   getBaseData,
@@ -9,6 +18,75 @@ import {
 } from './helpers';
 
 export type Tabular = (string | number)[][] | (string | number)[];
+export type FunctionTest = {
+  f: Function[];
+  step?: number;
+  fLabels?: string[];
+  inputLabel?: string[];
+  domain?: [number, number];
+};
+const IsFunctionTest = StructGuard((d: any) => d as FunctionTest, ['f']);
+
+function GenerateFunctionData(data: FunctionTest) {
+  const functions = data.f;
+
+  if (IsAnArray(functions)) {
+    const step = data.step ? data.step : 1;
+    const functionCount = functions.length;
+
+    let labels = [];
+
+    let result = [];
+
+    if (data.inputLabel) {
+      const inputLabels = data.inputLabel;
+      const inputLabelCount = inputLabels.length;
+      for (let i = 0; i < inputLabelCount; i++) {
+        labels.push(inputLabels[i]);
+      }
+    } else {
+      labels.push('x');
+    }
+
+    if (data.fLabels) {
+      const fLabels = data.fLabels;
+      const labelCount = fLabels.length;
+      for (let i = 0; i < labelCount; i++) {
+        labels.push(fLabels[i]);
+      }
+    } else {
+      for (let i = 0; i < functionCount; i++) {
+        let label = `function ${i}`;
+        labels.push(label);
+      }
+    }
+
+    result.push(labels);
+
+    const domain =
+      data.domain && data.domain.length === 2 ? data.domain : [-10, 10];
+    const domainStart = domain[0];
+    const domainEnd = domain[1];
+
+    for (let i = domainStart; i < domainEnd; i += step) {
+      result.push([i]);
+    }
+
+    const resLength = result.length;
+
+    for (let i = 1; i < resLength; i++) {
+      for (let j = 0; j < functionCount; j++) {
+        let f = functions[j];
+        let x = result[i][0];
+        let y = f(x);
+        result[i].push(y);
+      }
+    }
+    return result;
+  } else {
+    throw new Error('Expected an array of functions.');
+  }
+}
 
 export type AnalysisType =
   | 'raw'
@@ -24,7 +102,7 @@ export type PlotType = 'table' | 'scatter' | 'histogram';
 export type OutputType = (AnalysisType | [AnalysisType, string])[];
 
 export interface DataTableProps {
-  data: Tabular;
+  data: Tabular | FunctionTest;
   className?: string;
   id: string;
   latex?: boolean;
@@ -53,7 +131,14 @@ export function DataTable({
   const textElement = latex
     ? (d: any) => <Maths val={d} block={false} />
     : (d: any) => d;
-  const _data = getBaseData(formatTabularData(data));
+
+  let _data: any;
+  if (IsFunctionTest(data)) {
+    let n = GenerateFunctionData(data as FunctionTest);
+    _data = getBaseData(n as Tabular);
+  } else {
+    _data = getBaseData(formatTabularData(data as Tabular));
+  }
 
   let toRender = [];
   for (let i = 0; i < output.length; i++) {
@@ -82,7 +167,7 @@ export function DataTable({
   }
   if (include) {
     const _toRenderLength = toRender.length - 1;
-    let _dataList = toRender[_toRenderLength].rows.map((d) => d[1]);
+    let _dataList = toRender[_toRenderLength].rows.map((d: any) => d[1]);
     let _datum: [string, number];
     for (let i = 0; i < include.length; i++) {
       let current = include[i];

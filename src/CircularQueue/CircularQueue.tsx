@@ -27,8 +27,8 @@ export function CircularQueue({
   width = 500,
   fontSize = 0.8,
   height = 250,
-  iradius,
-  oradius,
+  iradius = 70,
+  oradius = 90,
   scale = 100,
   cwidth = scale,
   cheight,
@@ -43,8 +43,7 @@ export function CircularQueue({
     .padAngle(padding)
     .value((d: any) => d.data)(generateElements(data));
   const _svg = svg(width, height, margins);
-  iradius = 70;
-  oradius = 90;
+
   const _arc = arc().innerRadius(iradius).outerRadius(oradius);
 
   const _pointerArc = arc()

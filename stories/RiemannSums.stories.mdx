@@ -107,3 +107,51 @@ Lowering Δ𝑥 below 0.1 (here, 0.04), we ought to consider just using the inte
   domain={[-5, 5]}
   range={[-5, 5]}
 />
+
+## Plotting Between Two Curves
+
+Riemann sums can also be rendered between two curves:
+
+<Plot
+  data={[
+    {
+      f: (x) => 0.3 * (x - 3) ** 2 + 1,
+      riemann: {
+        f: (x) => -(0.3 * (x - 3) ** 2 - 3),
+        m: 'left',
+        i: [2, 4],
+        dx: 0.25,
+      },
+    },
+    { f: (x) => -(0.3 * (x - 3) ** 2 - 3) },
+    { f: 2, dash: 3 },
+    { f: 4, dash: 3 },
+  ]}
+  domain={[-1, 8]}
+  range={[-1, 8]}
+  scale={60}
+/>
+
+The code:
+
+```jsx
+<Plot
+  data={[
+    {
+      f: (x) => 0.3 * (x - 3) ** 2 + 1,
+      riemann: {
+        f: (x) => -(0.3 * (x - 3) ** 2 - 3),
+        m: 'left',
+        i: [2, 4],
+        dx: 0.25,
+      },
+    },
+    { f: (x) => -(0.3 * (x - 3) ** 2 - 3) },
+    { f: 2, dash: 3 },
+    { f: 4, dash: 3 },
+  ]}
+  domain={[-1, 8]}
+  range={[-1, 8]}
+  scale={60}
+/>
+```

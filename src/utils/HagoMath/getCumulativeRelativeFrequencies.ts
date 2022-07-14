@@ -19,7 +19,3 @@ export function getCumulativeRelativeFrequencies(list: number[]) {
   }
   return output;
 }
-
-// const test = [1, 1, 2, 3, 1, 5, 8];
-// const y = getCumulativeRelativeFrequencies(test);
-// console.log(y);
