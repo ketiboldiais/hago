@@ -18,8 +18,58 @@ import {
   ParametricFunctionDatum,
   TextDatum,
   IsUndefined,
+  Label,
+  PointDatum,
 } from '../utils';
 import { Latex } from '../utils/Latex';
+
+function getSlope(point1: [number, number], point2: [number, number]) {
+  const x0 = point1[0];
+  const y0 = point1[1];
+  const x1 = point2[0];
+  const y1 = point2[1];
+  const dy = y1 - y0;
+  const dx = x1 - x0;
+  return dy / dx;
+}
+
+function getMidPoint(point1: [number, number], point2: [number, number]) {
+  const x0 = point1[0];
+  const y0 = point1[1];
+  const x1 = point2[0];
+  const y1 = point2[1];
+  const dx = x1 + x0;
+  const dy = y1 + y0;
+  const x = dx / 2;
+  const y = dy / 2;
+  return { x, y };
+}
+
+function GenerateLabel(datum: Label): any {
+  let out: Label;
+  if (typeof datum === 'string') {
+    out = { t: datum as string };
+  } else {
+    out = datum as Label;
+  }
+
+  return out;
+}
+
+function makeLinearFunction(
+  point1: [number, number],
+  point2: [number, number]
+) {
+  const m = getSlope(point1, point2);
+  const x = point1[0];
+  const y = point1[1];
+  const b = y - m * x;
+  const sign = b < 0 ? '-' : '+';
+  const formula = `y = ${m}x ${sign} ${Math.abs(b)}`;
+  const f = (n: number) => m * n + b;
+
+  return { f, formula };
+}
 
 export const Plot = ({
   data = [],
@@ -30,6 +80,7 @@ export const Plot = ({
   ticks = 4,
   xTicks = ticks,
   yTicks = ticks,
+  axesLabels = ['𝒙', '𝒚'],
   samples,
   width = 500,
   height = 500,
@@ -46,15 +97,9 @@ export const Plot = ({
   let areas = [];
   let vectorData = [];
   let annotations = [];
-  let riemanns: {
-    x0: number;
-    y0: number;
-    x1: number;
-    y1: number;
-    r: number;
-    tx: number;
-    color: string;
-  }[];
+  let riemanns: any = [];
+  let points: PointDatum[] = [];
+  let secants: any[] = [];
   const { width: _svg_width, height: _svg_height } = svg(
     width,
     height,
@@ -66,30 +111,102 @@ export const Plot = ({
   const xScale = scaleLinear().domain(domain).range([0, _svg_width]);
   const yScale = scaleLinear().domain(range).range([_svg_height, 0]);
 
+  const xLabel = axesLabels[0]
+    ? GenerateLabel(axesLabels[0])
+    : GenerateLabel('x');
+
+  const yLabel = axesLabels[1]
+    ? GenerateLabel(axesLabels[1])
+    : GenerateLabel('x');
+
   for (let i = 0; i < data.length; i++) {
     let datum = data[i];
+
+    if ((datum as FunctionDatum).f) {
+      datum = datum as FunctionDatum;
+      let el = FunctionPlot(datum, xScale, yScale, samples, domain, range);
+      elements.push(el);
+
+      if (datum.secant && typeof datum.f === 'function') {
+        let sec = datum.secant;
+        let renderFormula = sec.renderFormula && true;
+
+        // First input supplied by user
+        let x0: number = sec.x0;
+
+        // Second input supplied by user
+        let x1: number = sec.x1;
+
+        // computed y-output for first point
+        let y0: number = datum.f(x0);
+
+        // computed y-output for second point
+        let y1: number = datum.f(x1);
+
+        let color = sec.c || 'teal';
+
+        // only render the points supplied by the user
+
+        const point1: [number, number] = [x0, y0];
+        const point2: [number, number] = [x1, y1];
+
+        if (!sec.renderPoints) {
+          points.push({ p: point1, label: `(${x0},${y0})` });
+          points.push({ p: point2, label: `(${x1},${y1})` });
+        }
+
+        const getLineFunction = makeLinearFunction(point1, point2);
+
+        const secantFunction = getLineFunction.f;
+        const secantFormula = getLineFunction.formula;
+
+        let xi = domain[0];
+        let xf = domain[1];
+
+        let yi = secantFunction(xi);
+        let yf = secantFunction(xf);
+
+        if (renderFormula) {
+          const midpoint = getMidPoint(point1, point2);
+          const textFormula: TextDatum = {
+            t: secantFormula,
+            w: 100,
+            h: 100,
+            x: midpoint.x,
+            y: midpoint.y,
+          };
+          annotations.push(textFormula);
+        }
+
+        // scale the values for path rendering
+        xi = xScale(xi);
+        yi = yScale(yi);
+
+        x0 = xScale(x0);
+        y0 = yScale(y0);
+
+        x1 = xScale(x1);
+        y1 = yScale(y1);
+
+        xf = xScale(xf);
+        yf = yScale(yf);
+
+        let pathDatum = `M${xi} ${yi} L${x0} ${y0} L${x1} ${y1} L${xf} ${yf}`;
+
+        secants.push({ pathDatum, color });
+      }
+    }
     if ((datum as TextDatum).t) {
       datum = datum as TextDatum;
-      datum.w = datum.w ? datum.w : 100;
-      datum.h = datum.h ? datum.h : 100;
-      datum.x = datum.x ? datum.x : 0;
-      datum.y = datum.y ? datum.y : 0;
+      datum.w = datum.w || 100;
+      datum.h = datum.h || 100;
+      datum.x = datum.x || 0;
+      datum.y = datum.y || 0;
       annotations.push(datum);
-    }
-    if ((datum as FunctionDatum).f) {
-      let el = FunctionPlot(
-        datum as FunctionDatum,
-        xScale,
-        yScale,
-        samples,
-        domain,
-        range,
-      );
-      elements.push(el);
     }
     if ((datum as FunctionDatum).riemann) {
       let el = RiemannPlot(datum as FunctionDatum, xScale, yScale, domain);
-      riemanns = el;
+      riemanns.push(el);
     }
     if ((datum as FunctionDatum | ParametricFunctionDatum).integrate) {
       let el = AreaPlot(
@@ -100,6 +217,9 @@ export const Plot = ({
         domain
       );
       areas.push(el);
+    }
+    if ((datum as PointDatum).p) {
+      points.push(datum as PointDatum);
     }
     if (
       (datum as ParametricFunctionDatum).x &&
@@ -116,7 +236,7 @@ export const Plot = ({
       elements.push(el);
     }
   }
-
+  riemanns = riemanns ? riemanns.flat() : false;
   return (
     <Board
       className={className}
@@ -136,103 +256,213 @@ export const Plot = ({
           <ArrowYUp />
           <ArrowYDown />
         </defs>
-        <g transform={Translate(0, yScale(0))}>
-          <AxisHorizontal
-            domain={domain}
-            range={[0, _svg_width]}
-            tickSep={xTickcount}
-            dx={0}
-            dy={20}
-            markerStart={domain[0] && 'xArrowLeft'}
-            markerEnd={domain[1] && 'xArrowRight'}
-            fitContent={true}
-            latex={false}
-          />
+        <g transform={Translate(0, yScale(0))} className="hago_XAxis">
+          {RenderXAxis(domain, _svg_width, xTickcount)}
+          {xLabel && RenderXLabel(xLabel, _svg_width)}
         </g>
-        <g transform={Translate(xScale(0), 0)}>
-          <AxisVertical
-            domain={range}
-            range={[_svg_height, 0]}
-            tickSep={yTickCount}
-            dy={5}
-            dx={-10}
-            markerStart={range[1] && 'yArrowUp'}
-            markerEnd={range[0] && 'yArrowDown'}
-            latex={false}
-          />
+        <g transform={Translate(xScale(0), 0)} className="hago_YAxis">
+          {RenderYAxis(range, _svg_height, yTickCount)}
+          {yLabel && RenderYLabel(yLabel)}
         </g>
-        {elements &&
-          elements.map((d, i) => (
-            <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
-              {d}
+        {secants &&
+          secants.map((d, i) => (
+            <g key={`sc${id}_${i}`}>
+              <path d={d.pathDatum} stroke={d.color} fill={'none'} />
             </g>
           ))}
-        {areas &&
-          areas.map((d, i) => (
-            <g
-              key={`ar${id}_${i}`}
-              clipPath={`url(#${id}_Plot_clipPath)`}
-              className="integration_area"
-            >
-              {d}
-            </g>
-          ))}
-        {vectorData &&
-          vectorData.map((d, i) => (
-            <g key={`ve${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
-              {d}
-            </g>
-          ))}
-        {annotations &&
-          annotations.map((d, i) => (
-            <g key={`ap${id}_${i}`}>
-              <Latex
-                text={d.t}
-                offset={{
-                  x: xScale(d.x),
-                  y: yScale(d.y),
-                }}
-                fontsize={d.fontsize || 0.8}
-                dx={0}
-                dy={0}
-                width={d.w}
-                height={d.h}
-                color={d.color || 'black'}
-                fitContent={true}
-                textAlign={'center'}
-                block={false}
-              />
-            </g>
-          ))}
-        {riemanns &&
-          riemanns.map((d, i) => (
-            <g
-              key={`rm${id}${i}`}
-              className="riemann_sums"
-              transform={Translate(d.tx, 0)}
-              clipPath={`url(#${id}_Plot_clipPath)`}
-            >
-              <line
-                x1={d.x0}
-                y1={d.y0}
-                x2={d.x1}
-                y2={d.y1}
-                stroke={d.color}
-                strokeOpacity={0.1}
-                strokeWidth={d.r}
-              />
-              <line
-                x1={d.x0}
-                y1={d.y0}
-                x2={d.x1}
-                y2={d.y1}
-                stroke={d.color}
-                strokeOpacity={0.6}
-                strokeWidth={d.r - 1}
-              />
-            </g>
-          ))}
+        {points && RenderPoints(points, id, xScale, yScale)}
+        {elements && RenderCurves(elements, id)}
+        {areas && RenderIntegrals(areas, id)}
+        {vectorData && RenderVectors(vectorData, id)}
+        {annotations && RenderAnnotations(annotations, id, xScale, yScale)}
+        {riemanns && RenderRiemannSums(riemanns, id)}
       </g>
     </Board>
   );
 };
+
+function RenderYAxis(
+  range: [number, number],
+  _svg_height: number,
+  yTickCount: number
+) {
+  return (
+    <AxisVertical
+      domain={range}
+      range={[_svg_height, 0]}
+      tickSep={yTickCount}
+      dy={5}
+      dx={-10}
+      markerStart={range[1] && 'yArrowUp'}
+      markerEnd={range[0] && 'yArrowDown'}
+      latex={false}
+    />
+  );
+}
+
+function RenderXAxis(
+  domain: [number, number],
+  _svg_width: number,
+  xTickcount: number
+) {
+  return (
+    <AxisHorizontal
+      domain={domain}
+      range={[0, _svg_width]}
+      tickSep={xTickcount}
+      dx={0}
+      dy={20}
+      markerStart={domain[0] && 'xArrowLeft'}
+      markerEnd={domain[1] && 'xArrowRight'}
+      fitContent={true}
+      latex={false}
+    />
+  );
+}
+
+function RenderXLabel(xLabel: any, _svg_width: number): React.ReactNode {
+  return (
+    <text
+      dx={xLabel.x || _svg_width + 10}
+      dy={xLabel.y || 4}
+      textAnchor={xLabel.textAnchor || 'start'}
+    >
+      {xLabel.t}
+    </text>
+  );
+}
+
+function RenderYLabel(yLabel: any): React.ReactNode {
+  return (
+    <text
+      dx={yLabel.x || 0}
+      dy={yLabel.y || -10}
+      textAnchor={yLabel.textAnchor || 'middle'}
+    >
+      {yLabel.t}
+    </text>
+  );
+}
+
+function RenderPoints(
+  points: PointDatum[],
+  id: string,
+  xScale,
+  yScale
+): React.ReactNode {
+  return points.map((d, i) => (
+    <g
+      key={`pp${id}_${i}`}
+      transform={Translate(xScale(d.p[0]), yScale(d.p[1]))}
+      className={d.class || 'hago_PlotPoint'}
+    >
+      <circle
+        r={d.r || 2}
+        stroke={d.c || 'tomato'}
+        fill={!d.in ? d.c || 'tomato' : 'none'}
+      />
+      {d.label && (
+        <text x={d.dx || 1} y={-d.dy || -5} fontSize={'0.7rem'}>
+          {d.label}
+        </text>
+      )}
+    </g>
+  ));
+}
+
+function RenderCurves(elements: any[], id: string): React.ReactNode {
+  return elements.map((d, i) => (
+    <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
+      {d}
+    </g>
+  ));
+}
+
+function RenderIntegrals(areas: any[], id: string): React.ReactNode {
+  return areas.map((d, i) => (
+    <g
+      key={`ar${id}_${i}`}
+      clipPath={`url(#${id}_Plot_clipPath)`}
+      className="integration_area"
+    >
+      {d}
+    </g>
+  ));
+}
+
+function RenderVectors(vectorData: any[], id: string): React.ReactNode {
+  return vectorData.map((d, i) => (
+    <g key={`ve${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
+      {d}
+    </g>
+  ));
+}
+
+function RenderAnnotations(
+  annotations: any[],
+  id: string,
+  xScale,
+  yScale
+): React.ReactNode {
+  return annotations.map((d, i) => (
+    <g key={`ap${id}_${i}`}>
+      <Latex
+        text={d.t}
+        offset={{
+          x: xScale(d.x),
+          y: yScale(d.y),
+        }}
+        fontsize={d.fontsize || 0.8}
+        dx={0}
+        dy={0}
+        width={d.w}
+        height={d.h}
+        color={d.color || 'black'}
+        fitContent={true}
+        textAlign={'center'}
+        block={false}
+      />
+    </g>
+  ));
+}
+
+function RenderRiemannSums(
+  riemanns: {
+    x0: number;
+    y0: number;
+    x1: number;
+    y1: number;
+    r: number;
+    tx: number;
+    color: string;
+  }[],
+  id: string
+): React.ReactNode {
+  return riemanns.map((d, i) => (
+    <g
+      key={`rm${id}${i}`}
+      className="riemann_sums"
+      transform={Translate(d.tx, 0)}
+      clipPath={`url(#${id}_Plot_clipPath)`}
+    >
+      <line
+        x1={d.x0}
+        y1={d.y0}
+        x2={d.x1}
+        y2={d.y1}
+        stroke={d.color}
+        strokeOpacity={0.1}
+        strokeWidth={d.r}
+      />
+      <line
+        x1={d.x0}
+        y1={d.y0}
+        x2={d.x1}
+        y2={d.y1}
+        stroke={d.color}
+        strokeOpacity={0.6}
+        strokeWidth={d.r - 1}
+      />
+    </g>
+  ));
+}

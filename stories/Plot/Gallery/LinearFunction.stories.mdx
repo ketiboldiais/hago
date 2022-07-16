@@ -1,13 +1,11 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Plot, PlotProps, Maths } from '../src';
+import { Plot, PlotProps, Maths } from '../../../src';
 
-<Meta title="Plotters/Linear Functions" component={Plot} />
+<Meta title="Plot/Gallery/Linear Functions" component={Plot} />
 
 # Linear Functions
 
-Linear functions are functions of the form <Maths val={"f(x)=a+bx"} block={false}/>, where <Maths val={"a,b,x \\in \\R"} block={false}/>.
-
-writing the following:
+Linear functions are functions of the form <Maths val={"f(x)=a+bx"} block={false}/>, where <Maths val={"a,b,x \\in \\R"} block={false}/>. Below are a few examples of linear functions.
 
 ```javascript
 <Plot data={[{ f: (x) => x + 1 }]} domain={[-5, 10]} range={[-5, 10]} />

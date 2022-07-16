@@ -370,6 +370,8 @@ export type FunctionDatum = {
     color?: string;
     dash?: number;
     integrate?: [number, number, Integral];
+    domain?: [number, number];
+    image?: [number, number];
     riemann?: RiemannDatum;
     integrationColor?: string;
     id?: string;
@@ -623,6 +625,14 @@ export interface JaggedArrayProps extends BaseProps {
 }
 
 // @public (undocumented)
+export type Label = string | {
+    t: string;
+    x?: number;
+    y?: number;
+    textAnchor?: 'start' | 'middle' | 'end';
+};
+
+// @public (undocumented)
 export interface LatexProps {
     // (undocumented)
     block?: boolean;
@@ -856,54 +866,19 @@ export interface MTreeProps extends BaseProps {
 export function Multiplot({ data, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, xDomain, yDomain, yRotate, zRotate, }: MultiplotProps): JSX.Element;
 
 // @public (undocumented)
-export interface MultiplotProps {
-    // (undocumented)
-    cheight?: number;
-    // (undocumented)
-    cwidth?: number;
-    // (undocumented)
+export interface MultiplotProps extends BaseProps {
     data: FunctionDatum[];
-    // (undocumented)
-    height?: number;
-    // (undocumented)
-    helpers?: boolean;
-    // (undocumented)
-    id: string;
-    // (undocumented)
-    marginBottom?: number;
-    // (undocumented)
-    marginLeft?: number;
-    // (undocumented)
-    marginRight?: number;
-    // (undocumented)
-    margins?: [number, number, number, number];
-    // (undocumented)
-    marginTop?: number;
-    // (undocumented)
     renderXAxis?: boolean;
-    // (undocumented)
     renderYAxis?: boolean;
-    // (undocumented)
     renderZAxis?: boolean;
-    // (undocumented)
     scale?: number;
-    // (undocumented)
-    width?: number;
-    // (undocumented)
     xDomain?: [number, number];
-    // (undocumented)
     xTickCount?: number;
-    // (undocumented)
     yDomain?: [number, number];
-    // (undocumented)
     yRotate?: number;
-    // (undocumented)
     yTickCount?: number;
-    // (undocumented)
     zRange?: [number, number];
-    // (undocumented)
     zRotate?: number;
-    // (undocumented)
     zTickCount?: number;
 }
 
@@ -961,7 +936,7 @@ export interface PathProps {
 }
 
 // @public (undocumented)
-export const Plot: ({ data, className, id, domain, range, ticks, xTicks, yTicks, samples, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PlotProps) => JSX.Element;
+export const Plot: ({ data, className, id, domain, range, ticks, xTicks, yTicks, axesLabels, samples, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: PlotProps) => JSX.Element;
 
 // @public (undocumented)
 export function Plot3D({ cameraParams, z, segments, xMin, gridColor, xMax, xRange, yMin, yMax, yRange, scale, size, }: {
@@ -971,7 +946,7 @@ export function Plot3D({ cameraParams, z, segments, xMin, gridColor, xMax, xRang
         near: number;
         far: number;
     };
-    z?: (x: any, y: any) => number;
+    z: any;
     segments?: number;
     xMin?: number;
     gridColor?: string;
@@ -987,9 +962,11 @@ export function Plot3D({ cameraParams, z, segments, xMin, gridColor, xMax, xRang
 // @public (undocumented)
 export interface PlotProps extends BaseProps {
     // (undocumented)
+    axesLabels?: [Label, Label];
+    // (undocumented)
     className?: string;
     // (undocumented)
-    data?: (FunctionDatum | ParametricFunctionDatum | VectorFunctionDatum | TextDatum)[];
+    data?: (FunctionDatum | ParametricFunctionDatum | VectorFunctionDatum | TextDatum | PointDatum)[];
     // (undocumented)
     domain?: [number, number];
     // (undocumented)
@@ -1014,6 +991,18 @@ export type Point = {
     x: number;
     y: number;
     className?: string;
+};
+
+// @public (undocumented)
+export type PointDatum = {
+    p: [number, number];
+    label?: string;
+    dx?: number;
+    dy?: number;
+    r?: number;
+    c?: string;
+    in?: boolean;
+    class?: string;
 };
 
 // @public (undocumented)
@@ -1382,7 +1371,7 @@ export type VerticalLineTo = {
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1371:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1467:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

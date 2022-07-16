@@ -2,9 +2,14 @@ import { IsAnArray, IsaNumber, IsDefined } from './TypeChecks';
 import { ReactNode } from 'react';
 
 /**
+ * @description Hago API
+ * This file provides a code level description
+ * of Hago.
+ */
+
+/**
  * @public BaseProps
- * The underlying interface for
- * all Hago components.
+ * The underlying interface for all Hago components.
  */
 export interface BaseProps {
   /**
@@ -69,7 +74,7 @@ export interface BaseProps {
    */
   margins?: [number, number, number, number];
   /**
-   * Sets the font size
+   * Sets the font size (in rem units)
    */
   fontSize?: number;
 }
@@ -351,30 +356,73 @@ export interface MemProps extends BaseProps {
 /**
  * @public
  */
-export interface MultiplotProps {
+export interface MultiplotProps extends BaseProps {
+  /**
+   * Takes a `FunctionDatum` type:
+   * - `{f: (x,y) => <body>}`
+   */
   data: FunctionDatum[];
-  id: string;
-  width?: number;
-  height?: number;
+  /**
+   * A multiplier for the values. Because
+   * multivariable functions depend on
+   * potentially three different
+   * scales, values may have to be multiplied
+   * by some constant to render as
+   * desired.
+   */
   scale?: number;
-  cwidth?: number;
-  cheight?: number;
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  margins?: [number, number, number, number];
+  /**
+   * Rotates the curve along the y-axis.
+   */
   yRotate?: number;
+  /**
+   * Rotates the curve along the z-axis.
+   */
   zRotate?: number;
-  helpers?: boolean;
+  /**
+   * The x-domain for the function's
+   * x-input.
+   */
   xDomain?: [number, number];
+  /**
+   * The y-domain for the function's
+   * y-input.
+   */
   yDomain?: [number, number];
+  /**
+   * The range of values
+   * the function may output.
+   */
   zRange?: [number, number];
+  /**
+   * If true, displays the
+   * z-axis. Default false.
+   */
   renderXAxis?: boolean;
+  /**
+   * If true, displays the y-axis.
+   * Default false.
+   */
   renderYAxis?: boolean;
+  /**
+   * If true, displays the z-axis.
+   * Defaults to false.
+   */
   renderZAxis?: boolean;
+  /**
+   * Sets the number of ticks along the
+   * x-axis.
+   */
   xTickCount?: number;
+  /**
+   * Sets the number of ticks along the
+   * y-axis.
+   */
   yTickCount?: number;
+  /**
+   * Sets the number of ticks along
+   * the z-axis.
+   */
   zTickCount?: number;
 }
 
@@ -408,12 +456,63 @@ export type NodeObject = {
 /**
  * @public
  */
+export type PointDatum = {
+  /**
+   * The (x,y) coordinates of the point
+   */
+  p: [number, number];
+  /**
+   * An optional point label
+   */
+  label?: string;
+  /**
+   * Optional, offsets the text position
+   * along the x-axis.
+   */
+  dx?: number;
+  /**
+   * Optional, offsets the text position
+   * along the y-axis
+   */
+  dy?: number;
+  /**
+   * Optional, sets the radius of the point
+   */
+  r?: number;
+  /**
+   * Optional, sets the color of the point.
+   */
+  c?: string;
+  /**
+   * Optional, sets whether the point is open or closed.
+   * I.e., whether the point is filled or not.
+   */
+  in?: boolean;
+  /**
+   * Optional, a CSS class name for styling.
+   */
+  class?: string;
+};
+
+export type Label =
+  | string
+  | {
+      t: string;
+      x?: number;
+      y?: number;
+      textAnchor?: 'start' | 'middle' | 'end';
+    };
+
+/**
+ * @public
+ */
 export interface PlotProps extends BaseProps {
   data?: (
     | FunctionDatum
     | ParametricFunctionDatum
     | VectorFunctionDatum
     | TextDatum
+    | PointDatum
   )[];
   domain?: [number, number];
   range?: [number, number];
@@ -423,6 +522,7 @@ export interface PlotProps extends BaseProps {
   samples?: number;
   className?: string;
   id?: string;
+  axesLabels?: [Label, Label];
 }
 
 /**
@@ -908,12 +1008,23 @@ export type RiemannDatum = {
   color?: string;
 };
 
+export type SecantDatum = {
+  x0: number;
+  x1: number;
+  c?: string;
+  renderPoints?: boolean;
+  renderFormula?: boolean;
+};
+
 export type FunctionDatum = {
   f: Function;
   scale?: number;
   color?: string;
   dash?: number;
+  secant?: SecantDatum;
   integrate?: [number, number, Integral];
+  domain?: [number, number];
+  image?: [number, number];
   riemann?: RiemannDatum;
   integrationColor?: string;
   id?: string;

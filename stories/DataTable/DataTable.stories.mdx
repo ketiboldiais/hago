@@ -1,0 +1,79 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { DataTable, DataTableProps } from '../../src';
+import '../assets/style.css';
+
+<Meta title="DataTable/Introduction" component={DataTable} />
+
+# Data Table
+
+Basic tables can be rendered with the `DataTable` component. The `DataTable`'s `data` prop takes a matrix (two-dimensional array), where the first array corresponds to the table's header row, while the remaining arrays correspond to the body rows. For example, passing the following data into the component:
+
+```javascript
+<DataTable
+  data={[
+    ['Test', 'CPU Cycles'],
+    ['A', 1005],
+    ['B', 1110],
+    ['C', 1107],
+    ['D', 1111],
+    ['E', 1108],
+    ['F', 1109],
+    ['G', 1113],
+    ['H', 1104],
+    ['I', 1101],
+    ['J', 1099],
+  ]}
+  include={['mean', 'median', 'min', 'max']}
+/>
+```
+
+we get the output:
+
+<DataTable
+  data={[
+    ['Test', 'CPU Cycles'],
+    ['A', 1005],
+    ['B', 1110],
+    ['C', 1107],
+    ['D', 1111],
+    ['E', 1108],
+    ['F', 1109],
+    ['G', 1113],
+    ['H', 1104],
+    ['I', 1101],
+    ['J', 1099],
+  ]}
+  include={['mean', 'median', 'min', 'max']}
+/>
+
+Styling the table is left to your CSS stylesheet.
+
+Alternatively, if only the numeric values are pertinent, a single array of numeric values can be passed:
+
+```javascript
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+/>
+```
+
+in which case `Hago` will generate a generic table with the headers `x` (corresponding to the datum's index starting at 0) and `y` (the datum):
+
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+/>
+
+We'll use this shorter syntax for the remaining examples.
+
+## Statistical Analyses
+
+The `output` property provides several options for basic statistical analyses.
+This property takes an array of output types, which are either (1) a string, or (2) a string tuple. By default, this property has the value `["raw"]`, generating a table of the data passed as is.
+
+## Including Single-output Analyses
+
+The `include` property can be passed the following parameters:
+
+- `mean`: includes a separate row containing arithmetic mean, or average, of the last rendered table's 𝑦-values.
+- `min`: includes a separate row containing the minimum value of the last rendered table's 𝑦-values.
+- `max`: includes a separate row containing the maximum value of the last rendered table's 𝑦-values.
+- `median`: includes a separate row containing the median value of the last rendered table's 𝑦-values.

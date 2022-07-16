@@ -1,5 +1,6 @@
 export function MakePathCoordinates(
-  f: Function | number,
+  curve1X: Function,
+  curve1Y: Function | number,
   integral: Function | number,
   upperBound: number,
   lowerBound: number,
@@ -12,35 +13,43 @@ export function MakePathCoordinates(
   let y0: number;
   let y1: number;
 
+  const integralIsFunc = typeof integral === 'function';
+  const integralIsNum = typeof integral === 'number';
+  const curve1YIsFunc = typeof curve1Y === 'function';
+  const curve1YIsNum = typeof curve1Y === 'number';
+
   for (let i = -number_of_samples; i < number_of_samples; i++) {
-    if (typeof f === 'number' && typeof integral === 'number') {
-      x0 = f;
+    let n = (i / number_of_samples) * domain[1];
+    if (typeof curve1Y === 'number' && typeof integral === 'number') {
+      x0 = curve1Y;
       x1 = integral;
       y0 = i;
       y1 = i;
-    } else if (typeof f === 'function' && typeof integral === 'number') {
-      x0 = (i / number_of_samples) * domain[1];
-      x1 = integral;
-      y0 = f(x0);
-      y1 = y0;
-    } else if (typeof f === 'number' && typeof integral === 'function') {
-      x0 = (i / number_of_samples) * domain[1];
-      x1 = (i / number_of_samples) * domain[1];
-      y0 = 0;
-      y1 = integral(x1);
-    } else if (typeof f === 'function' && typeof integral === 'function') {
-      x0 = (i / number_of_samples) * domain[1];
-      x1 = (i / number_of_samples) * domain[1];
-      y0 = f(x0);
-      y1 = integral(x1);
     } else {
-      throw new Error('Data must be a function or a number.');
+      if (curve1YIsFunc && integralIsNum) {
+        x0 = curve1X(n);
+        x1 = integral;
+        y0 = (curve1Y as Function)(x0);
+        y1 = y0;
+      } else if (curve1YIsNum && integralIsFunc) {
+        x0 = n;
+        x1 = n;
+        y0 = 0;
+        y1 = integral(x1);
+      } else if (curve1YIsFunc && integralIsFunc) {
+        x0 = curve1X(n);
+        x1 = n;
+        y0 = curve1Y(n);
+        y1 = integral(n);
+      } else {
+        throw new Error('Data must be a function or a number.');
+      }
     }
     if (isNaN(y0) || isNaN(y1)) {
       y0 = null;
       y1 = null;
     }
-    if (lowerBound < x1 && x1 < upperBound) {
+    if (lowerBound < n && n < upperBound) {
       dataSet.push({ x0, x1, y0, y1 });
     } else {
       continue;

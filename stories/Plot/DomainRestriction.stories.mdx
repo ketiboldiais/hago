@@ -1,0 +1,36 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../src';
+
+<Meta title="Plot/Domain Restrictions" component={Plot} />
+
+# Domain Restrictions
+
+Given a function 𝑓 : 𝐴 &rarr; 𝐵, the function:
+
+<Maths val={`f|_A`} block={true} />
+
+is a new function whose domain is a smaller subset of 𝐴. Or, informally, the function 𝑓, but with a smaller domain. Functions like <Maths val={`f|_A`} block={false} /> are extended by 𝑓. For example, consider the function <Maths val={`f(x) = x^2`} block={false}/>.
+
+<Plot data={[{ f: (x) => x ** 2 }]} />
+
+This function has the domain:
+
+<Maths val={`\\text{Dom}(f) := \\{ x \\in \\R \\}`} block={true} />
+
+If we restrict this domain to:
+
+<Maths val={`\\text{Dom}(f) := \\{ x \\in \\R^+ \\}`} block={true} />
+
+we get a new function <Maths val={`f(x)|_{\\R^+} = x^2`} block={false}/>:
+
+<Plot data={[{ f: (x) => x ** 2, domain: [0, 10] }]} />
+
+The rendering code:
+
+```jsx
+<Plot data={[{ f: (x) => x ** 2, domain: [0, 10] }]} />
+```
+
+Domain restrictions are particularly useful because they allow us to make certain assumptions. For example, the function <Maths val={`f(x) = x^2`} block={false}/> has no inverse. But, if we assume that 𝑓's domain is restricted to the positive real numbers, we get an inverse. Namely, <Maths val={`y = \\sqrt{x}`} block={false}/>:
+
+<Plot data={[{ f: (x) => Math.sqrt(x) }]} />

@@ -1,0 +1,25 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { DataTable, DataTableProps } from '../../src';
+import '../assets/style.css';
+
+<Meta title="DataTable/Median" component={DataTable} />
+
+# Median
+
+To return the median of the 𝑦-values, we write:
+
+```javascript
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 0, 4, 4, 3, 8, 9, 9, 1]}
+  output={[['frequency', 'y']]}
+  include={['mean', 'max', 'min', 'median']}
+/>
+```
+
+which results in the table:
+
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 0, 4, 4, 3, 8, 9, 9, 1]}
+  output={[['frequency', 'y']]}
+  include={['mean', 'max', 'min', 'median']}
+/>

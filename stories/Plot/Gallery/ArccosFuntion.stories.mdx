@@ -1,0 +1,28 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../../src';
+
+<Meta title="Plot/Gallery/Arccosine Function" component={Plot} />
+
+# The Arccosine Function
+
+The the arccosine function is the inverse of the cosine function. Hago's plot:
+
+<Plot
+  data={[{ f: (x) => Math.acos(x) }]}
+  domain={[-1.5, 1.5]}
+  range={[-1, 4]}
+  yTicks={4.2}
+  xTicks={4}
+/>
+
+Because arcsine is only defined on -1 to 1, the graph above is rendered with a set domain and range:
+
+```jsx
+<Plot
+  data={[{ f: (x) => Math.acos(x) }]}
+  domain={[-1, 1]}
+  range={[-1, 4]}
+  yTicks={4.2}
+  xTicks={4}
+/>
+```

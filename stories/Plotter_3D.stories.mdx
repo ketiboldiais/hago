@@ -1,10 +1,20 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Plot3D } from '../src/Plot3D/Plot3D';
+import { Plot3D, Maths } from '../src';
 
 <Meta title="Plotters/3D Plots" component={Plot3D} />
 
 # Plot 3D
 
-For more interactive parametric functions, we can use the `Plot3D` module:
+For more interactive parametric functions, we can use the `Plot3D` module. For example, the function:
 
-<Plot3D />
+<Maths val={`z(x,y) = \\sin \\left( \\sqrt{x^2 + y^2} \\right)`} />
+
+can be rendered by writing:
+
+```jsx
+<Plot3D z={(x, y) => Math.sin(Math.sqrt(x ** 2 + y ** 2))} />
+```
+
+to render:
+
+<Plot3D z={(x, y) => Math.sin(Math.sqrt(x ** 2 + y ** 2))} />

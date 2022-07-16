@@ -1,27 +1,38 @@
 export function MakeCoordinates(
   f: Function | number,
   number_of_samples: number = 2000,
-  domain: [number, number] = [-10, 10],
-  range?: [number, number]
+  domain,
+  range
 ) {
   let dataSet = [];
   let x: number;
   let y: any;
+
+  const fisFunc = typeof f === 'function';
+  const fisNum = typeof f === 'number';
+
+  let minY = range[0] * 2;
+  let maxY = range[1] * 2;
+
   const xMax = domain[1];
   for (let i = -number_of_samples; i < number_of_samples; i++) {
-    if (typeof f === 'number') {
+    if (fisNum) {
       x = f;
       y = i;
-    } else if (typeof f === 'function') {
+    } else if (fisFunc) {
       x = (i / number_of_samples) * xMax;
       y = f(x);
     } else {
       throw new Error('Data must be a function or a number.');
     }
-    if (isNaN(y) || y <= range[0] * 2 || y >= range[1] * 2) {
+    if (isNaN(y) || y <= minY || y >= maxY) {
       y = null;
     }
-    dataSet.push({ x, y });
+    if (x < domain[0] || domain[1] < x) {
+      continue;
+    } else {
+      dataSet.push({ x, y });
+    }
   }
   return dataSet;
 }

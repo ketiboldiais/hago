@@ -40,7 +40,7 @@ export function Plot3D({
     near: 0.1,
     far: 30,
   },
-  z = (x, y) => Math.sin(Math.sqrt(x ** 2 + y ** 2)),
+  z,
   segments = 100,
   xMin = -10,
   gridColor = 'lightgrey',

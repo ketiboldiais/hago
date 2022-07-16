@@ -1602,7 +1602,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!BaseProps#fontSize:member",
-              "docComment": "/**\n * Sets the font size\n */\n",
+              "docComment": "/**\n * Sets the font size (in rem units)\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3886,7 +3886,7 @@
             },
             {
               "kind": "Content",
-              "text": "];\n    riemann?: "
+              "text": "];\n    domain?: [number, number];\n    image?: [number, number];\n    riemann?: "
             },
             {
               "kind": "Reference",
@@ -6967,6 +6967,31 @@
           ]
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!Label:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type Label = "
+            },
+            {
+              "kind": "Content",
+              "text": "string | {\n    t: string;\n    x?: number;\n    y?: number;\n    textAnchor?: 'start' | 'middle' | 'end';\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Label",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "hago!LatexProps:interface",
           "docComment": "",
@@ -9382,7 +9407,16 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "interface MultiplotProps "
+              "text": "interface MultiplotProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
             }
           ],
           "releaseTag": "Public",
@@ -9391,62 +9425,8 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#cheight:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "cheight?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "cheight",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#cwidth:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "cwidth?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "cwidth",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#data:member",
-              "docComment": "",
+              "docComment": "/**\n * Takes a `FunctionDatum` type: - `{f: (x,y) => <body>}`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9477,224 +9457,8 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#height:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "height?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "height",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#helpers:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "helpers?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "helpers",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#id:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "id: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "id",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#marginBottom:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "marginBottom?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "marginBottom",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#marginLeft:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "marginLeft?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "marginLeft",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#marginRight:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "marginRight?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "marginRight",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#margins:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "margins?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "[number, number, number, number]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "margins",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#marginTop:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "marginTop?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "marginTop",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#renderXAxis:member",
-              "docComment": "",
+              "docComment": "/**\n * If true, displays the z-axis. Default false.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9721,7 +9485,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#renderYAxis:member",
-              "docComment": "",
+              "docComment": "/**\n * If true, displays the y-axis. Default false.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9748,7 +9512,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#renderZAxis:member",
-              "docComment": "",
+              "docComment": "/**\n * If true, displays the z-axis. Defaults to false.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9775,7 +9539,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#scale:member",
-              "docComment": "",
+              "docComment": "/**\n * A multiplier for the values. Because multivariable functions depend on potentially three different scales, values may have to be multiplied by some constant to render as desired.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9801,35 +9565,8 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "hago!MultiplotProps#width:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "width?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "width",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#xDomain:member",
-              "docComment": "",
+              "docComment": "/**\n * The x-domain for the function's x-input.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9856,7 +9593,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#xTickCount:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the number of ticks along the x-axis.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9883,7 +9620,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#yDomain:member",
-              "docComment": "",
+              "docComment": "/**\n * The y-domain for the function's y-input.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9910,7 +9647,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#yRotate:member",
-              "docComment": "",
+              "docComment": "/**\n * Rotates the curve along the y-axis.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9937,7 +9674,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#yTickCount:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the number of ticks along the y-axis.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9964,7 +9701,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#zRange:member",
-              "docComment": "",
+              "docComment": "/**\n * The range of values the function may output.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9991,7 +9728,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#zRotate:member",
-              "docComment": "",
+              "docComment": "/**\n * Rotates the curve along the z-axis.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -10018,7 +9755,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!MultiplotProps#zTickCount:member",
-              "docComment": "",
+              "docComment": "/**\n * Sets the number of ticks along the z-axis.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -10043,7 +9780,12 @@
               }
             }
           ],
-          "extendsTokenRanges": []
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
         },
         {
           "kind": "TypeAlias",
@@ -10597,7 +10339,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ data, className, id, domain, range, ticks, xTicks, yTicks, samples, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+              "text": "({ data, className, id, domain, range, ticks, xTicks, yTicks, axesLabels, samples, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
             },
             {
               "kind": "Reference",
@@ -10633,7 +10375,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    cameraParams?: {\n        fov: number;\n        position: number[];\n        near: number;\n        far: number;\n    };\n    z?: (x: any, y: any) => number;\n    segments?: number;\n    xMin?: number;\n    gridColor?: string;\n    xMax?: number;\n    xRange?: number;\n    yMin?: number;\n    yMax?: number;\n    yRange?: number;\n    scale?: number;\n    size?: number[];\n}"
+              "text": "{\n    cameraParams?: {\n        fov: number;\n        position: number[];\n        near: number;\n        far: number;\n    };\n    z: any;\n    segments?: number;\n    xMin?: number;\n    gridColor?: string;\n    xMax?: number;\n    xRange?: number;\n    yMin?: number;\n    yMax?: number;\n    yRange?: number;\n    scale?: number;\n    size?: number[];\n}"
             },
             {
               "kind": "Content",
@@ -10690,6 +10432,51 @@
           "name": "PlotProps",
           "preserveMemberOrder": false,
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!PlotProps#axesLabels:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "axesLabels?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "["
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Label",
+                  "canonicalReference": "hago!~Label:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Label",
+                  "canonicalReference": "hago!~Label:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "axesLabels",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 6
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "hago!PlotProps#className:member",
@@ -10764,6 +10551,15 @@
                 },
                 {
                   "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PointDatum",
+                  "canonicalReference": "hago!~PointDatum:type"
+                },
+                {
+                  "kind": "Content",
                   "text": ")[]"
                 },
                 {
@@ -10777,7 +10573,7 @@
               "name": "data",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 10
+                "endIndex": 12
               }
             },
             {
@@ -11022,6 +10818,31 @@
           ],
           "releaseTag": "Public",
           "name": "Point",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!PointDatum:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type PointDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    p: [number, number];\n    label?: string;\n    dx?: number;\n    dy?: number;\n    r?: number;\n    c?: string;\n    in?: boolean;\n    class?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PointDatum",
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2

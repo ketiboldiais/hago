@@ -10,10 +10,12 @@ export const FunctionPlot = (
   xScale: any,
   yScale: any,
   samples: number,
-  domain: [number, number] = [-10, 10],
-  range?: [number, number]
+  domain: [number, number],
+  range: [number, number]
 ) => {
-  const data: any = MakeCoordinates(datum.f, samples, domain, range);
+  const dom = datum.domain ? datum.domain : domain;
+  const ran = datum.image ? datum.image : range;
+  const data: any = MakeCoordinates(datum.f, samples, dom, ran);
   const lineGenerator: any = line()
     .y((d: any) => yScale(d.y))
     .defined((d: any) => {
@@ -64,7 +66,7 @@ export const ParametricFunctionPlot = (
 };
 
 export const AreaPlot = (
-  datum: FunctionDatum,
+  datum: FunctionDatum | ParametricFunctionDatum,
   xScale: any,
   yScale: any,
   samples: number = 1000,
@@ -85,8 +87,23 @@ export const AreaPlot = (
     integral = integralFunc;
   }
 
+  let PrimaryCurveX: Function;
+  let PrimaryCurveY: number | Function;
+
+  if (
+    (datum as ParametricFunctionDatum).x &&
+    (datum as ParametricFunctionDatum).y
+  ) {
+    PrimaryCurveX = (datum as ParametricFunctionDatum).x;
+    PrimaryCurveY = (datum as ParametricFunctionDatum).y;
+  } else {
+    PrimaryCurveX = (x: number) => x;
+    PrimaryCurveY = (datum as FunctionDatum).f;
+  }
+
   const data: any = MakePathCoordinates(
-    datum.f,
+    PrimaryCurveX,
+    PrimaryCurveY,
     integral,
     upperBound,
     lowerBound,
@@ -106,10 +123,10 @@ export const AreaPlot = (
   return (
     <path
       d={areaGenerator}
-      fill={datum.integrationColor || 'pink'}
+      fill={datum.integrationColor || 'gold'}
       opacity={0.4}
-      stroke={'firebrick'}
+      stroke={'orange'}
+      strokeWidth={1}
     />
   );
 };
-

@@ -1,0 +1,22 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths, PointDatum } from '../../src';
+
+<Meta title="Plot/Secant Line" component={Plot} />
+
+# Secant Line
+
+The `FunctionDatum` object contains a field called `secant`. This field takes a `SecantDatum` object:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2 - 2 * x + 3,
+      secant: {
+        x0: 1,
+        x1: 5,
+      },
+    },
+  ]}
+  domain={[-1, 6]}
+  range={[-5, 35]}
+/>

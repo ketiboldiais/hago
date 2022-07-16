@@ -1,0 +1,23 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { DataTable, DataTableProps } from '../../src';
+import '../assets/style.css';
+
+<Meta title="DataTable/Relative Frequency Analysis" component={DataTable} />
+
+# Relative Frequency Analysis
+
+To generate a relative frequency table, pass to the `output` property the value `["relative frequency", 𝑘]` where 𝑘 is one of the headers. For example, writing:
+
+```javascript
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+  output={[['frequency', 'y']]}
+/>
+```
+
+renders the table:
+
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+  output={[['relative frequency', 'y']]}
+/>

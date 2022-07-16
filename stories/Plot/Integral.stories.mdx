@@ -1,11 +1,11 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Plot, PlotProps, Maths } from '../src';
+import { Plot, PlotProps, Maths } from '../../src';
 
-<Meta title="Plotters/Integrals" component={Plot} />
+<Meta title="Plot/Integrals" component={Plot} />
 
 # Integrals
 
-The `<Plot/>` module can render areas under curves by initializing the `FunctionDatum`'s `integrate` property. For example, say we wanted to the area beneath the curve <Maths val={`x^3`} block={false}/> from -1 to 5. That is:
+The `<Plot/>` module can render areas under curves by initializing the `FunctionDatum`'s `integrate` property. For example, say we wanted to see the area beneath the curve <Maths val={`x^3`} block={false}/> from -1 to 5. That is:
 
 <Maths val={`\\int_{-1}^{5} x^3`} />
 

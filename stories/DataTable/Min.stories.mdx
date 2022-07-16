@@ -1,0 +1,23 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { DataTable, DataTableProps } from '../../src';
+import '../assets/style.css';
+
+<Meta title="DataTable/Min" component={DataTable} />
+
+# Min
+
+To return the min of the 𝑦-values, we write:
+
+```javascript
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+  include={['min']}
+/>
+```
+
+rendering:
+
+<DataTable
+  data={[5, 6, 3, 3, 2, 4, 7, 1, 2, 7, 9, 6, 5, 4, 4, 3, 5, 2, 5, 3]}
+  include={['min']}
+/>

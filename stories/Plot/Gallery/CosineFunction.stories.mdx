@@ -1,0 +1,10 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../../src';
+
+<Meta title="Plot/Gallery/Cosine Function" component={Plot} />
+
+# The Cosine Function
+
+The cosine function:
+
+<Plot data={[{ f: (x) => Math.cos(x) }]} />

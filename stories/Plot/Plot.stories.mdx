@@ -1,0 +1,18 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../src';
+
+<Meta title="Plot/Introduction" component={Plot} />
+
+# The Plot Component
+
+Hago's `Plot` module provides a way to plot functions using native JavaScript functions. For example, writing:
+
+```jsx
+<Plot data={[{ f: (x) => Math.sin(x) }]} />
+```
+
+Results in:
+
+<Plot data={[{ f: (x) => Math.sin(x) }]} />
+
+See the gallery for further examples.

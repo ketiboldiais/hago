@@ -1,0 +1,14 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../../src';
+
+<Meta title="Plot/Gallery/Exponential Growth Functions" component={Plot} />
+
+# Exponential Growth Functions
+
+Exponential growth functions are functions of the form:
+
+<Maths val={`f(x) = A \\cdot r^{kx}`} block={true} />
+
+Where 𝐴 is an initial value, 𝑟 is a common ratio greater than 1, and 𝑘 is the constant at which the frequency of the common ratio is applied. For example:
+
+<Plot data={[{ f: (x) => 2 ** x }]} />

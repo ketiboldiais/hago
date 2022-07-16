@@ -1,0 +1,10 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../../src';
+
+<Meta title="Plot/Gallery/Sine Function" component={Plot} />
+
+# The Sine Function
+
+The sine function:
+
+<Plot data={[{ f: (x) => Math.sin(x) }]} />

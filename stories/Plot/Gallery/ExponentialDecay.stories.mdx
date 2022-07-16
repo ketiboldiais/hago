@@ -1,0 +1,14 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths } from '../../../src';
+
+<Meta title="Plot/Gallery/Exponential Decay Functions" component={Plot} />
+
+# Exponential Decay Functions
+
+Exponential decay functions are functions of the form:
+
+<Maths val={`f(x) = A \\cdot r^{kx}`} block={true} />
+
+Where 𝐴 is an initial value, 𝑟 is a common ratio strictly greater than 0 and less than 1 (i.e., <Maths val={`0 < r < 1`} block={false}/>), and 𝑘 is the constant at which the frequency of the common ratio is applied. For example:
+
+<Plot data={[{ f: (x) => 0.5 ** x }]} />

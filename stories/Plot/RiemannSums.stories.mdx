@@ -1,11 +1,11 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Plot, PlotProps, Maths } from '../src';
+import { Plot, PlotProps, Maths } from '../../src';
 
-<Meta title="Plotters/Riemann Sums" component={Plot} />
+<Meta title="Plot/Riemann Sums" component={Plot} />
 
 # Riemann Sums
 
-Alongside integrals, Riemann sums can be rendered with the `<Plot/>` module. For example, writing:
+Alongside integrals, Riemann sums can be rendered with the `<Plot/>` module by passing a `RiemannDatum` object. For example, writing:
 
 ```jsx
 <Plot
@@ -39,7 +39,7 @@ To render a Riemann sum, we initialize the `FunctionDatum` object with a `Rieman
 - `dx` - Sets the width of the rectangles, or, in calculus terms, Δ𝑥.
 - `i` - Sets the interval of summation. Or, in calculus terms, the lower and upper bounds of the integrand.
 - `f` - The summation's domain. By default, this is set to `x`. If a function is passed, the domain is set to that function's codomain.
-- `color` - The rectangle's color, by default set to `#54BAB9`.
+- `integrationColor` - The rectangle's color, by default set to `#54BAB9`.
 
 Illustrating with a a few more examples, here is a Riemann sum where `dx` is set to 0.5, using the upper Riemann sum:
 
@@ -153,5 +153,43 @@ The code:
   domain={[-1, 8]}
   range={[-1, 8]}
   scale={60}
+/>
+```
+
+Another example:
+
+<Plot
+  data={[
+    {
+      f: (x) => Math.sqrt(x),
+      riemann: { f: (x) => x - 2, i: [2, 3], dx: 0.09 },
+    },
+    {
+      f: (x) => -Math.sqrt(x),
+      riemann: { f: (x) => Math.sqrt(x), i: [0, 0.5], dx: 0.09 },
+    },
+    { f: (x) => x - 2, color: 'blue' },
+  ]}
+  domain={[-2, 6]}
+  range={[-5, 6]}
+/>
+
+The code:
+
+```javascript
+<Plot
+  data={[
+    {
+      f: (x) => Math.sqrt(x),
+      riemann: { f: (x) => x - 2, i: [2, 3], dx: 0.09 },
+    },
+    {
+      f: (x) => -Math.sqrt(x),
+      riemann: { f: (x) => Math.sqrt(x), i: [0, 0.5], dx: 0.09 },
+    },
+    { f: (x) => x - 2, color: 'blue' },
+  ]}
+  domain={[-2, 6]}
+  range={[-5, 6]}
 />
 ```

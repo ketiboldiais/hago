@@ -1,0 +1,69 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Plot, PlotProps, Maths, PointDatum } from '../../src';
+
+<Meta title="Plot/Points" component={Plot} />
+
+# Points
+
+Points can be rendered by passing a `PointDatum` type object to the `data` prop. For example, the `PointDatum`:
+
+```javascript
+{p: [0,0], label: `(0,0)`, dx: 1, dy: 1, r: 1}
+```
+
+is interpreted as:
+
+- `p` - Set the point at coordinate (0,0).
+- `label` - Label the point as `(0,0)`.
+- `dx` - Offset the label to the right by 1.
+- `dy` - Offset the label up by 1.
+
+Illustrating with an example, writing the code:
+
+```jsx
+<Plot data={[{ p: [2, 2], label: '(2,2)', dx: 5, dy: 3 }]} />
+```
+
+renders:
+
+<Plot data={[{ p: [2, 2], label: '(2,2)', dx: 5, dy: 3 }]} />
+
+```typescript
+export type PointDatum = {
+  /**
+   * The (x,y) coordinates of the point
+   */
+  p: [number, number];
+  /**
+   * An optional point label
+   */
+  label?: string;
+  /**
+   * Optional, offsets the text position
+   * along the x-axis.
+   */
+  dx?: number;
+  /**
+   * Optional, offsets the text position
+   * along the y-axis
+   */
+  dy?: number;
+  /**
+   * Optional, sets the radius of the point
+   */
+  r?: number;
+  /**
+   * Optional, sets the color of the point.
+   */
+  c?: string;
+  /**
+   * Optional, sets whether the point is open or closed.
+   * I.e., whether the point is filled or not.
+   */
+  in?: boolean;
+  /**
+   * Optional, a CSS class name for styling.
+   */
+  class?: string;
+};
+```
