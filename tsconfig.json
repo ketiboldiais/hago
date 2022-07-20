@@ -34,6 +34,7 @@
     "src/Testing/*",
     "src/Timeline/*",
     "src/LinMap/*",
+    "src/utils/HagoMath/Parser/*",
   ],
   "ts-node": {
     "esm": true,

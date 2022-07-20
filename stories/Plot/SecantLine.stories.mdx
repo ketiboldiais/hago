@@ -7,6 +7,45 @@ import { Plot, PlotProps, Maths, PointDatum } from '../../src';
 
 The `FunctionDatum` object contains a field called `secant`. This field takes a `SecantDatum` object:
 
+```typescript
+type SecantDatum = {
+  /**
+   * The x-value for the first point
+   */
+  x0: number;
+  /**
+   * The x-value for the second point
+   */
+  x1: number;
+  /**
+   * An optional color that sets the line
+   * color. Defaults to `teal`
+   *
+   */
+  c?: string;
+  /**
+   * An optional boolean value to
+   * render the two points passed.
+   * Defaults to `false`.
+   */
+  renderPoints?: boolean;
+  /**
+   * An optional boolean value to render
+   * the the formula of the secant line.
+   * Defaults to `false`.
+   */
+  renderFormula?: boolean;
+  /**
+   * An optional CSS class name for the secant
+   * line container.
+   */
+  class?: string;
+};
+```
+
+For example, writing:
+
+```jsx
 <Plot
   data={[
     {
@@ -14,9 +53,52 @@ The `FunctionDatum` object contains a field called `secant`. This field takes a 
       secant: {
         x0: 1,
         x1: 5,
+        renderPoints: true,
+        renderFormula: true,
       },
     },
   ]}
   domain={[-1, 6]}
   range={[-5, 35]}
 />
+```
+
+will render:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2 - 2 * x + 3,
+      secant: {
+        x0: 1,
+        x1: 5,
+        renderPoints: true,
+        renderFormula: true,
+      },
+    },
+  ]}
+  domain={[-1, 6]}
+  range={[-5, 35]}
+/>
+
+Some other examples:
+
+<Plot
+  data={[
+    {
+      f: (x) => x ** 2 * x + 0.3,
+      secant: {
+        x0: 1,
+        x1: 2,
+        renderPoints: true,
+        renderFormula: true,
+      },
+    },
+  ]}
+  domain={[-3, 6]}
+  range={[-8, 30]}
+/>
+
+## Caveats
+
+Note that if the `renderFormula` is set to `true` and the slope of the secant line turns out to be a floating point number, Hago will render an approximated slope. Specifically, Hago will only read up to eight decimal places. Using those eight places, the slope is passed to a function that computes the lowest possible fraction with _continued fractions_. Hago is not a substitute for careful mathematical reasoning.

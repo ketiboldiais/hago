@@ -1,0 +1,40 @@
+const TokenDefinitions = {
+  WHITESPACE: [/^\s+/, null],
+  LINECOMMENT: [/^\/\/.*/, null],
+  BLOCKCOMMENT: [/^\/\*[\s\S]*?\*\//, null],
+  DELIMITER: [/^;/, ';'],
+  OBRACE: [/^\{/, '{'],
+  CBRACE: [/^\}/, '}'],
+  OPAREN: [/^\(/, '('],
+  CPAREN: [/^\)/, ')'],
+  COMMA: [/^,/, ','],
+  LET: [/^\blet\b/, 'let'],
+  IF: [/^\bif\b/, 'if'],
+  ELSE: [/^\belse\b/, 'else'],
+  TRUE: [/^\btrue\b/, 'true'],
+  FALSE: [/^\bfalse\b/, 'false'],
+  WHILE: [/^\bwhile\b/, 'while'],
+  DO: [/^\bdo\b/, 'do'],
+  FOR: [/^\bfor\b/, 'for'],
+  DEF: [/^\bdef\b/, 'def'],
+  RETURN: [/^\breturn\b/, 'return'],
+  NUMBER: [/^\d+/, 'NUMBER'],
+  ID: [/^\w+/, 'IDENTIFIER'],
+  EQ: [/^[=!]=/, 'EQUALITY_OPERATOR'],
+  SIMPLEASSIGN: [/^=/, 'SIMPLE_ASSIGN'],
+  COMPLEXASSIGN: [/^[\*\/\+\-]=/, 'COMPLEX_ASSIGN'],
+  ADD: [/^[+\-]/, 'ADDITIVE_OPERATOR'],
+  MULT: [/^[*\/]/, 'MULTIPLICATIVE_OPERATOR'],
+  POW: [/^[\^]/, 'POWER_OPERATOR'],
+  CMP: [/^[><]=?/, 'RELATIONAL_OPERATOR'],
+  AND: [/^&&/, 'AND'],
+  OR: [/^\|\|/, 'OR'],
+  NOT: [/^!/, 'NOT'],
+  DQSTRING: [/^"[^"]*"/, 'STRING'],
+  SQSTRING: [/^'[^']*'/, 'STRING'],
+};
+
+// const TokenIndex = Object.keys(TokenDefinitions).map(
+//   (k) => TokenDefinitions[k]
+// );
+// console.log(TokenIndex)

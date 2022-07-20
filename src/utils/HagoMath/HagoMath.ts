@@ -23,3 +23,4 @@ export * from './IsOdd';
 export * from './Normalize';
 export * from './Quicksort';
 export * from './ToBase';
+export * from './getLowestFraction';

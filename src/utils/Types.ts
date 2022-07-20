@@ -1008,12 +1008,41 @@ export type RiemannDatum = {
   color?: string;
 };
 
+/**
+ * @public
+ */
 export type SecantDatum = {
+  /**
+   * The x-value for the first point
+   */
   x0: number;
+  /**
+   * The x-value for the second point 
+   */
   x1: number;
+  /**
+   * An optional color that sets the line
+   * color. Defaults to `teal`
+   * 
+   */
   c?: string;
+  /**
+   * An optional boolean value to
+   * render the two points passed.
+   * Defaults to `false`.
+   */
   renderPoints?: boolean;
+  /**
+   * An optional boolean value to render
+   * the the formula of the secant line.
+   * Defaults to `false`.
+   */
   renderFormula?: boolean;
+  /**
+   * An optional CSS class name for the secant
+   * line container.
+   */
+  class?: string;
 };
 
 export type FunctionDatum = {

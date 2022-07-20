@@ -369,6 +369,7 @@ export type FunctionDatum = {
     scale?: number;
     color?: string;
     dash?: number;
+    secant?: SecantDatum;
     integrate?: [number, number, Integral];
     domain?: [number, number];
     image?: [number, number];
@@ -411,6 +412,12 @@ export function getFrequencies(list: number[]): {};
 
 // @public
 export function getIntervalWidth(number_of_data_values: number): number;
+
+// @public (undocumented)
+export function getLowestFraction(n: any): {
+    numerator: number;
+    denominator: number;
+};
 
 // @public (undocumented)
 export function getMax(list: number[]): {
@@ -1133,6 +1140,16 @@ export interface ScatterProps extends BaseProps {
 }
 
 // @public (undocumented)
+export type SecantDatum = {
+    x0: number;
+    x1: number;
+    c?: string;
+    renderPoints?: boolean;
+    renderFormula?: boolean;
+    class?: string;
+};
+
+// @public (undocumented)
 export function Sequence({ data, r, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, start, end, tickSep, removeEndTicks, removeEndTickX, removeEndTickY, renderLolly, }: SequenceProps): JSX.Element;
 
 // @public (undocumented)
@@ -1371,7 +1388,7 @@ export type VerticalLineTo = {
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1467:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1509:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

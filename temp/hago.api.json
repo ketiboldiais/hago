@@ -3877,7 +3877,16 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    scale?: number;\n    color?: string;\n    dash?: number;\n    integrate?: [number, number, "
+              "text": ";\n    scale?: number;\n    color?: string;\n    dash?: number;\n    secant?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SecantDatum",
+              "canonicalReference": "hago!~SecantDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    integrate?: [number, number, "
             },
             {
               "kind": "Reference",
@@ -3906,7 +3915,7 @@
           "name": "FunctionDatum",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 8
+            "endIndex": 10
           }
         },
         {
@@ -4291,6 +4300,50 @@
             }
           ],
           "name": "getIntervalWidth"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!getLowestFraction:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function getLowestFraction(n: "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    numerator: number;\n    denominator: number;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "n",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "getLowestFraction"
         },
         {
           "kind": "Function",
@@ -12179,6 +12232,31 @@
               "endIndex": 2
             }
           ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!SecantDatum:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type SecantDatum = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    x0: number;\n    x1: number;\n    c?: string;\n    renderPoints?: boolean;\n    renderFormula?: boolean;\n    class?: string;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SecantDatum",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
         },
         {
           "kind": "Function",

@@ -20,6 +20,8 @@ import {
   IsUndefined,
   Label,
   PointDatum,
+  IsInteger,
+  getLowestFraction,
 } from '../utils';
 import { Latex } from '../utils/Latex';
 
@@ -30,7 +32,8 @@ function getSlope(point1: [number, number], point2: [number, number]) {
   const y1 = point2[1];
   const dy = y1 - y0;
   const dx = x1 - x0;
-  return dy / dx;
+  const res = dy / dx;
+  return parseFloat(res.toFixed(8));
 }
 
 function getMidPoint(point1: [number, number], point2: [number, number]) {
@@ -64,9 +67,29 @@ function makeLinearFunction(
   const x = point1[0];
   const y = point1[1];
   const b = y - m * x;
-  const sign = b < 0 ? '-' : '+';
-  const formula = `y = ${m}x ${sign} ${Math.abs(b)}`;
   const f = (n: number) => m * n + b;
+  let sign = b < 0 ? '-' : '+';
+  let slope: string;
+  let constant: string;
+  if (IsInteger(m)) {
+    slope = `${m}`;
+  } else {
+    const fracSlope = getLowestFraction(m);
+    const denom = fracSlope.denominator;
+    const numer = fracSlope.numerator;
+
+    slope = `\\dfrac{${Math.abs(denom)}}{${Math.abs(numer)}}`;
+  }
+  if (IsInteger(b)) {
+    constant = `${Math.abs(b)}`;
+  } else {
+    const fracSlope = getLowestFraction(b);
+    const denom = fracSlope.denominator;
+    const numer = fracSlope.numerator;
+
+    constant = `\\dfrac{${Math.abs(denom)}}{${Math.abs(numer)}}`;
+  }
+  const formula = `y = ${slope}x ${sign} ${constant}`;
 
   return { f, formula };
 }
@@ -128,72 +151,15 @@ export const Plot = ({
       elements.push(el);
 
       if (datum.secant && typeof datum.f === 'function') {
-        let sec = datum.secant;
-        let renderFormula = sec.renderFormula && true;
-
-        // First input supplied by user
-        let x0: number = sec.x0;
-
-        // Second input supplied by user
-        let x1: number = sec.x1;
-
-        // computed y-output for first point
-        let y0: number = datum.f(x0);
-
-        // computed y-output for second point
-        let y1: number = datum.f(x1);
-
-        let color = sec.c || 'teal';
-
-        // only render the points supplied by the user
-
-        const point1: [number, number] = [x0, y0];
-        const point2: [number, number] = [x1, y1];
-
-        if (!sec.renderPoints) {
-          points.push({ p: point1, label: `(${x0},${y0})` });
-          points.push({ p: point2, label: `(${x1},${y1})` });
-        }
-
-        const getLineFunction = makeLinearFunction(point1, point2);
-
-        const secantFunction = getLineFunction.f;
-        const secantFormula = getLineFunction.formula;
-
-        let xi = domain[0];
-        let xf = domain[1];
-
-        let yi = secantFunction(xi);
-        let yf = secantFunction(xf);
-
-        if (renderFormula) {
-          const midpoint = getMidPoint(point1, point2);
-          const textFormula: TextDatum = {
-            t: secantFormula,
-            w: 100,
-            h: 100,
-            x: midpoint.x,
-            y: midpoint.y,
-          };
-          annotations.push(textFormula);
-        }
-
-        // scale the values for path rendering
-        xi = xScale(xi);
-        yi = yScale(yi);
-
-        x0 = xScale(x0);
-        y0 = yScale(y0);
-
-        x1 = xScale(x1);
-        y1 = yScale(y1);
-
-        xf = xScale(xf);
-        yf = yScale(yf);
-
-        let pathDatum = `M${xi} ${yi} L${x0} ${y0} L${x1} ${y1} L${xf} ${yf}`;
-
-        secants.push({ pathDatum, color });
+        BuildSecantLine(
+          datum,
+          points,
+          domain,
+          annotations,
+          xScale,
+          yScale,
+          secants
+        );
       }
     }
     if ((datum as TextDatum).t) {
@@ -266,7 +232,7 @@ export const Plot = ({
         </g>
         {secants &&
           secants.map((d, i) => (
-            <g key={`sc${id}_${i}`}>
+            <g key={`sc${id}_${i}`} className={`${d.className}`}>
               <path d={d.pathDatum} stroke={d.color} fill={'none'} />
             </g>
           ))}
@@ -280,6 +246,84 @@ export const Plot = ({
     </Board>
   );
 };
+
+function BuildSecantLine(
+  datum: FunctionDatum,
+  points: PointDatum[],
+  domain: [number, number],
+  annotations: any[],
+  xScale,
+  yScale,
+  secants: any[]
+) {
+  let sec = datum.secant;
+  let className = sec.class ? sec.class : 'hago_SecantLine';
+  let renderFormula = sec.renderFormula;
+
+  // First input supplied by user
+  let x0: number = sec.x0;
+
+  // Second input supplied by user
+  let x1: number = sec.x1;
+
+  // computed y-output for first point
+  let y0: number = datum.f(x0);
+
+  // computed y-output for second point
+  let y1: number = datum.f(x1);
+
+  let color = sec.c || 'teal';
+
+  // only render the points supplied by the user
+  const point1: [number, number] = [x0, y0];
+  const point2: [number, number] = [x1, y1];
+
+  if (sec.renderPoints) {
+    points.push({ p: point1, label: `(${x0}, ${y0})` });
+    points.push({ p: point2, label: `(${x1}, ${y1})` });
+  }
+
+  const getLineFunction = makeLinearFunction(point1, point2);
+
+  const secantFunction = getLineFunction.f;
+  const secantFormula = getLineFunction.formula;
+
+  let xi = domain[0];
+  let xf = domain[1];
+
+  let yi = secantFunction(xi);
+  let yf = secantFunction(xf);
+
+  if (renderFormula) {
+    const midpoint = getMidPoint(point1, point2);
+    const textFormula: TextDatum = {
+      t: secantFormula,
+      w: 100,
+      h: 100,
+      x: midpoint.x,
+      y: midpoint.y,
+      color: 'teal',
+    };
+    annotations.push(textFormula);
+  }
+
+  // scale the values for path rendering
+  xi = xScale(xi);
+  yi = yScale(yi);
+
+  x0 = xScale(x0);
+  y0 = yScale(y0);
+
+  x1 = xScale(x1);
+  y1 = yScale(y1);
+
+  xf = xScale(xf);
+  yf = yScale(yf);
+
+  let pathDatum = `M${xi} ${yi} L${x0} ${y0} L${x1} ${y1} L${xf} ${yf}`;
+
+  secants.push({ pathDatum, color, className });
+}
 
 function RenderYAxis(
   range: [number, number],
