@@ -10,8 +10,8 @@
     "declarationDir": "types",
     "sourceMap": false,
     "rootDir": "src",
-    // "noImplicitReturns": true,
-    // "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "moduleResolution": "node",
@@ -34,6 +34,7 @@
     "src/Testing/*",
     "src/Timeline/*",
     "src/LinMap/*",
+    "src/ChessGrid/*",
     "src/utils/HagoMath/Parser/*",
   ],
   "ts-node": {

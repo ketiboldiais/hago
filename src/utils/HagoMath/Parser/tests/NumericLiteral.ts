@@ -3,8 +3,8 @@ import { Parser } from '../Parser.js';
 const parser = new Parser();
 
 const prog = `
-	
-	let n = array(1,2,3,4,5);
+
+	def f(x) = x + 2;
 	
 `;
 

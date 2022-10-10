@@ -26,6 +26,7 @@ export const FunctionPlot = (
     <path
       d={lineGenerator}
       stroke={datum.color || 'red'}
+      strokeWidth={datum.w || 1}
       fill={'none'}
       strokeDasharray={datum.dash}
       shapeRendering="geometricPrecision"

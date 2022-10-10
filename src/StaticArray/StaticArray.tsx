@@ -19,7 +19,7 @@ export function StaticArray({
   className = 'hago_StaticArray',
   id = makeId(className),
   width = 0.574045 * data.length ** 2 + 22.878 * data.length + 45.8824,
-  height = 80,
+  height = width,
   scale = 100,
   cwidth = scale,
   cheight = 0.5,

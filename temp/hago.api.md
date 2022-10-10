@@ -10,6 +10,11 @@ import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 
 // @public (undocumented)
+export function Adjugate({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
 export type AnalysisType = 'raw' | 'min' | 'max' | 'median' | 'sum' | 'mean' | 'frequency' | 'relative frequency' | 'cumulative relative frequency';
 
 // @public (undocumented)
@@ -23,6 +28,9 @@ export type AntObject = {
     type?: string;
     className?: string;
 };
+
+// @public (undocumented)
+export function Arr({ data, pointers }: ArrProps): JSX.Element;
 
 // Warning: (ae-internal-missing-underscore) The name "ArrayData" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -50,6 +58,16 @@ export interface ArrowHeadProps {
     refY?: number;
     // (undocumented)
     width?: number;
+}
+
+// @public (undocumented)
+export interface ArrProps {
+    // (undocumented)
+    data?: (number | string)[];
+    // (undocumented)
+    pointers?: {
+        [k: number]: string;
+    };
 }
 
 // @public (undocumented)
@@ -187,6 +205,12 @@ export interface BoardProps {
 }
 
 // @public (undocumented)
+export function BoxMatrix({ data, linespace, name, }: TexMatrixProps): JSX.Element;
+
+// @public (undocumented)
+export function BracedMatrix({ data, linespace, name, }: TexMatrixProps): JSX.Element;
+
+// @public (undocumented)
 export function BuildAVLTreeNodes(data: AVLTreeNodeData, uid: string): any[];
 
 // @public (undocumented)
@@ -200,6 +224,11 @@ export function BuildPriorityQueueData(data: PriorityQueueData): {
 
 // @public (undocumented)
 export function calculateTreeSize(_root: any, px?: number): number;
+
+// Warning: (ae-forgotten-export) The symbol "CartProdProps" needs to be exported by the entry point hago.d.ts
+//
+// @public (undocumented)
+export function CartProd({ x, y, className, id }: CartProdProps): JSX.Element;
 
 // @public (undocumented)
 export function Cell({ w, h, pos, fill, stroke, }: CellProps): JSX.Element;
@@ -238,6 +267,11 @@ export interface CircularQueueProps extends BaseProps {
     // (undocumented)
     padding?: number;
 }
+
+// @public (undocumented)
+export function Comatrix({ children }: {
+    children: any;
+}): JSX.Element;
 
 // @public (undocumented)
 export type Coordinate = {
@@ -304,6 +338,14 @@ export interface DequeProps extends BaseProps {
     // (undocumented)
     data: DatumArray | ArrayData;
 }
+
+// @public (undocumented)
+export function Determinant({ data, linespace, name, children, }: TexMatrixProps): JSX.Element;
+
+// @public (undocumented)
+export function DotProduct({ children }: {
+    children: any;
+}): JSX.Element;
 
 // @public (undocumented)
 export function DoublyLinkedList({ data, className, id, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: LinkedListProps): JSX.Element;
@@ -376,6 +418,7 @@ export type FunctionDatum = {
     riemann?: RiemannDatum;
     integrationColor?: string;
     id?: string;
+    w?: number;
 };
 
 // @public (undocumented)
@@ -540,6 +583,11 @@ export type HorizontalLineTo = {
 
 // @public (undocumented)
 export type Integral = 'x' | 'y' | Function;
+
+// @public (undocumented)
+export function Inverse({ children }: {
+    children: any;
+}): JSX.Element;
 
 // Warning: (ae-internal-missing-underscore) The name "IsaDatum" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -726,6 +774,9 @@ export type LinkObject = {
 export type Literal = string | number | boolean;
 
 // @public (undocumented)
+export type LiteralMatrix = (string | number)[][];
+
+// @public (undocumented)
 export function makeId(HagoClassName?: string): string;
 
 // @public (undocumented)
@@ -786,11 +837,6 @@ export interface MarkerProps {
     width?: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "MathFigProps" needs to be exported by the entry point hago.d.ts
-//
-// @public (undocumented)
-export function MathFig({ eq, m, align, mtype, linespace, }: MathFigProps): JSX.Element;
-
 // @public (undocumented)
 export function Maths({ val, block }: {
     val: any;
@@ -804,12 +850,49 @@ export function Matrix({ data, className, id, width, height, scale, cwidth, chei
 export type MatrixData = Datum[][] | Literal[][];
 
 // @public (undocumented)
+export function MatrixDifference({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
+export function MatrixMinor({ children, row, col }: {
+    children: any;
+    row: any;
+    col: any;
+}): JSX.Element;
+
+// @public (undocumented)
+export function MatrixModulo({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
+export function MatrixPower({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
+export function MatrixProduct({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
 export interface MatrixProps extends BaseProps {
     // (undocumented)
     data: MatrixData;
     // (undocumented)
     order?: 'row' | 'col';
 }
+
+// @public (undocumented)
+export function MatrixQuotient({ children }: {
+    children: any;
+}): JSX.Element;
+
+// @public (undocumented)
+export function MatrixSum({ children }: {
+    children: any;
+}): JSX.Element;
 
 // @public (undocumented)
 export function Mem({ data, className, id, endian, addressLength, cellWidth, cellHeight, dataSize, startAddressAt, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MemProps): JSX.Element;
@@ -843,7 +926,7 @@ export interface MemProps extends BaseProps {
 }
 
 // @public (undocumented)
-export function MTree({ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: MTreeProps): JSX.Element;
+export function MTree({ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, nsep, }: MTreeProps): JSX.Element;
 
 // @public (undocumented)
 export type MTreeNode = {
@@ -867,6 +950,8 @@ export interface MTreeProps extends BaseProps {
     edgeLength?: number;
     // (undocumented)
     kw?: number;
+    // (undocumented)
+    nsep?: [number, number];
 }
 
 // @public (undocumented)
@@ -906,6 +991,9 @@ export type NodeObject = {
 };
 
 // @public (undocumented)
+export function Norm({ data, linespace, name, }: TexMatrixProps): JSX.Element;
+
+// @public (undocumented)
 export function Normalize(enteredValue: number, minEntry?: number, maxEntry?: number, normalizedMin?: number, normalizedMax?: number): number;
 
 // @public (undocumented)
@@ -919,6 +1007,7 @@ export type ParametricFunctionDatum = {
     color?: string;
     integrate?: [number, number, Integral];
     integrationColor?: string;
+    riemann?: RiemannDatum;
     id?: string;
 };
 
@@ -992,6 +1081,9 @@ export interface PlotProps extends BaseProps {
 
 // @public (undocumented)
 export type PlotType = 'table' | 'scatter' | 'histogram';
+
+// @public (undocumented)
+export function Pmatrix({ data, linespace, name, }: TexMatrixProps): JSX.Element;
 
 // @public
 export type Point = {
@@ -1100,6 +1192,7 @@ export type RiemannDatum = {
     dx: number;
     i: [number, number];
     f: 'x' | 'y' | number | Function;
+    orient?: 'vertical' | 'horizontal';
     color?: string;
 };
 
@@ -1263,6 +1356,11 @@ export interface SumProps extends BaseProps {
     tickSep?: number;
 }
 
+// Warning: (ae-forgotten-export) The symbol "SurfaceProps" needs to be exported by the entry point hago.d.ts
+//
+// @public (undocumented)
+export function Surface({ className, width, height, scale, cwidth, domain, range, xTicks, yTicks, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: SurfaceProps): JSX.Element;
+
 // @public (undocumented)
 export const svg: (_width: number, _height: number, _margins: number[]) => {
     width: number;
@@ -1271,6 +1369,18 @@ export const svg: (_width: number, _height: number, _margins: number[]) => {
 
 // @public (undocumented)
 export type Tabular = (string | number)[][] | (string | number)[];
+
+// @public (undocumented)
+export interface TexMatrixProps {
+    // (undocumented)
+    children?: ReactElement[];
+    // (undocumented)
+    data: LiteralMatrix;
+    // (undocumented)
+    linespace?: number;
+    // (undocumented)
+    name?: string;
+}
 
 // @public (undocumented)
 function Text_2({ val, fontSize, color, pos, dx, dy, width, height, fitContent, textAlign, latex, anchor, block, }: TextProps): JSX.Element;
@@ -1318,6 +1428,11 @@ export function ToHex(val: number, bits?: number): string;
 
 // @public (undocumented)
 export function Translate(x: number, y: number): string;
+
+// @public (undocumented)
+export function Transpose({ children }: {
+    children: any;
+}): JSX.Element;
 
 // @public (undocumented)
 export function Tree({ data, nodes, id, nodeFontSize, nodeRadius, width, height, scale, slim, cwidth, cheight, marginTop, marginBottom, marginRight, marginLeft, margins, edgeLength, markLevels, markDepth, markHeight, markHeightBF, heightStartsAt, }: TreeProps): JSX.Element;
@@ -1388,7 +1503,7 @@ export type VerticalLineTo = {
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1509:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1512:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

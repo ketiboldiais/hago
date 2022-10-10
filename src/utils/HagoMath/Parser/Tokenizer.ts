@@ -38,7 +38,9 @@ export class Tokenizer {
   }
   match(regexp: RegExp, rawString: string) {
     const matched = regexp.exec(rawString);
-    if (IsNull(matched)) return null;
+    if (matched === null) {
+      return null;
+    }
     this.cursor += matched[0].length;
     return matched[0];
   }

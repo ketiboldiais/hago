@@ -26,5 +26,7 @@ export * from './DoublyLinkedList/DoublyLinkedList';
 export * from './PriorityQueue/PriorityQueue';
 export * from './MTree/MTree';
 export * from './AVLTree/AVLTree';
-export * from './MathFig/MathFig';
-
+export * from './Surface/Surface';
+export * from './Tex/Tex';
+export * from "./CartProd/CartProd";
+export * from "./Arr/Arr";

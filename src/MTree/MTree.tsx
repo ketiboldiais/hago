@@ -26,6 +26,7 @@ export interface MTreeProps extends BaseProps {
   data: MTreeNodeData;
   edgeLength?: number;
   kw?: number;
+  nsep?: [number, number];
 }
 
 export function BuildMTreeNodes(data: MTreeNodeData) {
@@ -63,8 +64,8 @@ export function MTree({
   marginBottom = 50,
   marginLeft = 50,
   margins = [marginTop, marginRight, marginBottom, marginLeft],
+  nsep = [1, 1.1],
 }: MTreeProps) {
-  
   const { width: _svg_width, height: _svg_height } = svg(
     width,
     height,
@@ -85,11 +86,11 @@ export function MTree({
 
   const _treeHeight = _root.height;
 
-  cheight = cheight ? cheight : Math.min(0.1 * (_treeHeight+2), 1);
+  cheight = cheight ? cheight : Math.min(0.1 * (_treeHeight + 2), 1);
 
   const _treeStructure = tree()
     .size([_svg_width, _edgeLength])
-    .separation((a, b) => (a.parent === b.parent ? 1 : 1.1));
+    .separation((a, b) => (a.parent === b.parent ? nsep[0] : nsep[1]));
   _treeStructure(_root);
 
   let _links = _root.links();

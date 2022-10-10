@@ -36,6 +36,45 @@ export enum TokenType {
   operator_power = `POWER_OPERATOR`,
 }
 
+const special_chars = {
+  logic: {
+    and: { char: `∧`, reg: /\u{2227}/u },
+    or: { char: `∨`, reg: /\u{2228}/u },
+    xor: { char: `⊻`, reg: /\u{22bb}/u },
+    nand: { char: `⊼`, reg: /\u{22bc}/u },
+    nor: { char: `⊽`, reg: /\u{22bd}/u },
+  },
+  math: {
+    sqrt: {char: '√', reg: /\u{221a}/u},
+    emptySet: {char: '∅', reg: /\u{2205}/u},
+    elementOf: {char: `∈`, reg: /\u{2208}/u},
+    notElementOf: {char: `∉`, reg: /\u{2209}/u},
+    contains: {char: `∋`, reg: /\u{220b}/u},
+    doesNotContain: {char: `∌`, reg: /\u{220c}/u},
+    subsetof: {char: `⊂`, reg: /\u{2282}/u},
+    notSubsetof: {char: `⊄`, reg: /\u{2284}/u},
+    supersetof: {char: `⊃`, reg: /\u{2283}/u},
+    notSupersetof: {char: `⊅`, reg: /\u{2285}/u},
+    real_division: {char: `÷`, reg: /\u{f7}/u},
+    multiplication: {char: `✕`, reg: /\u{2715}/u},
+    left_ceiling: {char: `⌈`, reg: /\u{2308}/u},
+    right_ceiling: {char: `⌉`, reg: /\u{2309}/u},
+    left_floor: {char: `⌊`, reg: /\u{230a}/u},
+    right_floor: {char: `⌋`, reg: /\u{230b}/u},
+    sum: {char: `∑`, reg: /\u{2211}/u},
+    product: {char: `∏`, reg: /\u{220f}/u},
+    are_not_equal: {char: `≠`, reg: /\u{2260}/u},
+    are_they_equal: {char: `≟`, reg: /\u{225f}/u},
+    are_equivalent: {char: `≡`, reg: /\u{2261}/u},
+    are_not_equivalent: {char: `≢`, reg: /\u{2262}/u},
+    pi: {char: `π`, reg: /\u{3c0}/u},
+  }
+};
+
+const sym = `π`;
+const r = special_chars.math.pi.reg.test(sym);
+r;
+
 export const LexemeTable = [
   [/^\s+/, null],
   [/^\/\/.*/, null],

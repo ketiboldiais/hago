@@ -1,0 +1,524 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import {
+  Pmatrix,
+  BoxMatrix,
+  Norm,
+  BracedMatrix,
+  MatrixSum,
+  MatrixDifference,
+  DotProduct,
+  Determinant,
+  MatrixProduct,
+  Comatrix,
+  Adjugate,
+  Transpose,
+  Inverse,
+  MatrixMinor,
+  TexMatrixProps,
+  Maths,
+} from '../../src';
+
+<Meta
+  title="Tex/Matrices"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Matrices
+
+The matrix components provide a way to render matrices.
+
+## Parenthesized Matrices
+
+Parenthesized matrices are rendered with the `Pmatrix` component. For example, the code:
+
+```jsx
+<Pmatrix
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+```
+
+renders:
+
+<Pmatrix
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+
+## Box Matrices
+
+Box (or square-bracketed) matrices are rendered with the `BoxMatrix` component:
+
+```jsx
+<BoxMatrix
+  data={[
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+  ]}
+/>
+```
+
+renders:
+
+<BoxMatrix
+  data={[
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+  ]}
+/>
+
+## Norms
+
+Norms are rendered with the `Norm` component:
+
+```jsx
+<Norm
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+```
+
+<Norm
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+
+## Braced Matrices
+
+Braced matrices are rendered with the `BracedMatrix` component:
+
+```jsx
+<BracedMatrix
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+```
+
+<BracedMatrix
+  data={[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ]}
+/>
+
+## Matrix Names
+
+All the `Matrix` components can be named by passing a string value to the `name` property. For example, the code:
+
+```jsx
+<BoxMatrix
+  data={[
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+  ]}
+  name={`A`}
+/>
+```
+
+renders:
+
+<BoxMatrix
+  data={[
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+  ]}
+  name={`A`}
+/>
+
+## Matrix Operations
+
+Matrix operations can be performed on the matrices passed.
+
+### Matrix Addition
+
+The `<MatrixSum>` component will perform matrix addition on the matrices passed. For example, the code:
+
+```jsx
+<MatrixSum>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixSum>
+```
+
+Renders:
+
+<MatrixSum>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixSum>
+
+Note that matrix addition requires that the operands be of **the same order**. That is, to add matrix 𝐴 and matrix 𝐵, it must be true that 𝐴 and 𝐵 have the same dimensions (i.e., the number of rows in 𝐴 equals the number of rows in 𝐵, and the number of columns in 𝐴 equals the number of columns in 𝐵). If the matrices are not of the same order, Hago will throw a logic error `"LogicError: Matrix operands are not of the same order."`
+
+## Matrix Subtraction
+
+The `<MatrixDifference>` component performs matrix subtraction on the matrices passed.
+
+<MatrixDifference>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixDifference>
+
+The code:
+
+```jsx
+<MatrixDifference>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixDifference>
+```
+
+Like matrix addition, matrix subtraction requires matrix operands of **the same order**. That is, to subtract matrix 𝐵 from matrix 𝐴, it must be true that 𝐴 and 𝐵 have the same dimensions (i.e., the number of rows in 𝐴 equals the number of rows in 𝐵, and the number of columns in 𝐴 equals the number of columns in 𝐵). If the matrices are not of the same order, Hago will throw a logic error `"LogicError: Matrix operands are not of the same order."`
+
+## Scalar Multiplication
+
+The `<DotProduct>` component performs scalar multiplication on the matrices passed.
+
+<DotProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</DotProduct>
+
+Code:
+
+```jsx
+<DotProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</DotProduct>
+```
+
+Given matrices 𝐴 and 𝐵, the dot product requires at least one of the following:
+
+1. 𝐴 and 𝐵 are of the same order,
+2. 𝐵 is 1 × 1 matrix (a singleton), or
+3. The number of columns in 𝐴 is the same as the number of rows in 𝐵.
+
+For example, with a singleton (condition 2):
+
+<DotProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix data={[[1]]} />
+</DotProduct>
+
+With condition 3:
+
+<DotProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix data={[[1], [2], [3]]} />
+</DotProduct>
+
+## Matrix Multiplication
+
+The `<MatrixProduct/>` component performs matrix multiplication on the matrices passed.
+
+<MatrixProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixProduct>
+
+Code:
+
+```jsx
+<MatrixProduct>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]}
+  />
+</MatrixProduct>
+```
+
+## Matrix Transposition
+
+The `<Transpose>` component will perform a transposition of its child matrix:
+
+<Transpose>
+  <BoxMatrix
+    data={[
+      [2, 1, 4],
+      [0, 3, 1],
+    ]}
+  />
+</Transpose>
+
+```jsx
+<Transpose>
+  <BoxMatrix
+    data={[
+      [2, 1, 4],
+      [0, 3, 1],
+    ]}
+  />
+</Transpose>
+```
+
+## Matrix Minor
+
+The `<MatrixMinor>` component finds the matrix minor of some element <Maths val={`M_{ij}`} block={false}/>, where 𝑖 is a valid row index and 𝑗 is a valid column index. Following standard mathematical convention, the indices start at 1.
+
+<MatrixMinor row={2} col={3}>
+  <BoxMatrix
+    data={[
+      [1, 4, 7],
+      [3, 0, 5],
+      [-1, 9, 11],
+    ]}
+  />
+</MatrixMinor>
+
+```jsx
+<MatrixMinor row={2} col={3}>
+  <BoxMatrix
+    data={[
+      [1, 4, 7],
+      [3, 0, 5],
+      [-1, 9, 11],
+    ]}
+  />
+</MatrixMinor>
+```
+
+Note that the matrix minor is only defined for square matrices. Passing a non-square matrix to the `<MatrixMinor/>` component will result in a LogicError.
+
+## Determinants
+
+Determinants are rendered with the `Determinant` component:
+
+<Determinant>
+  <BoxMatrix
+    data={[
+      [1, 4, 7],
+      [3, 0, 5],
+      [-1, 9, 11],
+    ]}
+  />
+</Determinant>
+
+```jsx
+<Determinant>
+  <BoxMatrix
+    data={[
+      [1, 4, 7],
+      [3, 0, 5],
+      [-1, 9, 11],
+    ]}
+  />
+</Determinant>
+```
+
+## Comatrix
+
+Comatrices (aka a _cofactor matrix_) can be rendered with the `Comatrix` component:
+
+<Comatrix>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [0, 4, 5],
+      [1, 0, 6],
+    ]}
+  />
+</Comatrix>
+
+```jsx
+<Comatrix>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [0, 4, 5],
+      [1, 0, 6],
+    ]}
+  />
+</Comatrix>
+```
+
+## Adjugates
+
+Adjugates can be rendered with the `Adjugate` component:
+
+<Adjugate>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [0, 4, 5],
+      [1, 0, 6],
+    ]}
+  />
+</Adjugate>
+
+```jsx
+<Adjugate>
+  <BoxMatrix
+    data={[
+      [1, 2, 3],
+      [0, 4, 5],
+      [1, 0, 6],
+    ]}
+  />
+</Adjugate>
+```
+
+## Inverse
+
+Matrix inverses are rendered with the `Inverse` component:
+
+<Inverse>
+  <BoxMatrix
+    data={[
+      [3, -2],
+      [-2, 1],
+    ]}
+  />
+</Inverse>
+
+```jsx
+<Inverse>
+  <BoxMatrix
+    data={[
+      [3, -2],
+      [-2, 1],
+    ]}
+  />
+</Inverse>
+```
+
+Note that a matrix 𝑀 has an an inverse if, and only if, the matrix is non-singular (i.e., invertible). That is, if the 𝑀's determinant is 0, then 𝑀 is _singular_, and the inverse does not exist. For these matrices, `<Inverse/>` will render the result as _DNE_ (Does Not Exist):
+
+<Inverse>
+  <BoxMatrix
+    data={[
+      [3, -6],
+      [-2, 4],
+    ]}
+  />
+</Inverse>

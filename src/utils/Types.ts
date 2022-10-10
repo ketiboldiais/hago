@@ -1005,6 +1005,7 @@ export type RiemannDatum = {
   dx: number;
   i: [number, number];
   f: 'x' | 'y' | number | Function;
+  orient?: 'vertical' | 'horizontal'; 
   color?: string;
 };
 
@@ -1057,6 +1058,7 @@ export type FunctionDatum = {
   riemann?: RiemannDatum;
   integrationColor?: string;
   id?: string;
+  w?: number;
 };
 
 export type TextDatum = {
@@ -1089,6 +1091,7 @@ export type ParametricFunctionDatum = {
   color?: string;
   integrate?: [number, number, Integral];
   integrationColor?: string;
+  riemann?: RiemannDatum;
   id?: string;
 };
 

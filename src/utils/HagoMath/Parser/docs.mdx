@@ -1,0 +1,122 @@
+# Variable Declaration
+
+Variables are declared with the `let` keyword. If we know that the identifier will always be of a certain type, we should provide a type:
+
+```
+let x = 1.
+let y = 3.
+let pi = 3.14.
+let byte n = 1.
+let integer x = 10.
+let real y = 3.13.
+let rational n = 3/4.
+let complex m = 3 + 2i.
+let string z = "hello".
+let boolean p = true.
+```
+
+Notice the delimiter in the examples above. In CSM, all statements must end with a period.
+
+### The Null Type
+
+The `null` keyword corresponds to the `null` value in many other languages. Th difference is, `null` cannot be an operand for _any_ operation other than the nullcheck.
+
+```
+let w = null.
+```
+
+For values that are potentially null, the variable should be declared as an `either` (the equivalent of an `option` or `optional` in languages like Swift):
+
+```
+let w = either 0 or null.
+```
+
+Importantly, the empty string `""` is automatically converted to `null`.
+
+## Composite Types
+
+The following are built-in composite types.
+
+### Arrays
+
+Arrays must all be of the same type.
+
+```
+let T-array x = [a,b,c,d].
+
+```
+
+### Lists
+
+Lists can be of different types.
+
+```
+let T-list x be (a, b, c, d).
+```
+
+### Set
+
+The set is an unordered collection of values.
+
+```
+let set S = {a, b, c, d}.
+```
+
+### Class
+
+The class is an unordered collection of values and operations on those values:
+
+```
+const Point: class = {
+	values:
+		p1.
+		p2.
+		p3.
+	operations:
+		f1.
+		f2.
+		f3.
+}
+```
+
+### Binary Tree
+
+The `binary tree` type is a binary tree:
+
+```
+let T-binary-tree = [
+	[root,  node1, node2],
+	[node1, node3, node4],
+	[node2, node5, node6]
+].
+```
+
+### AVL Trees
+The `avl tree` type is an AVL tree:
+
+```
+let T-AVL-tree = [
+	[root,  node1, node2],
+	[node1, node3, node4],
+	[node2, node5, node6]
+].
+```
+
+## Arithmetic Operations
+CSM provides a variety of arithmetic operations:
+
+```
+a + b   // addition
+a - b   // subtraction
+a * b   // multiplication
+a(b)    // multiplication
+
+```
+
+## Functions
+Functions can be declared in a variety of ways:
+
+```
+f(x) = x^2.
+g(x,y) = x * x;
+```

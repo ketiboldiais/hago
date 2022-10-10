@@ -1,9 +1,5 @@
 import React from 'react';
 import { scaleLinear } from 'd3';
-import { ArrowYDown } from './ArrowYDown';
-import { ArrowYUp } from './ArrowYUp';
-import { ArrowXRight } from './ArrowXRight';
-import { ArrowXLeft } from './ArrowXLeft';
 import { AreaPlot, FunctionPlot, ParametricFunctionPlot } from './FunctionPlot';
 import { RiemannPlot } from './RiemannPlot';
 import {
@@ -24,6 +20,7 @@ import {
   getLowestFraction,
 } from '../utils';
 import { Latex } from '../utils/Latex';
+import { RiemannPlotParametric } from './RiemannPlotParametric';
 
 function getSlope(point1: [number, number], point2: [number, number]) {
   const x0 = point1[0];
@@ -170,8 +167,21 @@ export const Plot = ({
       datum.y = datum.y || 0;
       annotations.push(datum);
     }
-    if ((datum as FunctionDatum).riemann) {
+    if ((datum as FunctionDatum).riemann && (datum as FunctionDatum).f) {
       let el = RiemannPlot(datum as FunctionDatum, xScale, yScale, domain);
+      riemanns.push(el);
+    }
+    if (
+      (datum as ParametricFunctionDatum).riemann &&
+      (datum as ParametricFunctionDatum).x &&
+      (datum as ParametricFunctionDatum).y
+    ) {
+      let el = RiemannPlotParametric(
+        datum as ParametricFunctionDatum,
+        xScale,
+        yScale,
+        domain
+      );
       riemanns.push(el);
     }
     if ((datum as FunctionDatum | ParametricFunctionDatum).integrate) {
@@ -212,15 +222,11 @@ export const Plot = ({
       cheight={cheight}
       margins={margins}
     >
-      <g className="Plot">
+      <g className="Plot" style={{ transformOrigin: `center` }}>
         <defs>
           <clipPath id={`${id}_Plot_clipPath`}>
             <rect width={_svg_width} height={_svg_height} />
           </clipPath>
-          <ArrowXLeft />
-          <ArrowXRight />
-          <ArrowYUp />
-          <ArrowYDown />
         </defs>
         <g transform={Translate(0, yScale(0))} className="hago_XAxis">
           {RenderXAxis(domain, _svg_width, xTickcount)}
@@ -416,7 +422,7 @@ function RenderPoints(
 
 function RenderCurves(elements: any[], id: string): React.ReactNode {
   return elements.map((d, i) => (
-    <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
+    <g key={`li${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`} className={`hago_PlotPath`}>
       {d}
     </g>
   ));
@@ -472,10 +478,10 @@ function RenderAnnotations(
 
 function RenderRiemannSums(
   riemanns: {
-    x0: number;
-    y0: number;
     x1: number;
     y1: number;
+    x2: number;
+    y2: number;
     r: number;
     tx: number;
     color: string;
@@ -490,19 +496,19 @@ function RenderRiemannSums(
       clipPath={`url(#${id}_Plot_clipPath)`}
     >
       <line
-        x1={d.x0}
-        y1={d.y0}
-        x2={d.x1}
-        y2={d.y1}
+        x1={d.x1}
+        y1={d.y1}
+        x2={d.x2}
+        y2={d.y2}
         stroke={d.color}
         strokeOpacity={0.1}
         strokeWidth={d.r}
       />
       <line
-        x1={d.x0}
-        y1={d.y0}
-        x2={d.x1}
-        y2={d.y1}
+        x1={d.x1}
+        y1={d.y1}
+        x2={d.x2}
+        y2={d.y2}
         stroke={d.color}
         strokeOpacity={0.6}
         strokeWidth={d.r - 1}

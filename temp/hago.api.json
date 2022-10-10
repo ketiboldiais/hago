@@ -173,6 +173,51 @@
       "preserveMemberOrder": false,
       "members": [
         {
+          "kind": "Function",
+          "canonicalReference": "hago!Adjugate:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Adjugate({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Adjugate"
+        },
+        {
           "kind": "TypeAlias",
           "canonicalReference": "hago!AnalysisType:type",
           "docComment": "",
@@ -251,6 +296,52 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Arr:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Arr({ data, pointers }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ArrProps",
+              "canonicalReference": "hago!~ArrProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, pointers }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Arr"
         },
         {
           "kind": "Variable",
@@ -513,6 +604,77 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "width",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!ArrProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface ArrProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ArrProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!ArrProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(number | string)[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!ArrProps#pointers:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pointers?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: number]: string;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "pointers",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -2196,6 +2358,98 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!BoxMatrix:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function BoxMatrix({ data, linespace, name, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TexMatrixProps",
+              "canonicalReference": "hago!~TexMatrixProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, linespace, name, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "BoxMatrix"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!BracedMatrix:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function BracedMatrix({ data, linespace, name, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TexMatrixProps",
+              "canonicalReference": "hago!~TexMatrixProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, linespace, name, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "BracedMatrix"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!BuildAVLTreeNodes:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -2413,6 +2667,52 @@
             }
           ],
           "name": "calculateTreeSize"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!CartProd:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function CartProd({ x, y, className, id }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CartProdProps",
+              "canonicalReference": "hago!~CartProdProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ x, y, className, id }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "CartProd"
         },
         {
           "kind": "Function",
@@ -2852,6 +3152,51 @@
               "endIndex": 2
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Comatrix:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Comatrix({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Comatrix"
         },
         {
           "kind": "TypeAlias",
@@ -3414,6 +3759,97 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!Determinant:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Determinant({ data, linespace, name, children, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TexMatrixProps",
+              "canonicalReference": "hago!~TexMatrixProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, linespace, name, children, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Determinant"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!DotProduct:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function DotProduct({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "DotProduct"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!DoublyLinkedList:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -3904,7 +4340,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    integrationColor?: string;\n    id?: string;\n}"
+              "text": ";\n    integrationColor?: string;\n    id?: string;\n    w?: number;\n}"
             },
             {
               "kind": "Content",
@@ -5926,6 +6362,51 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!Inverse:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Inverse({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Inverse"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!IsAFunction:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -7901,6 +8382,31 @@
           }
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "hago!LiteralMatrix:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare type LiteralMatrix = "
+            },
+            {
+              "kind": "Content",
+              "text": "(string | number)[][]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LiteralMatrix",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Function",
           "canonicalReference": "hago!makeId:function(1)",
           "docComment": "",
@@ -8018,8 +8524,8 @@
             },
             {
               "kind": "Reference",
-              "text": "MatrixData$1",
-              "canonicalReference": "hago!~MatrixData$1:type"
+              "text": "MatrixData",
+              "canonicalReference": "hago!~MatrixData:type"
             },
             {
               "kind": "Content",
@@ -8632,52 +9138,6 @@
         },
         {
           "kind": "Function",
-          "canonicalReference": "hago!MathFig:function(1)",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "declare function MathFig({ eq, m, align, mtype, linespace, }: "
-            },
-            {
-              "kind": "Reference",
-              "text": "MathFigProps",
-              "canonicalReference": "hago!~MathFigProps:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "): "
-            },
-            {
-              "kind": "Reference",
-              "text": "JSX.Element",
-              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "returnTypeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 4
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "{ eq, m, align, mtype, linespace, }",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isOptional": false
-            }
-          ],
-          "name": "MathFig"
-        },
-        {
-          "kind": "Function",
           "canonicalReference": "hago!Maths:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -8774,7 +9234,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare type MatrixData$1 = "
+              "text": "declare type MatrixData = "
             },
             {
               "kind": "Reference",
@@ -8805,6 +9265,231 @@
             "startIndex": 1,
             "endIndex": 5
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixDifference:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixDifference({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixDifference"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixMinor:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixMinor({ children, row, col }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n    row: any;\n    col: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children, row, col }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixMinor"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixModulo:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixModulo({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixModulo"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixPower:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixPower({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixPower"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixProduct:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixProduct({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixProduct"
         },
         {
           "kind": "Interface",
@@ -8840,8 +9525,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "MatrixData$1",
-                  "canonicalReference": "hago!~MatrixData$1:type"
+                  "text": "MatrixData",
+                  "canonicalReference": "hago!~MatrixData:type"
                 },
                 {
                   "kind": "Content",
@@ -8891,6 +9576,96 @@
               "endIndex": 2
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixQuotient:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixQuotient({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixQuotient"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!MatrixSum:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function MatrixSum({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "MatrixSum"
         },
         {
           "kind": "Function",
@@ -9200,7 +9975,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function MTree({ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+              "text": "declare function MTree({ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, nsep, }: "
             },
             {
               "kind": "Reference",
@@ -9229,7 +10004,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterName": "{ data, className, id, fontSize, kw, edgeLength, width, height, scale, cwidth, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, nsep, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9394,6 +10169,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "kw",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!MTreeProps#nsep:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nsep?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "[number, number]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "nsep",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -9901,6 +10703,52 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "hago!Norm:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Norm({ data, linespace, name, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TexMatrixProps",
+              "canonicalReference": "hago!~TexMatrixProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, linespace, name, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Norm"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "hago!Normalize:function(1)",
           "docComment": "",
           "excerptTokens": [
@@ -10088,7 +10936,16 @@
             },
             {
               "kind": "Content",
-              "text": "];\n    integrationColor?: string;\n    id?: string;\n}"
+              "text": "];\n    integrationColor?: string;\n    riemann?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "RiemannDatum",
+              "canonicalReference": "hago!~RiemannDatum:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    id?: string;\n}"
             },
             {
               "kind": "Content",
@@ -10099,7 +10956,7 @@
           "name": "ParametricFunctionDatum",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 8
+            "endIndex": 10
           }
         },
         {
@@ -10850,6 +11707,52 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Pmatrix:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Pmatrix({ data, linespace, name, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TexMatrixProps",
+              "canonicalReference": "hago!~TexMatrixProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, linespace, name, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Pmatrix"
         },
         {
           "kind": "TypeAlias",
@@ -11824,7 +12727,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    color?: string;\n}"
+              "text": ";\n    orient?: 'vertical' | 'horizontal';\n    color?: string;\n}"
             },
             {
               "kind": "Content",
@@ -13807,6 +14710,52 @@
           ]
         },
         {
+          "kind": "Function",
+          "canonicalReference": "hago!Surface:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Surface({ className, width, height, scale, cwidth, domain, range, xTicks, yTicks, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SurfaceProps",
+              "canonicalReference": "hago!~SurfaceProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ className, width, height, scale, cwidth, domain, range, xTicks, yTicks, cheight, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Surface"
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "hago!svg:var",
           "docComment": "",
@@ -13852,6 +14801,137 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!TexMatrixProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface TexMatrixProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "TexMatrixProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TexMatrixProps#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ReactElement",
+                  "canonicalReference": "@types/react!~React.ReactElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TexMatrixProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LiteralMatrix",
+                  "canonicalReference": "hago!~LiteralMatrix:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TexMatrixProps#linespace:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "linespace?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "linespace",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!TexMatrixProps#name:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "Function",
@@ -14472,6 +15552,51 @@
             }
           ],
           "name": "Translate"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Transpose:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Transpose({ children }: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    children: any;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ children }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Transpose"
         },
         {
           "kind": "Function",

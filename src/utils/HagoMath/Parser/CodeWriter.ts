@@ -175,8 +175,8 @@ export type BinaryExpression =
 export type LogicExpression = {
   type: ASTNodeType.LogicExpression;
   operator: string;
-  left: Expression;
-  right: Expression;
+  left: BooleanLiteral;
+  right: BooleanLiteral;
 };
 
 export type ArithmeticExpression = {
@@ -338,7 +338,11 @@ export const DefaultLexer: ParseTreeBuilder = {
     left,
     right,
   }),
-  LogicExpression: (operator: string, left: Expression, right: Expression) => ({
+  LogicExpression: (
+    operator: string,
+    left: BooleanLiteral,
+    right: BooleanLiteral
+  ) => ({
     type: ASTNodeType.LogicExpression,
     operator,
     left,

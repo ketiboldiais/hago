@@ -589,3 +589,9 @@ export class Parser {
     return value === null;
   }
 }
+
+const test = `y = n % 2;`;
+
+const result = new Parser().Start(test);
+console.log(JSON.stringify(result,null,2));
+

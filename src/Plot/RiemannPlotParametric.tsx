@@ -1,14 +1,15 @@
-import { FunctionDatum } from '../utils';
+import { ParametricFunctionDatum } from '../utils';
 
-export const RiemannPlot = (
-  datum: FunctionDatum,
+export const RiemannPlotParametric = (
+  datum: ParametricFunctionDatum,
   xScale: any,
   yScale: any,
   domain: [number, number]
 ) => {
   let output = [];
 
-  const f = datum.f;
+  const xFunction = datum.x;
+  const yFunction = datum.y;
 
   const riemannData = datum.riemann;
 
@@ -65,7 +66,6 @@ export const RiemannPlot = (
   /**
    * The orientation of the rectangles
    */
-  let orientation = riemannData.orient;
 
   const userFunction_is_a_function = typeof userFunction === 'function';
 
@@ -78,18 +78,40 @@ export const RiemannPlot = (
   } else if (userFunction === 'y') {
     y1Function = () => 0;
   } else {
-    throw new Error('Unrecognized riemannData.f value');
+    throw new Error('Unrecognized riemannData.xFunction value');
   }
 
   const y1Function_is_a_function = typeof y1Function === 'function';
 
+  let x1y1 = [];
+
   for (let i = start; i < end; i += rectWidth) {
     let x = i;
-    let x1 = xScale(x);
-    let x2 = xScale(x);
-    let y1 = yScale(f(x));
-    let y2 = yScale(y1Function_is_a_function ? y1Function(x) : y1Function);
-    let p = { x1, y1, x2, y2, color, orientation };
+    let _x = xFunction(x);
+    let _y = yFunction(x);
+    let x1 = xScale(_x);
+    let y1 = yScale(_y);
+    let p = { x1, y1 };
+    x1y1.push(p);
+  }
+
+  let x2y2 = [];
+
+  for (let i = start; i < end; i += rectWidth) {
+    let x2 = xScale(i);
+    let y2 = yScale(y1Function_is_a_function ? y1Function(i) : y1Function);
+    let p = { x2, y2 };
+    x2y2.push(p);
+  }
+
+  const _length = x1y1.length;
+
+  for (let i = 0; i < _length; i++) {
+    let x1 = x1y1[i].x1;
+    let y1 = x1y1[i].y1;
+    let x2 = x2y2[i].x2;
+    let y2 = x2y2[i].y2;
+    let p = { x1, y1, x2, y2, color };
     output.push(p);
   }
 
