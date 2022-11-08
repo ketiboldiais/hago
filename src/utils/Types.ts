@@ -160,13 +160,6 @@ export function IsAnEdgeObject(datum: any): boolean {
   );
 }
 
-/**
- * @internal
- * Checks if a user input is a datum
- */
-export function IsaDatum(datum: any) {
-  return (datum as Datum).val !== undefined;
-}
 
 /**
  * @public
@@ -319,7 +312,7 @@ export type LinkObject = {
  * @public
  */
 export function IsALinkObject(datum: any): boolean {
-  return (datum as LinkObject).link !== undefined;
+  return (datum).link !== undefined;
 }
 /**
  * @public
@@ -502,28 +495,6 @@ export type Label =
       y?: number;
       textAnchor?: 'start' | 'middle' | 'end';
     };
-
-/**
- * @public
- */
-export interface PlotProps extends BaseProps {
-  data?: (
-    | FunctionDatum
-    | ParametricFunctionDatum
-    | VectorFunctionDatum
-    | TextDatum
-    | PointDatum
-  )[];
-  domain?: [number, number];
-  range?: [number, number];
-  ticks?: number;
-  xTicks?: number;
-  yTicks?: number;
-  samples?: number;
-  className?: string;
-  id?: string;
-  axesLabels?: [Label, Label];
-}
 
 /**
  * @public
@@ -1049,8 +1020,10 @@ export type SecantDatum = {
 export type FunctionDatum = {
   f: Function;
   scale?: number;
+  r?:number;
   color?: string;
   dash?: number;
+  disc?: number;
   secant?: SecantDatum;
   integrate?: [number, number, Integral];
   domain?: [number, number];
@@ -1071,18 +1044,7 @@ export type TextDatum = {
   fontsize?: number;
 };
 
-export type VectorFunctionDatum = {
-  vx: Function;
-  vy: Function;
-  m?: Function;
-  s?: number;
-  maxMagnitude?: number;
-  scale?: number;
-  color?: string;
-  integrate?: [number, number, Integral];
-  integrationColor?: string;
-  id?: string;
-};
+
 
 export type ParametricFunctionDatum = {
   x: Function;
@@ -1117,3 +1079,11 @@ export type SequenceFunction = {
   start?: number;
   end?: number;
 };
+
+/**
+ * @internal
+ * Checks if a user input is a datum
+ */
+ export function IsaDatum(datum: any) {
+  return (datum as Datum).val !== undefined;
+}

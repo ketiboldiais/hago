@@ -39,7 +39,7 @@ li {
 }
 
 .katex {
-  font-size: 0.95rem;
+  /* font-size: 0.95rem; */
 }
 
 .hago_stack_frame text {
@@ -94,4 +94,11 @@ li {
 .hago_Array {
   width: fit-content;
   margin: 0 auto;
+}
+
+.Hago_Lattice .src {
+  fill: blue;
+}
+.Hago_Lattice .dst {
+  fill: blue;
 }

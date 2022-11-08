@@ -1,19 +1,16 @@
 export function MakeCoordinates(
   f: Function | number,
-  number_of_samples: number = 2000,
+  number_of_samples: number = 1000,
   domain,
   range
 ) {
   let dataSet = [];
   let x: number;
   let y: any;
-
   const fisFunc = typeof f === 'function';
   const fisNum = typeof f === 'number';
-
   let minY = range[0] * 2;
   let maxY = range[1] * 2;
-
   const xMax = domain[1];
   for (let i = -number_of_samples; i < number_of_samples; i++) {
     if (fisNum) {

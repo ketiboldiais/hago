@@ -21,3 +21,4 @@ export * from './Maths';
 export * from './StructGuard';
 export * from './Path';
 export * from './Cell';
+export * from './Latex';

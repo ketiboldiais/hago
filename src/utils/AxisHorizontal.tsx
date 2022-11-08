@@ -7,8 +7,6 @@ export const AxisHorizontal = ({
   domain,
   range,
   tickSep = 50,
-  markerStart,
-  markerEnd,
   removeEndTicks = true,
   dx = 0,
   dy = 0,
@@ -36,8 +34,6 @@ export const AxisHorizontal = ({
         d={['M', range[0], 1, 'v', -1, 'H', range[1], 'v', 1].join(' ')}
         fill="none"
         stroke="black"
-        markerStart={`url(#${markerStart})`}
-        markerEnd={`url(#${markerEnd})`}
       />
       {ticks.map(({ value, xOffset }, i) => (
         <g key={value} transform={`translate(${xOffset}, 0)`}>

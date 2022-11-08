@@ -11,7 +11,7 @@ export function BuildPath(d: any) {
   // Set the defaults for a normal edge
   let drx = dr;
   let dry = dr;
-  let xRotation = 0; // units are in degrees
+  let xRotation = 1; // units are in degrees
   let largeArc = 0; // edge arc value (1 or 0)
   let sweep = 1; // edge sweep value (1 or 0)
 
@@ -25,10 +25,8 @@ export function BuildPath(d: any) {
     // sweep = 0;
     // Making drx and dry different yields an ellipse
     // rather than a circle.
-    drx = 10;
-    dry = 10;
-
-    // Nudging the arc slighly to prevent collapsing
+    drx = 12;
+    dry = 12;
     x2 = x2 + 1;
     y2 = y2 + 1;
   }

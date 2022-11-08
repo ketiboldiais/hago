@@ -18,3 +18,16 @@ we get the result:
 <Plot data={[{ f: (x) => x + 1 }]} domain={[-5, 10]} range={[-5, 10]} />
 <Plot data={[{ f: (x) => 0.5 * x }]} domain={[0, 10]} range={[0, 10]} />
 <Plot data={[{ f: (x) => -3 * x, id: 'f(x) = -3x' }]} />
+
+
+## Shapes
+
+<Plot data={[
+	{s:'circle', r:2, xy:[4,4]},
+	{s:'circle', r:2, xy:[5,4]},
+]} id={'circ1'} domain={[0,10]} range={[0,10]}/>
+
+## Discretization
+<Plot data={[
+	{f:(x)=>Math.cos(x), disc:50, r:2}
+]}/>

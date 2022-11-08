@@ -2,9 +2,12 @@ import {
   EdgeArray,
   EdgeObject,
   LinkObject,
-  IsALinkObject,
   IsAnEdgeObject,
 } from '../../utils';
+
+function IsALinkObject(datum: any): boolean {
+  return (datum).link !== undefined;
+}
 
 export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
   /*
@@ -15,7 +18,6 @@ export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
    *    { source: GraphNode; target: GraphNode, ...props };
    *
    */
-
   let edges = [];
   let edge: EdgeObject;
   for (let i = 0; i < data.length; i++) {
@@ -31,11 +33,10 @@ export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
        * };
        *
        */
-
       let links = (data[i] as LinkObject).link;
-      edge = { source: links[i][0], target: links[i][1], ...links };
+      edge = { source: links[0], target: links[1], ...links };
       edges.push(edge);
-    } else if (IsAnEdgeObject(data[0])) {
+    } else if (IsAnEdgeObject(data[i])) {
       /* handle edge object
        *
        * An EdgeObject has the format:
@@ -49,7 +50,6 @@ export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
        *   };
        *
        */
-
       edges.push(edge);
     } else {
       // handle  graphnode[]
@@ -65,8 +65,6 @@ export function BuildEdgeData(data: EdgeArray): EdgeObject[] {
           const edge = { source: current, target: next };
           edges.push(edge);
         }
-      } else {
-        continue;
       }
     }
   }

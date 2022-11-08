@@ -16,9 +16,17 @@ function buildDataString(arr:(number|string)[],ptrs:{[k:number]:string}) {
 		} else { str.push('c:'); }
 	}
 	str.push(`}`)
-	for (let i = 0; i < L-1; i++) {
-		if (ptrs[i]) {
-			str.push(`${ptrs[i]} &`)
+	for (let i = 0; i < L; i++) {
+		if (ptrs[i] || i===L-1) {
+			if (i === L - 1) {
+				if (ptrs[i]) {
+					str.push(`${ptrs[i]}`)
+				} else {
+					str.push(`~`);
+				}
+			} else {
+				str.push(`${ptrs[i]} &`)
+			}
 		} else {
 			str.push(`~ &`)
 		}
@@ -45,7 +53,6 @@ export function Arr({
 	const str = buildDataString(data,pointers);
 	return(
 		<div className={`hago_Array`}>
-			{/* <p>`${str}`</p> */}
 			<TeX math={`${str}`} />
 		</div>
 	)

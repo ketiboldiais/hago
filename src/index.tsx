@@ -31,3 +31,4 @@ export * from './Tex/Tex';
 export * from "./CartProd/CartProd";
 export * from "./Arr/Arr";
 export * from "./Lattice/Lattice";
+export * from "./List/List";

@@ -2,8 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { AxesHelper, GridHelper } from 'three';
-import * as THREE from 'three';
+import { AxesHelper, GridHelper, DoubleSide } from 'three';
 
 function Plot({ paramFunction, scale, segments }) {
   const ref = useRef();
@@ -15,7 +14,7 @@ function Plot({ paramFunction, scale, segments }) {
   );
   return (
     <mesh ref={ref} scale={scale} geometry={graphGeometry}>
-      <meshNormalMaterial side={THREE.DoubleSide} />
+      <meshNormalMaterial side={DoubleSide} />
     </mesh>
   );
 }

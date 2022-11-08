@@ -1156,7 +1156,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: "
+              "text": "({ domain, range, tickSep, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: "
             },
             {
               "kind": "Reference",
@@ -1641,7 +1641,7 @@
             },
             {
               "kind": "Content",
-              "text": "({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: "
+              "text": "({ domain, range, tickSep, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: "
             },
             {
               "kind": "Reference",
@@ -4313,7 +4313,7 @@
             },
             {
               "kind": "Content",
-              "text": ";\n    scale?: number;\n    color?: string;\n    dash?: number;\n    secant?: "
+              "text": ";\n    scale?: number;\n    r?: number;\n    color?: string;\n    dash?: number;\n    disc?: number;\n    secant?: "
             },
             {
               "kind": "Reference",
@@ -7526,6 +7526,42 @@
           }
         },
         {
+          "kind": "Variable",
+          "canonicalReference": "hago!Latex:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "Latex: "
+            },
+            {
+              "kind": "Content",
+              "text": "({ text, width, offset, dx, dy, height, fontsize, color, fitContent, textAlign, block, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "LatexProps",
+              "canonicalReference": "hago!~LatexProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "Latex",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "hago!LatexProps:interface",
           "docComment": "",
@@ -7838,6 +7874,344 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!Lattice:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function Lattice({ data, idx, rix, cix, className, noedges, id, xMax, yMax, width, height, wh, scale, cwidth, cheight, margin, marginTop, marginRight, marginBottom, marginLeft, margins, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "LatticeProps",
+              "canonicalReference": "hago!~LatticeProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, idx, rix, cix, className, noedges, id, xMax, yMax, width, height, wh, scale, cwidth, cheight, margin, marginTop, marginRight, marginBottom, marginLeft, margins, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "Lattice"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!LatticeProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface LatticeProps extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseProps",
+              "canonicalReference": "hago!~BaseProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LatticeProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#cix:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "cix: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "cix",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "[(number | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TUPLE",
+                  "canonicalReference": "hago!~TUPLE:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "), (number | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TUPLE",
+                  "canonicalReference": "hago!~TUPLE:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")][]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 6
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#idx:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "idx: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "idx",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#margin:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "margin: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "margin",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#noedges:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "noedges: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "noedges",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#rix:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rix: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "rix",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#wh:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "wh: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "[number, number]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "wh",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#xMax:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "xMax: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "xMax",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!LatticeProps#yMax:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "yMax: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "yMax",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
         },
         {
           "kind": "Function",
@@ -8355,6 +8729,150 @@
             "startIndex": 1,
             "endIndex": 2
           }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "hago!List:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function List({ data, pointers, double, }: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ListProps",
+              "canonicalReference": "hago!~ListProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "JSX.Element",
+              "canonicalReference": "@types/react!~__global.JSX.Element:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "{ data, pointers, double, }",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "List"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "hago!ListProps:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interface ListProps "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ListProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!ListProps#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(number | string)[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!ListProps#double:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "double?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "double",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "hago!ListProps#pointers:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pointers?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: number]: string;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "pointers",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "TypeAlias",
@@ -11447,15 +11965,6 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "VectorFunctionDatum",
-                  "canonicalReference": "hago!~VectorFunctionDatum:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
                   "text": "TextDatum",
                   "canonicalReference": "hago!~TextDatum:type"
                 },
@@ -11467,6 +11976,15 @@
                   "kind": "Reference",
                   "text": "PointDatum",
                   "canonicalReference": "hago!~PointDatum:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Euclid",
+                  "canonicalReference": "hago!~Euclid:type"
                 },
                 {
                   "kind": "Content",
@@ -16234,67 +16752,6 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
-          }
-        },
-        {
-          "kind": "TypeAlias",
-          "canonicalReference": "hago!VectorFunctionDatum:type",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "declare type VectorFunctionDatum = "
-            },
-            {
-              "kind": "Content",
-              "text": "{\n    vx: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Function",
-              "canonicalReference": "!Function:interface"
-            },
-            {
-              "kind": "Content",
-              "text": ";\n    vy: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Function",
-              "canonicalReference": "!Function:interface"
-            },
-            {
-              "kind": "Content",
-              "text": ";\n    m?: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Function",
-              "canonicalReference": "!Function:interface"
-            },
-            {
-              "kind": "Content",
-              "text": ";\n    s?: number;\n    maxMagnitude?: number;\n    scale?: number;\n    color?: string;\n    integrate?: [number, number, "
-            },
-            {
-              "kind": "Reference",
-              "text": "Integral",
-              "canonicalReference": "hago!~Integral:type"
-            },
-            {
-              "kind": "Content",
-              "text": "];\n    integrationColor?: string;\n    id?: string;\n}"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "VectorFunctionDatum",
-          "typeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 10
           }
         },
         {

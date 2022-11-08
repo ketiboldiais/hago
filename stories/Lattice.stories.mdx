@@ -5,4 +5,22 @@ import { Lattice } from '../src';
 
 ## Lattice
 
-<Lattice/>
+<Lattice data={[
+	[0,2],
+	{xy:[0,1],t:'n+1',fs:0.6},
+	[0,0],
+	[1,0],
+	[2,0],
+]}id={'lattice4'}xMax={3}yMax={3} idx={true}/>
+
+<Lattice data={[
+	{xy:[0,2],t:'1'},
+	{xy:[1,2],t:'3'},
+	{xy:[2,2],t:'12'},
+	{xy:[0,1],t:'5'},
+	{xy:[1,1],t:'1'},
+	{xy:[2,1],t:'1'},
+	{xy:[0,0],t:'3'},
+	{xy:[1,0],t:'6'},
+	{xy:[2,0],t:'1'},
+]} xMax={3} yMax={3} id={'maxpathsum1'} noedges={true}/>

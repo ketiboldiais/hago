@@ -116,7 +116,7 @@ export interface AVLTreeProps extends BaseProps {
 }
 
 // @public (undocumented)
-export const AxisHorizontal: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
+export const AxisHorizontal: ({ domain, range, tickSep, removeEndTicks, dx, dy, tx, axisLabelArray, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
 
 // @public (undocumented)
 export interface AxisProps {
@@ -155,7 +155,7 @@ export interface AxisProps {
 }
 
 // @public (undocumented)
-export const AxisVertical: ({ domain, range, tickSep, markerStart, markerEnd, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
+export const AxisVertical: ({ domain, range, tickSep, removeEndTicks, dx, dy, offsetTick, fitContent, latex, textAnchor, fontsize, }: AxisProps) => ReactElement;
 
 // @public
 export interface BaseProps {
@@ -409,8 +409,10 @@ export interface FrameProps {
 export type FunctionDatum = {
     f: Function;
     scale?: number;
+    r?: number;
     color?: string;
     dash?: number;
+    disc?: number;
     secant?: SecantDatum;
     integrate?: [number, number, Integral];
     domain?: [number, number];
@@ -688,6 +690,9 @@ export type Label = string | {
 };
 
 // @public (undocumented)
+export const Latex: ({ text, width, offset, dx, dy, height, fontsize, color, fitContent, textAlign, block, }: LatexProps) => JSX.Element;
+
+// @public (undocumented)
 export interface LatexProps {
     // (undocumented)
     block?: boolean;
@@ -714,6 +719,33 @@ export interface LatexProps {
     textAlign: 'center' | 'justify' | 'left' | 'right';
     // (undocumented)
     width: number;
+}
+
+// @public (undocumented)
+export function Lattice({ data, idx, rix, cix, className, noedges, id, xMax, yMax, width, height, wh, scale, cwidth, cheight, margin, marginTop, marginRight, marginBottom, marginLeft, margins, }: LatticeProps): JSX.Element;
+
+// @public (undocumented)
+export interface LatticeProps extends BaseProps {
+    // (undocumented)
+    cix: boolean | number;
+    // Warning: (ae-forgotten-export) The symbol "TUPLE" needs to be exported by the entry point hago.d.ts
+    //
+    // (undocumented)
+    data: [(number | TUPLE), (number | TUPLE)][];
+    // (undocumented)
+    idx: boolean | number;
+    // (undocumented)
+    margin: number;
+    // (undocumented)
+    noedges: boolean;
+    // (undocumented)
+    rix: boolean | number;
+    // (undocumented)
+    wh: [number, number];
+    // (undocumented)
+    xMax: number;
+    // (undocumented)
+    yMax: number;
 }
 
 // @public (undocumented)
@@ -769,6 +801,21 @@ export type LinkObject = {
     name?: string | number;
     className?: string;
 };
+
+// @public (undocumented)
+export function List({ data, pointers, double, }: ListProps): JSX.Element;
+
+// @public (undocumented)
+export interface ListProps {
+    // (undocumented)
+    data: (number | string)[];
+    // (undocumented)
+    double?: boolean;
+    // (undocumented)
+    pointers?: {
+        [k: number]: string;
+    };
+}
 
 // @public
 export type Literal = string | number | boolean;
@@ -1061,8 +1108,10 @@ export interface PlotProps extends BaseProps {
     axesLabels?: [Label, Label];
     // (undocumented)
     className?: string;
+    // Warning: (ae-forgotten-export) The symbol "Euclid" needs to be exported by the entry point hago.d.ts
+    //
     // (undocumented)
-    data?: (FunctionDatum | ParametricFunctionDatum | VectorFunctionDatum | TextDatum | PointDatum)[];
+    data?: (FunctionDatum | ParametricFunctionDatum | TextDatum | PointDatum | Euclid)[];
     // (undocumented)
     domain?: [number, number];
     // (undocumented)
@@ -1483,27 +1532,13 @@ export interface TreeProps extends BaseProps {
 export type TupleXY = [number, number];
 
 // @public (undocumented)
-export type VectorFunctionDatum = {
-    vx: Function;
-    vy: Function;
-    m?: Function;
-    s?: number;
-    maxMagnitude?: number;
-    scale?: number;
-    color?: string;
-    integrate?: [number, number, Integral];
-    integrationColor?: string;
-    id?: string;
-};
-
-// @public (undocumented)
 export type VerticalLineTo = {
     V: Point;
 };
 
 // Warnings were encountered during analysis:
 //
-// dist/hago.d.ts:1512:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
+// dist/hago.d.ts:1510:5 - (ae-forgotten-export) The symbol "PriorityQueueDatum" needs to be exported by the entry point hago.d.ts
 
 // (No @packageDocumentation comment for this package)
 

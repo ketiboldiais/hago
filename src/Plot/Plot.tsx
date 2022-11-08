@@ -3,92 +3,53 @@ import { scaleLinear } from 'd3';
 import { AreaPlot, FunctionPlot, ParametricFunctionPlot } from './FunctionPlot';
 import { RiemannPlot } from './RiemannPlot';
 import {
-  Board,
-  AxisVertical,
-  AxisHorizontal,
-  svg,
-  PlotProps,
-  Translate,
-  makeId,
-  FunctionDatum,
-  ParametricFunctionDatum,
-  TextDatum,
-  IsUndefined,
-  Label,
-  PointDatum,
-  IsInteger,
-  getLowestFraction,
+  Board, AxisVertical, AxisHorizontal,
+  svg, PlotProps, Translate,
+  makeId, FunctionDatum, ParametricFunctionDatum,
+  TextDatum, IsUndefined, Label,
+  PointDatum, Latex,
+  BaseProps,
 } from '../utils';
-import { Latex } from '../utils/Latex';
 import { RiemannPlotParametric } from './RiemannPlotParametric';
+import {makeLinearFunction} from './makeLinearFunction';
+import {getMidPoint} from './getMidPoint';
+import {MakeCoordinates} from './MakeCoordinates';
 
-function getSlope(point1: [number, number], point2: [number, number]) {
-  const x0 = point1[0];
-  const y0 = point1[1];
-  const x1 = point2[0];
-  const y1 = point2[1];
-  const dy = y1 - y0;
-  const dx = x1 - x0;
-  const res = dy / dx;
-  return parseFloat(res.toFixed(8));
-}
-
-function getMidPoint(point1: [number, number], point2: [number, number]) {
-  const x0 = point1[0];
-  const y0 = point1[1];
-  const x1 = point2[0];
-  const y1 = point2[1];
-  const dx = x1 + x0;
-  const dy = y1 + y0;
-  const x = dx / 2;
-  const y = dy / 2;
-  return { x, y };
+type Euclid = {
+  s: string,
+  xy: number[],
+  r: number,
+  class: string,
 }
 
 function GenerateLabel(datum: Label): any {
   let out: Label;
-  if (typeof datum === 'string') {
-    out = { t: datum as string };
-  } else {
-    out = datum as Label;
-  }
-
+  if (typeof datum === 'string') { out = { t: datum as string }; }
+  else { out = datum as Label; }
   return out;
 }
 
-function makeLinearFunction(
-  point1: [number, number],
-  point2: [number, number]
-) {
-  const m = getSlope(point1, point2);
-  const x = point1[0];
-  const y = point1[1];
-  const b = y - m * x;
-  const f = (n: number) => m * n + b;
-  let sign = b < 0 ? '-' : '+';
-  let slope: string;
-  let constant: string;
-  if (IsInteger(m)) {
-    slope = `${m}`;
-  } else {
-    const fracSlope = getLowestFraction(m);
-    const denom = fracSlope.denominator;
-    const numer = fracSlope.numerator;
 
-    slope = `\\dfrac{${Math.abs(denom)}}{${Math.abs(numer)}}`;
-  }
-  if (IsInteger(b)) {
-    constant = `${Math.abs(b)}`;
-  } else {
-    const fracSlope = getLowestFraction(b);
-    const denom = fracSlope.denominator;
-    const numer = fracSlope.numerator;
-
-    constant = `\\dfrac{${Math.abs(denom)}}{${Math.abs(numer)}}`;
-  }
-  const formula = `y = ${slope}x ${sign} ${constant}`;
-
-  return { f, formula };
+/**
+ * @public
+ */
+export interface PlotProps extends BaseProps {
+  data?: (
+    | FunctionDatum
+    | ParametricFunctionDatum
+    | TextDatum
+    | PointDatum
+    | Euclid
+  )[];
+  domain?: [number, number];
+  range?: [number, number];
+  ticks?: number;
+  xTicks?: number;
+  yTicks?: number;
+  samples?: number;
+  className?: string;
+  id?: string;
+  axesLabels?: [Label, Label];
 }
 
 export const Plot = ({
@@ -100,7 +61,7 @@ export const Plot = ({
   ticks = 4,
   xTicks = ticks,
   yTicks = ticks,
-  axesLabels = ['𝒙', '𝒚'],
+  axesLabels = ['', ''],
   samples,
   width = 500,
   height = 500,
@@ -115,7 +76,8 @@ export const Plot = ({
 }: PlotProps) => {
   let elements = [];
   let areas = [];
-  let vectorData = [];
+  let circles = [];
+  let segments = [];
   let annotations = [];
   let riemanns: any = [];
   let points: PointDatum[] = [];
@@ -127,42 +89,36 @@ export const Plot = ({
   );
   const xTickcount = xTicks * 10;
   const yTickCount = yTicks * 10;
-
   const xScale = scaleLinear().domain(domain).range([0, _svg_width]);
   const yScale = scaleLinear().domain(range).range([_svg_height, 0]);
-
   const xLabel = axesLabels[0]
     ? GenerateLabel(axesLabels[0])
-    : GenerateLabel('x');
-
+    : GenerateLabel('');
   const yLabel = axesLabels[1]
     ? GenerateLabel(axesLabels[1])
-    : GenerateLabel('x');
-
+    : GenerateLabel('');
   for (let i = 0; i < data.length; i++) {
     let datum = data[i];
-
     if ((datum as FunctionDatum).f) {
+      datum = datum as FunctionDatum;
+      if ((datum).disc) {
+        let el = MakeCoordinates(datum.f, datum.disc, domain, range);
+        el.filter(d=>d.y!==null).forEach((d) => {
+          circles.push({s: 'circle', r: datum.r ? datum.r : 0.07, xy:[d.x,d.y]})
+        })
+        continue;
+      }
       datum = datum as FunctionDatum;
       let el = FunctionPlot(datum, xScale, yScale, samples, domain, range);
       elements.push(el);
-
       if (datum.secant && typeof datum.f === 'function') {
-        BuildSecantLine(
-          datum,
-          points,
-          domain,
-          annotations,
-          xScale,
-          yScale,
-          secants
-        );
+        BuildSecantLine(datum,points,domain,annotations,xScale,yScale,secants);
       }
     }
     if ((datum as TextDatum).t) {
       datum = datum as TextDatum;
       datum.w = datum.w || 100;
-      datum.h = datum.h || 100;
+      datum.h = datum.h || 20;
       datum.x = datum.x || 0;
       datum.y = datum.y || 0;
       annotations.push(datum);
@@ -171,45 +127,30 @@ export const Plot = ({
       let el = RiemannPlot(datum as FunctionDatum, xScale, yScale, domain);
       riemanns.push(el);
     }
-    if (
-      (datum as ParametricFunctionDatum).riemann &&
-      (datum as ParametricFunctionDatum).x &&
-      (datum as ParametricFunctionDatum).y
-    ) {
-      let el = RiemannPlotParametric(
-        datum as ParametricFunctionDatum,
-        xScale,
-        yScale,
-        domain
-      );
+    if ((datum as ParametricFunctionDatum).riemann&&(datum as ParametricFunctionDatum).x&&(datum as ParametricFunctionDatum).y) {
+      let el = RiemannPlotParametric(datum as ParametricFunctionDatum,xScale,yScale,domain);
       riemanns.push(el);
     }
     if ((datum as FunctionDatum | ParametricFunctionDatum).integrate) {
-      let el = AreaPlot(
-        datum as FunctionDatum,
-        xScale,
-        yScale,
-        samples,
-        domain
-      );
+      let el = AreaPlot(datum as FunctionDatum,xScale,yScale,samples,domain);
       areas.push(el);
     }
     if ((datum as PointDatum).p) {
       points.push(datum as PointDatum);
     }
-    if (
-      (datum as ParametricFunctionDatum).x &&
-      (datum as ParametricFunctionDatum).y &&
-      IsUndefined((datum as any).t)
-    ) {
-      let el = ParametricFunctionPlot(
-        datum as ParametricFunctionDatum,
-        xScale,
-        yScale,
-        samples,
-        domain
-      );
+    if ((datum as ParametricFunctionDatum).x&&(datum as ParametricFunctionDatum).y&&IsUndefined((datum as any).t)) {
+      let el = ParametricFunctionPlot(datum as ParametricFunctionDatum,xScale,yScale,samples,domain);
       elements.push(el);
+    }
+    if ((datum as Euclid).s) {
+      switch ((datum as Euclid).s) {
+        case 'segment':
+          segments.push(datum);
+          break;
+        case 'circle':
+          circles.push(datum);
+          break;
+      }
     }
   }
   riemanns = riemanns ? riemanns.flat() : false;
@@ -236,6 +177,8 @@ export const Plot = ({
           {RenderYAxis(range, _svg_height, yTickCount)}
           {yLabel && RenderYLabel(yLabel)}
         </g>
+        <g>{circles && circles.map((d,i) => <circle cx={xScale(d.xy[0])} cy={yScale(d.xy[1])} r={yScale(domain[1]-d.r)} fill={'none'} stroke={'black'} className={d.class || 'plot_circle'} key={`plot-circ-${id}${i}`}/>)}</g>
+        <g>{segments && segments.map((d,i) => <line x1={xScale(d.xy[0])} y1={yScale(d.xy[1])} x2={xScale(d.xy[2])} y2={yScale(d.xy[3])} stroke={'black'} className={d.class || 'plog_segment'} key={`plot-seg-${id}${i}`}/>)}</g>
         {secants &&
           secants.map((d, i) => (
             <g key={`sc${id}_${i}`} className={`${d.className}`}>
@@ -245,7 +188,6 @@ export const Plot = ({
         {points && RenderPoints(points, id, xScale, yScale)}
         {elements && RenderCurves(elements, id)}
         {areas && RenderIntegrals(areas, id)}
-        {vectorData && RenderVectors(vectorData, id)}
         {annotations && RenderAnnotations(annotations, id, xScale, yScale)}
         {riemanns && RenderRiemannSums(riemanns, id)}
       </g>
@@ -440,14 +382,6 @@ function RenderIntegrals(areas: any[], id: string): React.ReactNode {
   ));
 }
 
-function RenderVectors(vectorData: any[], id: string): React.ReactNode {
-  return vectorData.map((d, i) => (
-    <g key={`ve${id}_${i}`} clipPath={`url(#${id}_Plot_clipPath)`}>
-      {d}
-    </g>
-  ));
-}
-
 function RenderAnnotations(
   annotations: any[],
   id: string,
@@ -455,7 +389,7 @@ function RenderAnnotations(
   yScale
 ): React.ReactNode {
   return annotations.map((d, i) => (
-    <g key={`ap${id}_${i}`}>
+    <g key={`plot-annotations-hago-${id}-${d.t}-${i}`}>
       <Latex
         text={d.t}
         offset={{

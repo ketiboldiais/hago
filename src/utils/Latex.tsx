@@ -20,7 +20,7 @@ export const Latex = ({
       <foreignObject width={width} height={height}>
         <div
           style={{
-            fontSize: `${fontsize}rem`,
+            fontSize: `${fontsize}em`,
             textAlign: `${textAlign}`,
             height: fitContent ? 'fit-content' : '',
             width: fitContent ? 'fit-content' : '',
